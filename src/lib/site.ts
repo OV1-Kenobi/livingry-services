@@ -16,6 +16,15 @@ export const site = {
     // placeholder — user can add later
     phone: null as string | null,
   },
+  // Primary CTA target — Google Calendar Appointment Schedule.
+  // Every "Find My Biggest Leak" / "Book a Leak Assessment" button ultimately points here.
+  booking: {
+    url: "https://calendar.app.google/4UfTY4vavUc7iQBT6",
+    label: "Book a Leak Assessment",
+    // Short reassurance shown under booking CTAs — deliberately neutral about length,
+    // because the length lives on the Google booking page itself.
+    reassurance: "Live conversation. No sales pressure. If we are not the right fit, we say so.",
+  },
   // Domain will be swapped once user attaches livingry.services (or chosen)
   primaryDomain: "https://livingry.services",
   // Twitter / social handles — placeholder
