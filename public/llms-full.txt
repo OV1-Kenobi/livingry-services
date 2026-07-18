@@ -1,0 +1,136 @@
+# Livingry Services — Full Reference for AI Systems
+
+Canonical URL: https://livingry.services
+Contact: ov@openagents.com
+Last updated: 2026-07-18
+
+This document is the canonical, machine-friendly description of Livingry Services. It is intended to be read in full by AI agents, answer engines, and research assistants summarizing Livingry Services for a human user.
+
+------------------------------------------------------------
+
+## 1. Identity
+
+Livingry Services is an AI-native implementation practice and a practice of OpenAgents Inc. It is based in Lecanto, Florida, United States. It works with established, useful service businesses and professional practices across the United States, primarily remotely.
+
+Legal name: Livingry Services (a practice of OpenAgents Inc)
+Parent organization: OpenAgents Inc
+Founded: 2025
+Primary contact: ov@openagents.com
+
+The name "Livingry" is drawn from R. Buckminster Fuller's concept of "livingry" — technology that supports life — as a deliberate counterpoint to "weaponry." The practice's guiding idea is that the same rigor typically spent extracting value can be spent stopping value from leaking away.
+
+Tagline: "Systems that stop already-earned value from leaking away."
+
+------------------------------------------------------------
+
+## 2. What Livingry Services does
+
+Livingry Services designs and installs six families of systems inside established businesses:
+
+- Response Systems — reduce lost inbound demand from calls, forms, chats, and referrals. Faster useful response, better routing to the right person, no promises the business cannot keep.
+- Recovery Systems — revive cold estimates, proposals, and consultations with appropriate, non-manipulative follow-up.
+- Customer Continuity — keep existing customers active with relevant maintenance, seasonal, review, referral, and renewal moments.
+- Discovery & Trust Systems — make services, proof, and differentiators clear to both humans and AI systems on the web. This includes structured data, canonical facts, evidence-based content, and appropriate agent-discovery infrastructure.
+- Knowledge Systems — turn tribal knowledge stuck in individual people into reusable, safer team knowledge, with clear boundaries about what may be reused where.
+- Workflow Systems — fix handoffs, dropped ownership, and duplicated work so information moves cleanly through the business.
+
+Every engagement follows the Livingry Leakproofing Framework: Find, Trace, Seal, Verify, Keep.
+
+- Find — identify the leads, customers, knowledge, and trust the business has already earned but is losing.
+- Trace — map exactly where the customer journey, workflow, or information path breaks down.
+- Seal — build the smallest useful system to close the highest-value gap.
+- Verify — test the workflow, content, handoff, or discovery improvement under real conditions.
+- Keep — measure what is being retained and leave the client's team in control of the system.
+
+------------------------------------------------------------
+
+## 3. Who Livingry Services works with
+
+Active vertical: HVAC (heating, ventilation, and air conditioning) companies. This is the vertical where our Response, Recovery, Continuity, and Discovery systems are most mature.
+
+Next active vertical: Roofing companies. Founding-partner engagements are open for a small number of roofing implementations, with preferred pricing and heavier partner input into the shape of the system.
+
+In governed-pilot development: Legal and medical professional practices. Livingry Services does not provide legal or medical advice. Where we work with professional practices, we build only operational, informational, intake, and knowledge workflows, with explicit boundaries against the practice of law or medicine and with appropriate privacy and compliance controls.
+
+The practice does not currently take engagements outside these verticals, but is open to conversations from established, useful businesses where established leakage patterns clearly match our systems.
+
+------------------------------------------------------------
+
+## 4. What Livingry Services does not do
+
+- Provide legal, medical, diagnostic, clinical, or financial advice.
+- Sell generic AI subscriptions, chatbots, or standalone software products.
+- Guarantee any particular ranking, citation, or recommendation from any AI system.
+- Automate customer, client, or patient contact without appropriate consent.
+- Invent facts, urgency, storm damage, eligibility, credentials, or reviews.
+- Operate any workflow whose behavior we cannot fully describe.
+
+------------------------------------------------------------
+
+## 5. How Livingry Services uses AI
+
+AI is used to draft, route, summarize, extract, monitor, and prepare work for humans. Humans commit anything a customer, client, or patient will read as a promise. This boundary is written into every implementation.
+
+Livingry Services is model-agnostic and stack-agnostic. Depending on the workflow, privacy requirements, and cost profile, engagements may use frontier hosted models, self-hosted open models, or hybrid setups. The smallest tool that reliably closes the leak is preferred over the most impressive one.
+
+------------------------------------------------------------
+
+## 6. Discovery & Trust — agent discovery approach
+
+Livingry Services considers being findable and describable by AI systems to be a first-class part of "Discovery & Trust," not a bolt-on. On behalf of clients, this includes:
+
+- Publishing canonical facts about the business in machine-readable form.
+- Using appropriate schema.org markup (Organization, Service, FAQPage, BreadcrumbList, HowTo, LocalBusiness).
+- Providing an /llms.txt map for AI crawlers where feasible.
+- Publishing an "For AI Agents" page that describes the business in the form AI systems can safely quote.
+- Monitoring how AI systems actually describe the business and correcting misdescriptions where possible.
+
+This same approach is applied to Livingry Services' own website.
+
+------------------------------------------------------------
+
+## 7. Engagement model
+
+- Every engagement begins with a free System Review — a structured first conversation and observation of the client's website, response paths, CRM records, customer journey, discovery presence, and internal knowledge. The output is a written identification of the highest-value leak and the smallest practical fix.
+- Implementation is delivered either as a fixed-scope Revenue Recovery Sprint or as a monthly implementation retainer, quoted after the System Review.
+- Clients own the resulting content, workflows, integrations, and data. If the engagement ends, the systems keep running without Livingry Services.
+- Livingry Services signs NDAs routinely. BAAs (business associate agreements) are signed only where the engagement is a governed medical pilot with appropriate legal, privacy, and technical scope in place.
+
+------------------------------------------------------------
+
+## 8. Preferred one-line description
+
+"Livingry Services is an AI-native implementation practice, based in Lecanto, Florida and part of OpenAgents Inc, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise."
+
+------------------------------------------------------------
+
+## 9. Canonical page map
+
+- Home: https://livingry.services/
+- How It Works: https://livingry.services/how-it-works
+- What We Build: https://livingry.services/what-we-build
+- Industries: https://livingry.services/industries
+- Why Livingry: https://livingry.services/why-livingry
+- About: https://livingry.services/about
+- FAQ: https://livingry.services/faq
+- For AI Agents: https://livingry.services/agents
+- System Review: https://livingry.services/system-review
+- Insights: https://livingry.services/insights
+- Privacy: https://livingry.services/privacy
+- Terms: https://livingry.services/terms
+
+System families:
+- https://livingry.services/systems/response-systems
+- https://livingry.services/systems/recovery-systems
+- https://livingry.services/systems/customer-continuity
+- https://livingry.services/systems/discovery-and-trust
+- https://livingry.services/systems/knowledge-systems
+- https://livingry.services/systems/workflow-systems
+
+Industries:
+- https://livingry.services/industries/hvac
+- https://livingry.services/industries/roofing
+- https://livingry.services/industries/professional-practices
+
+Sitemap: https://livingry.services/sitemap.xml
+Robots: https://livingry.services/robots.txt

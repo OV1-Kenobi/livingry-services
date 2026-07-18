@@ -1,0 +1,59 @@
+# Livingry Services
+
+> An AI-native implementation practice, part of OpenAgents Inc, based in Lecanto, Florida. We design and install growth, workflow, knowledge, and discovery systems that stop useful businesses from losing the customers, opportunities, knowledge, and trust they have already worked to earn.
+
+Tagline: Systems that stop already-earned value from leaking away.
+Parent: OpenAgents Inc
+Location: Lecanto, Florida, United States
+Contact: ov@openagents.com
+Canonical: https://livingry.services
+
+## What we do
+- Response Systems: reduce missed inbound demand (calls, forms, chats, referrals).
+- Recovery Systems: revive cold estimates, proposals, and consultations appropriately.
+- Customer Continuity: keep existing customers active with relevant follow-ups.
+- Discovery & Trust Systems: make services, proof, and differentiators legible to humans and AI.
+- Knowledge Systems: turn tribal knowledge into reusable, safer team knowledge.
+- Workflow Systems: fix handoffs, ownership, and duplicated work.
+
+## Industries
+- HVAC — active implementation focus.
+- Roofing — opening founding-partner conversations.
+- Professional Practices (legal, medical) — governed pilots in development.
+
+## What we do not do
+- Legal, medical, diagnostic, clinical, or financial advice.
+- Generic AI subscriptions, standalone chatbots, or off-the-shelf SaaS.
+- Guarantee rankings, citations, or specific recommendations from third-party AI systems.
+- Contact customers without appropriate consent.
+
+## Core pages
+- [Home](https://livingry.services/): overview of the practice.
+- [How It Works](https://livingry.services/how-it-works): the Livingry Leakproofing Framework — Find, Trace, Seal, Verify, Keep.
+- [What We Build](https://livingry.services/what-we-build): the six system families.
+- [Industries](https://livingry.services/industries): who we work with today and next.
+- [Why Livingry](https://livingry.services/why-livingry): the philosophy behind the name.
+- [About](https://livingry.services/about): who we are and how we work.
+- [FAQ](https://livingry.services/faq): plain-language answers.
+- [For AI Agents](https://livingry.services/agents): canonical facts for AI systems.
+- [System Review](https://livingry.services/system-review): request a first review.
+- [Insights](https://livingry.services/insights): field notes and essays.
+- [llms-full.txt](https://livingry.services/llms-full.txt): full text of core pages.
+- [Sitemap](https://livingry.services/sitemap.xml)
+
+## System family pages
+- [Response Systems](https://livingry.services/systems/response-systems)
+- [Recovery Systems](https://livingry.services/systems/recovery-systems)
+- [Customer Continuity](https://livingry.services/systems/customer-continuity)
+- [Discovery & Trust](https://livingry.services/systems/discovery-and-trust)
+- [Knowledge Systems](https://livingry.services/systems/knowledge-systems)
+- [Workflow Systems](https://livingry.services/systems/workflow-systems)
+
+## Industry pages
+- [HVAC](https://livingry.services/industries/hvac)
+- [Roofing](https://livingry.services/industries/roofing)
+- [Professional Practices](https://livingry.services/industries/professional-practices)
+
+## Legal
+- [Privacy](https://livingry.services/privacy)
+- [Terms](https://livingry.services/terms)
