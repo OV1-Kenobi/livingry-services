@@ -1,81 +1,30 @@
-// TradeOps operator dashboard — typed data layer.
-//
-// These types mirror the canonical Common Data Model (Customer, Job, Credential,
-// Exception, Audit Event) from the Livingry TradeOps Layer spec, extended with
-// optional Nostr-native identity fields (npub, NIP-05, delegation scope) so
-// technician credentials and approval signatures can be verified cryptographically
-// instead of trusted from a single vendor's database flag.
-//
-// This file currently ships with representative placeholder records so the
-// dashboard UI can be reviewed and iterated on. Replace `getX()` functions with
-// real fetches against the n8n orchestration core / Nostr relays once those
-// services are live — the shapes below are the target contract.
-
 export type AutomationLevel = "A0_observe" | "A1_draft" | "A2_bounded_execute" | "A3_escalate";
 
-export type NostrIdentity = {
-  npub: string;
-  nip05?: string;
-  delegationScope?: string; // NIP-26 delegation token scope, e.g. "credential:epa608:verify"
-  verified: boolean;
-};
+export type NostrIdentity = { npub: string; nip05?: string; delegationScope?: string; verified: boolean };
 
 export type LeakKpi = {
-  id: string;
-  label: string;
-  value: number;
-  unit: "count" | "currency" | "percent" | "hours";
-  target?: number;
-  trend: "up" | "down" | "flat";
-  severity: "ok" | "watch" | "critical";
-  tradePack: "core" | "hvac" | "roofing";
+  id: string; label: string; value: number; unit: "count" | "currency" | "percent" | "hours";
+  target?: number; trend: "up" | "down" | "flat"; severity: "ok" | "watch" | "critical"; tradePack: "core" | "hvac" | "roofing";
 };
 
 export type ExceptionRecord = {
   id: string;
-  problemType:
-    | "safety_concern"
-    | "missing_credential"
-    | "price_discrepancy"
-    | "complaint"
-    | "insurance_language"
-    | "missing_evidence"
-    | "failed_integration"
-    | "low_ai_confidence";
-  severity: "low" | "medium" | "high";
-  owner: string;
-  tenantId: string;
-  jobId?: string;
-  customerId?: string;
-  dueAt: string;
-  status: "open" | "escalated" | "resolved";
-  sourceEvent: string;
-  automationLevel: AutomationLevel;
+  problemType: "safety_concern" | "missing_credential" | "price_discrepancy" | "complaint" | "insurance_language" | "missing_evidence" | "failed_integration" | "low_ai_confidence";
+  severity: "low" | "medium" | "high"; owner: string; tenantId: string; jobId?: string; customerId?: string;
+  dueAt: string; status: "open" | "escalated" | "resolved"; sourceEvent: string; automationLevel: AutomationLevel;
 };
 
 export type CredentialRecord = {
-  id: string;
-  employeeName: string;
+  id: string; employeeName: string;
   credentialType: "EPA_608_universal" | "EPA_608_type_i" | "EPA_608_type_ii" | "EPA_608_type_iii" | "state_license" | "manufacturer_cert";
-  verificationSource: string;
-  verifiedAt: string;
-  jobTypePermissions: string[];
-  nostr: NostrIdentity;
+  verificationSource: string; verifiedAt: string; jobTypePermissions: string[]; nostr: NostrIdentity;
 };
 
 export type CanonicalJobEvent = {
-  eventId: string;
-  eventType: "job.completed" | "job.booked" | "lead.intake" | "estimate.followup" | "inspection.completed";
-  occurredAt: string;
-  tenantId: string;
-  trade: "hvac" | "roofing";
+  eventId: string; eventType: "job.completed" | "job.booked" | "lead.intake" | "estimate.followup" | "inspection.completed";
+  occurredAt: string; tenantId: string; trade: "hvac" | "roofing";
   sourceSystem: "jobber" | "ela" | "servicetitan" | "housecall_pro" | "spreadsheet" | "web_form" | "livingry_db";
-  customerId: string;
-  jobId: string;
-  outcome?: string;
-  amount?: number;
-  automationLevel: AutomationLevel;
-  auditSignature?: string; // Nostr event id (hex) once the audit envelope is signed
+  customerId: string; jobId: string; outcome?: string; amount?: number; automationLevel: AutomationLevel; auditSignature?: string;
 };
 
 export function getLeakKpis(): LeakKpi[] {
@@ -109,33 +58,9 @@ export function getExceptions(): ExceptionRecord[] {
 
 export function getCredentials(): CredentialRecord[] {
   return [
-    {
-      id: "cred_001",
-      employeeName: "T. Alvarez",
-      credentialType: "EPA_608_universal",
-      verificationSource: "EPA Section 608 registry upload",
-      verifiedAt: "2026-03-11",
-      jobTypePermissions: ["refrigerant_recovery", "refrigerant_charge", "no_cool_diagnostic"],
-      nostr: { npub: "npub1a3x...9kq2", nip05: "talvarez@client-hvac-001.livingry.services", delegationScope: "credential:epa608:universal", verified: true },
-    },
-    {
-      id: "cred_002",
-      employeeName: "J. Ruiz (apprentice)",
-      credentialType: "EPA_608_type_i",
-      verificationSource: "Manual office upload — pending secondary verification",
-      verifiedAt: "2026-06-02",
-      jobTypePermissions: ["supervised_refrigerant_work"],
-      nostr: { npub: "npub1j9z...4mw7", verified: false },
-    },
-    {
-      id: "cred_003",
-      employeeName: "M. Chen",
-      credentialType: "state_license",
-      verificationSource: "Florida DBPR lookup",
-      verifiedAt: "2026-01-29",
-      jobTypePermissions: ["roofing_production", "inspection_lead"],
-      nostr: { npub: "npub1m4c...7rte", nip05: "mchen@client-roof-002.livingry.services", delegationScope: "credential:roofing:inspection_lead", verified: true },
-    },
+    { id: "cred_001", employeeName: "T. Alvarez", credentialType: "EPA_608_universal", verificationSource: "EPA Section 608 registry upload", verifiedAt: "2026-03-11", jobTypePermissions: ["refrigerant_recovery", "refrigerant_charge", "no_cool_diagnostic"], nostr: { npub: "npub1a3x...9kq2", nip05: "talvarez@client-hvac-001.livingry.services", delegationScope: "credential:epa608:universal", verified: true } },
+    { id: "cred_002", employeeName: "J. Ruiz (apprentice)", credentialType: "EPA_608_type_i", verificationSource: "Manual office upload — pending secondary verification", verifiedAt: "2026-06-02", jobTypePermissions: ["supervised_refrigerant_work"], nostr: { npub: "npub1j9z...4mw7", verified: false } },
+    { id: "cred_003", employeeName: "M. Chen", credentialType: "state_license", verificationSource: "Florida DBPR lookup", verifiedAt: "2026-01-29", jobTypePermissions: ["roofing_production", "inspection_lead"], nostr: { npub: "npub1m4c...7rte", nip05: "mchen@client-roof-002.livingry.services", delegationScope: "credential:roofing:inspection_lead", verified: true } },
   ];
 }
 
