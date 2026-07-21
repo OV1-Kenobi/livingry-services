@@ -250,6 +250,50 @@ export const systemContents: Record<string, SystemContent> = {
     ],
     cta: { primary: "Find My Workflow Gaps", secondary: "See the Method" },
   },
+  "tradeops-layer": {
+    slug: "tradeops-layer",
+    title: "TradeOps Layer",
+    family: "Knowledge & Workflow",
+    eyebrow: "Knowledge & Workflow · TradeOps",
+    lede: "Livingry TradeOps is the AI operations layer that stops completed jobs, customer trust, technician time, and follow-up revenue from leaking away — built as a vendor-agnostic core with interchangeable adapters for Jobber, ServiceTitan, Housecall Pro, Ela, spreadsheets, email, or web forms, not as an Ela-dependent product or a one-off automation.",
+    problem: [
+      "Leads sit unanswered while the office is busy with the job in front of them.",
+      "Jobs get dispatched before required photos, credentials, or access notes are confirmed.",
+      "Completed work never turns into a clean packet — parts, notes, photos, and recommendations stay scattered.",
+      "Reviews, maintenance offers, and referral requests get triggered off a raw status flag instead of a verified, complaint-free completion.",
+      "Uncertain or risky situations — safety concerns, missing credentials, insurance language, price discrepancies — have no single queue, so they get missed or handled inconsistently.",
+    ],
+    build: [
+      { title: "Canonical job events", body: "Every webhook from Ela, Jobber, ServiceTitan, Housecall Pro, a spreadsheet, or a web form is normalized into one common event and data model — customer, property, job, asset, estimate, credential, evidence, exception, opportunity — so the same workflow logic runs regardless of source system." },
+      { title: "n8n orchestration core", body: "Small, single-purpose n8n workflows (not one giant canvas) handle event intake, identity resolution, AI extraction, policy gates, human approval, system writes, communications, and exception routing — each with its own audit trail." },
+      { title: "Human approval model", body: "Four automation levels — Observe, Draft, Bounded Execute, Escalate — gate every action. Clients start in shadow mode and only advance to autonomous execution after measured accuracy and explicit approval." },
+      { title: "Exception Desk", body: "Safety concerns, missing credentials, price discrepancies, complaints, insurance language, missing evidence, and low-confidence AI outputs all route to one queue with a defined owner and escalation path — instead of falling through separate cracks." },
+      { title: "Trade packs", body: "The HVAC/R Pack adds equipment records, EPA Section 608 credential verification, refrigerant documentation, and maintenance-plan triggers. The Roofing Pack adds inspection evidence chains, storm-event tracking, production milestones, and a configurable insurance-language guardrail." },
+      { title: "Leak dashboard", body: "One operator view built around leaks, not generic activity — unanswered leads, jobs blocked by missing evidence, unsold estimates without a next action, completed jobs that never entered the review workflow, and overdue exceptions." },
+    ],
+    outcomes: [
+      "Faster, more consistent response to every lead regardless of which system or channel it arrived through.",
+      "Jobs that reach the field with the credentials, evidence, and access information they need — or a flagged exception instead of a silent gap.",
+      "Completion packets, maintenance offers, and review requests that trigger off verified, complaint-free job states.",
+      "A defensible audit trail for every AI-assisted decision and every human approval.",
+      "A system that keeps working if a client changes field-service software, or never adopts one at all.",
+    ],
+    boundaries: [
+      "AI may summarize, classify, extract, draft, and recommend — it may not diagnose conclusively, promise insurance coverage, guarantee arrival times, approve discounts, or bind the company.",
+      "Credentials are read from verified records only. The system never infers that a technician is legally qualified from job history alone.",
+      "Insurance-related language is blocked or routed to an authorized, counsel-approved process by default — never left to an LLM to interpret dynamically.",
+      "Review requests cannot bypass an unresolved complaint or skip quality-control approval.",
+      "Ela, or any single vendor, remains an optional adapter. It is never allowed to become the system of record.",
+    ],
+    faq: [
+      { q: "Do we have to use Ela, or a specific CRM, for this to work?", a: "No. TradeOps is built with interchangeable adapters. If you already run Jobber, ServiceTitan, Housecall Pro, or another field-service platform, we build automation around it. If you want a general admin assistant, we connect Ela where it genuinely helps. If you have no usable system, we deploy a lightweight database with n8n and Brevo — without forcing a migration." },
+      { q: "What happens to our data if we remove one of the adapters later?", a: "Removing any single adapter, including Ela, should never break the normalized workflow core. That is one of our acceptance criteria before any client goes live, and clients can export their operational data at any time." },
+      { q: "How much does AI act on its own?", a: "Almost none, at first. Every client starts in Observe or Draft mode. Workflows only advance to bounded autonomous execution after we measure accuracy on that specific workflow and you explicitly approve it. Safety, credential, complaint, and insurance-related cases always require a human." },
+      { q: "Is this specific to HVAC and roofing?", a: "The TradeOps Core — intake, job readiness, completion packets, continuity, and the Exception Desk — is shared across trades. HVAC/R and Roofing are the first two trade packs built on top of it, because refrigerant compliance and storm/insurance workflows each need their own guardrails." },
+      { q: "How is this priced?", a: "Engagements begin with a TradeOps Diagnostic — a 7–10 business day workflow map, integration inventory, and revenue-leak register — followed by a scoped TradeOps Launch and, for ongoing clients, Managed Optimization. Pricing is quoted after the Diagnostic, once we know which leak is worth closing first." },
+    ],
+    cta: { primary: "Find My TradeOps Leaks", secondary: "See the Method" },
+  },
 };
 
 export const systemSlugs = Object.keys(systemContents);

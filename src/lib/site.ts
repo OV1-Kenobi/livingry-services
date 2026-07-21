@@ -83,6 +83,13 @@ export const site = {
       improves: "Clearer responsibility, fewer dropped details, better visibility.",
       family: "Knowledge & Workflow",
     },
+    {
+      slug: "tradeops-layer",
+      title: "TradeOps Layer",
+      leak: "Completed jobs, technician records, estimates, and reviews leak between whatever software a trade business already runs.",
+      improves: "One vendor-agnostic operations layer — canonical job events, policy gates, human approval, and leak dashboards — built around Jobber, ServiceTitan, Housecall Pro, Ela, spreadsheets, or none of the above.",
+      family: "Knowledge & Workflow",
+    },
   ],
   industries: [
     {
