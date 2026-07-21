@@ -9,6 +9,7 @@ const tabs = [
   { label: "Ops Center", href: "/dashboard/ops-center" },
   { label: "Exception Desk", href: "/dashboard/exceptions" },
   { label: "Credential Registry", href: "/dashboard/identity" },
+  { label: "Integrations", href: "/dashboard/integrations" },
   { label: "Event Log", href: "/dashboard/events" },
 ];
 
