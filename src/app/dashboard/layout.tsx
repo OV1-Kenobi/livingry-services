@@ -6,6 +6,7 @@ import { DashboardLoginGate } from "@/components/DashboardLoginGate";
 
 const tabs = [
   { label: "Leak Overview", href: "/dashboard" },
+  { label: "Ops Center", href: "/dashboard/ops-center" },
   { label: "Exception Desk", href: "/dashboard/exceptions" },
   { label: "Credential Registry", href: "/dashboard/identity" },
   { label: "Event Log", href: "/dashboard/events" },
