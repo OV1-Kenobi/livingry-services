@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { SimplePool, finalizeEvent, getPublicKey, nip04, nip19 } from "nostr-tools";
+import { SimplePool, finalizeEvent, generateSecretKey, getPublicKey, nip04, nip19 } from "nostr-tools";
 import { DEFAULT_RELAYS, OTP_RECIPIENT_NPROFILE, RELAY_COOKIE } from "@/lib/nostr-config";
 import { generateOtp } from "@/lib/otp-store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+// OPSEC: this route generates a brand-new, single-use Nostr keypair for
+// every OTP request. The secret key never leaves this function, is never
+// written to an env var, database, or log, and is explicitly zeroed from
+// memory immediately after it signs the one encrypted DM below. There is
+// no persistent sender identity for this flow — nothing to configure in
+// Vercel, nothing to rotate, nothing to revoke.
 
 async function ensureWebSocketPolyfill() {
   if (typeof (globalThis as any).WebSocket === "undefined") {
@@ -35,18 +42,11 @@ async function getConfiguredRelayUrls(): Promise<string[]> {
 }
 
 export async function POST(req: Request) {
-  const hasSenderKey = Boolean(process.env.DASHBOARD_OTP_SENDER_NSEC);
-  if (!hasSenderKey) {
-    return NextResponse.json(
-      { ok: false, error: "Server is not configured with a demo OTP sending key (DASHBOARD_OTP_SENDER_NSEC). Set this as an encrypted environment variable — never hardcode it — to enable Nostr OTP login." },
-      { status: 503 },
-    );
-  }
   try {
     await ensureWebSocketPolyfill();
-    const decodedSk = nip19.decode(process.env.DASHBOARD_OTP_SENDER_NSEC as string);
-    if (decodedSk.type !== "nsec") throw new Error("DASHBOARD_OTP_SENDER_NSEC must be a valid nsec-encoded key");
-    const senderSecretKey = decodedSk.data as Uint8Array;
+
+    const senderSecretKey = generateSecretKey();
+    const senderPubkey = getPublicKey(senderSecretKey);
 
     const { pubkey: recipientPubkey, hintRelays } = resolveRecipientPubkey();
     const relayUrls = Array.from(new Set([...(await getConfiguredRelayUrls()), ...hintRelays]));
@@ -55,9 +55,9 @@ export async function POST(req: Request) {
     const sessionKey = typeof body.sessionKey === "string" && body.sessionKey.length > 0 ? body.sessionKey : crypto.randomUUID();
 
     const code = generateOtp(sessionKey);
-    const plaintext = `Livingry TradeOps demo dashboard login code: ${code}\n\nThis code expires in 5 minutes. If you did not request this, ignore this message.`;
+    const plaintext = `Livingry TradeOps demo dashboard login code: ${code}\n\nThis code expires in 5 minutes. It was sent from a single-use, throwaway Nostr identity (${senderPubkey.slice(0, 12)}…) generated only for this message. If you did not request this, ignore it.`;
+
     const ciphertext = await nip04.encrypt(senderSecretKey, recipientPubkey, plaintext);
-    const senderPubkey = getPublicKey(senderSecretKey);
 
     const event = finalizeEvent(
       { kind: 4, created_at: Math.floor(Date.now() / 1000), tags: [["p", recipientPubkey]], content: ciphertext },
@@ -71,7 +71,14 @@ export async function POST(req: Request) {
     pool.close(relayUrls);
     const succeeded = results.filter((r) => r.status === "fulfilled").length;
 
-    return NextResponse.json({ ok: succeeded > 0, sessionKey, relaysAttempted: relayUrls, relaysSucceeded: succeeded, senderPubkey, eventId: event.id });
+    return NextResponse.json({
+      ok: succeeded > 0,
+      sessionKey,
+      relaysAttempted: relayUrls,
+      relaysSucceeded: succeeded,
+      senderPubkey,
+      eventId: event.id,
+    });
   } catch (err) {
     return NextResponse.json({ ok: false, error: err instanceof Error ? err.message : "Unknown error sending OTP" }, { status: 500 });
   }

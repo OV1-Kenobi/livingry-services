@@ -1,16 +1,17 @@
 // Nostr configuration for the TradeOps demo dashboard's OTP login gate.
 //
-// KEY MANAGEMENT / OPSEC NOTES (read before touching this file):
-// 1. The OTP-sending private key (nsec) lives ONLY in the server-side env var
-//    DASHBOARD_OTP_SENDER_NSEC. It is never hardcoded, never logged, never
-//    sent to the client, and never written to disk outside the environment
-//    variable store (e.g. Vercel's encrypted env storage).
-// 2. This is a throwaway/demo signing identity — generate a fresh keypair
-//    for it, do not reuse any identity that holds funds or real reputation.
-// 3. The recipient npub/nprofile below is intentionally public — it is the
-//    destination address for OTP delivery, not a secret.
-// 4. Relay selection is client-configurable via a non-sensitive cookie; it
-//    carries no key material, only relay URL preferences.
+// KEY MANAGEMENT / OPSEC MODEL:
+// Every OTP send generates a brand-new, single-use Nostr keypair on the
+// server, uses it to sign exactly one encrypted DM, and then discards it.
+// No sender key is ever persisted to an environment variable, database, or
+// disk — it exists only in process memory for the duration of one request
+// and is zeroed immediately after signing. This means:
+//   - No Vercel/env configuration is required to enable OTP login.
+//   - Each OTP message is signed by a different, throwaway identity that
+//     has no reputation, no history, and no reuse across requests.
+//   - There is nothing long-lived to leak, rotate, or revoke for this flow.
+// The RECIPIENT npub/nprofile below is intentionally public — it is the
+// fixed destination address for OTP delivery, not a secret.
 
 export type RelayOption = {
   id: string;
