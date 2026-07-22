@@ -44,6 +44,7 @@ export function Footer() {
               <li><Link href="/how-it-works">How It Works</Link></li>
               <li><Link href="/why-livingry">Why Livingry</Link></li>
               <li><Link href="/about">About</Link></li>
+              <li><Link href="/proof">Proof Ledger</Link></li>
               <li><Link href="/insights">Insights</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/agents">For AI Agents</Link></li>

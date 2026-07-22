@@ -218,6 +218,27 @@ export default function Home() {
         </div>
       </section>
 
+      <hr />
+
+      {/* PROOF THAT CAN TRAVEL */}
+      <section className="section" aria-labelledby="proof-heading">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <div className="rule-label">Proof that can travel</div>
+            <h2 id="proof-heading" className="serif">Your business history should not disappear with a vendor.</h2>
+          </div>
+          <div className="lg:col-span-6">
+            <p style={{ color: "var(--ink-2)" }}>
+              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry helps trades businesses capture the evidence behind qualifications, completed work, customer approvals, reviews, and reputation — while the work is happening.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/about#proof-matters-heading" className="link" style={{ color: "var(--forest)" }}>Why Proof Matters →</Link>
+              <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>View Our Proof Ledger →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section-tight paper-grain" aria-labelledby="cta-heading">
         <div className="container">
