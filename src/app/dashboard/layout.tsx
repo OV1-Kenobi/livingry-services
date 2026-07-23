@@ -38,15 +38,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div>
       <div className="container" style={{ paddingBlock: "0.5rem", fontSize: "0.78rem", color: "var(--ink-3)", borderBottom: "1px solid var(--rule)" }}>
-        <strong style={{ color: "var(--copper)" }}>Demo mode.</strong> This is a sample
-        dashboard using placeholder data so prospective clients can preview what a
-        tailored TradeOps backend looks like. Real client dashboards are custom-built
-        and owned by that client, on their own data.
+        <strong style={{ color: "var(--copper)" }}>Client workspace.</strong> Your configured
+        tools, workflows, approvals, and operational data. Tool configuration you change here
+        is saved to your workspace and persists across sessions and devices.
       </div>
       <section style={{ borderBottom: "1px solid var(--rule)", background: "var(--paper-2)" }}>
         <div className="container" style={{ paddingBlock: "0.9rem" }}>
           <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="eyebrow">Livingry TradeOps · Client control panel</div>
+            <div className="eyebrow">Livingry Ops · Client workspace</div>
             <button className="btn btn-ghost" style={{ paddingBlock: "0.4rem" }} onClick={logout}>Sign out</button>
           </div>
           <nav className="mt-3 flex flex-wrap gap-2" aria-label="Dashboard sections">

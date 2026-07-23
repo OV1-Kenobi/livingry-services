@@ -19,11 +19,34 @@ export function FlowMap({ categories, edges, selectedId, highlightIds, onSelect 
 
   return (
     <div
-      className="relative"
+      className="relative ops-flowmap"
       role="group"
       aria-label="Work and data-flow map"
-      style={{ width: "100%", aspectRatio: "16 / 10", minHeight: "320px", background: "var(--paper-2)", border: "1px solid var(--rule)", borderRadius: "8px", overflow: "hidden" }}
+      style={{ width: "100%", background: "var(--paper-2)", border: "1px solid var(--rule)", borderRadius: "8px", overflow: "hidden" }}
     >
+      {/* Desktop keeps the wide 16:10 map. At ~390px the map goes taller and
+          nodes narrow so labels stay legible (>=12px) and touch targets stay
+          >=44px without introducing nested scrolling. */}
+      <style>{`
+        .ops-flowmap {
+          --flow-aspect: 16 / 10;
+          --flow-min-h: 320px;
+          --node-max: 160px;
+          --node-eyebrow: 0.6rem;
+          --node-title: 0.8rem;
+          aspect-ratio: var(--flow-aspect);
+          min-height: var(--flow-min-h);
+        }
+        @media (max-width: 640px) {
+          .ops-flowmap {
+            --flow-aspect: 3 / 4;
+            --flow-min-h: 480px;
+            --node-max: 42vw;
+            --node-eyebrow: 0.75rem;
+            --node-title: 0.82rem;
+          }
+        }
+      `}</style>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
         <defs>
           <marker id="opsArrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -66,7 +89,7 @@ export function FlowMap({ categories, edges, selectedId, highlightIds, onSelect 
               left: `${c.x}%`,
               top: `${c.y}%`,
               transform: "translate(-50%, -50%)",
-              maxWidth: "160px",
+              maxWidth: "var(--node-max)",
               padding: "0.5rem 0.7rem",
               minHeight: "44px",
               borderRadius: "8px",
@@ -78,8 +101,8 @@ export function FlowMap({ categories, edges, selectedId, highlightIds, onSelect 
               transition: "border-color .15s ease, box-shadow .15s ease",
             }}
           >
-            <span className="eyebrow block" style={{ color: isOps ? "var(--seal)" : "var(--copper-2)", fontSize: "0.6rem" }}>{c.eyebrow}</span>
-            <span className="block" style={{ fontSize: "0.8rem", fontWeight: 500, lineHeight: 1.15 }}>{c.title}</span>
+            <span className="eyebrow block" style={{ color: isOps ? "var(--seal)" : "var(--copper-2)", fontSize: "var(--node-eyebrow)" }}>{c.eyebrow}</span>
+            <span className="block" style={{ fontSize: "var(--node-title)", fontWeight: 500, lineHeight: 1.15 }}>{c.title}</span>
           </button>
         );
       })}
