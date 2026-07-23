@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { DashboardLoginGate } from "@/components/DashboardLoginGate";
 
 const tabs = [
-  { label: "Leak Overview", href: "/dashboard" },
+  { label: "Ops Dashboard", href: "/dashboard" },
   { label: "Ops Center", href: "/dashboard/ops-center" },
   { label: "Exception Desk", href: "/dashboard/exceptions" },
   { label: "Credential Registry", href: "/dashboard/identity" },
@@ -43,18 +43,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         tailored TradeOps backend looks like. Real client dashboards are custom-built
         and owned by that client, on their own data.
       </div>
-      <section className="section-tight paper-grain" style={{ borderBottom: "1px solid var(--rule)" }}>
-        <div className="container">
+      <section style={{ borderBottom: "1px solid var(--rule)", background: "var(--paper-2)" }}>
+        <div className="container" style={{ paddingBlock: "0.9rem" }}>
           <div className="flex items-center justify-between flex-wrap gap-4">
-            <div>
-              <div className="eyebrow">Livingry TradeOps · Internal</div>
-              <h1 className="serif mt-4" style={{ fontSize: "var(--step-3)" }}>Operator Dashboard</h1>
-              <p className="mt-3" style={{ color: "var(--ink-2)", maxWidth: "42rem" }}>One view built around leaks, not generic activity — plus the Nostr-backed credential and audit layer underneath every automated action.</p>
-            </div>
-            <button className="btn btn-ghost" onClick={logout}>Sign out</button>
+            <div className="eyebrow">Livingry TradeOps · Client control panel</div>
+            <button className="btn btn-ghost" style={{ paddingBlock: "0.4rem" }} onClick={logout}>Sign out</button>
           </div>
-          <nav className="mt-7 flex flex-wrap gap-2" aria-label="Dashboard sections">
-            {tabs.map((t) => (<Link key={t.href} href={t.href} className="btn btn-secondary" style={{ paddingBlock: "0.5rem", paddingInline: "1rem", fontSize: "0.85rem" }}>{t.label}</Link>))}
+          <nav className="mt-3 flex flex-wrap gap-2" aria-label="Dashboard sections">
+            {tabs.map((t) => (<Link key={t.href} href={t.href} className="btn btn-secondary" style={{ paddingBlock: "0.45rem", paddingInline: "0.9rem", fontSize: "0.82rem" }}>{t.label}</Link>))}
           </nav>
         </div>
       </section>

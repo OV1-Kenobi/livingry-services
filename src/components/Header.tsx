@@ -27,7 +27,7 @@ const nav = [
     ],
   },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Dashboard", href: "/dashboard" },
+  { label: "Dashboard", href: "/ops" },
   { label: "Why Livingry", href: "/why-livingry" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -74,7 +74,8 @@ export function Header() {
             </div>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-4">
+          <Link href="/dashboard" className="nav-link">Client Sign In</Link>
           <Link href="/system-review" className="btn btn-primary">
             Find My Biggest Leak
             <span aria-hidden>→</span>
@@ -116,6 +117,7 @@ export function Header() {
                 )}
               </div>
             ))}
+            <Link href="/dashboard" className="nav-link block mt-2" onClick={() => setOpen(false)}>Client Sign In</Link>
             <Link href="/system-review" className="btn btn-primary mt-2 w-fit" onClick={() => setOpen(false)}>
               Find My Biggest Leak <span aria-hidden>→</span>
             </Link>
