@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { CategoryId, DashboardMode } from "@/lib/ops-dashboard/types";
 import { useOpsDashboard } from "./useOpsDashboard";
-import { FlowMap } from "./FlowMap";
+import { LifecycleFlow } from "./LifecycleFlow";
 import { CategoryDetail } from "./CategoryDetail";
 import { ApprovalQueue } from "./ApprovalQueue";
 import { ProofLedger } from "./ProofLedger";
@@ -146,14 +146,16 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
               <section aria-label="Work and data-flow map">
                 <div className="rule-label">Work &amp; data flow</div>
                 <p className="text-[0.82rem] mt-1 mb-3" style={{ color: "var(--ink-3)" }}>
-                  Attract → intake → coordinate → execute → retain, all governed by the Ops layer. Select any node to inspect it.
+                  Attract → intake → coordinate → execute → retain, governed by the Ops control plane above and
+                  audited by the Proof Ledger below. Recovery loops stale opportunities back upstream. Select any
+                  stage to inspect it.
                 </p>
-                <FlowMap
+                <LifecycleFlow
                   categories={store.categories}
-                  edges={store.edges}
                   selectedId={tray === "category" ? selectedId : null}
                   highlightIds={highlightIds}
                   onSelect={selectCategory}
+                  onOpenLedger={() => setTray("ledger")}
                 />
               </section>
 
