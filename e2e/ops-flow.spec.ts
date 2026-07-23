@@ -45,9 +45,16 @@ for (const vp of VIEWPORTS) {
     }));
     expect(overflow.scrollW, `horizontal overflow at ${vp.name}`).toBeLessThanOrEqual(overflow.clientW + 1);
 
-    // 2. No overlapping flow cards/rails (allow >2px^2 slop for sub-pixel edges).
+    // 2. Every flow card/rail is fully inside the viewport horizontally
+    //    (catches a clipped right-edge Retain stage).
     const boxes = await flowBoxes(page);
     expect(boxes.length).toBeGreaterThanOrEqual(9); // 2 rails + 7 systems + recovery
+    for (const b of boxes) {
+      expect(b.x, `${b.label} clipped left at ${vp.name}`).toBeGreaterThanOrEqual(-1);
+      expect(b.x + b.w, `${b.label} clipped right at ${vp.name}`).toBeLessThanOrEqual(overflow.clientW + 1);
+    }
+
+    // 3. No overlapping flow cards/rails (allow >2px^2 slop for sub-pixel edges).
     for (let i = 0; i < boxes.length; i++) {
       for (let j = i + 1; j < boxes.length; j++) {
         const area = overlapArea(boxes[i], boxes[j]);
@@ -55,20 +62,40 @@ for (const vp of VIEWPORTS) {
       }
     }
 
-    // 3. Every lifecycle stage label is visible.
+    // 4. Every lifecycle stage label is visible; "Support" is NOT a phase.
     for (const label of STAGE_LABELS) {
       await expect(
         page.locator(".lf-lifecycle").getByText(label, { exact: true }).first(),
         `stage label "${label}" visible at ${vp.name}`,
       ).toBeVisible();
     }
+    await expect(
+      page.locator(".lf-lifecycle").getByText("Support", { exact: true }),
+      `no Support lifecycle phase at ${vp.name}`,
+    ).toHaveCount(0);
 
-    // 4. Control plane (top) is above the audit rail (bottom).
+    // 5. Coordinate is one stage containing BOTH Knowledge and Workflow controls.
+    const coordinate = page.locator('[data-stage="COORDINATE"]');
+    await expect(coordinate.locator(".lf-node", { hasText: "Knowledge Systems" })).toBeVisible();
+    await expect(coordinate.locator(".lf-node", { hasText: "Workflow Systems" })).toBeVisible();
+
+    // 6. Control plane (top) is above the audit rail (bottom).
     const control = await page.locator('[data-role="control-plane"]').boundingBox();
     const audit = await page.locator('[data-role="audit-rail"]').boundingBox();
     expect(control && audit && control.y < audit.y, "control plane above audit rail").toBeTruthy();
 
-    // 5. Clicking a category card opens its detail (card becomes pressed).
+    // 7. Both Coordinate controls remain independently clickable with distinct
+    //    detail panels, and a single-lane stage click works too.
+    const knowledgeNode = coordinate.locator(".lf-node", { hasText: "Knowledge Systems" });
+    await knowledgeNode.click();
+    await expect(knowledgeNode).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("heading", { name: "Knowledge Systems" })).toBeVisible();
+
+    const workflowNode = coordinate.locator(".lf-node", { hasText: "Workflow Systems" });
+    await workflowNode.click();
+    await expect(workflowNode).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("heading", { name: "Workflow Systems" })).toBeVisible();
+
     const responseNode = page.locator(".lf-node", { hasText: "Response Systems" });
     await responseNode.click();
     await expect(responseNode).toHaveAttribute("aria-pressed", "true");

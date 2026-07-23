@@ -32,10 +32,18 @@ test("lifecycle stages map to the correct categories", () => {
   ]);
 });
 
-test("Coordinate is the only multi-lane stage", () => {
+test("Coordinate is the only multi-lane stage and groups Knowledge + Workflow", () => {
   const multi = LIFECYCLE_STAGES.filter((s) => s.lanes.length > 1);
   assert.equal(multi.length, 1);
   assert.equal(multi[0].stage, "COORDINATE");
+  assert.equal(multi[0].eyebrow, "Coordinate");
+  assert.deepEqual(multi[0].lanes.map((l) => l.id), ["knowledge", "workflow"]);
+});
+
+test("no lifecycle stage is labelled Support (Knowledge is not its own phase)", () => {
+  for (const s of LIFECYCLE_STAGES) {
+    assert.notEqual(s.eyebrow.toLowerCase(), "support", `${s.stage} must not be a Support phase`);
+  }
 });
 
 test("only the first stage has no inbound flow label; the rest are labelled", () => {
