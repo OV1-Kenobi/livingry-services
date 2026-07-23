@@ -153,13 +153,13 @@ export const CATEGORIES: CategoryAnatomy[] = [
     x: 50,
     y: 44,
     purpose:
-      "The orchestration and governance plane that integrates the seven systems: one control panel for work/data flow, approvals, exceptions, and the proof ledger.",
+      "The orchestration and governance plane that integrates the seven systems: one control panel for work/data flow, approvals, exceptions, and the activity ledger.",
     inputs: ["Events from every category", "Approval decisions", "Configuration changes"],
     processing: ["Orchestrate workflows", "Enforce policy gates", "Record audit proof"],
-    outputs: ["Approval queue", "Exception routing", "Activity / Proof Ledger", "Leak dashboard"],
+    outputs: ["Approval queue", "Exception routing", "Activity / Audit Ledger", "Leak dashboard"],
     humanIntervention: ["Approve or reject queued actions", "Configure tools per category"],
     successMeasures: ["Open exceptions cleared", "Approvals within SLA", "Every automated action has proof"],
-    capabilities: ["Workflow orchestration", "Human approval model", "Exception Desk", "Proof ledger", "Tool configuration"],
+    capabilities: ["Workflow orchestration", "Human approval model", "Exception Desk", "Activity ledger", "Tool configuration"],
     workflowParticipation: ["missed-call-to-booking", "cold-estimate-to-recovery", "completed-job-to-proof"],
     permissions: ["Governs but does not bypass category-level approval rules"],
     approvalRequirements: ["Configuration changes are audited", "No category can escalate past its approval requirements"],
@@ -230,6 +230,6 @@ export const CANDIDATE_CATALOG: Record<CategoryId, CandidateTool[]> = {
   ],
   ops_layer: [
     { id: "generic-orchestrator", name: "Agent & workflow orchestrator", neutral: true, capability: "Visible orchestration core wiring every category together." },
-    { id: "generic-audit", name: "Audit / proof ledger", neutral: true, capability: "Record a defensible trail for every automated action." },
+    { id: "generic-audit", name: "Audit / activity ledger", neutral: true, capability: "Record a defensible trail for every automated action." },
   ],
 };

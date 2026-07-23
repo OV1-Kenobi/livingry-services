@@ -118,6 +118,8 @@ export function ReviewForm() {
 
   return (
     <form
+      method="post"
+      action="/api/system-review"
       onSubmit={onSubmit}
       className="card grid gap-5"
       aria-label="Leak Assessment intake"

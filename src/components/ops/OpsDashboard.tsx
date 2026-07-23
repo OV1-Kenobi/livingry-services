@@ -115,7 +115,7 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
               <nav className="grid gap-1 mt-2" aria-label="Dashboard views">
                 {([
                   ["approvals", `Approvals (${pendingCount})`],
-                  ["ledger", "Proof ledger"],
+                  ["ledger", "Activity ledger"],
                   ["scenarios", "Guided scenarios"],
                 ] as [Tray, string][]).map(([key, label]) => (
                   <button
@@ -147,7 +147,7 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
                 <div className="rule-label">Work &amp; data flow</div>
                 <p className="text-[0.82rem] mt-1 mb-3" style={{ color: "var(--ink-3)" }}>
                   Attract → intake → coordinate → execute → retain, governed by the Ops control plane above and
-                  audited by the Proof Ledger below. Recovery loops stale opportunities back upstream. Select any
+                  audited by the activity ledger below. Recovery loops stale opportunities back upstream. Select any
                   stage to inspect it.
                 </p>
                 <LifecycleFlow
@@ -177,7 +177,8 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
                     <div style={{ maxWidth: "34rem" }}>
                       <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>Make this your operating system</h3>
                       <p className="text-[0.85rem] mt-1" style={{ color: "var(--ink-2)" }}>
-                        This is a live, safe simulation. Your real dashboard is custom-built on your own tools and data.
+                        This is a live, safe simulation. Your real dashboard is custom-built on your own tools and data — and stays under your control.{" "}
+                        <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why you keep control &rarr;</Link>
                       </p>
                     </div>
                     <div className="flex gap-2 flex-wrap">

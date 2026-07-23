@@ -12,7 +12,7 @@ import { CATEGORY_BY_ID } from "../src/lib/ops-dashboard/categories";
 // Structural guards for the replacement lifecycle diagram. These lock the
 // information architecture the product requires: a left-to-right lifecycle,
 // an Ops *control plane* (not a lifecycle stage), Recovery as a feedback loop,
-// and the Proof Ledger as an audit rail.
+// and the activity ledger as an audit rail.
 
 test("lifecycle stages are in the required operating order", () => {
   assert.deepEqual(
@@ -65,7 +65,7 @@ test("Ops is a control plane spanning every stage, not a lifecycle stage", () =>
   assert.ok(!allLaneIds.includes("ops_layer"), "ops_layer must not be a lifecycle lane");
 });
 
-test("Proof Ledger is the bottom audit rail receiving from every stage", () => {
+test("activity ledger is the bottom audit rail receiving from every stage", () => {
   assert.equal(PROOF_LEDGER_RAIL.role, "audit-rail");
   assert.equal(PROOF_LEDGER_RAIL.receivesFrom, "every-stage");
 });

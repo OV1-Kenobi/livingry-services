@@ -55,7 +55,7 @@ export default function Home() {
               <Link href="/what-we-build" className="btn btn-secondary">See What We Build</Link>
             </div>
             <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
-              Human-controlled · Measurable · Built around the people and systems you already have.
+              We build in tools you control, with records you can carry forward — human-controlled, measurable, and built around the people and systems you already have.
             </p>
           </div>
 
@@ -224,16 +224,16 @@ export default function Home() {
       <section className="section" aria-labelledby="proof-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <div className="rule-label">Proof that can travel</div>
+            <div className="rule-label">Records you can carry forward</div>
             <h2 id="proof-heading" className="serif">Your business history should not disappear with a vendor.</h2>
           </div>
           <div className="lg:col-span-6">
             <p style={{ color: "var(--ink-2)" }}>
-              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry helps trades businesses capture the evidence behind qualifications, completed work, customer approvals, reviews, and reputation — while the work is happening.
+              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry builds in tools you control, with records you can carry forward — so what your business earns stays with your business, even if a vendor or a tool goes away.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/about#proof-matters-heading" className="link" style={{ color: "var(--forest)" }}>Why Proof Matters →</Link>
-              <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>View Our Proof Ledger →</Link>
+              <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why ownership matters →</Link>
+              <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Why Livingry →</Link>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { AUTOMATION_LABEL } from "@/lib/ops-dashboard/types";
 import { CATEGORY_BY_ID } from "@/lib/ops-dashboard/categories";
 import type { OpsDashboardStore } from "./useOpsDashboard";
 
-// Activity / proof ledger. Every automated or approved action leaves a signed,
+// Activity / audit ledger. Every automated or approved action leaves a signed,
 // auditable entry. Shared by both modes; in the public demo the signatures are
 // synthetic, in the private product they reference the Nostr-backed audit
 // stream. Newest first.
@@ -13,7 +13,7 @@ export function ProofLedger({ store }: { store: OpsDashboardStore }) {
 
   return (
     <div>
-      <div className="rule-label">Activity &amp; proof ledger</div>
+      <div className="rule-label">Activity &amp; audit ledger</div>
       <p className="text-[0.82rem] mb-4" style={{ color: "var(--ink-3)" }}>
         Every automated action leaves a signature. {ledger.length} recorded.
       </p>

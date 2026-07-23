@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/how-it-works",
     "/why-livingry",
     "/about",
+    "/proof",
     "/insights",
     "/faq",
     "/agents",
