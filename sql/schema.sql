@@ -275,6 +275,7 @@ create table if not exists integration_connections (
   unique (tenant_id, provider)
 );
 
+create index if not exists idx_integration_connections_tenant_category on integration_connections(tenant_id, category);
 create index if not exists idx_opportunities_tenant_stage on opportunities(tenant_id, stage);
 create index if not exists idx_tasks_tenant_status_due on tasks(tenant_id, status, due_at);
 create index if not exists idx_promises_tenant_status_due on promises(tenant_id, status, due_at);

@@ -15,10 +15,25 @@ export async function POST(req: NextRequest) {
   const schemaPath = path.join(process.cwd(), "sql", "schema.sql");
   const schemaSql = fs.readFileSync(schemaPath, "utf8");
 
+  // Apply the base schema, then every numbered migration in order. Both the
+  // schema and the migrations are written to be idempotent, so this is safe
+  // to re-run.
+  const migrationsDir = path.join(process.cwd(), "sql", "migrations");
+  const migrations = fs.existsSync(migrationsDir)
+    ? fs
+        .readdirSync(migrationsDir)
+        .filter((f) => f.endsWith(".sql"))
+        .sort()
+    : [];
+
   const pool = getPool();
   const client = await pool.connect();
   try {
     await client.query(schemaSql);
+    for (const file of migrations) {
+      const sql = fs.readFileSync(path.join(migrationsDir, file), "utf8");
+      await client.query(sql);
+    }
   } finally {
     client.release();
   }
@@ -68,5 +83,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  return NextResponse.json({ ok: true, tenant_id: tenantId, seeded: seedRows.length });
+  return NextResponse.json({
+    ok: true,
+    tenant_id: tenantId,
+    seeded: seedRows.length,
+    migrations: migrations.length,
+  });
 }

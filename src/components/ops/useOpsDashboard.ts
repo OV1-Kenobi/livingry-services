@@ -12,8 +12,6 @@ import type {
   ToolConfig,
 } from "@/lib/ops-dashboard/types";
 
-const CONFIG_STORAGE_KEY = "livingry_ops_config_v1";
-
 type PrivateConfigState = "idle" | "loading" | "ready" | "error";
 
 function nowIso() {
@@ -35,8 +33,10 @@ export function useOpsDashboard(mode: DashboardMode) {
   // visitor has "tried" per category. No effect on any real system.
   const [simSelections, setSimSelections] = useState<Record<string, string[]>>({});
 
-  // Private configured tools (loaded from the gated API, editable, persisted
-  // to localStorage as a preview layer pending per-tenant DB persistence).
+  // Private configured tools. The server (Postgres, tenant-scoped, OTP-gated)
+  // is the single source of truth: config is loaded from and every edit is
+  // written back through /api/ops/config, so changes persist across sessions
+  // and devices. No browser storage is used for app state.
   const [tools, setTools] = useState<ToolConfig[]>([]);
   const [configState, setConfigState] = useState<PrivateConfigState>(mode === "private" ? "loading" : "idle");
   const [configError, setConfigError] = useState<string | null>(null);
@@ -44,19 +44,8 @@ export function useOpsDashboard(mode: DashboardMode) {
   const loadPrivateConfig = useCallback(async () => {
     setConfigState("loading");
     setConfigError(null);
-    // Prefer a locally persisted edit set so operator changes survive reloads.
     try {
-      const saved = typeof window !== "undefined" ? window.localStorage.getItem(CONFIG_STORAGE_KEY) : null;
-      if (saved) {
-        setTools(JSON.parse(saved) as ToolConfig[]);
-        setConfigState("ready");
-        return;
-      }
-    } catch {
-      /* fall through to server fetch */
-    }
-    try {
-      const res = await fetch("/api/ops/config");
+      const res = await fetch("/api/ops/config", { cache: "no-store" });
       if (!res.ok) throw new Error(`Config request failed (${res.status})`);
       const body = await res.json();
       setTools(body.tools as ToolConfig[]);
@@ -71,14 +60,23 @@ export function useOpsDashboard(mode: DashboardMode) {
     if (mode === "private") loadPrivateConfig();
   }, [mode, loadPrivateConfig]);
 
-  const persist = useCallback((next: ToolConfig[]) => {
-    setTools(next);
-    if (typeof window !== "undefined") {
-      try {
-        window.localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(next));
-      } catch {
-        /* storage unavailable — in-memory only */
-      }
+  // Send a mutation to the gated API and adopt the server's authoritative
+  // tool list from the response. On failure the local state is untouched and
+  // the error surfaces so the operator can retry.
+  const mutate = useCallback(async (body: Record<string, unknown>) => {
+    setConfigError(null);
+    try {
+      const res = await fetch("/api/ops/config", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        cache: "no-store",
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error(`Config update failed (${res.status})`);
+      const payload = await res.json();
+      setTools(payload.tools as ToolConfig[]);
+    } catch (e) {
+      setConfigError(e instanceof Error ? e.message : "Failed to save configuration");
     }
   }, []);
 
@@ -115,54 +113,23 @@ export function useOpsDashboard(mode: DashboardMode) {
   }, []);
 
   // ---- Private tool configuration controls ----
+  // The tool id served by the API equals its provider (natural key), so these
+  // pass the id straight through as the provider the server mutates.
   const setToolEnabled = useCallback((toolId: string, enabled: boolean) => {
-    persist(tools.map((t) => (t.id === toolId
-      ? { ...t, enabled, status: enabled ? "configured" : "disabled", changeHistory: [{ at: nowIso(), action: enabled ? "enabled" : "disabled", detail: `${enabled ? "Enabled" : "Disabled"} ${t.displayName}.` }, ...t.changeHistory] }
-      : t)));
-  }, [tools, persist]);
+    void mutate({ op: "setEnabled", provider: toolId, enabled });
+  }, [mutate]);
 
   const replaceTool = useCallback((toolId: string, candidate: CandidateTool) => {
-    persist(tools.map((t) => (t.id === toolId
-      ? {
-          ...t,
-          provider: candidate.id,
-          displayName: candidate.name,
-          role: candidate.capability,
-          status: "configured",
-          enabled: true,
-          signupUrl: candidate.url,
-          changeHistory: [{ at: nowIso(), action: "replaced", detail: `Replaced with ${candidate.name}.` }, ...t.changeHistory],
-        }
-      : t)));
-  }, [tools, persist]);
+    void mutate({ op: "replace", provider: toolId, candidate });
+  }, [mutate]);
 
   const addTool = useCallback((categoryId: CategoryId, candidate: CandidateTool) => {
-    const cat = data.categories.find((c) => c.id === categoryId);
-    const integrationKey = cat?.integrationKeys[0] ?? "orchestration";
-    const newTool: ToolConfig = {
-      id: `cfg_${candidate.id}_${Date.now()}`,
-      provider: candidate.id,
-      displayName: candidate.name,
-      categoryId,
-      integrationKey,
-      role: candidate.capability,
-      status: "not_configured",
-      enabled: false,
-      capabilities: [candidate.capability],
-      workflowParticipation: cat?.workflowParticipation ?? [],
-      dataInputs: [],
-      dataOutputs: [],
-      permissions: ["Inherits category permissions"],
-      approvalRequirements: ["Inherits category approval requirements"],
-      signupUrl: candidate.url,
-      changeHistory: [{ at: nowIso(), action: "added", detail: `Added ${candidate.name} from the vendor-neutral catalog.` }],
-    };
-    persist([...tools, newTool]);
-  }, [tools, persist, data.categories]);
+    void mutate({ op: "add", categoryId, candidate });
+  }, [mutate]);
 
   const removeTool = useCallback((toolId: string) => {
-    persist(tools.filter((t) => t.id !== toolId));
-  }, [tools, persist]);
+    void mutate({ op: "remove", provider: toolId });
+  }, [mutate]);
 
   // ---- Demo reset ----
   const resetDemo = useCallback(() => {
@@ -171,14 +138,9 @@ export function useOpsDashboard(mode: DashboardMode) {
     setSimSelections({});
   }, [data]);
 
+  // Re-read the authoritative configuration from the server (used as a retry
+  // after a load/save error). Server state is never discarded from the client.
   const resetConfig = useCallback(() => {
-    if (typeof window !== "undefined") {
-      try {
-        window.localStorage.removeItem(CONFIG_STORAGE_KEY);
-      } catch {
-        /* ignore */
-      }
-    }
     loadPrivateConfig();
   }, [loadPrivateConfig]);
 

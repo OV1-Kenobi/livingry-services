@@ -68,3 +68,12 @@ test("useOpsDashboard does not statically import private-config", () => {
   assert.ok(!src.includes("private-config"), "useOpsDashboard statically imports private-config");
   assert.ok(src.includes("/api/ops/config"), "useOpsDashboard should fetch the gated config API");
 });
+
+// App configuration state must live server-side (Postgres, tenant-scoped),
+// never in browser storage — persistence must survive across devices and must
+// not be tamperable client-side.
+test("useOpsDashboard uses no browser storage for app persistence", () => {
+  const src = readFileSync(resolve(process.cwd(), "src/components/ops/useOpsDashboard.ts"), "utf8");
+  assert.ok(!src.includes("localStorage"), "useOpsDashboard must not use localStorage");
+  assert.ok(!src.includes("sessionStorage"), "useOpsDashboard must not use sessionStorage");
+});
