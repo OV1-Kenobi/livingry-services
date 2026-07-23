@@ -312,8 +312,8 @@ export function ReviewForm() {
             className="text-[0.9rem]"
             style={{ color: "var(--copper-2)" }}
           >
-            Something went wrong: {errorMsg}. You can also email us at
-            ov@openagents.com.
+            Something went wrong: {errorMsg}. You can also email us at{" "}
+            {site.contact.email}.
           </p>
         )}
       </div>

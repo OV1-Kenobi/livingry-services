@@ -15,7 +15,7 @@ export function Footer() {
               Systems that stop already-earned value from leaking away.
             </p>
             <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.65, fontSize: "0.9rem" }}>
-              A practice of {site.parent}. Human-controlled. Measurable. Built around the people and systems you already have.
+              An independent practice. Human-controlled. Measurable. Built around the people and systems you already have.
             </p>
           </div>
 

@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: site.shortDescription,
   },
   robots: { index: true, follow: true },
-  authors: [{ name: site.parent }],
+  authors: [{ name: site.name }],
   keywords: [
     "AI implementation",
     "revenue recovery",
@@ -53,7 +53,6 @@ export const metadata: Metadata = {
     "AI SEO",
     "AI life-support systems",
     "livingry",
-    "OpenAgents",
   ],
 };
 
@@ -67,7 +66,6 @@ export default function RootLayout({
     name: site.name,
     legalName: site.legalName,
     url: site.primaryDomain,
-    parentOrganization: { "@type": "Organization", name: site.parent, url: "https://openagents.com" },
     email: site.contact.email,
     slogan: site.tagline,
     description: site.shortDescription,

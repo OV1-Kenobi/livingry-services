@@ -4,8 +4,8 @@
 
 **Send timing:** Immediately after booking (same automation trigger as the calendar confirmation, sent as a separate message).
 
-**From:** OV, Livingry Services <ov@openagents.com>
-**Reply-to:** ov@openagents.com
+**From:** OV, Livingry Services <ov@livingry.services>
+**Reply-to:** ov@livingry.services
 
 ---
 
@@ -76,8 +76,8 @@ Talk soon,
 
 **OV**
 Founder, Livingry Services
-A practice of OpenAgents Inc · Lecanto, FL
-ov@openagents.com · [livingry-services.vercel.app](https://livingry-services.vercel.app)
+An independent practice · Lecanto, FL
+ov@livingry.services · [livingry-services.vercel.app](https://livingry-services.vercel.app)
 
 ---
 
@@ -152,8 +152,8 @@ Talk soon,
 
 OV
 Founder, Livingry Services
-A practice of OpenAgents Inc -- Lecanto, FL
-ov@openagents.com
+An independent practice -- Lecanto, FL
+ov@livingry.services
 https://livingry-services.vercel.app
 ```
 
@@ -162,7 +162,7 @@ https://livingry-services.vercel.app
 ## Notes for implementation
 
 - **Reschedule link:** uses the same booking link ([calendar.app.google/4UfTY4vavUc7iQBT6](https://calendar.app.google/4UfTY4vavUc7iQBT6)) since no separate reschedule URL was provided. If a dedicated reschedule/cancel link exists in the Google Calendar confirmation, swap it in.
-- **Reply-to** is ov@openagents.com so "reply to this email" is literally true — no noreply address.
+- **Reply-to** is ov@livingry.services so "reply to this email" is literally true — no noreply address.
 - **No dollar figures, no turnaround-time promises, no urgency language** anywhere in this email, consistent with the framework's own boundaries.
 - **Governed Pilot line** only needs to render for legal/medical bookings if the booking flow captures vertical; otherwise it's harmless boilerplate for HVAC/roofing prospects too, since it correctly describes a boundary rather than claiming an active service.
 - Terminology matches the framework and site exactly: **Leak**, **Seal**, **Leak Assessment**, **governed pilot** — no "growth lever," "unlock," or similar substitutions.

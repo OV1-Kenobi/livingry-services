@@ -3,8 +3,7 @@ export const site = {
   tagline: "Systems that stop already-earned value from leaking away.",
   shortDescription:
     "Livingry Services designs and implements the growth, workflow, and AI systems that help useful businesses stop losing the customers, opportunities, knowledge, and trust they have already worked to earn.",
-  legalName: "Livingry Services (a practice of OpenAgents Inc)",
-  parent: "OpenAgents Inc",
+  legalName: "Livingry Services",
   founded: "2025",
   location: {
     city: "Lecanto",
@@ -12,7 +11,7 @@ export const site = {
     country: "United States",
   },
   contact: {
-    email: "ov@openagents.com",
+    email: "ov@livingry.services",
     // placeholder — user can add later
     phone: null as string | null,
   },
@@ -31,7 +30,7 @@ export const site = {
   social: {
     x: null as string | null,
     linkedin: null as string | null,
-    github: "https://github.com/OpenAgentsInc",
+    github: null as string | null,
   },
   method: [
     { n: "01", name: "Find",   blurb: "Identify the leads, customers, knowledge, and trust already leaking away." },

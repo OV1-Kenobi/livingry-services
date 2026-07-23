@@ -7,12 +7,12 @@ export const faqSections: FaqSection[] = [
     title: "About Livingry Services",
     blurb: "Who we are, what we do, and who we work with.",
     items: [
-      { q: "What is Livingry Services?", a: "Livingry Services is an AI-native implementation practice that designs and installs growth, workflow, knowledge, and discovery systems inside established businesses. We are a practice of OpenAgents Inc, based in Lecanto, Florida." },
+      { q: "What is Livingry Services?", a: "Livingry Services is an independent, AI-native implementation practice that designs and installs growth, workflow, knowledge, and discovery systems inside established businesses. We are based in Lecanto, Florida." },
       { q: "What does Livingry Services actually sell?", a: "We sell implementation. Our engagements produce working response, recovery, continuity, discovery, knowledge, or workflow systems installed inside the client&rsquo;s existing tools — not slide decks, strategy memos, or software subscriptions." },
       { q: "Who are your ideal clients?", a: "Established, useful service businesses and professional practices. HVAC companies are our active focus, roofing companies are our next active vertical, and legal and medical professional practices are in governed pilot development." },
       { q: "Where are you based?", a: "Lecanto, Florida. We work with clients across the United States remotely, with occasional on-site engagements where the work justifies travel." },
-      { q: "What company does Livingry Services belong to?", a: "Livingry Services is a practice of OpenAgents Inc, an AI-native infrastructure company building agentic tools, Bitcoin-native payment rails, and legal-tech automation." },
-      { q: "How do I contact Livingry Services?", a: "Email ov@openagents.com or submit the System Review form on this website. We reply within one business day." },
+      { q: "Is Livingry Services independent?", a: "Yes. Livingry Services is an independent practice, built and delivered by its founder. It is not a division, subsidiary, or affiliate of any parent company." },
+      { q: "How do I contact Livingry Services?", a: "Email ov@livingry.services or submit the System Review form on this website. We reply within one business day." },
     ],
   },
   {

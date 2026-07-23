@@ -6,7 +6,7 @@ import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 export const metadata: Metadata = {
   title: "Why Livingry",
   description:
-    "Why Livingry Services builds AI-native systems in tools you control, with records you can carry forward — a practice of OpenAgents Inc, grounded in field work and a livingry philosophy.",
+    "Why Livingry Services builds AI-native systems in tools you control, with records you can carry forward — an independent practice grounded in field work and a livingry philosophy.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "Why Livingry",
@@ -29,7 +29,7 @@ export default function WhyLivingryAbout() {
       <PageHero
         eyebrow="Why Livingry"
         title="We do different things differently."
-        lede="Livingry Services is a practice of OpenAgents Inc. We build AI-native systems in tools you control, with records you can carry forward — the tooling we wish we had, and have built for ourselves."
+        lede="Livingry Services is an independent practice. We build AI-native systems in tools you control, with records you can carry forward — the tooling we wish we had, and have built for ourselves."
       />
 
       <section className="section">
@@ -129,7 +129,6 @@ export default function WhyLivingryAbout() {
             <div className="mt-6 grid gap-2 text-[0.95rem]" style={{ color: "var(--ink)" }}>
               <div><span className="eyebrow mr-3">Email</span><a className="link" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></div>
               <div><span className="eyebrow mr-3">Based in</span>{site.location.city}, {site.location.region}, {site.location.country}</div>
-              <div><span className="eyebrow mr-3">Parent</span>{site.parent}</div>
             </div>
           </div>
           <div>

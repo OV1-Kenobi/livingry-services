@@ -4,7 +4,7 @@ import { Resend } from "resend";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const TO = process.env.SYSTEM_REVIEW_TO || "ov@openagents.com";
+const TO = process.env.SYSTEM_REVIEW_TO || "ov@livingry.services";
 const FROM =
   process.env.SYSTEM_REVIEW_FROM ||
   "Livingry Services <noreply@livingry.services>";
