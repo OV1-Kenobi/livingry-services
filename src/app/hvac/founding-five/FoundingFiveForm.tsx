@@ -148,7 +148,7 @@ export function FoundingFiveForm() {
           {successState.heading}
         </h2>
         <p className="mt-4" style={{ color: "var(--ink-2)" }}>{successState.body}</p>
-        <p className="mt-6 text-[0.85rem]" style={{ color: "var(--ink-3)" }}>
+        <p className="mt-6" style={{ color: "var(--ink-3)" }}>
           Questions in the meantime? Email{" "}
           <a
             href="mailto:ov@livingry.services"
@@ -266,7 +266,7 @@ export function FoundingFiveForm() {
           <span aria-hidden>→</span>
         </button>
         {status === "error" && (
-          <p className="text-[0.9rem]" style={{ color: "var(--copper-2)" }} role="alert">
+          <p className="text-[0.95rem]" style={{ color: "var(--copper-2)" }} role="alert">
             {serverError} You can also email{" "}
             <a href="mailto:ov@livingry.services" className="link" style={{ color: "var(--forest)" }}>
               ov@livingry.services
@@ -275,7 +275,7 @@ export function FoundingFiveForm() {
           </p>
         )}
       </div>
-      <p className="text-[0.85rem]" style={{ color: "var(--ink-3)" }}>{hero.noCalendarNote}</p>
+      <p style={{ color: "var(--ink-3)" }}>{hero.noCalendarNote}</p>
     </form>
   );
 }

@@ -81,7 +81,7 @@ export default function FoundingFivePage() {
             </a>
             <a href="#how-it-works" className="btn btn-secondary">{hero.secondaryAnchor}</a>
           </div>
-          <p className="mt-8 text-[0.9rem]" style={{ color: "var(--ink-3)", maxWidth: "46rem" }}>
+          <p className="mt-8" style={{ color: "var(--ink-3)", maxWidth: "46rem" }}>
             {hero.noCalendarNote}
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function FoundingFivePage() {
                 <div className="num" style={{ minWidth: "3rem" }}>{String(i + 1).padStart(2, "0")}</div>
                 <div>
                   <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{s.title}</h3>
-                  <p className="mt-2 text-[0.98rem]" style={{ color: "var(--ink-2)" }}>{s.body}</p>
+                  <p className="mt-2" style={{ color: "var(--ink-2)" }}>{s.body}</p>
                 </div>
               </li>
             ))}
@@ -188,7 +188,7 @@ export default function FoundingFivePage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-[0.92rem]" style={{ color: "var(--paper)", opacity: 0.82, maxWidth: "60rem" }}>
+          <p className="mt-8" style={{ color: "var(--paper)", opacity: 0.92, maxWidth: "60rem" }}>
             {workflow.caption}
           </p>
         </div>
@@ -218,7 +218,7 @@ export default function FoundingFivePage() {
               ))}
               <li style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
             </ul>
-            <p className="mt-4 text-[0.9rem]" style={{ color: "var(--ink-3)" }}>{commitment.note}</p>
+            <p className="mt-4" style={{ color: "var(--ink-3)" }}>{commitment.note}</p>
           </div>
         </div>
       </section>
@@ -233,7 +233,7 @@ export default function FoundingFivePage() {
             <h2 id="ff-fit-heading" className="serif">{fit.isHeading}</h2>
             <ul className="mt-6 grid gap-0">
               {fit.is.map((d, i) => (
-                <li key={i} className="py-3 flex gap-3" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)", color: "var(--ink-2)" }}>
+                <li key={i} className="py-4 flex gap-3" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)", color: "var(--ink-2)" }}>
                   <span aria-hidden style={{ color: "var(--forest)" }}>✓</span>
                   <span>{d}</span>
                 </li>
@@ -246,7 +246,7 @@ export default function FoundingFivePage() {
             <h2 className="serif">{fit.isNotHeading}</h2>
             <ul className="mt-6 grid gap-0">
               {fit.isNot.map((d, i) => (
-                <li key={i} className="py-3 flex gap-3" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)", color: "var(--ink-2)" }}>
+                <li key={i} className="py-4 flex gap-3" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)", color: "var(--ink-2)" }}>
                   <span aria-hidden style={{ color: "var(--ink-3)" }}>—</span>
                   <span>{d}</span>
                 </li>
@@ -272,7 +272,7 @@ export default function FoundingFivePage() {
             ))}
             <div className="mt-6 card" style={{ background: "var(--paper-2)" }}>
               <span className="eyebrow">Proof Matters</span>
-              <p className="mt-2 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>{founder.proofDisclosure}</p>
+              <p className="mt-2" style={{ color: "var(--ink-2)" }}>{founder.proofDisclosure}</p>
               <Link
                 href={founder.proofHref}
                 className="link mt-3 inline-block"
@@ -325,7 +325,7 @@ export default function FoundingFivePage() {
             <div className="eyebrow">Request a private review</div>
             <h2 id="ff-final-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>{finalCta.heading}</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>{finalCta.body}</p>
-            <p className="mt-6 text-[0.9rem]" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>
+            <p className="mt-6" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>
           </div>
           <div className="lg:col-span-7">
             <FoundingFiveForm />
