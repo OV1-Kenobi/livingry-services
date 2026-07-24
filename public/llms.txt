@@ -50,6 +50,7 @@ Canonical: https://livingry.services
 
 ## Industry pages
 - [HVAC](https://livingry.services/industries/hvac)
+- [HVAC · Founding Five Pilot](https://livingry.services/hvac/founding-five): private workflow review for five established US HVAC companies. Request a private workflow review; no public calendar.
 - [Roofing](https://livingry.services/industries/roofing)
 - [Professional Practices](https://livingry.services/industries/professional-practices)
 

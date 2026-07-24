@@ -22,6 +22,7 @@ const nav = [
     href: "/industries",
     children: [
       { label: "HVAC Companies", href: "/industries/hvac" },
+      { label: "HVAC · Founding Five Pilot", href: "/hvac/founding-five" },
       { label: "Roofing Companies", href: "/industries/roofing" },
       { label: "Professional Practices", href: "/industries/professional-practices" },
     ],

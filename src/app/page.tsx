@@ -68,6 +68,11 @@ export default function Home() {
               <span className="pill pill-future">Legal · In development</span>
               <span className="pill pill-future">Medical · In development</span>
             </div>
+            <div className="lg:col-start-2 lg:col-span-3 text-[0.9rem]">
+              <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
+                See the Founding Five HVAC program →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

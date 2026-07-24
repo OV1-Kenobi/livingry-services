@@ -128,6 +128,7 @@ System families:
 
 Industries:
 - https://livingry.services/industries/hvac
+- https://livingry.services/hvac/founding-five (Founding Five HVAC pilot — private workflow review for five established US HVAC companies; no public calendar)
 - https://livingry.services/industries/roofing
 - https://livingry.services/industries/professional-practices
 
