@@ -22,6 +22,7 @@ const nav = [
     href: "/industries",
     children: [
       { label: "HVAC Companies", href: "/industries/hvac" },
+      { label: "HVAC · Founding Five Pilot", href: "/hvac/founding-five" },
       { label: "Roofing Companies", href: "/industries/roofing" },
       { label: "Professional Practices", href: "/industries/professional-practices" },
     ],
@@ -63,7 +64,7 @@ export function Header() {
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="block px-3 py-2 rounded text-[0.9rem]"
+                        className="block px-3 py-2 rounded text-[0.95rem]"
                         style={{ color: "var(--ink-2)" }}
                       >
                         {c.label}
@@ -107,8 +108,8 @@ export function Header() {
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="text-[0.9rem] py-1"
-                        style={{ color: "var(--ink-3)" }}
+                        className="text-[0.95rem] py-1"
+                        style={{ color: "var(--ink-2)" }}
                         onClick={() => setOpen(false)}
                       >
                         {c.label}

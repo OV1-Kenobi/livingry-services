@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/agents",
     "/system-review",
+    "/hvac/founding-five",
     "/privacy",
     "/terms",
   ];

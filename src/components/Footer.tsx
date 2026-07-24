@@ -14,14 +14,14 @@ export function Footer() {
             <p className="serif mt-5" style={{ color: "var(--paper)", fontSize: "1.35rem", lineHeight: 1.3, opacity: 0.92 }}>
               Systems that stop already-earned value from leaking away.
             </p>
-            <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.65, fontSize: "0.9rem" }}>
+            <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.82, fontSize: "1rem" }}>
               An independent practice. Human-controlled. Measurable. Built around the people and systems you already have.
             </p>
           </div>
 
           <div>
             <div className="eyebrow" style={{ color: "var(--seal)" }}>Systems</div>
-            <ul className="mt-4 grid gap-2 text-[0.92rem]" style={{ color: "var(--paper)", opacity: 0.85 }}>
+            <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
               {site.systemFamilies.map((s) => (
                 <li key={s.slug}>
                   <Link href={`/systems/${s.slug}`}>{s.title}</Link>
@@ -32,7 +32,7 @@ export function Footer() {
 
           <div>
             <div className="eyebrow" style={{ color: "var(--seal)" }}>Industries</div>
-            <ul className="mt-4 grid gap-2 text-[0.92rem]" style={{ color: "var(--paper)", opacity: 0.85 }}>
+            <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
               {site.industries.map((i) => (
                 <li key={i.slug}>
                   <Link href={`/industries/${i.slug}`}>{i.title}</Link>
@@ -40,7 +40,7 @@ export function Footer() {
               ))}
             </ul>
             <div className="eyebrow mt-8" style={{ color: "var(--seal)" }}>Company</div>
-            <ul className="mt-4 grid gap-2 text-[0.92rem]" style={{ color: "var(--paper)", opacity: 0.85 }}>
+            <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
               <li><Link href="/how-it-works">How It Works</Link></li>
               <li><Link href="/about">Why Livingry</Link></li>
               <li><Link href="/proof">Proof</Link></li>
@@ -54,7 +54,7 @@ export function Footer() {
         </div>
 
         <hr className="mt-12" style={{ borderColor: "rgba(246,241,228,0.14)" }} />
-        <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[0.82rem]" style={{ color: "var(--paper)", opacity: 0.55 }}>
+        <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[0.9rem]" style={{ color: "var(--paper)", opacity: 0.78 }}>
           <div>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</div>
           <div className="flex gap-5">
             <Link href="/privacy">Privacy</Link>

@@ -68,6 +68,11 @@ export default function Home() {
               <span className="pill pill-future">Legal · In development</span>
               <span className="pill pill-future">Medical · In development</span>
             </div>
+            <div className="lg:col-start-2 lg:col-span-3 text-[0.9rem]">
+              <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
+                See the Founding Five HVAC program →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -129,6 +134,9 @@ export default function Home() {
             <div className="lg:col-span-5">
               <h2 id="method-heading" className="serif">The Livingry Leakproofing Framework.</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+                Adding traffic, tools, or automation to a workflow that already leaks only multiplies the waste. A system that is unsealed cannot be scaled — so we seal the workflow first, then scale the work.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
                 We do not start by adding another tool. We start by identifying the point where value leaks out of the business — then close that gap with the smallest practical combination of process, content, training, automation, AI, and human accountability.
               </p>
               <p className="mt-4 serif italic" style={{ color: "var(--copper-2)", fontSize: "var(--step-1)" }}>
