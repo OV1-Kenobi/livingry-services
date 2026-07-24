@@ -365,3 +365,130 @@ label {
   min-height: 0;
   margin-top: 0.15rem;
 }
+
+/* =========================================================
+   Deterministic diagrams (revenue-leak, orchestration, process)
+   Semantic HTML + CSS; SVG used only for non-text artwork.
+   Text labels are always real HTML so they stay legible and
+   accessible at every viewport and without JavaScript.
+   ========================================================= */
+
+figure.diagram { margin: 0; }
+.diagram figcaption {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  margin-top: 0.9rem;
+  max-width: 46rem;
+}
+
+/* Subtle blueprint grid backdrop (very low contrast). */
+.blueprint {
+  background-color: var(--white);
+  background-image:
+    linear-gradient(rgba(20, 55, 43, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 55, 43, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+/* --- Revenue-leak diagram: three channels, each sealed at the gap --- */
+.leak-diagram { display: grid; gap: 0; padding: clamp(1.1rem, 2.5vw, 1.9rem); }
+.leak-channel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+}
+.leak-channel:first-of-type { border-top: 0; }
+.leak-source { display: flex; align-items: flex-start; gap: 0.7rem; }
+.leak-source svg { flex: none; color: var(--forest); margin-top: 0.1rem; }
+.leak-source-name { font-family: var(--font-serif); font-size: var(--step-1); color: var(--ink); }
+.leak-track {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+.leak-gap {
+  position: relative;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--copper) 0 8px, transparent 8px 16px);
+}
+.leak-drop { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--copper-2); font-size: 0.8rem; }
+.leak-seal-chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.35rem 0.8rem; border-radius: 999px;
+  background: var(--forest); color: var(--paper);
+  font-size: 0.75rem; letter-spacing: 0.06em;
+}
+.leak-solid { height: 2px; background: var(--forest); }
+.leak-kept { font-size: 0.85rem; color: var(--forest); }
+@media (min-width: 720px) {
+  .leak-channel {
+    grid-template-columns: 15rem 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* --- Orchestration graphic: one ops layer over seven categories --- */
+.orch { display: grid; gap: 1.25rem; padding: clamp(1.1rem, 2.5vw, 1.9rem); }
+.orch-hub {
+  text-align: center;
+  border: 1px solid var(--forest);
+  border-radius: 8px;
+  background: var(--forest);
+  color: var(--paper);
+  padding: 1rem 1.25rem;
+}
+.orch-hub .eyebrow { color: var(--seal); }
+.orch-brace {
+  display: block; width: 100%; height: 22px; color: var(--rule);
+}
+.orch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+.orch-tile {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--white);
+  padding: 0.75rem 0.85rem;
+  display: grid;
+  gap: 0.2rem;
+}
+.orch-tile .n { font-family: var(--font-mono); font-size: 0.68rem; color: var(--copper-2); }
+.orch-tile .t { font-family: var(--font-serif); font-size: 1rem; color: var(--ink); line-height: 1.2; }
+@media (min-width: 640px) { .orch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .orch-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+
+/* --- Process flow: Find → Trace → Seal → Verify → Keep --- */
+.flow { display: flex; flex-direction: column; gap: 0; }
+.flow-stage {
+  flex: 1;
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--white);
+  padding: 1.1rem 1.15rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+.flow-arrow {
+  flex: none;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--copper); padding: 0.35rem 0;
+}
+.flow-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--copper-2); letter-spacing: 0.1em; }
+.flow-name { font-family: var(--font-serif); font-size: var(--step-1); color: var(--ink); }
+.flow-artifact { display: flex; align-items: center; gap: 0.55rem; color: var(--forest); font-size: 0.9rem; }
+.flow-artifact svg { flex: none; }
+.flow-cue { font-size: 0.85rem; color: var(--ink-2); }
+@media (min-width: 900px) {
+  .flow { flex-direction: row; align-items: stretch; }
+  .flow-arrow { transform: rotate(-90deg); padding: 0 0.2rem; }
+}

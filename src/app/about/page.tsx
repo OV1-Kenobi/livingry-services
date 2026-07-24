@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
+import { IllustrativeImage } from "@/components/IllustrativeImage";
 
 export const metadata: Metadata = {
   title: "Why Livingry",
@@ -46,6 +47,17 @@ export default function WhyLivingryAbout() {
             <p className="mt-6">
               <a href="/proof" className="link" style={{ color: "var(--forest)" }}>Read the origin story on Proof &rarr;</a>
             </p>
+            <figure className="diagram mt-8" style={{ maxWidth: "26rem" }}>
+              <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--rule)" }}>
+                <IllustrativeImage
+                  base="founder-origin-collage"
+                  height={800}
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  alt="Editorial illustration of three credential-loss failure modes — a fire-damaged frame, a disappeared issuer, and a rebranded company — resolving into owner-controlled custody. Illustration, not a documentary portrait."
+                />
+              </div>
+              <figcaption>Editorial illustration of the origin story — not a documentary portrait.</figcaption>
+            </figure>
           </div>
           <div className="lg:col-span-6">
             <div className="rule-label">The name</div>

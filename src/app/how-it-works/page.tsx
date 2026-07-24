@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { JsonLd } from "@/components/JsonLd";
+import { ProcessFlowDiagram } from "@/components/diagrams/ProcessFlowDiagram";
 
 export const metadata: Metadata = {
   title: "How It Works — The Livingry Leakproofing Framework",
@@ -63,6 +64,12 @@ export default function HowItWorks() {
         lede="The Livingry Leakproofing Framework is deliberately simple. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system."
         primaryCta={{ label: "Find My Biggest Leak", href: "/system-review" }}
       />
+      <section className="section-tight">
+        <div className="container">
+          <div className="rule-label">The five steps at a glance</div>
+          <ProcessFlowDiagram />
+        </div>
+      </section>
       <section className="section">
         <div className="container grid gap-14">
           {steps.map((s) => (

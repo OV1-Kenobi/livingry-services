@@ -28,6 +28,7 @@ import {
 } from "@/lib/hvac-founding-five/content";
 import { FoundingFiveForm } from "./FoundingFiveForm";
 import { HvacAnalytics } from "./HvacAnalytics";
+import { HvacFieldContext } from "@/components/HvacFieldContext";
 
 export const metadata: Metadata = {
   title: seo.title,
@@ -90,6 +91,10 @@ export default function FoundingFivePage() {
           <p className="mt-8" style={{ color: "var(--ink-3)", maxWidth: "46rem" }}>
             {hero.noCalendarNote}
           </p>
+
+          <div className="mt-12">
+            <HvacFieldContext priority />
+          </div>
         </div>
       </section>
 

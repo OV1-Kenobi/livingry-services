@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
+import { OrchestrationGraphic } from "@/components/diagrams/OrchestrationGraphic";
 
 export const metadata: Metadata = {
   title: "What We Build — Livingry Systems",
@@ -63,6 +64,27 @@ export default function WhatWeBuild() {
               <hr className="mt-16" />
             </div>
           ))}
+        </div>
+      </section>
+      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="orch-heading">
+        <div className="container">
+          <div className="rule-label">How the systems are coordinated</div>
+          <div className="max-w-3xl">
+            <h2 id="orch-heading" className="serif">One operations layer over seven categories.</h2>
+            <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+              Individual systems close individual leaks. The Ops layer is the eighth system: it
+              observes and coordinates across all seven categories, applies policy gates, and keeps
+              a human in control of every consequential action.
+            </p>
+          </div>
+          <div className="mt-10">
+            <OrchestrationGraphic />
+          </div>
+          <div className="mt-6">
+            <Link href="/explore-demo" className="link" style={{ color: "var(--forest)" }}>
+              Explore the Ops demo dashboard →
+            </Link>
+          </div>
         </div>
       </section>
       <EndCta />

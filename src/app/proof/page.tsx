@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
+import { IllustrativeImage } from "@/components/IllustrativeImage";
 
 export const metadata: Metadata = {
   title: "Proof should outlive the institution that issued it",
@@ -97,6 +98,28 @@ export default function ProofPage() {
         title="Proof should outlive the institution that issued it."
         lede="I learned what happens when proof lives somewhere you do not control. Three times, the record of real work I did came down to a single document, a single company, or a single database — and each one eventually failed me. That experience is the reason Livingry is built the way it is."
       />
+
+      {/* Founder-origin editorial illustration */}
+      <section className="section-tight" aria-label="Illustration of the origin story">
+        <div className="container">
+          <figure className="diagram">
+            <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--rule)" }}>
+              <IllustrativeImage
+                base="founder-origin-collage"
+                height={800}
+                priority
+                sizes="(min-width: 1024px) 1000px, 100vw"
+                alt="Editorial illustration reading left to right: a burned, empty picture frame; a hand-drawn solar and systems blueprint; a green document box holding an HVAC training card; and a small locked safe with a key — depicting three credential-loss failure modes (a document destroyed by fire, an issuer that disappeared, a rebranded company) resolving into owner-controlled custody. Illustration, not a photograph or documentary record."
+              />
+            </div>
+            <figcaption>
+              An editorial illustration of the three credential-loss failure modes below — and the
+              owner-controlled custody they argue for. It is a stylized collage, not documentary
+              evidence.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
       {/* 1 · Firsthand losses — chronological editorial timeline */}
       <section className="section" aria-labelledby="losses-heading">

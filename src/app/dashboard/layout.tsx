@@ -3,6 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DashboardLoginGate } from "@/components/DashboardLoginGate";
+import { DashboardPublicPreview } from "@/components/DashboardPublicPreview";
+
+// Bound the session check so an unreachable/slow auth API never leaves the
+// unauthenticated visitor stuck on "Checking session…".
+const SESSION_CHECK_TIMEOUT_MS = 6000;
 
 const tabs = [
   { label: "Ops Dashboard", href: "/dashboard" },
@@ -16,24 +21,47 @@ const tabs = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [checked, setChecked] = useState(false);
   const [granted, setGranted] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
 
   useEffect(() => {
-    fetch("/api/dashboard-auth/session")
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), SESSION_CHECK_TIMEOUT_MS);
+    fetch("/api/dashboard-auth/session", { signal: controller.signal })
       .then((r) => r.json())
       .then((d) => setGranted(Boolean(d.granted)))
       .catch(() => setGranted(false))
-      .finally(() => setChecked(true));
+      .finally(() => {
+        clearTimeout(timer);
+        setChecked(true);
+      });
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, []);
 
   async function logout() {
     await fetch("/api/dashboard-auth/session", { method: "DELETE" }).catch(() => {});
     setGranted(false);
+    setShowSignIn(false);
   }
 
   if (!checked) {
-    return (<div className="section"><div className="container"><p style={{ color: "var(--ink-3)" }}>Checking session…</p></div></div>);
+    return (
+      <div className="section">
+        <div className="container">
+          <p style={{ color: "var(--ink-3)" }}>Checking session…</p>
+        </div>
+      </div>
+    );
   }
-  if (!granted) return <DashboardLoginGate onUnlocked={() => setGranted(true)} />;
+
+  if (!granted) {
+    if (showSignIn) {
+      return <DashboardLoginGate onUnlocked={() => setGranted(true)} />;
+    }
+    return <DashboardPublicPreview onSignIn={() => setShowSignIn(true)} />;
+  }
 
   return (
     <div>

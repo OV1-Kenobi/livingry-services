@@ -40,6 +40,16 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
   const pendingCount = store.approvals.filter((a) => a.status === "pending").length;
   const isPublic = mode === "public";
 
+  // Illustrative, non-monetary value signals derived from the demo activity.
+  // Shown only in the public demo and explicitly labeled as demo values.
+  const recoveredCount = store.ledger.filter((l) => Boolean(l.outcome)).length;
+  const escalatedCount = store.approvals.filter((a) => a.automationLevel === "A3_escalate").length;
+  const valueSignals = [
+    { label: "Opportunities recovered", value: recoveredCount, tone: "var(--forest)" },
+    { label: "Awaiting your approval", value: pendingCount, tone: "var(--copper)" },
+    { label: "Leaks caught & escalated", value: escalatedCount, tone: "var(--copper-2)" },
+  ];
+
   function selectCategory(id: CategoryId) {
     setSelectedId(id);
     setTray("category");
@@ -143,6 +153,22 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
 
             {/* Main column */}
             <main className="grid gap-6" style={{ minWidth: 0 }}>
+              {isPublic && (
+                <section aria-label="Value signals (illustrative demo values)">
+                  <div className="rule-label">Value signals · illustrative demo values</div>
+                  <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(3, minmax(0,1fr))" }}>
+                    {valueSignals.map((s) => (
+                      <div key={s.label} className="card" style={{ padding: "0.9rem 1rem" }}>
+                        <div className="serif" style={{ fontSize: "var(--step-3)", color: s.tone, lineHeight: 1 }}>{s.value}</div>
+                        <div className="text-[0.78rem] mt-1" style={{ color: "var(--ink-2)" }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[0.74rem] mt-2" style={{ color: "var(--ink-3)" }}>
+                    Counts reflect this demo&apos;s synthetic activity — not any real business results.
+                  </p>
+                </section>
+              )}
               <section aria-label="Work and data-flow map">
                 <div className="rule-label">Work &amp; data flow</div>
                 <p className="text-[0.82rem] mt-1 mb-3" style={{ color: "var(--ink-3)" }}>

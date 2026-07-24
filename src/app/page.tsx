@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
+import { RevenueLeakDiagram } from "@/components/diagrams/RevenueLeakDiagram";
 
 export default function Home() {
   const homepageFaq = {
@@ -73,6 +74,10 @@ export default function Home() {
                 See the Founding Five HVAC program →
               </Link>
             </div>
+          </div>
+
+          <div className="mt-14">
+            <RevenueLeakDiagram />
           </div>
         </div>
       </section>
