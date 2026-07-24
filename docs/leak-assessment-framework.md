@@ -2,7 +2,7 @@
 
 **A field guide for OV to run on every discovery call.**
 
-Practice: Livingry Services, a practice of OpenAgents Inc, Lecanto, FL
+Practice: Livingry Services, an independent practice, Lecanto, FL
 Tagline: *"Systems that stop already-earned value from leaking away."*
 Site: [livingry-services.vercel.app](https://livingry-services.vercel.app) · Booking: [Leak Assessment call](https://calendar.app.google/4UfTY4vavUc7iQBT6)
 
@@ -401,8 +401,8 @@ IF YOU SAY NO
 Let me know by [date] where you land.
 
 OV
-Livingry Services, a practice of OpenAgents Inc
-ov@openagents.com
+Livingry Services
+ov@livingry.services
 ```
 
 ---

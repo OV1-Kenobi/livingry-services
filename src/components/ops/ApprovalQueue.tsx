@@ -13,7 +13,7 @@ const statusTone: Record<string, string> = {
 
 // Human-in-the-loop approval queue. Identical in both modes; every queued
 // action names the category, automation level, and requester, and records the
-// operator's decision to the proof ledger. Decisions here are simulated (no
+// operator's decision to the activity ledger. Decisions here are simulated (no
 // external action is ever taken) — they only move demo state and write a
 // ledger entry so the human-approval model is visible end to end.
 export function ApprovalQueue({ store }: { store: OpsDashboardStore }) {

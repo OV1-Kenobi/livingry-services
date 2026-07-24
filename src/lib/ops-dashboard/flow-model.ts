@@ -22,7 +22,7 @@ export const OPS_CONTROL_PLANE = {
 export const PROOF_LEDGER_RAIL = {
   id: "ops_layer" as CategoryId,
   eyebrow: "Audit",
-  title: "Activity & Proof Ledger",
+  title: "Activity & Audit Ledger",
   role: "audit-rail" as const,
   summary: "Every stage writes a defensible, timestamped record here — one immutable audit trail.",
   receivesFrom: "every-stage" as const,

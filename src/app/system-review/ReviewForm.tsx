@@ -118,6 +118,8 @@ export function ReviewForm() {
 
   return (
     <form
+      method="post"
+      action="/api/system-review"
       onSubmit={onSubmit}
       className="card grid gap-5"
       aria-label="Leak Assessment intake"
@@ -310,8 +312,8 @@ export function ReviewForm() {
             className="text-[0.9rem]"
             style={{ color: "var(--copper-2)" }}
           >
-            Something went wrong: {errorMsg}. You can also email us at
-            ov@openagents.com.
+            Something went wrong: {errorMsg}. You can also email us at{" "}
+            {site.contact.email}.
           </p>
         )}
       </div>

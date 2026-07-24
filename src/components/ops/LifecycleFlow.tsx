@@ -19,7 +19,7 @@ type Props = {
 // Deterministic lifecycle diagram. No absolute positioning, no coordinate math:
 // the operating lifecycle is a CSS Flex row (Attract → Intake → Coordinate →
 // Execute → Retain) governed by the full-width Ops control rail on top and
-// audited by the full-width Proof Ledger rail on the bottom. Recovery is an
+// audited by the full-width activity ledger rail on the bottom. Recovery is an
 // explicit feedback loop beneath the lifecycle. At <=1100px the whole diagram
 // collapses to a single vertical column in the same reading order (covering
 // tablet and mobile) so nothing is ever compressed or clipped horizontally.

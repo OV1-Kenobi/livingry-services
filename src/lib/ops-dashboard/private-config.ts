@@ -140,7 +140,7 @@ export function getCuratedToolConfig(): ToolConfig[] {
       dataInputs: ["Events from every category", "Approval decisions"],
       dataOutputs: ["Orchestrated actions", "Audit trail entries"],
       permissions: ["Orchestrates but never bypasses category approval rules"],
-      approvalRequirements: ["Every automated action recorded to the proof ledger"],
+      approvalRequirements: ["Every automated action recorded to the activity ledger"],
       signupUrl: "https://n8n.io/pricing",
       changeHistory: [{ at: "2026-07-01T00:00:00-04:00", action: "connected", detail: "Wired as the orchestration core for the TradeOps layer." }],
     },

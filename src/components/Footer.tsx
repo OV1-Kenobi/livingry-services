@@ -15,7 +15,7 @@ export function Footer() {
               Systems that stop already-earned value from leaking away.
             </p>
             <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.65, fontSize: "0.9rem" }}>
-              A practice of {site.parent}. Human-controlled. Measurable. Built around the people and systems you already have.
+              An independent practice. Human-controlled. Measurable. Built around the people and systems you already have.
             </p>
           </div>
 
@@ -42,9 +42,9 @@ export function Footer() {
             <div className="eyebrow mt-8" style={{ color: "var(--seal)" }}>Company</div>
             <ul className="mt-4 grid gap-2 text-[0.92rem]" style={{ color: "var(--paper)", opacity: 0.85 }}>
               <li><Link href="/how-it-works">How It Works</Link></li>
-              <li><Link href="/why-livingry">Why Livingry</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/proof">Proof Ledger</Link></li>
+              <li><Link href="/about">Why Livingry</Link></li>
+              <li><Link href="/proof">Proof</Link></li>
+              <li><Link href="/why-livingry">The Livingry Idea</Link></li>
               <li><Link href="/insights">Insights</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/agents">For AI Agents</Link></li>

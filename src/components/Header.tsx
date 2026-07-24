@@ -28,7 +28,8 @@ const nav = [
   },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Explore Demo Dashboard", href: "/ops" },
-  { label: "Why Livingry", href: "/why-livingry" },
+  { label: "Why Livingry", href: "/about" },
+  { label: "Proof", href: "/proof" },
   { label: "FAQ", href: "/faq" },
 ];
 

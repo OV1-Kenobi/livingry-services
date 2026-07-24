@@ -69,7 +69,7 @@ export function demoScenarios(): Scenario[] {
         { categoryId: "tradeops", input: "Job marked complete", processing: "Verify completion is complaint-free; assemble a completion packet", output: "Verified completion + packet", humanIntervention: "QC approval before the state is trusted", control: "Review cannot bypass an unresolved complaint", successMeasure: "Verified, complaint-free completions" },
         { categoryId: "continuity", input: "Verified completion", processing: "Queue a review invite and a maintenance reminder to a consented customer", output: "Review invite + scheduled reminder", humanIntervention: "Owner approves outreach", control: "Opt-in only; unsubscribes honored", successMeasure: "Repeat & referral revenue" },
         { categoryId: "discovery_trust", input: "Positive review received", processing: "Prepare to surface verifiable proof on the site", output: "Proof queued for publish", humanIntervention: "Owner approves every published fact", control: "No fabricated or unapproved proof", successMeasure: "Verifiable evidence coverage" },
-        { categoryId: "ops_layer", input: "All events", processing: "Write proof entries and update the leak dashboard", output: "Proof ledger + measures", humanIntervention: "Owner reviews the ledger", control: "Every step signed", successMeasure: "Complete proof of value delivered" },
+        { categoryId: "ops_layer", input: "All events", processing: "Write audit entries and update the leak dashboard", output: "Activity ledger + measures", humanIntervention: "Owner reviews the ledger", control: "Every step signed", successMeasure: "Complete proof of value delivered" },
       ],
     },
   ];

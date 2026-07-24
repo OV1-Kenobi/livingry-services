@@ -4,7 +4,7 @@ import { OpsDashboard } from "@/components/ops/OpsDashboard";
 export const metadata: Metadata = {
   title: "Ops Dashboard — Live Demo | Livingry",
   description:
-    "Explore the Livingry Ops orchestration dashboard: an interactive, safe demo of how response, recovery, continuity, discovery, knowledge, workflow, and TradeOps systems are coordinated with human approval and a proof ledger.",
+    "Explore the Livingry Ops orchestration dashboard: an interactive, safe demo of how response, recovery, continuity, discovery, knowledge, workflow, and TradeOps systems are coordinated with human approval and an activity ledger.",
 };
 
 // Public "streetfront" demo. Unauthenticated. Renders the SHARED dashboard in
@@ -12,5 +12,10 @@ export const metadata: Metadata = {
 // Demo Data only. No credentials, customer data, private config, or external
 // actions are ever involved here.
 export default function OpsDemoPage() {
-  return <OpsDashboard mode="public" />;
+  return (
+    <>
+      <h1 className="sr-only">Livingry Ops — live demo dashboard</h1>
+      <OpsDashboard mode="public" />
+    </>
+  );
 }
