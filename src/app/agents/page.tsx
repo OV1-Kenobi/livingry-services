@@ -35,7 +35,7 @@ export default function Agents() {
               {[
                 ["Name", site.name],
                 ["Legal name", site.legalName],
-                ["Independent practice", "Yes — not affiliated with any parent company"],
+                ["Independent practice", "Yes — built and delivered independently by its founder"],
                 ["Tagline", site.tagline],
                 ["Founded", site.founded],
                 ["Location", `${site.location.city}, ${site.location.region}, ${site.location.country}`],

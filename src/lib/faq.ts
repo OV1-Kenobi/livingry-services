@@ -11,7 +11,7 @@ export const faqSections: FaqSection[] = [
       { q: "What does Livingry Services actually sell?", a: "We sell implementation. Our engagements produce working response, recovery, continuity, discovery, knowledge, or workflow systems installed inside the client&rsquo;s existing tools — not slide decks, strategy memos, or software subscriptions." },
       { q: "Who are your ideal clients?", a: "Established, useful service businesses and professional practices. HVAC companies are our active focus, roofing companies are our next active vertical, and legal and medical professional practices are in governed pilot development." },
       { q: "Where are you based?", a: "Lecanto, Florida. We work with clients across the United States remotely, with occasional on-site engagements where the work justifies travel." },
-      { q: "Is Livingry Services independent?", a: "Yes. Livingry Services is an independent practice, built and delivered by its founder. It is not a division, subsidiary, or affiliate of any parent company." },
+      { q: "Is Livingry Services independent?", a: "Yes. Livingry Services is an independent practice, built and delivered by its founder." },
       { q: "How do I contact Livingry Services?", a: "Email ov@livingry.services or submit the System Review form on this website. We reply within one business day." },
     ],
   },
