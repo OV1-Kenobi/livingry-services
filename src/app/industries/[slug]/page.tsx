@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { JsonLd } from "@/components/JsonLd";
+import { HvacFieldContext } from "@/components/HvacFieldContext";
 
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
@@ -92,6 +93,14 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           )}
         </div>
       </section>
+
+      {c.slug === "hvac" && (
+        <section className="section-tight">
+          <div className="container">
+            <HvacFieldContext />
+          </div>
+        </section>
+      )}
 
       <hr />
 
