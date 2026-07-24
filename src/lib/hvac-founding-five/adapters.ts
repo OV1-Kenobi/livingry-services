@@ -194,7 +194,7 @@ class ResendNotifier implements Notifier {
     const text = [
       "Your request has been received.",
       "",
-      "Livingry will review your company and the workflow you described. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification.",
+      "Livingry will review where the workflow you described may be unsealed and whether a private observation is warranted. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification. Scheduling access follows only after an observation is confirmed as worth discussing.",
       "",
       `Company: ${sub.companyName}`,
       `Workflow you described: ${sub.workflowProblem}`,

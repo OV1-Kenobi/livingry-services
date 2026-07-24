@@ -31,8 +31,12 @@ function collectStrings(v: unknown, out: string[]): void {
 const GUARDRAIL_EXPORTS = new Set([
   "PROHIBITED_PATTERNS",
   "CALENDAR_PATTERNS",
+  "FABRICATION_PATTERNS",
+  "SCHEDULED_PATTERNS",
   "findProhibitedClaims",
   "findCalendarReferences",
+  "findFabrications",
+  "findScheduledClaims",
   "buildBreadcrumbLd",
   "buildServiceLd",
   "buildFaqLd",

@@ -16,6 +16,8 @@ import {
   fit,
   founder,
   hero,
+  identity,
+  leakproofingMap,
   offer,
   pricing,
   problem,
@@ -67,6 +69,10 @@ export default function FoundingFivePage() {
           <h1 id="ff-hero-heading" className="serif mt-6">{hero.title}</h1>
           <p className="mt-7 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)", maxWidth: "50rem" }}>
             {hero.intro}
+          </p>
+          <p className="mt-5" style={{ color: "var(--ink-2)", maxWidth: "50rem" }}>{hero.premise}</p>
+          <p className="mt-6 serif italic" style={{ fontSize: "var(--step-1)", color: "var(--copper-2)", borderLeft: "3px solid var(--copper)", paddingLeft: "1.25rem", maxWidth: "44rem" }}>
+            {hero.belief}
           </p>
           <p className="mt-5" style={{ color: "var(--ink-2)", maxWidth: "50rem" }}>{hero.body}</p>
 
@@ -136,6 +142,56 @@ export default function FoundingFivePage() {
             ))}
             <li style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
           </ol>
+        </div>
+      </section>
+
+      <hr />
+
+      {/* SEVEN-PART LEAKPROOFING MAP — diagnostic model, not a promise */}
+      <section className="section" aria-labelledby="ff-map-heading">
+        <div className="container">
+          <div className="rule-label">The seven-part leakproofing map</div>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <h2 id="ff-map-heading" className="serif">{leakproofingMap.heading}</h2>
+              <p className="mt-5" style={{ color: "var(--ink-2)" }}>{leakproofingMap.intro}</p>
+              <p className="mt-6 card" style={{ background: "var(--paper-2)", color: "var(--ink-2)" }}>
+                {leakproofingMap.disclaimer}
+              </p>
+            </div>
+            <ol className="lg:col-span-7 grid gap-0">
+              {leakproofingMap.layers.map((layer, i) => (
+                <li
+                  key={layer.n}
+                  className="grid grid-cols-[auto_1fr] gap-5 py-5"
+                  style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}
+                >
+                  <div className="num" style={{ minWidth: "2.5rem", fontSize: "var(--step-2)" }}>{layer.n}</div>
+                  <div>
+                    <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>
+                      {layer.name}{" "}
+                      <span className="mono" style={{ fontSize: "0.8rem", color: "var(--ink-3)", fontStyle: "normal" }}>
+                        ({layer.short})
+                      </span>
+                    </h3>
+                    <p className="mt-2" style={{ color: "var(--ink-2)" }}>{layer.body}</p>
+                  </div>
+                </li>
+              ))}
+              <li style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      {/* OPERATOR IDENTITY — aspirational, plainly defined, not a membership */}
+      <section className="section-tight" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-identity-heading">
+        <div className="container max-w-3xl">
+          <div className="rule-label" style={{ color: "var(--forest)" }}>Who this is for</div>
+          <h2 id="ff-identity-heading" className="serif">{identity.heading}</h2>
+          <p className="mt-5" style={{ color: "var(--ink-2)" }}>{identity.body}</p>
         </div>
       </section>
 

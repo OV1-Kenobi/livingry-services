@@ -10,6 +10,10 @@ export const HVAC_URL = `${site.primaryDomain}${HVAC_ROUTE}`;
 
 export const FOUNDING_FIVE_CAPACITY = 5;
 
+// The central belief the funnel is built around. Stated plainly, used verbatim
+// on the page and reused in tests so the wording cannot drift.
+export const sealedSystemPrinciple = "A system that is unsealed cannot be scaled.";
+
 export const seo = {
   title: "Founding Five HVAC Pilot | Livingry Services",
   description:
@@ -29,6 +33,9 @@ export const hero = {
   title: "One HVAC workflow is costing you more than it should.",
   intro:
     "Livingry Services is selecting five established U.S. HVAC companies for founder-led implementations.",
+  premise:
+    "Adding more calls, more tools, or more automation to a workflow that already leaks only multiplies the waste. Seal the workflow first — then scale the work.",
+  belief: sealedSystemPrinciple,
   body: "We identify one place where calls, estimates, customer promises, reviews, or repeat business are falling between the cracks. Then we redesign that workflow, implement the smallest useful correction, and measure what changed.",
   proofStrip:
     "Remote implementation · One workflow · Human-controlled AI · Five founding partners",
@@ -68,6 +75,70 @@ export const offer = {
   ],
   closer:
     "This is not a replacement of the company’s entire software stack. It is one controlled improvement around a real operating problem.",
+} as const;
+
+// The seven-part diagnostic model. Plain operational names first; the short
+// internal shorthand in parentheses. This is a MAP for locating a leak, not a
+// checklist a single pilot completes — the disclaimer below is load-bearing and
+// is asserted in tests.
+export const leakproofingMap = {
+  heading: "The seven-part leakproofing map",
+  intro:
+    "Earned value tends to leak at the same seams in most trade operations. This is the map Livingry uses to locate one: the seven layers a single request passes through, from first contact to close. Plain names first; the shorthand we use internally in parentheses.",
+  layers: [
+    {
+      n: 1,
+      name: "Intake capture",
+      short: "the intake layer",
+      body: "Every inquiry — call, form, text, or referral — receives an accountable state and a clear next action, so nothing sits unowned.",
+    },
+    {
+      n: 2,
+      name: "Leak detection",
+      short: "the detection layer",
+      body: "Overdue, abandoned, or ownerless work becomes visible instead of quietly disappearing.",
+    },
+    {
+      n: 3,
+      name: "TradeOps context",
+      short: "the TradeOps layer",
+      body: "Relevant customer, job, asset, and policy context stays connected to the work rather than scattered across tools and memories.",
+    },
+    {
+      n: 4,
+      name: "Routing and assignment",
+      short: "the routing layer",
+      body: "Deterministic rules assign responsibility. AI may prepare recommendations; a person remains accountable for the decision.",
+    },
+    {
+      n: 5,
+      name: "Escalation and follow-through",
+      short: "the escalation layer",
+      body: "Exceptions and unresolved commitments reach a responsible person before a customer moves on.",
+    },
+    {
+      n: 6,
+      name: "Field handoff",
+      short: "the handoff layer",
+      body: "Technicians receive the approved information they need for the work, at the point they need it.",
+    },
+    {
+      n: 7,
+      name: "Close and continuity",
+      short: "the close layer",
+      body: "Payment, documentation, review requests, and appropriate future follow-up are completed — or explicitly excepted with a reason.",
+    },
+  ],
+  disclaimer:
+    "This is a diagnostic map, not a promise. A single Founding Five pilot does not rebuild all seven layers. It seals one bounded workflow — usually inside one or two of these layers — and measures the result.",
+} as const;
+
+// Aspirational operating identity. Defined in plain terms on first use, and
+// explicitly framed as a way of working rather than a membership, certification,
+// verified status, or a mark we claim to own.
+export const identity = {
+  heading: "Built for leakproof operators",
+  body: "The owners who get the most from this pilot share one instinct: they refuse to pour more traffic, tools, or automation into a workflow that already leaks. We call that operating identity a leakproof operator. It is not a membership, a certification, or a badge you earn — just a way of running a business that treats an unsealed workflow as the first thing to fix.",
 } as const;
 
 export const process = {
@@ -242,7 +313,7 @@ export const finalCta = {
 
 export const successState = {
   heading: "Your request has been received.",
-  body: "Livingry will review your company and the workflow you described. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification. Scheduling access is provided only after the observation is confirmed as worth discussing.",
+  body: "Livingry will review your company and the workflow you described to see where it may be unsealed and whether a private observation is warranted. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification. Scheduling access is provided only after an observation is confirmed as worth discussing.",
 } as const;
 
 export const consent = {
@@ -278,6 +349,17 @@ export const PROHIBITED_PATTERNS: { label: string; pattern: RegExp }[] = [
   { label: "no risk", pattern: /\bno risk\b/i },
   { label: "Florida-only claim", pattern: /serving florida/i },
   { label: "free strategy call", pattern: /free strategy call/i },
+  // Over-promising absolutes imported from the raw positioning doc. These must
+  // never reach public copy: they describe outcomes Livingry cannot guarantee.
+  { label: "commercial malpractice", pattern: /commercial malpractice/i },
+  { label: "Intake Lock claim", pattern: /intake lock/i },
+  { label: "100% capture", pattern: /100%\s*(intake|capture)/i },
+  { label: "transaction finality", pattern: /transaction finality/i },
+  { label: "20-second response", pattern: /\b20[-\s]?second/i },
+  { label: "physically impossible queue", pattern: /physically impossible/i },
+  { label: "never terminates", pattern: /never (terminat|stops|ends)/i },
+  { label: "perfect/optimal resource", pattern: /(perfect|optimal) resource/i },
+  { label: "join the ranks", pattern: /(join|welcome to) the ranks/i },
 ];
 
 // Copy must not imply current calendar scheduling in this funnel.
@@ -289,12 +371,44 @@ export const CALENDAR_PATTERNS: RegExp[] = [
   /schedule a call/i,
 ];
 
+// Fabricated names, revenue figures, and case-study details from the raw
+// positioning doc. None describe a real, owner-approved engagement, so they
+// must never appear in public copy.
+export const FABRICATION_PATTERNS: { label: string; pattern: RegExp }[] = [
+  { label: "Dave case study", pattern: /\bDave\b/ },
+  { label: "let's call him", pattern: /let'?s call him/i },
+  { label: "$64,000 outcome", pattern: /\$64,?000/ },
+  { label: "$5.2M revenue", pattern: /\$5\.2\s*m/i },
+  { label: "$3M operation", pattern: /\$3\s*m\b/i },
+  { label: "capture-rate jump", pattern: /30%?\s*to\s*92%/i },
+  { label: "capture rate went", pattern: /capture rate went/i },
+  { label: "300 inquiries", pattern: /300\s+(inquiries|leads)/i },
+  { label: "ruptured gas tank", pattern: /ruptured gas tank/i },
+];
+
+// Copy must never claim an observation, assessment, or call is already
+// scheduled — scheduling access follows a confirmed observation.
+export const SCHEDULED_PATTERNS: RegExp[] = [
+  /\bis scheduled\b/i,
+  /\bhas been scheduled\b/i,
+  /\bwe('ve| have) scheduled\b/i,
+  /\byour (assessment|observation|review) is (scheduled|booked)\b/i,
+];
+
 export function findProhibitedClaims(text: string): string[] {
   return PROHIBITED_PATTERNS.filter((p) => p.pattern.test(text)).map((p) => p.label);
 }
 
 export function findCalendarReferences(text: string): string[] {
   return CALENDAR_PATTERNS.filter((p) => p.test(text)).map((p) => p.source);
+}
+
+export function findFabrications(text: string): string[] {
+  return FABRICATION_PATTERNS.filter((p) => p.pattern.test(text)).map((p) => p.label);
+}
+
+export function findScheduledClaims(text: string): string[] {
+  return SCHEDULED_PATTERNS.filter((p) => p.test(text)).map((p) => p.source);
 }
 
 // ---------------------------------------------------------------------------
