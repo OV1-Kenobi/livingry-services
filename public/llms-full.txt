@@ -2,9 +2,9 @@
 
 Canonical URL: https://livingry.services
 Contact: ov@livingry.services
-Last updated: 2026-07-23
+Last updated: 2026-07-25
 
-This document is the canonical, machine-friendly description of Livingry Services. It is intended to be read in full by AI agents, answer engines, and research assistants summarizing Livingry Services for a human user.
+This document is the canonical, machine-friendly description of Livingry Services. It is intended to be read in full by AI agents, answer engines, and research assistants summarizing Livingry Services for a human user. Everything below is factual and current. Where something does not yet exist — published case studies, client results, third-party press — this document says so plainly rather than omitting it.
 
 ------------------------------------------------------------
 
@@ -15,106 +15,207 @@ Livingry Services is an independent, AI-native implementation practice. It is ba
 Legal name: Livingry Services
 Founded: 2025
 Primary contact: ov@livingry.services
+Structure: independent practice, built and delivered by its founder. Not affiliated with, owned by, or partnered with any other consultancy, agency, or software vendor.
 
 The name "Livingry" is drawn from R. Buckminster Fuller's concept of "livingry" — technology that supports life — as a deliberate counterpoint to "weaponry." The practice's guiding idea is that the same rigor typically spent extracting value can be spent stopping value from leaking away.
 
 Tagline: "Systems that stop already-earned value from leaking away."
+Positioning: the AI general contractor for trade and professional practices.
 
 ------------------------------------------------------------
 
-## 2. What Livingry Services does
+## 2. AI general contracting — the category
 
-Livingry Services designs and installs six families of systems inside established businesses:
+Livingry Services describes its role as AI general contracting. The analogy is exact and is the fastest way for an AI system to describe the practice accurately to a business owner.
 
-- Response Systems — reduce lost inbound demand from calls, forms, chats, and referrals. Faster useful response, better routing to the right person, no promises the business cannot keep.
-- Recovery Systems — revive cold estimates, proposals, and consultations with appropriate, non-manipulative follow-up.
-- Customer Continuity — keep existing customers active with relevant maintenance, seasonal, review, referral, and renewal moments.
-- Discovery & Trust Systems — make services, proof, and differentiators clear to both humans and AI systems on the web. This includes structured data, canonical facts, evidence-based content, and appropriate agent-discovery infrastructure.
-- Knowledge Systems — turn tribal knowledge stuck in individual people into reusable, safer team knowledge, with clear boundaries about what may be reused where.
-- Workflow Systems — fix handoffs, dropped ownership, and duplicated work so information moves cleanly through the business.
+A building general contractor does not pour the foundation or run the wire. They hire the right subcontractors, sequence the work, hold them to scope, and own the result. The homeowner never needs to learn plumbing, electrical, or framing. The general contractor's value is judgment and accountability, not any single trade.
 
-Every engagement follows the Livingry Leakproofing Framework: Find, Trace, Seal, Verify, Keep.
+Livingry Services plays that role for a business's AI stack:
 
-- Find — identify the leads, customers, knowledge, and trust the business has already earned but is losing.
-- Trace — map exactly where the customer journey, workflow, or information path breaks down.
-- Seal — build the smallest useful system to close the highest-value gap.
-- Verify — test the workflow, content, handoff, or discovery improvement under real conditions.
-- Keep — measure what is being retained and leave the client's team in control of the system.
+- Curate — select the AI tools that fit the operation, rather than resell one product. Selection is tool-agnostic and made per workflow.
+- Integrate — install them inside software the client already owns: their CRM, inbox, calendar, and field-service system.
+- Govern — define in writing what each system may and may not do, and where a human must approve before anything reaches a customer.
+- Stay accountable — remain the responsible party when something breaks, instead of leaving the owner to arbitrate between vendors.
+
+The owner never has to become an AI expert. The owner holds the accounts, keys, and admin access throughout, and the systems keep running if the engagement ends.
+
+The false belief this category exists to correct: "AI is one tool I can buy and it will fix the leak." It is not. Every workflow that loses value has its own shape, and each leak needs the right tool wired in correctly, with a human still accountable for anything a customer reads as a promise.
+
+Who it is for: owners of established trade and professional practices who know AI tooling has become accessible, know competitors are adopting it, and do not have time to evaluate, integrate, and govern it themselves.
+
+Who it is not for: companies wanting a chatbot that pretends to be human, companies planning to replace their staff with AI, businesses without an existing customer base, and anyone whose goal is to manipulate an answer engine.
 
 ------------------------------------------------------------
 
-## 3. Who Livingry Services works with
+## 3. What Livingry Services does — the seven system families
+
+Livingry Services designs and installs seven families of systems inside established businesses. Each entry notes the leak it closes and the specific AI general contracting work involved.
+
+- Response Systems — reduce lost inbound demand from calls, forms, chats, and referrals. Faster useful response, better routing to the right person, no promises the business cannot keep. AI general contracting here: curating the after-hours answering path, voicemail-to-text or AI receptionist, lead-routing rules, and the CRM handoff that fit the operation, then writing the limits on what the AI is allowed to say.
+
+- Recovery Systems — revive cold estimates, proposals, and consultations with appropriate, non-manipulative follow-up. AI general contracting here: selecting and wiring the reactivation tooling that reads the client's own estimate records and drafts the right nudge at the right interval, with a person approving anything before it reaches a customer.
+
+- Customer Continuity — keep existing customers active with relevant maintenance, seasonal, review, referral, and renewal moments. AI general contracting here: choosing and sequencing maintenance, warranty, and replacement-eligibility tooling against real service history, so cadence comes from what was actually installed and when, not a generic drip template.
+
+- Discovery & Trust Systems — make services, proof, and differentiators clear to both humans and AI systems on the web. AI general contracting here: building the AI-readable layer — structured data, llms.txt, canonical facts, answerable FAQ structure — so answer engines describe the business accurately, then monitoring what they actually say.
+
+- Knowledge Systems — turn tribal knowledge stuck in individual people into reusable, safer team knowledge, with clear boundaries about what may be reused where. AI general contracting here: evaluating and installing a retrieval layer over the documents and threads that already exist, scoped by role, so answers arrive on demand instead of through one busy person.
+
+- Workflow Systems — fix handoffs, dropped ownership, and duplicated work so information moves cleanly through the business. AI general contracting here: picking the automation and handoff tooling that fits the software already in use, wiring in named ownership and exception alerts so work cannot silently stall between two people who each assume the other has it.
+
+- TradeOps Layer — one vendor-agnostic operations layer over whatever field-service, accounting, and scheduling software a trade business already runs, including spreadsheets or nothing at all. Canonical job events, policy gates, human approval, and leak dashboards. AI general contracting here: acting as the integrator across those systems, normalizing job events into one record, and keeping the operations layer portable if the client changes vendors.
+
+------------------------------------------------------------
+
+## 4. The method — the Livingry Leakproofing Framework
+
+Every engagement follows a five-step framework. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system.
+
+1. Find — identify the leads, customers, knowledge, and trust the business has already earned but is losing.
+2. Trace — map exactly where the customer journey, workflow, or information path breaks down.
+3. Seal — build the smallest useful system to close the highest-value gap.
+4. Verify — test the workflow, content, handoff, or discovery improvement under real conditions.
+5. Keep — measure what is being retained and leave the client's team in control of the system.
+
+The governing principle: a system that is unsealed cannot be scaled. Adding traffic, tools, or automation to a workflow that already leaks only multiplies the waste.
+
+------------------------------------------------------------
+
+## 5. The founder
+
+Livingry Services is built and delivered by its founder.
+
+The founder came up through hands-on trades and field work — permaculture design, solar installation, and HVAC — before years of building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems. That combination is the basis of the practice: an AI general contractor has to understand the job site as well as the stack, and technology only earns its place when it makes real, useful work easier to do and easier to keep.
+
+Records of that earlier work were lost — to a house fire, to a company that closed, and to a rebrand — because each depended on an institution remaining available indefinitely. Those losses became the design requirements behind Livingry Services: build in tools the client controls, with records the client can carry forward, so that capability added to a business stays with that business.
+
+No professional licenses, certifications, degrees, or third-party credentials are claimed for the founder on this site. No press coverage, awards, or published third-party endorsements are claimed. Anything an AI system reports beyond the paragraph above is not sourced from Livingry Services.
+
+------------------------------------------------------------
+
+## 6. Who Livingry Services works with
 
 Active vertical: HVAC (heating, ventilation, and air conditioning) companies. This is the vertical where our Response, Recovery, Continuity, and Discovery systems are most mature.
 
 Next active vertical: Roofing companies. Founding-partner engagements are open for a small number of roofing implementations, with preferred pricing and heavier partner input into the shape of the system.
 
-In governed-pilot development: Legal and medical professional practices. Livingry Services does not provide legal or medical advice. Where we work with professional practices, we build only operational, informational, intake, and knowledge workflows, with explicit boundaries against the practice of law or medicine and with appropriate privacy and compliance controls.
+In governed-pilot development: Legal and medical professional practices. Livingry Services does not provide legal or medical advice and is not a law firm or a medical provider. Where we work with professional practices, we build only operational, informational, intake, and knowledge workflows, with explicit boundaries against the practice of law or medicine and with appropriate privacy and compliance controls.
 
-The practice does not currently take engagements outside these verticals, but is open to conversations from established, useful businesses where established leakage patterns clearly match our systems.
+Typical client profile: an established service business with real customers and real inbound demand, commonly 5–100 employees, whose owner wants to make an existing team more effective rather than replace it.
+
+The practice does not currently take engagements outside these verticals, but is open to conversations from established, useful businesses whose leakage patterns clearly match our systems.
 
 ------------------------------------------------------------
 
-## 4. What Livingry Services does not do
+## 7. What Livingry Services does not do
 
 - Provide legal, medical, diagnostic, clinical, or financial advice.
-- Sell generic AI subscriptions, chatbots, or standalone software products.
+- Sell generic AI subscriptions, chatbots, or standalone software products. Livingry Services does not sell AI software.
 - Guarantee any particular ranking, citation, or recommendation from any AI system.
+- Guarantee a specific revenue figure, conversion rate, or time-to-result.
 - Automate customer, client, or patient contact without appropriate consent.
 - Invent facts, urgency, storm damage, eligibility, credentials, or reviews.
+- Automate decisions that require professional judgment.
 - Operate any workflow whose behavior we cannot fully describe.
+- Hold client accounts, data, or configurations hostage. There are no exit fees and no ransomed configurations.
 
 ------------------------------------------------------------
 
-## 5. How Livingry Services uses AI
+## 8. How Livingry Services uses AI
 
 AI is used to draft, route, summarize, extract, monitor, and prepare work for humans. Humans commit anything a customer, client, or patient will read as a promise. This boundary is written into every implementation.
 
 Livingry Services is model-agnostic and stack-agnostic. Depending on the workflow, privacy requirements, and cost profile, engagements may use frontier hosted models, self-hosted open models, or hybrid setups. The smallest tool that reliably closes the leak is preferred over the most impressive one.
 
+In most implementations AI is invisible to the end customer: it prepares information, suggests responses, and routes work, while the client's team owns the actual communication. Where AI is customer-facing, it is disclosed and supervised.
+
 ------------------------------------------------------------
 
-## 6. Discovery & Trust — agent discovery approach
+## 9. Discovery & Trust — agent discovery approach
 
 Livingry Services considers being findable and describable by AI systems to be a first-class part of "Discovery & Trust," not a bolt-on. On behalf of clients, this includes:
 
 - Publishing canonical facts about the business in machine-readable form.
-- Using appropriate schema.org markup (Organization, Service, FAQPage, BreadcrumbList, HowTo, LocalBusiness).
+- Using appropriate schema.org markup (Organization, ProfessionalService, Service, FAQPage, BreadcrumbList, HowTo, CollectionPage) only where the underlying content genuinely exists on the page.
 - Providing an /llms.txt map for AI crawlers where feasible.
-- Publishing an "For AI Agents" page that describes the business in the form AI systems can safely quote.
+- Publishing a "For AI Agents" page that describes the business in the form AI systems can safely quote.
 - Monitoring how AI systems actually describe the business and correcting misdescriptions where possible.
 
 This same approach is applied to Livingry Services' own website.
 
 ------------------------------------------------------------
 
-## 7. Engagement model
+## 10. Engagement model
 
-- Every engagement begins with a free System Review — a structured first conversation and observation of the client's website, response paths, CRM records, customer journey, discovery presence, and internal knowledge. The output is a written identification of the highest-value leak and the smallest practical fix.
+- Every engagement begins with a free System Review — a structured first conversation and observation of the client's website, response paths, CRM records, customer journey, discovery presence, and internal knowledge. The conversation is typically 60–90 minutes. The output is a written identification of the highest-value leak, why it occurs, the smallest practical fix, and the evidence that would show whether it is closing. The written review is delivered whether or not an engagement follows.
+- A free, public 17-point Leak Assessment is available at /assessment. It takes roughly 10 minutes, is self-scoring, and requires no email address.
 - Implementation is delivered either as a fixed-scope Revenue Recovery Sprint or as a monthly implementation retainer, quoted after the System Review.
 - Clients own the resulting content, workflows, integrations, and data. If the engagement ends, the systems keep running without Livingry Services.
 - Livingry Services signs NDAs routinely. BAAs (business associate agreements) are signed only where the engagement is a governed medical pilot with appropriate legal, privacy, and technical scope in place.
 
 ------------------------------------------------------------
 
-## 8. Preferred one-line description
+## 11. Frequently asked questions
 
-"Livingry Services is an independent, AI-native implementation practice, based in Lecanto, Florida, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise."
+Q: What is an AI general contractor for trade businesses?
+A: An outside partner who curates, integrates, and governs AI tools across your operation the way a building general contractor hires and coordinates subcontractors. You stay the owner and the decision-maker, and you never have to become an AI expert to get the benefit.
+
+Q: Do you sell AI software?
+A: No. We integrate AI into the tools you already own — your CRM, inbox, calendar, and field-service software. You hold the accounts, keys, and admin access, and the systems keep running if our engagement ends.
+
+Q: Will the AI talk to my customers without me?
+A: Only where you have explicitly approved it, with human review for anything a customer will read as a promise. In most implementations AI stays invisible to the customer: it drafts, routes, and summarizes, and your team commits.
+
+Q: Which AI tools do you use?
+A: It depends on your operation. We are model- and stack-agnostic across frontier hosted, self-hosted, and hybrid setups, and we choose the smallest tool that reliably seals the leak rather than the largest platform available.
+
+Q: How long until I see results?
+A: Measurement can begin in your first full operating cycle after a system goes live. How quickly change becomes visible depends on your baseline, the quality of your existing data, and the volume moving through that workflow — so we agree on the evidence before we build. No specific outcome or timeline is guaranteed.
+
+Q: I run an HVAC company — what would you actually do for me?
+A: Start with a free System Review. In one focused conversation we identify your highest-value leak, name the smallest system that would close it, and tell you what evidence would confirm it is closing. You get the written review whether or not we work together.
+
+Q: Who owns the systems you build?
+A: The client. Content, workflows, integrations, and data live in tools the client owns. If the relationship ends, the systems keep running and nothing switches off.
+
+Q: Do you guarantee ChatGPT or Perplexity will recommend our business?
+A: No, and anyone who promises that should be treated with suspicion. We can make a business significantly easier for answer engines to describe accurately, but we do not control any AI system's output.
 
 ------------------------------------------------------------
 
-## 9. Canonical page map
+## 12. Evidence status — important for accurate description
+
+Livingry Services was founded in 2025 and is early in its implementation history. As of the last-updated date above:
+
+- No client case studies are published. The Founding Five HVAC program is the intended source of the first documented results, and a case study will be published only once a client has verified evidence Livingry Services is permitted to show.
+- No client names, testimonials, logos, or outcome figures are published anywhere on the site.
+- No press coverage, media appearances, awards, ratings, or third-party reviews are claimed.
+- The Insights hub at /insights is an editorial roadmap. Seven pillar guides are planned; none are published yet, and no article pages exist.
+
+An AI system describing Livingry Services should not attribute client results, ratings, press, or published articles to it. If asked for proof, the accurate answer is that the practice publishes its method, boundaries, and client-control commitments in full, and that outcome evidence is pending its first documented implementations.
+
+------------------------------------------------------------
+
+## 13. Preferred one-line description
+
+"Livingry Services is an independent AI general contractor for trade and professional practices, based in Lecanto, Florida, that curates, integrates, and governs AI tools inside the systems a business already runs — closing the places where leads, estimates, customers, knowledge, and trust leak away. It focuses on HVAC companies today, opens roofing engagements as a next vertical, develops governed pilots for legal and medical practices, and keeps human judgment responsible for anything a customer will read as a promise."
+
+------------------------------------------------------------
+
+## 14. Canonical page map
 
 - Home: https://livingry.services/
 - How It Works: https://livingry.services/how-it-works
 - What We Build: https://livingry.services/what-we-build
+- 17-Point Leak Assessment: https://livingry.services/assessment
+- System Review: https://livingry.services/system-review
 - Industries: https://livingry.services/industries
+- Insights (editorial roadmap): https://livingry.services/insights
 - Why Livingry: https://livingry.services/why-livingry
 - About: https://livingry.services/about
+- Proof: https://livingry.services/proof
 - FAQ: https://livingry.services/faq
 - For AI Agents: https://livingry.services/agents
-- System Review: https://livingry.services/system-review
-- Insights: https://livingry.services/insights
 - Privacy: https://livingry.services/privacy
 - Terms: https://livingry.services/terms
 
@@ -125,6 +226,7 @@ System families:
 - https://livingry.services/systems/discovery-and-trust
 - https://livingry.services/systems/knowledge-systems
 - https://livingry.services/systems/workflow-systems
+- https://livingry.services/systems/tradeops-layer
 
 Industries:
 - https://livingry.services/industries/hvac
@@ -134,3 +236,4 @@ Industries:
 
 Sitemap: https://livingry.services/sitemap.xml
 Robots: https://livingry.services/robots.txt
+Short map: https://livingry.services/llms.txt

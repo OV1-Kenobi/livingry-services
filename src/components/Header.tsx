@@ -15,6 +15,7 @@ const nav = [
       { label: "Discovery & Trust", href: "/systems/discovery-and-trust" },
       { label: "Knowledge Systems", href: "/systems/knowledge-systems" },
       { label: "Workflow Systems", href: "/systems/workflow-systems" },
+      { label: "TradeOps Layer", href: "/systems/tradeops-layer" },
     ],
   },
   {
@@ -38,6 +39,7 @@ const nav = [
   { label: "Explore Demo Dashboard", href: "/ops" },
   { label: "Why Livingry", href: "/about" },
   { label: "Proof", href: "/proof" },
+  { label: "Insights", href: "/insights" },
   { label: "FAQ", href: "/faq" },
 ];
 

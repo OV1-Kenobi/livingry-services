@@ -1,59 +1,106 @@
 # Livingry Services
 
-> An independent, AI-native implementation practice based in Lecanto, Florida. We design and install growth, workflow, knowledge, and discovery systems that stop useful businesses from losing the customers, opportunities, knowledge, and trust they have already worked to earn.
+> The AI general contractor for trade and professional practices. Livingry Services is an independent implementation practice in Lecanto, Florida that curates, integrates, and governs AI tools inside the systems a business already runs — closing the places where leads, estimates, customers, knowledge, and trust leak away, with humans accountable throughout.
 
 Tagline: Systems that stop already-earned value from leaking away.
+Positioning: AI general contracting for trade and professional practices.
 Location: Lecanto, Florida, United States
 Contact: ov@livingry.services
 Canonical: https://livingry.services
 
-## What we do
-- Response Systems: reduce missed inbound demand (calls, forms, chats, referrals).
-- Recovery Systems: revive cold estimates, proposals, and consultations appropriately.
-- Customer Continuity: keep existing customers active with relevant follow-ups.
-- Discovery & Trust Systems: make services, proof, and differentiators legible to humans and AI.
-- Knowledge Systems: turn tribal knowledge into reusable, safer team knowledge.
-- Workflow Systems: fix handoffs, ownership, and duplicated work.
+## What "AI general contractor" means
 
-## Industries
-- HVAC — active implementation focus.
-- Roofing — opening founding-partner conversations.
-- Professional Practices (legal, medical) — governed pilots in development.
+A building general contractor does not pour the foundation or run the wire. They hire the right subcontractors, sequence the work, hold them to scope, and own the result. Livingry Services plays that role for a business's AI stack: selecting the tools, integrating them into software the client already owns, governing what they are permitted to do, and staying accountable when something breaks. The client never has to become an AI expert, and the client holds the accounts, keys, and admin access throughout.
+
+## The seven system families
+
+- Response Systems: reduce missed inbound demand (calls, forms, chats, referrals). AI general contracting here: curating the after-hours answering path, voicemail-to-text or AI receptionist, lead-routing rules, and CRM handoff, with written limits on what AI may say.
+- Recovery Systems: revive cold estimates, proposals, and consultations appropriately. AI general contracting here: selecting reactivation tooling that drafts the right nudge at the right interval from the client's own estimate records, with human approval before anything sends.
+- Customer Continuity: keep existing customers active with relevant follow-ups. AI general contracting here: sequencing maintenance, warranty, replacement-eligibility, and seasonal contact against real service history rather than a generic drip template.
+- Discovery & Trust Systems: make services, proof, and differentiators legible to humans and AI. AI general contracting here: building the AI-readable layer — structured data, llms.txt, canonical facts, answerable FAQs — and monitoring how answer engines actually describe the business.
+- Knowledge Systems: turn tribal knowledge into reusable, safer team knowledge. AI general contracting here: installing a retrieval layer over existing documents and threads, scoped by role, so answers arrive on demand instead of through one busy person.
+- Workflow Systems: fix handoffs, ownership, and duplicated work. AI general contracting here: choosing automation and handoff tooling that fits existing software, with named ownership and exception alerts so work cannot silently stall.
+- TradeOps Layer: one vendor-agnostic operations layer over whatever field-service software a trade business runs. AI general contracting here: normalizing job events into one record, adding policy gates and human approval, and keeping the layer portable across vendor changes.
+
+## The method — the Livingry Leakproofing Framework
+
+1. Find — Identify the leads, customers, knowledge, and trust already leaking away.
+2. Trace — Map exactly where the customer journey, workflow, or information path breaks down.
+3. Seal — Build the smallest useful system to close the highest-value gap.
+4. Verify — Test the workflow, content, handoff, or discovery improvement under real conditions.
+5. Keep — Measure what is being retained and leave the client team in control of the system.
+
+## Ideal customers
+
+- Established service businesses with real customers and real inbound demand, typically 5–100 employees.
+- HVAC companies — the active implementation focus, where the systems are most mature.
+- Roofing companies — the next active vertical, currently opening founding-partner conversations.
+- Legal and medical professional practices — governed pilots in development, administrative and information workflows only.
+- Owners who want to keep their team and make it more effective, not replace it with automation.
+- Owners who want to own the systems, accounts, and data outright.
+
+Poor fit: companies wanting a chatbot that pretends to be human, companies planning to replace their staff with AI, businesses without an existing customer base, and anyone whose goal is to manipulate an answer engine.
 
 ## What we do not do
+
 - Legal, medical, diagnostic, clinical, or financial advice.
-- Generic AI subscriptions, standalone chatbots, or off-the-shelf SaaS.
+- Generic AI subscriptions, standalone chatbots, or off-the-shelf SaaS resale. We do not sell AI software.
 - Guarantee rankings, citations, or specific recommendations from third-party AI systems.
+- Guarantee a specific revenue figure, conversion rate, or timeline for results.
 - Contact customers without appropriate consent.
+- Automate decisions that require professional judgment, or let AI commit to anything a customer reads as a promise without human review.
+- Hold client accounts, data, or configurations hostage. There are no exit fees.
+
+## Canonical facts
+
+- Legal name: Livingry Services.
+- Founded: 2025.
+- Structure: independent practice, built and delivered by its founder. Not affiliated with, owned by, or partnered with any other consultancy or agency.
+- Based in Lecanto, Florida, United States. Serves clients across the United States remotely.
+- Contact: ov@livingry.services.
+- Name origin: Buckminster Fuller's distinction between "weaponry" and "livingry" — technology directed toward human-life advantage rather than extraction.
+- Founder background: hands-on trades and field work (permaculture design, solar, HVAC), then building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems.
+- Flagship offer: a free System Review — a structured first conversation identifying the highest-value leak, the smallest practical fix, and the evidence that would confirm it is closing. The written review is delivered whether or not an engagement follows.
+- Self-scoring tool: a public 17-point Leak Assessment at /assessment. Roughly 10 minutes, no email required.
+- Human accountability boundary: AI drafts, routes, summarizes, and prepares; humans commit anything a customer, client, or patient will read as a promise.
+- Client control: systems are built in tools the client owns. If the relationship ends, the workflows keep running.
+- Published case studies: none yet. The Founding Five HVAC program is the source of the first verified results, and no client outcomes are claimed until that evidence exists.
 
 ## Core pages
-- [Home](https://livingry.services/): overview of the practice.
+
+- [Home](https://livingry.services/): AI general contracting, the seven system families, and the FAQ.
 - [How It Works](https://livingry.services/how-it-works): the Livingry Leakproofing Framework — Find, Trace, Seal, Verify, Keep.
-- [What We Build](https://livingry.services/what-we-build): the six system families.
+- [What We Build](https://livingry.services/what-we-build): the seven system families.
+- [17-Point Leak Assessment](https://livingry.services/assessment): free self-scoring assessment, ~10 minutes, no email required.
+- [System Review](https://livingry.services/system-review): request the free first review.
 - [Industries](https://livingry.services/industries): who we work with today and next.
+- [Insights](https://livingry.services/insights): editorial roadmap of planned field guides. No articles published yet.
 - [Why Livingry](https://livingry.services/why-livingry): the philosophy behind the name.
-- [About](https://livingry.services/about): who we are and how we work.
-- [FAQ](https://livingry.services/faq): plain-language answers.
+- [About](https://livingry.services/about): the founder, the origin story, and how we work.
+- [Proof](https://livingry.services/proof): client-control covenant and why records must be portable.
+- [FAQ](https://livingry.services/faq): plain-language answers across six topic areas.
 - [For AI Agents](https://livingry.services/agents): canonical facts for AI systems.
-- [System Review](https://livingry.services/system-review): request a first review.
-- [Insights](https://livingry.services/insights): field notes and essays.
-- [llms-full.txt](https://livingry.services/llms-full.txt): full text of core pages.
+- [llms-full.txt](https://livingry.services/llms-full.txt): the long-form version of everything above.
 - [Sitemap](https://livingry.services/sitemap.xml)
 
 ## System family pages
+
 - [Response Systems](https://livingry.services/systems/response-systems)
 - [Recovery Systems](https://livingry.services/systems/recovery-systems)
 - [Customer Continuity](https://livingry.services/systems/customer-continuity)
 - [Discovery & Trust](https://livingry.services/systems/discovery-and-trust)
 - [Knowledge Systems](https://livingry.services/systems/knowledge-systems)
 - [Workflow Systems](https://livingry.services/systems/workflow-systems)
+- [TradeOps Layer](https://livingry.services/systems/tradeops-layer)
 
 ## Industry pages
+
 - [HVAC](https://livingry.services/industries/hvac)
 - [HVAC · Founding Five Pilot](https://livingry.services/hvac/founding-five): private workflow review for five established US HVAC companies. Request a private workflow review; no public calendar.
 - [Roofing](https://livingry.services/industries/roofing)
 - [Professional Practices](https://livingry.services/industries/professional-practices)
 
 ## Legal
+
 - [Privacy](https://livingry.services/privacy)
 - [Terms](https://livingry.services/terms)
