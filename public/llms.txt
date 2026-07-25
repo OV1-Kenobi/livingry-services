@@ -1,11 +1,10 @@
 # Livingry Services
 
-> An AI-native implementation practice, part of OpenAgents Inc, based in Lecanto, Florida. We design and install growth, workflow, knowledge, and discovery systems that stop useful businesses from losing the customers, opportunities, knowledge, and trust they have already worked to earn.
+> An independent, AI-native implementation practice based in Lecanto, Florida. We design and install growth, workflow, knowledge, and discovery systems that stop useful businesses from losing the customers, opportunities, knowledge, and trust they have already worked to earn.
 
 Tagline: Systems that stop already-earned value from leaking away.
-Parent: OpenAgents Inc
 Location: Lecanto, Florida, United States
-Contact: ov@openagents.com
+Contact: ov@livingry.services
 Canonical: https://livingry.services
 
 ## What we do
@@ -51,6 +50,7 @@ Canonical: https://livingry.services
 
 ## Industry pages
 - [HVAC](https://livingry.services/industries/hvac)
+- [HVAC · Founding Five Pilot](https://livingry.services/hvac/founding-five): private workflow review for five established US HVAC companies. Request a private workflow review; no public calendar.
 - [Roofing](https://livingry.services/industries/roofing)
 - [Professional Practices](https://livingry.services/industries/professional-practices)
 

@@ -129,7 +129,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 /* Eyebrow */
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--copper-2);
@@ -178,7 +178,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
 /* Header nav */
 .nav-link {
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--ink-2);
   padding: 0.4rem 0.2rem;
   border-bottom: 1px solid transparent;
@@ -250,9 +250,9 @@ input:focus, textarea:focus, select:focus {
 }
 label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--ink-2);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   font-weight: 500;
 }
 
@@ -263,4 +263,699 @@ label {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* Proof page — chronological loss timeline */
+.proof-timeline { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.proof-event {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 1.75rem;
+  border-left: 2px solid var(--rule);
+}
+.proof-event::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 1.9rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--copper);
+  border: 2px solid var(--paper);
+}
+.proof-event:first-child { padding-top: 0.25rem; }
+.proof-event:first-child::before { top: 0.6rem; }
+.proof-era { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+
+/* Proof page — who-controls-what comparison table */
+.control-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.control-table caption { text-align: left; }
+.control-table th, .control-table td { text-align: left; padding: 0.7rem 0.75rem; vertical-align: top; }
+.control-table thead th {
+  font-family: var(--font-sans); font-weight: 600; font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+  border-bottom: 1px solid var(--ink);
+}
+.control-table tbody th { font-family: var(--font-serif); font-weight: 500; color: var(--ink); }
+.control-table tbody tr { border-bottom: 1px solid var(--rule); }
+.control-table td { color: var(--ink-2); }
+
+/* =========================================================
+   HVAC Founding Five — before/after diagram + form
+   ========================================================= */
+
+/* Before/after workflow — semantic accessible diagram (no raster image). */
+.ff-flow { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.ff-flow-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(246, 241, 228, 0.16);
+  color: var(--paper);
+}
+.ff-flow-step:first-child { border-top: 0; }
+.ff-flow-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Request form */
+.ff-form { display: grid; }
+.ff-form label { font-weight: 500; }
+.ff-form input,
+.ff-form textarea {
+  min-height: 44px; /* touch target */
+}
+.ff-form textarea { min-height: 8rem; resize: vertical; }
+.ff-form .btn { min-height: 44px; }
+
+.ff-error-summary {
+  background: rgba(138, 78, 40, 0.08);
+  border: 1px solid var(--copper-2);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  color: var(--copper-2);
+  font-size: 1rem;
+}
+.ff-error-summary:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.ff-error-summary ul { margin: 0; padding-left: 1.1rem; list-style: disc; }
+
+.ff-inline-error {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--copper-2);
+}
+
+.ff-consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+.ff-consent input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  min-height: 0;
+  margin-top: 0.15rem;
+}
+
+/* =========================================================
+   17-Point Operational Leak Assessment — /assessment
+   An operations diagnostic, not a quiz: dense rows, hairline
+   rules, one accent. Built from the tokens above only.
+   ========================================================= */
+
+.asm-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Programmatic focus targets (reset, reveal) — never a visible outline jump. */
+.asm-focus-anchor { outline: none; scroll-margin-top: 7rem; }
+
+/* --- Scoring legend (0–3) --- */
+.asm-legend-list { display: grid; gap: 0; margin: 0; }
+.asm-legend-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+.asm-legend-item:first-child { border-top: 0; padding-top: 0; }
+.asm-legend-item dt { display: flex; align-items: baseline; gap: 0.7rem; }
+.asm-legend-item dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
+.asm-legend-value {
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--copper-2);
+  min-width: 1rem;
+}
+.asm-legend-label {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  color: var(--ink);
+}
+@media (min-width: 640px) {
+  .asm-legend-item { grid-template-columns: 13rem 1fr; gap: 1.25rem; align-items: baseline; }
+}
+
+/* --- Sticky progress bar --- */
+.asm-progress {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in oklab, var(--paper) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-block: 1px solid var(--rule);
+}
+.asm-progress-inner {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 0.7rem;
+}
+.asm-progress-figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+.asm-progress-count,
+.asm-progress-score {
+  margin: 0;
+  max-width: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+.asm-progress-count strong,
+.asm-progress-score strong {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--ink);
+}
+.asm-progress-score { color: var(--ink-3); }
+.asm-progress-track {
+  height: 4px;
+  background: var(--rule);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.asm-progress-fill {
+  height: 100%;
+  background: var(--forest);
+  transition: width .25s ease;
+}
+
+/* --- Category blocks --- */
+.asm-category + .asm-category { border-top: 1px solid var(--rule); }
+.asm-category-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.asm-category-title { font-size: var(--step-3); line-height: 1.1; margin-top: 0.4rem; }
+.asm-category-summary { margin-top: 0.6rem; color: var(--ink-2); max-width: 44rem; }
+.asm-category-tally {
+  margin: 0;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  padding-top: 0.3rem;
+}
+
+/* --- One control --- */
+.asm-controls { display: grid; gap: 3.5rem; }
+/* A fieldset renders its padding-top *below* the legend, and its border-box top
+   sits inside the legend, so neither padding-top nor a top-anchored divider is
+   usable here. Separation comes from the grid gap, and the divider hangs off the
+   bottom edge, which the legend does not disturb. */
+.asm-control {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  scroll-margin-top: 7rem;
+}
+.asm-control:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -1.75rem;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--rule);
+}
+/* Unanswered, but only after the visitor has asked for a result. */
+.asm-control[data-missing="true"] {
+  border-left: 2px solid var(--copper);
+  padding-left: 1rem;
+  margin-left: -1rem;
+}
+.asm-legend {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  padding: 0;
+  margin-bottom: 0.7rem;
+  float: none;
+  width: 100%;
+}
+.asm-control-num {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--copper-2);
+  line-height: 1.7;
+}
+.asm-control-title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: var(--ink);
+}
+.asm-control-question {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  max-width: 52rem;
+}
+.asm-evidence {
+  margin: 0 0 1rem 0;
+  padding-left: 1.6rem;
+  font-size: 0.88rem;
+  color: var(--ink-3);
+  max-width: 52rem;
+}
+.asm-evidence-label {
+  color: var(--forest);
+  font-weight: 500;
+}
+.asm-inline-missing {
+  margin: 0 0 0.85rem 0;
+  padding-left: 1.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--copper-2);
+}
+
+/* --- The four choices --- */
+.asm-choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding-left: 1.6rem;
+}
+.asm-choice { display: block; margin: 0; cursor: pointer; }
+/* Kept in the a11y tree and focusable — only visually replaced by the card. */
+.asm-radio {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  margin: 0;
+  pointer-events: none;
+}
+.asm-choice-body {
+  display: block;
+  min-height: 44px;
+  height: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--white);
+  transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+.asm-choice:hover .asm-choice-body { border-color: var(--forest); }
+.asm-radio:focus-visible + .asm-choice-body {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+.asm-radio:checked + .asm-choice-body {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--paper);
+}
+.asm-choice-head { display: flex; align-items: baseline; gap: 0.5rem; }
+.asm-choice-value {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--copper-2);
+}
+.asm-radio:checked + .asm-choice-body .asm-choice-value { color: var(--seal); }
+.asm-choice-label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.asm-radio:checked + .asm-choice-body .asm-choice-label { color: var(--paper); }
+.asm-choice-blurb {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+.asm-radio:checked + .asm-choice-body .asm-choice-blurb {
+  color: color-mix(in oklab, var(--paper) 82%, var(--forest));
+}
+@media (min-width: 900px) {
+  .asm-choices { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+}
+
+/* --- Actions + unanswered summary --- */
+.asm-gaps { margin-bottom: 1.5rem; max-width: 46rem; }
+.asm-gaps p { max-width: none; }
+.asm-gaps a { text-decoration: underline; }
+.asm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.asm-actions .btn { min-height: 44px; }
+.asm-actions .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+/* --- Result --- */
+.asm-result-section {
+  border-top: 1px solid var(--ink);
+  background: var(--paper-2);
+}
+.asm-result-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.asm-result-title { font-size: var(--step-4); line-height: 1.05; margin-top: 0.4rem; }
+.asm-result-condition { margin-top: 0.7rem; color: var(--ink-2); font-size: var(--step-1); }
+.asm-result-score {
+  margin: 0;
+  flex: none;
+  font-family: var(--font-mono);
+  color: var(--ink-3);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.asm-result-score strong {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--step-5);
+  color: var(--forest);
+  line-height: 1;
+}
+.asm-result-guidance {
+  margin-top: 1.5rem;
+  color: var(--ink);
+  font-size: var(--step-1);
+  max-width: 46rem;
+}
+.asm-caveat {
+  margin-top: 1.75rem;
+  padding: 1rem 1.15rem;
+  border-left: 2px solid var(--ink-3);
+  background: color-mix(in oklab, var(--white) 70%, transparent);
+}
+.asm-caveat p { margin: 0; font-size: 0.92rem; color: var(--ink-2); max-width: 52rem; }
+
+.asm-critical {
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.3rem;
+  border: 1px solid var(--copper-2);
+  border-radius: 6px;
+  background: rgba(138, 78, 40, 0.07);
+}
+.asm-critical-title { font-size: var(--step-1); color: var(--copper-2); }
+.asm-critical p { margin-top: 0.6rem; color: var(--ink-2); font-size: 0.95rem; }
+.asm-critical-list {
+  margin: 0.9rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.asm-result-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 900px) {
+  .asm-result-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+.asm-table tbody tr[data-lowest="true"] th,
+.asm-table tbody tr[data-lowest="true"] td {
+  background: color-mix(in oklab, var(--copper) 12%, transparent);
+}
+.asm-table-shorthand {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 0.15rem;
+}
+.asm-table-score {
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  text-align: right !important;
+}
+.asm-result-lists { display: grid; gap: 2.25rem; align-content: start; }
+.asm-lowest-category {
+  font-size: var(--step-2);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.asm-lowest-category-note { margin-top: 0.5rem; font-size: 0.92rem; color: var(--ink-2); }
+.asm-lowest-controls {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; gap: 0;
+}
+.asm-lowest-controls li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+}
+.asm-lowest-controls li:first-child { border-top: 0; padding-top: 0; }
+.asm-lowest-control-title { display: block; color: var(--ink); }
+.asm-lowest-control-meta {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+/* --- Result CTA --- */
+.asm-cta {
+  margin-top: 3rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--forest);
+  border-radius: 6px;
+  background: var(--forest);
+  color: var(--paper);
+}
+.asm-cta .eyebrow { color: var(--seal); }
+.asm-cta-title { font-size: var(--step-3); line-height: 1.1; margin-top: 0.4rem; color: var(--paper); }
+.asm-cta-lede {
+  margin-top: 0.9rem;
+  color: color-mix(in oklab, var(--paper) 88%, var(--forest));
+  max-width: 46rem;
+}
+.asm-cta-points {
+  margin: 1.25rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--paper);
+}
+.asm-cta-points li { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem; }
+.asm-cta-points li::before {
+  content: "—";
+  color: var(--seal);
+}
+.asm-cta-actions {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.asm-cta-actions .btn { min-height: 44px; }
+.asm-cta-actions .btn-primary { background: var(--paper); color: var(--forest); }
+.asm-cta-actions .btn-primary:hover { background: var(--white); }
+.asm-cta-actions .btn-secondary { color: var(--paper); border-color: var(--paper); }
+.asm-cta-actions .btn-secondary:hover { background: var(--paper); color: var(--forest); }
+.asm-cta-actions .btn-ghost { color: color-mix(in oklab, var(--paper) 80%, var(--forest)); }
+.asm-cta-actions .btn-ghost:hover { color: var(--seal); }
+.asm-cta-actions .btn:focus-visible { outline-color: var(--seal); }
+.asm-cta-note {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: color-mix(in oklab, var(--paper) 72%, var(--forest));
+  max-width: 46rem;
+}
+
+/* --- Carried-over assessment context on the intake form --- */
+.asm-carryover {
+  border: 1px solid var(--forest);
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--forest) 6%, var(--white));
+  padding: 0.9rem 1.1rem;
+}
+.asm-carryover p { margin: 0; font-size: 0.92rem; color: var(--ink-2); max-width: none; }
+.asm-carryover strong { color: var(--forest); }
+
+/* --- Print: the result is the artifact worth keeping --- */
+@media print {
+  .asm-noprint { display: none !important; }
+  body:has(.asm-page) > header,
+  body:has(.asm-page) > footer { display: none !important; }
+  .asm-result-section {
+    background: transparent;
+    border-top: 0;
+    padding-block: 0;
+  }
+  .asm-cta {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink-3);
+  }
+  .asm-cta .eyebrow,
+  .asm-cta-title,
+  .asm-cta-lede,
+  .asm-cta-points,
+  .asm-cta-note { color: var(--ink); }
+  .asm-cta-actions { display: none !important; }
+  .asm-result-grid { grid-template-columns: 1fr 1fr; }
+  .asm-critical { border-color: var(--ink); }
+}
+
+/* =========================================================
+   Deterministic diagrams (revenue-leak, orchestration, process)
+   Semantic HTML + CSS; SVG used only for non-text artwork.
+   Text labels are always real HTML so they stay legible and
+   accessible at every viewport and without JavaScript.
+   ========================================================= */
+
+figure.diagram { margin: 0; }
+.diagram figcaption {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  margin-top: 0.9rem;
+  max-width: 46rem;
+}
+
+/* Subtle blueprint grid backdrop (very low contrast). */
+.blueprint {
+  background-color: var(--white);
+  background-image:
+    linear-gradient(rgba(20, 55, 43, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 55, 43, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+/* --- Revenue-leak diagram: three channels, each sealed at the gap --- */
+.leak-diagram { display: grid; gap: 0; padding: clamp(1.1rem, 2.5vw, 1.9rem); }
+.leak-channel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+}
+.leak-channel:first-of-type { border-top: 0; }
+.leak-source { display: flex; align-items: flex-start; gap: 0.7rem; }
+.leak-source svg { flex: none; color: var(--forest); margin-top: 0.1rem; }
+.leak-source-name { font-family: var(--font-serif); font-size: var(--step-1); color: var(--ink); }
+.leak-track {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+.leak-gap {
+  position: relative;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--copper) 0 8px, transparent 8px 16px);
+}
+.leak-drop { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--copper-2); font-size: 0.8rem; }
+.leak-seal-chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.35rem 0.8rem; border-radius: 999px;
+  background: var(--forest); color: var(--paper);
+  font-size: 0.75rem; letter-spacing: 0.06em;
+}
+.leak-solid { height: 2px; background: var(--forest); }
+.leak-kept { font-size: 0.85rem; color: var(--forest); }
+@media (min-width: 720px) {
+  .leak-channel {
+    grid-template-columns: 15rem 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* --- Orchestration graphic: one ops layer over seven categories --- */
+.orch { display: grid; gap: 1.25rem; padding: clamp(1.1rem, 2.5vw, 1.9rem); }
+.orch-hub {
+  text-align: center;
+  border: 1px solid var(--forest);
+  border-radius: 8px;
+  background: var(--forest);
+  color: var(--paper);
+  padding: 1rem 1.25rem;
+}
+.orch-hub .eyebrow { color: var(--seal); }
+.orch-brace {
+  display: block; width: 100%; height: 22px; color: var(--rule);
+}
+.orch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+.orch-tile {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--white);
+  padding: 0.75rem 0.85rem;
+  display: grid;
+  gap: 0.2rem;
+}
+.orch-tile .n { font-family: var(--font-mono); font-size: 0.68rem; color: var(--copper-2); }
+.orch-tile .t { font-family: var(--font-serif); font-size: 1rem; color: var(--ink); line-height: 1.2; }
+@media (min-width: 640px) { .orch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .orch-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+
+/* --- Process flow: Find → Trace → Seal → Verify → Keep --- */
+.flow { display: flex; flex-direction: column; gap: 0; }
+.flow-stage {
+  flex: 1;
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--white);
+  padding: 1.1rem 1.15rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+.flow-arrow {
+  flex: none;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--copper); padding: 0.35rem 0;
+}
+.flow-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--copper-2); letter-spacing: 0.1em; }
+.flow-name { font-family: var(--font-serif); font-size: var(--step-1); color: var(--ink); }
+.flow-artifact { display: flex; align-items: center; gap: 0.55rem; color: var(--forest); font-size: 0.9rem; }
+.flow-artifact svg { flex: none; }
+.flow-cue { font-size: 0.85rem; color: var(--ink-2); }
+@media (min-width: 900px) {
+  .flow { flex-direction: row; align-items: stretch; }
+  .flow-arrow { transform: rotate(-90deg); padding: 0 0.2rem; }
 }

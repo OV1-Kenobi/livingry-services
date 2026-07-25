@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
+import { RevenueLeakDiagram } from "@/components/diagrams/RevenueLeakDiagram";
 
 export default function Home() {
   const homepageFaq = {
@@ -55,7 +56,7 @@ export default function Home() {
               <Link href="/what-we-build" className="btn btn-secondary">See What We Build</Link>
             </div>
             <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
-              Human-controlled · Measurable · Built around the people and systems you already have.
+              We build in tools you control, with records you can carry forward — human-controlled, measurable, and built around the people and systems you already have.
             </p>
           </div>
 
@@ -68,6 +69,15 @@ export default function Home() {
               <span className="pill pill-future">Legal · In development</span>
               <span className="pill pill-future">Medical · In development</span>
             </div>
+            <div className="lg:col-start-2 lg:col-span-3 text-[0.9rem]">
+              <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
+                See the Founding Five HVAC program →
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-14">
+            <RevenueLeakDiagram />
           </div>
         </div>
       </section>
@@ -129,6 +139,9 @@ export default function Home() {
             <div className="lg:col-span-5">
               <h2 id="method-heading" className="serif">The Livingry Leakproofing Framework.</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+                Adding traffic, tools, or automation to a workflow that already leaks only multiplies the waste. A system that is unsealed cannot be scaled — so we seal the workflow first, then scale the work.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
                 We do not start by adding another tool. We start by identifying the point where value leaks out of the business — then close that gap with the smallest practical combination of process, content, training, automation, AI, and human accountability.
               </p>
               <p className="mt-4 serif italic" style={{ color: "var(--copper-2)", fontSize: "var(--step-1)" }}>
@@ -213,6 +226,27 @@ export default function Home() {
                   Read the full thinking
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      {/* PROOF THAT CAN TRAVEL */}
+      <section className="section" aria-labelledby="proof-heading">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <div className="rule-label">Records you can carry forward</div>
+            <h2 id="proof-heading" className="serif">Your business history should not disappear with a vendor.</h2>
+          </div>
+          <div className="lg:col-span-6">
+            <p style={{ color: "var(--ink-2)" }}>
+              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry builds in tools you control, with records you can carry forward — so what your business earns stays with your business, even if a vendor or a tool goes away.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why ownership matters →</Link>
+              <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Why Livingry →</Link>
             </div>
           </div>
         </div>

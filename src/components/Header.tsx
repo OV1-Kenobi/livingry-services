@@ -22,13 +22,22 @@ const nav = [
     href: "/industries",
     children: [
       { label: "HVAC Companies", href: "/industries/hvac" },
+      { label: "HVAC · Founding Five Pilot", href: "/hvac/founding-five" },
       { label: "Roofing Companies", href: "/industries/roofing" },
       { label: "Professional Practices", href: "/industries/professional-practices" },
     ],
   },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "Why Livingry", href: "/why-livingry" },
+  {
+    label: "How It Works",
+    href: "/how-it-works",
+    children: [
+      { label: "The Five-Step Framework", href: "/how-it-works" },
+      { label: "17-Point Leak Assessment", href: "/assessment" },
+    ],
+  },
+  { label: "Explore Demo Dashboard", href: "/ops" },
+  { label: "Why Livingry", href: "/about" },
+  { label: "Proof", href: "/proof" },
   { label: "FAQ", href: "/faq" },
 ];
 
@@ -62,7 +71,7 @@ export function Header() {
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="block px-3 py-2 rounded text-[0.9rem]"
+                        className="block px-3 py-2 rounded text-[0.95rem]"
                         style={{ color: "var(--ink-2)" }}
                       >
                         {c.label}
@@ -74,7 +83,8 @@ export function Header() {
             </div>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-4">
+          <Link href="/dashboard" className="nav-link">Client Sign In</Link>
           <Link href="/system-review" className="btn btn-primary">
             Find My Biggest Leak
             <span aria-hidden>→</span>
@@ -105,8 +115,8 @@ export function Header() {
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="text-[0.9rem] py-1"
-                        style={{ color: "var(--ink-3)" }}
+                        className="text-[0.95rem] py-1"
+                        style={{ color: "var(--ink-2)" }}
                         onClick={() => setOpen(false)}
                       >
                         {c.label}
@@ -116,6 +126,7 @@ export function Header() {
                 )}
               </div>
             ))}
+            <Link href="/dashboard" className="nav-link block mt-2" onClick={() => setOpen(false)}>Client Sign In</Link>
             <Link href="/system-review" className="btn btn-primary mt-2 w-fit" onClick={() => setOpen(false)}>
               Find My Biggest Leak <span aria-hidden>→</span>
             </Link>

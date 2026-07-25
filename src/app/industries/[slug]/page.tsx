@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { JsonLd } from "@/components/JsonLd";
+import { HvacFieldContext } from "@/components/HvacFieldContext";
 
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
@@ -82,8 +83,24 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             <Link href="/system-review" className="btn btn-primary">{c.cta.primary} <span aria-hidden>→</span></Link>
             <Link href="/how-it-works" className="btn btn-secondary">See the Method</Link>
           </div>
+          {c.slug === "hvac" && (
+            <p className="mt-8 text-[0.95rem]" style={{ color: "var(--ink-2)", maxWidth: "46rem" }}>
+              Running an established US HVAC company?{" "}
+              <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
+                See the Founding Five HVAC program →
+              </Link>
+            </p>
+          )}
         </div>
       </section>
+
+      {c.slug === "hvac" && (
+        <section className="section-tight">
+          <div className="container">
+            <HvacFieldContext />
+          </div>
+        </section>
+      )}
 
       <hr />
 

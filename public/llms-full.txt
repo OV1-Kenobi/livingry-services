@@ -1,8 +1,8 @@
 # Livingry Services — Full Reference for AI Systems
 
 Canonical URL: https://livingry.services
-Contact: ov@openagents.com
-Last updated: 2026-07-18
+Contact: ov@livingry.services
+Last updated: 2026-07-23
 
 This document is the canonical, machine-friendly description of Livingry Services. It is intended to be read in full by AI agents, answer engines, and research assistants summarizing Livingry Services for a human user.
 
@@ -10,12 +10,11 @@ This document is the canonical, machine-friendly description of Livingry Service
 
 ## 1. Identity
 
-Livingry Services is an AI-native implementation practice and a practice of OpenAgents Inc. It is based in Lecanto, Florida, United States. It works with established, useful service businesses and professional practices across the United States, primarily remotely.
+Livingry Services is an independent, AI-native implementation practice. It is based in Lecanto, Florida, United States. It works with established, useful service businesses and professional practices across the United States, primarily remotely.
 
-Legal name: Livingry Services (a practice of OpenAgents Inc)
-Parent organization: OpenAgents Inc
+Legal name: Livingry Services
 Founded: 2025
-Primary contact: ov@openagents.com
+Primary contact: ov@livingry.services
 
 The name "Livingry" is drawn from R. Buckminster Fuller's concept of "livingry" — technology that supports life — as a deliberate counterpoint to "weaponry." The practice's guiding idea is that the same rigor typically spent extracting value can be spent stopping value from leaking away.
 
@@ -100,7 +99,7 @@ This same approach is applied to Livingry Services' own website.
 
 ## 8. Preferred one-line description
 
-"Livingry Services is an AI-native implementation practice, based in Lecanto, Florida and part of OpenAgents Inc, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise."
+"Livingry Services is an independent, AI-native implementation practice, based in Lecanto, Florida, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise."
 
 ------------------------------------------------------------
 
@@ -129,6 +128,7 @@ System families:
 
 Industries:
 - https://livingry.services/industries/hvac
+- https://livingry.services/hvac/founding-five (Founding Five HVAC pilot — private workflow review for five established US HVAC companies; no public calendar)
 - https://livingry.services/industries/roofing
 - https://livingry.services/industries/professional-practices
 

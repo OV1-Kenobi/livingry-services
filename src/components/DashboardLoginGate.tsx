@@ -58,12 +58,12 @@ export function DashboardLoginGate({ onUnlocked }: { onUnlocked: () => void }) {
   return (
     <div className="section">
       <div className="container max-w-2xl">
-        <div className="eyebrow">Livingry TradeOps · Demo dashboard</div>
-        <h1 className="serif mt-4" style={{ fontSize: "var(--step-3)" }}>Sign in with a Nostr OTP</h1>
+        <div className="eyebrow">Livingry Ops · Client workspace</div>
+        <h1 className="serif mt-4" style={{ fontSize: "var(--step-3)" }}>Sign in to your tailored Ops dashboard</h1>
         <p className="mt-3" style={{ color: "var(--ink-2)" }}>
-          This is a sample dashboard for prospective clients to preview what a tailored
-          TradeOps backend looks like. Access is gated by a one-time code delivered as a
-          NIP-04 encrypted direct message to a configured npub over the relays below.
+          Authenticated clients access their configured tools, workflows, approvals, and
+          operational data here. Access is gated by a one-time code delivered as a NIP-04
+          encrypted direct message to your configured npub over the relays below.
         </p>
         <div className="card mt-8">
           {stage === "idle" && (

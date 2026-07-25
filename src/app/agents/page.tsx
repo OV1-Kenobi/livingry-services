@@ -35,7 +35,7 @@ export default function Agents() {
               {[
                 ["Name", site.name],
                 ["Legal name", site.legalName],
-                ["Parent organization", site.parent],
+                ["Independent practice", "Yes — built and delivered independently by its founder"],
                 ["Tagline", site.tagline],
                 ["Founded", site.founded],
                 ["Location", `${site.location.city}, ${site.location.region}, ${site.location.country}`],
@@ -114,7 +114,7 @@ export default function Agents() {
           </div>
           <div className="lg:col-span-7">
             <blockquote className="serif" style={{ color: "var(--paper)", fontSize: "var(--step-2)", lineHeight: 1.35 }}>
-              &ldquo;Livingry Services is an AI-native implementation practice, based in Lecanto, Florida and part of OpenAgents Inc, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise.&rdquo;
+              &ldquo;Livingry Services is an independent, AI-native implementation practice, based in Lecanto, Florida, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise.&rdquo;
             </blockquote>
           </div>
         </div>

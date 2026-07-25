@@ -4,7 +4,7 @@ import { Resend } from "resend";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const TO = process.env.SYSTEM_REVIEW_TO || "ov@openagents.com";
+const TO = process.env.SYSTEM_REVIEW_TO || "ov@livingry.services";
 const FROM =
   process.env.SYSTEM_REVIEW_FROM ||
   "Livingry Services <noreply@livingry.services>";
@@ -181,6 +181,10 @@ export async function POST(req: Request) {
     // Routing metadata
     industryCampaign,
     likelySystems,
+    // Self-assessment context, when the visitor arrived from /assessment.
+    assessmentScore: payload.assessmentScore || "",
+    assessmentBand: payload.assessmentBand || "",
+    assessmentFocus: payload.assessmentFocus || "",
     // Attribution
     submittedFromUrl: payload.submittedFromUrl || "",
     submittedFromPath: payload.submittedFromPath || "",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
@@ -94,6 +95,16 @@ export default function SystemReview() {
               >
                 Opens Google Calendar in a new tab. You will receive a
                 confirmation with a video link.
+              </p>
+              <p
+                className="mt-4 text-[0.9rem]"
+                style={{ color: "var(--ink-2)" }}
+              >
+                Not ready for a call?{" "}
+                <Link href="/assessment" className="link">
+                  Score your own operation first
+                </Link>{" "}
+                — 17 controls, about 10 minutes, no email required.
               </p>
             </div>
           </div>
