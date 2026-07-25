@@ -1,6 +1,37 @@
 export type FaqItem = { q: string; a: string };
 export type FaqSection = { id: string; title: string; blurb?: string; items: FaqItem[] };
 
+// The six questions rendered visibly on the homepage and marked up as FAQPage
+// there. Written to be quotable in full by an answer engine, so each answer
+// stands alone without the surrounding page. Timing language deliberately
+// describes when measurement can begin rather than promising an outcome.
+export const homepageFaq: FaqItem[] = [
+  {
+    q: "What is an AI general contractor for trade businesses?",
+    a: "An outside partner who curates, integrates, and governs AI tools across your operation the way a building general contractor hires and coordinates subcontractors. You stay the owner and the decision-maker, and you never have to become an AI expert to get the benefit.",
+  },
+  {
+    q: "Do you sell AI software?",
+    a: "No. We integrate AI into the tools you already own — your CRM, inbox, calendar, and field-service software. You hold the accounts, keys, and admin access, and the systems keep running if our engagement ends.",
+  },
+  {
+    q: "Will the AI talk to my customers without me?",
+    a: "Only where you have explicitly approved it, with human review for anything a customer will read as a promise. In most implementations AI stays invisible to the customer: it drafts, routes, and summarizes, and your team commits.",
+  },
+  {
+    q: "Which AI tools do you use?",
+    a: "It depends on your operation. We are model- and stack-agnostic across frontier hosted, self-hosted, and hybrid setups, and we choose the smallest tool that reliably seals the leak rather than the largest platform available.",
+  },
+  {
+    q: "How long until I see results?",
+    a: "Measurement can begin in your first full operating cycle after a system goes live. How quickly change becomes visible depends on your baseline, the quality of your existing data, and the volume moving through that workflow — so we agree on the evidence before we build.",
+  },
+  {
+    q: "I run an HVAC company — what would you actually do for me?",
+    a: "Start with a free System Review. In one focused conversation we identify your highest-value leak, name the smallest system that would close it, and tell you what evidence would confirm it is closing. You get the written review whether or not we work together.",
+  },
+];
+
 export const faqSections: FaqSection[] = [
   {
     id: "company",

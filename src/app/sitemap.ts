@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agents",
     "/system-review",
     "/hvac/founding-five",
+    "/ops",
+    "/explore-demo",
     "/privacy",
     "/terms",
   ];
@@ -26,10 +28,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const all = [...staticRoutes, ...systemRoutes, ...industryRoutes];
 
+  // The two conversion routes rank alongside the service and industry pages:
+  // they are the pages a search or answer engine should surface for an owner who
+  // has already decided to act.
+  const conversionRoutes = new Set(["/system-review", "/assessment"]);
+  const priorityFor = (path: string) => {
+    if (path === "/") return 1;
+    if (conversionRoutes.has(path)) return 0.9;
+    if (path.startsWith("/industries/") || path.startsWith("/systems/")) return 0.8;
+    if (path === "/insights" || path === "/faq" || path === "/how-it-works") return 0.7;
+    return 0.6;
+  };
+
   return all.map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : path.startsWith("/industries/") || path.startsWith("/systems/") ? 0.8 : 0.6,
+    priority: priorityFor(path),
   }));
 }

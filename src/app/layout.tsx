@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   authors: [{ name: site.name }],
   keywords: [
+    "AI general contracting",
+    "AI general contractor",
     "AI implementation",
     "revenue recovery",
     "customer continuity",
@@ -59,9 +61,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // ProfessionalService is a LocalBusiness subtype and is accurate here: a real
+  // independent practice at a real address. No aggregateRating, review, price,
+  // opening hours, or award is asserted — none of those are verified facts, and
+  // inventing them is exactly the failure mode this markup is meant to avoid.
   const orgLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": `${site.primaryDomain}/#organization`,
     name: site.name,
     legalName: site.legalName,
@@ -76,8 +82,24 @@ export default function RootLayout({
       addressRegion: site.location.region,
       addressCountry: site.location.country,
     },
+    areaServed: { "@type": "Country", name: "United States" },
     sameAs: [site.social.github].filter(Boolean),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Livingry system families",
+      itemListElement: site.systemFamilies.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          serviceType: s.family,
+          description: s.improves,
+          url: `${site.primaryDomain}/systems/${s.slug}`,
+        },
+      })),
+    },
     knowsAbout: [
+      "AI general contracting",
       "AI implementation",
       "AI Growth Systems",
       "Revenue recovery",

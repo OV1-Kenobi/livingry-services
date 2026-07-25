@@ -1,62 +1,98 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { homepageFaq } from "@/lib/faq";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
+import { IllustrativeImage } from "@/components/IllustrativeImage";
 import { RevenueLeakDiagram } from "@/components/diagrams/RevenueLeakDiagram";
 
+// Each row pairs the owner's real need with the shortcut most owners reach for
+// and the general-contracting alternative. Deliberately tool-agnostic: we name
+// categories of tooling, never a vendor we have not actually selected for a client.
+const gcRows = [
+  {
+    need: "Speed-to-lead on web and phone inquiries",
+    alone: "Buy a chatbot and hope it converts.",
+    gc: "Curate the lead-routing path that fits your CRM, send after-hours demand to a real responder, and put written limits on what the AI is allowed to say.",
+  },
+  {
+    need: "Estimate follow-through",
+    alone: "Set a calendar reminder.",
+    gc: "Build a reactivation workflow that drafts the right nudge at the right interval from your own estimate records, with a person approving anything before it leaves.",
+  },
+  {
+    need: "Customer continuity",
+    alone: "Send one annual email.",
+    gc: "Sequence maintenance, warranty, replacement-eligibility, and seasonal contact on the cadence your service history actually justifies.",
+  },
+  {
+    need: "Knowledge trapped in your team",
+    alone: "Start a wiki nobody updates.",
+    gc: "Put a retrieval layer over the documents and threads you already have, scoped by role, so answers come on demand instead of through one busy person.",
+  },
+  {
+    need: "Discovery on AI search and answer engines",
+    alone: "Ignore it.",
+    gc: "Build the AI-readable structure — structured data, llms.txt, canonical facts, answerable FAQs — so answer engines describe you accurately, then monitor what they say.",
+  },
+];
+
+// The root layout supplies a title template; the homepage sets an absolute
+// title so the brand name is not appended twice.
+export const metadata: Metadata = {
+  title: {
+    absolute: "AI General Contracting for Trade & Professional Practices — Livingry Services",
+  },
+  description:
+    "Livingry Services is the AI general contractor for trade and professional practices. We curate, integrate, and govern AI tools inside the systems you already run — so leads, estimates, customers, and knowledge stop leaking away.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "AI General Contracting for Trade & Professional Practices — Livingry Services",
+    description:
+      "We curate the right AI tools for your operation, integrate them into the systems you already use, and stay accountable when something breaks.",
+    url: "/",
+    type: "website",
+  },
+};
+
 export default function Home() {
-  const homepageFaq = {
+  // FAQPage schema mirrors the six questions rendered visibly below. Keeping the
+  // two generated from one source is what keeps the markup honest.
+  const homepageFaqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What does Livingry Services do?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Livingry Services helps useful businesses stop losing the customers, opportunities, knowledge, and trust they have already worked to earn. We design and implement growth, workflow, and AI systems that improve response, follow-up, customer continuity, internal knowledge, and discovery — using the team and tools clients already have.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Which industries do you currently serve?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "HVAC companies are our active implementation focus. Roofing companies are our next active vertical and we are opening founding-partner conversations. Legal and medical professional practices are in governed pilot development.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the Livingry Leakproofing Framework?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Find what is leaking, trace where it leaks, seal the highest-value gap with the smallest useful system, verify the leak is closing under real conditions, and keep the business stronger by documenting the system and preserving client control.",
-        },
-      },
-    ],
+    mainEntity: homepageFaq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   return (
     <>
-      <JsonLd data={homepageFaq} />
+      <JsonLd data={homepageFaqLd} />
 
       {/* HERO */}
       <section className="section paper-grain" aria-labelledby="hero-heading">
         <div className="container">
           <div className="max-w-4xl">
-            <div className="eyebrow">Livingry Services · Growth, Workflow, and AI Systems</div>
+            <div className="eyebrow">Livingry Services · AI General Contracting</div>
             <h1 id="hero-heading" className="serif mt-6">
-              Stop losing the business you already worked to earn.
+              {site.positioning.headline}
             </h1>
-            <p className="mt-7 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)", maxWidth: "48rem" }}>
-              Livingry Services finds where customers, leads, estimates, knowledge, and trust are leaking out of your business — then designs and implements the systems that help you capture more of what you have already earned.
+            <p className="mt-6 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)", maxWidth: "48rem" }}>
+              {site.positioning.subhead}
+            </p>
+            <p className="mt-6" style={{ color: "var(--ink-2)", maxWidth: "46rem" }}>
+              You did not start your business to become an AI expert. But the tooling that used to be a big-company advantage is now within reach, and your competitors are quietly wiring it up. We curate the right AI tools for your operation, integrate them into the systems you already use, and stay accountable when something breaks. You run the business. We run the AI stack behind it.
             </p>
             <div className="mt-9 flex flex-wrap gap-3 items-center">
-              <Link href="/system-review" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
-              <Link href="/what-we-build" className="btn btn-secondary">See What We Build</Link>
+              <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
+              <Link href="/assessment" className="btn btn-secondary">Take the 10-Minute Leak Assessment</Link>
             </div>
-            <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
-              We build in tools you control, with records you can carry forward — human-controlled, measurable, and built around the people and systems you already have.
+            <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)", maxWidth: "44rem" }}>
+              Named for Buckminster Fuller&rsquo;s <em>livingry</em> — technology pointed at preserving and extending human life rather than extracting from it. We build in tools you control, with records you can carry forward.
             </p>
           </div>
 
@@ -84,10 +120,67 @@ export default function Home() {
 
       <hr />
 
+      {/* WHAT IS AI GENERAL CONTRACTING */}
+      <section className="section" aria-labelledby="gc-heading">
+        <div className="container">
+          <div className="rule-label">01 · The short answer</div>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <h2 id="gc-heading" className="serif">What is AI general contracting?</h2>
+              <p className="mt-5 serif" style={{ fontSize: "var(--step-1)", lineHeight: 1.45, color: "var(--ink)" }}>
+                Livingry Services is an AI general contractor for trade and professional practices. We curate, integrate, and govern AI tools inside the systems a business already runs — closing the places where leads, estimates, customers, knowledge, and trust leak away, with humans accountable throughout.
+              </p>
+            </div>
+            <div className="lg:col-span-7 grid gap-5">
+              <p style={{ color: "var(--ink-2)" }}>
+                A general contractor does not pour the foundation or run the wire. They hire the right subs, sequence the work, hold them to scope, and own the result. <strong>For your business&rsquo;s AI stack, we play that role.</strong> You never need to choose between two scheduling tools, stand up a retrieval layer, or work out how a chatbot should behave against your CRM. That is our job.
+              </p>
+              <p style={{ color: "var(--ink-2)" }}>
+                Running an HVAC, roofing, legal, or medical practice is already a full-time job, and AI tooling changes faster than any owner can track. Most of what is written about &ldquo;AI for business&rdquo; is either a vendor pitch or a shallow list. <strong>We sit between you and the AI vendors</strong> — testing, comparing, integrating, governing, and handing the keys back to your team.
+              </p>
+              <p style={{ color: "var(--ink-2)" }}>
+                The belief worth discarding first is that <em>AI is one tool you can buy that will fix the leak.</em> It is not. Every workflow that loses value has its own shape, and each leak needs the right tool wired in correctly — with a person still accountable for anything a customer will read as a promise.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <table className="gc-table" role="table">
+              <caption className="sr-only">
+                What a trade or professional practice actually needs, the shortcut most owners reach for on their own, and what Livingry Services does as an AI general contractor.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">What you actually need</th>
+                  <th scope="col">What you might do alone</th>
+                  <th scope="col">What we do as your AI general contractor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {gcRows.map((r) => (
+                  <tr key={r.need}>
+                    <th scope="row" data-label="What you actually need">{r.need}</th>
+                    <td data-label="What you might do alone">{r.alone}</td>
+                    <td data-label="What we do as your AI general contractor" className="gc-does">{r.gc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
+            <Link href="/how-it-works" className="btn btn-ghost">See how the work runs <span aria-hidden>→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
       {/* WHAT WE DO — leak table */}
       <section className="section" aria-labelledby="leaks-heading">
         <div className="container">
-          <div className="rule-label">01 · What we do</div>
+          <div className="rule-label">02 · What we do</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 id="leaks-heading" className="serif">
@@ -95,6 +188,9 @@ export default function Home() {
               </h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
                 Most businesses do not only have a lead problem. They have a leakage problem: attention is earned but not captured; trust is built but not carried forward; knowledge exists but cannot be used; and good prospects disappear between one step and the next.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                Each of the seven system families below names a specific leak — and the AI work we take on to close it.
               </p>
               <div className="mt-8">
                 <Link href="/system-review" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
@@ -119,6 +215,10 @@ export default function Home() {
                       <div className="text-[0.95rem]" style={{ color: "var(--ink-3)" }}>
                         <span style={{ color: "var(--forest)" }}>Fix · </span>{s.improves}
                       </div>
+                      <p className="mt-2 text-[0.92rem]" style={{ color: "var(--ink-2)", borderLeft: "2px solid var(--copper)", paddingLeft: "0.85rem" }}>
+                        <span className="eyebrow" style={{ color: "var(--copper-2)" }}>AI general contracting here</span>
+                        <span className="block mt-1.5">{s.aiGc}</span>
+                      </p>
                     </Link>
                   </li>
                 ))}
@@ -134,7 +234,7 @@ export default function Home() {
       {/* METHOD */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="method-heading">
         <div className="container">
-          <div className="rule-label">02 · The method</div>
+          <div className="rule-label">03 · The method</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 id="method-heading" className="serif">The Livingry Leakproofing Framework.</h2>
@@ -146,6 +246,9 @@ export default function Home() {
               </p>
               <p className="mt-4 serif italic" style={{ color: "var(--copper-2)", fontSize: "var(--step-1)" }}>
                 Find the leak. Seal the gap. Keep more of what you already earned.
+              </p>
+              <p className="mt-6">
+                <Link href="/how-it-works" className="link" style={{ color: "var(--forest)" }}>Read the full framework →</Link>
               </p>
             </div>
             <ol className="lg:col-span-7 grid gap-0">
@@ -166,10 +269,47 @@ export default function Home() {
 
       <hr />
 
+      {/* FOUNDER CREDIBILITY */}
+      <section className="section" aria-labelledby="founder-heading">
+        <div className="container">
+          <div className="rule-label">04 · Who does the work</div>
+          <div className="grid gap-10 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-7">
+              <h2 id="founder-heading" className="serif">Built by someone who has done the work.</h2>
+              <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+                Livingry Services is an independent practice. The founder came up through hands-on trades and field work — permaculture design, solar, and HVAC — before years of building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems. That combination is the point: an AI general contractor has to understand the job site as well as the stack.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses are the design requirements behind Livingry: build in tools the client controls, with records they can carry forward.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-4">
+                <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Why Livingry →</Link>
+                <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Read the origin story →</Link>
+              </div>
+            </div>
+            <div className="lg:col-span-5">
+              <figure className="diagram" style={{ maxWidth: "26rem" }}>
+                <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--rule)" }}>
+                  <IllustrativeImage
+                    base="founder-origin-collage"
+                    height={800}
+                    sizes="(min-width: 1024px) 420px, 100vw"
+                    alt="Editorial illustration of three credential-loss failure modes — a fire-damaged frame, a disappeared issuer, and a rebranded company — resolving into owner-controlled custody. Illustration, not a documentary portrait."
+                  />
+                </div>
+                <figcaption>Editorial illustration of the origin story — not a documentary portrait.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
       {/* INDUSTRIES */}
       <section className="section" aria-labelledby="industries-heading">
         <div className="container">
-          <div className="rule-label">03 · Industries</div>
+          <div className="rule-label">05 · Industries</div>
           <div className="max-w-3xl">
             <h2 id="industries-heading" className="serif">Built for the realities of your industry.</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
@@ -206,7 +346,7 @@ export default function Home() {
       <section className="section" style={{ background: "var(--ink)", color: "var(--paper)" }} aria-labelledby="why-heading">
         <div className="container">
           <div className="rule-label" style={{ color: "var(--seal)" }}>
-            <span style={{ color: "var(--seal)" }}>04 · Why livingry</span>
+            <span style={{ color: "var(--seal)" }}>06 · Why livingry</span>
           </div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-6">
@@ -233,6 +373,35 @@ export default function Home() {
 
       <hr />
 
+      {/* FAQ */}
+      <section className="section" aria-labelledby="faq-heading">
+        <div className="container">
+          <div className="rule-label">07 · Common questions</div>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <h2 id="faq-heading" className="serif">Questions owners actually ask.</h2>
+              <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+                Straight answers about what an AI general contractor does, what we will not do, and where the human stays accountable.
+              </p>
+              <p className="mt-6">
+                <Link href="/faq" className="link" style={{ color: "var(--forest)" }}>Read the full FAQ →</Link>
+              </p>
+            </div>
+            <div className="lg:col-span-8 grid gap-0">
+              {homepageFaq.map((f, i) => (
+                <div key={f.q} className="py-6" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
+                  <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{f.q}</h3>
+                  <p className="mt-3" style={{ color: "var(--ink-2)" }}>{f.a}</p>
+                </div>
+              ))}
+              <div style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
       {/* PROOF THAT CAN TRAVEL */}
       <section className="section" aria-labelledby="proof-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
@@ -246,7 +415,7 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why ownership matters →</Link>
-              <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Why Livingry →</Link>
+              <Link href="/insights" className="link" style={{ color: "var(--forest)" }}>Insights →</Link>
             </div>
           </div>
         </div>
@@ -266,8 +435,8 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/system-review" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
-              <Link href="/faq" className="btn btn-ghost">Read the FAQ <span aria-hidden>→</span></Link>
+              <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
+              <Link href="/assessment" className="btn btn-ghost">Take the Leak Assessment <span aria-hidden>→</span></Link>
             </div>
           </div>
         </div>
