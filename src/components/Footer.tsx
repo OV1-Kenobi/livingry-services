@@ -42,6 +42,7 @@ export function Footer() {
             <div className="eyebrow mt-8" style={{ color: "var(--seal)" }}>Company</div>
             <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
               <li><Link href="/how-it-works">How It Works</Link></li>
+              <li><Link href="/assessment">17-Point Leak Assessment</Link></li>
               <li><Link href="/about">Why Livingry</Link></li>
               <li><Link href="/proof">Proof</Link></li>
               <li><Link href="/why-livingry">The Livingry Idea</Link></li>

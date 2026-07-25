@@ -27,7 +27,14 @@ const nav = [
       { label: "Professional Practices", href: "/industries/professional-practices" },
     ],
   },
-  { label: "How It Works", href: "/how-it-works" },
+  {
+    label: "How It Works",
+    href: "/how-it-works",
+    children: [
+      { label: "The Five-Step Framework", href: "/how-it-works" },
+      { label: "17-Point Leak Assessment", href: "/assessment" },
+    ],
+  },
   { label: "Explore Demo Dashboard", href: "/ops" },
   { label: "Why Livingry", href: "/about" },
   { label: "Proof", href: "/proof" },
