@@ -2,6 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { site } from "@/lib/site";
+import {
+  describeTriageContext,
+  parseTriageContext,
+  type TriageContext,
+} from "@/lib/assessment/scoring";
 
 type Industry = "hvac" | "roofing" | "legal" | "medical" | "other";
 
@@ -20,6 +25,8 @@ export function ReviewForm() {
   );
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [context, setContext] = useState<Record<string, string>>({});
+  const [triage, setTriage] = useState<TriageContext | null>(null);
+  const [leak, setLeak] = useState("");
 
   // Collect referral / UTM / page context once on mount so we can attach it to
   // every submission and route it into the right follow-up campaign later.
@@ -31,12 +38,29 @@ export function ReviewForm() {
       const v = url.searchParams.get(k);
       if (v) utm[k] = v;
     });
+
+    // A visitor arriving from the public /assessment carries their score, band,
+    // and weakest layer in the query string. Values are validated against the
+    // known vocabulary before being shown or sent.
+    const carried = parseTriageContext(url.searchParams);
+    if (carried) {
+      setTriage(carried);
+      setLeak(`${describeTriageContext(carried)}\n\n`);
+    }
+
     setContext({
       submittedFromUrl: window.location.href,
       submittedFromPath: window.location.pathname,
       referrer: document.referrer || "",
       userAgent: navigator.userAgent,
       language: navigator.language,
+      ...(carried
+        ? {
+            assessmentScore: String(carried.score),
+            assessmentBand: carried.band.id,
+            assessmentFocus: carried.category?.id ?? "",
+          }
+        : {}),
       ...utm,
     });
   }, []);
@@ -53,6 +77,7 @@ export function ReviewForm() {
     if (typeof raw.company_website === "string" && raw.company_website.trim()) {
       // Silent success — bot filled the honeypot.
       setStatus("sent");
+      setLeak("");
       form.reset();
       return;
     }
@@ -68,6 +93,7 @@ export function ReviewForm() {
         throw new Error(body.error || `Request failed (${res.status})`);
       }
       setStatus("sent");
+      setLeak("");
       form.reset();
     } catch (err) {
       setStatus("error");
@@ -124,6 +150,26 @@ export function ReviewForm() {
       className="card grid gap-5"
       aria-label="Leak Assessment intake"
     >
+      {triage && (
+        <div className="asm-carryover">
+          <p>
+            Carried over from your self-assessment:{" "}
+            <strong>
+              {triage.score} / 51 — {triage.band.label}
+            </strong>
+            {triage.category ? (
+              <>
+                . Weakest layer: <strong>{triage.category.title}</strong>.
+              </>
+            ) : (
+              "."
+            )}{" "}
+            We will start the triage there. Edit the notes below if it does not match what you
+            are seeing.
+          </p>
+        </div>
+      )}
+
       <div className="grid md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name">Your name</label>
@@ -237,6 +283,8 @@ export function ReviewForm() {
           name="leak"
           rows={5}
           required
+          value={leak}
+          onChange={(e) => setLeak(e.target.value)}
           placeholder="Missed calls, cold estimates, quiet past customers, unclear website, disorganized intake, staff using AI without oversight — anything the team keeps talking about."
         />
       </div>

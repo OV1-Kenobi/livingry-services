@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/what-we-build",
     "/industries",
     "/how-it-works",
+    "/assessment",
     "/why-livingry",
     "/about",
     "/proof",

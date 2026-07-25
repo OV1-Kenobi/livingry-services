@@ -181,6 +181,10 @@ export async function POST(req: Request) {
     // Routing metadata
     industryCampaign,
     likelySystems,
+    // Self-assessment context, when the visitor arrived from /assessment.
+    assessmentScore: payload.assessmentScore || "",
+    assessmentBand: payload.assessmentBand || "",
+    assessmentFocus: payload.assessmentFocus || "",
     // Attribution
     submittedFromUrl: payload.submittedFromUrl || "",
     submittedFromPath: payload.submittedFromPath || "",
