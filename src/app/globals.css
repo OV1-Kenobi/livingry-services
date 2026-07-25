@@ -875,6 +875,126 @@ label {
 }
 
 /* =========================================================
+   Insights long-form article — /insights/<slug>
+   One grid owns the measure: prose sits in a 40rem column,
+   figures and tables span the wider 54rem track. Widening by
+   grid track rather than negative margins keeps the layout
+   incapable of producing horizontal overflow at any viewport.
+   ========================================================= */
+
+.article {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [prose-start] minmax(0, 40rem) [prose-end]
+    minmax(0, 1fr) [full-end];
+  row-gap: 1.15rem;
+  max-width: 54rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.article > * { grid-column: prose; }
+.article > .article-wide { grid-column: full; }
+
+.article p { max-width: none; color: var(--ink-2); }
+.article p + p { margin-top: 0; }
+.article strong { color: var(--ink); font-weight: 600; }
+
+.article h2 {
+  font-size: var(--step-3);
+  line-height: 1.1;
+  margin-top: 3.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 6rem;
+}
+.article h3 {
+  font-size: var(--step-1);
+  line-height: 1.25;
+  margin-top: 2rem;
+  color: var(--ink);
+  scroll-margin-top: 6rem;
+}
+.article > h2 + *, .article > h3 + * { margin-top: 0; }
+
+.article ul, .article ol {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.35rem;
+  color: var(--ink-2);
+}
+.article ul { list-style: disc; }
+.article ol { list-style: decimal; }
+.article li::marker { color: var(--copper-2); }
+.article li > p { display: inline; }
+
+/* Pull quotes in the source are workflow maps and ROI formulas, not speech —
+   they read as specimens, so they get the mono/rule treatment rather than
+   quotation styling. Wrapping is forced so a long chain never scrolls. */
+.article-formula {
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 2px solid var(--copper);
+  background: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.article-callout {
+  margin: 0;
+  padding: 1.15rem 1.3rem;
+  border: 1px solid var(--ink-3);
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--white) 70%, transparent);
+}
+.article-callout p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
+
+.article-figure { margin: 2.25rem 0 1rem; }
+.article-figure figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  max-width: 46rem;
+}
+.article-figure img { border: 1px solid var(--rule); border-radius: 8px; }
+
+/* Article header meta row and contents nav */
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+.article-toc { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; counter-reset: toc; }
+.article-toc a { color: var(--ink-2); border-bottom: 1px solid transparent; }
+.article-toc a:hover { color: var(--forest); border-color: var(--forest); }
+.article-toc li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.article-toc li::before {
+  counter-increment: toc;
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--copper-2);
+  line-height: 1.7;
+}
+@media (min-width: 720px) {
+  .article-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+}
+
+/* =========================================================
    Deterministic diagrams (revenue-leak, orchestration, process)
    Semantic HTML + CSS; SVG used only for non-text artwork.
    Text labels are always real HTML so they stay legible and

@@ -4,11 +4,13 @@ import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { JsonLd } from "@/components/JsonLd";
+import { IllustrativeImage } from "@/components/IllustrativeImage";
+import { aiForHvacCompanies } from "@/lib/insights";
 
 export const metadata: Metadata = {
   title: "Insights — AI General Contracting Field Guides for Trade Businesses",
   description:
-    "The Livingry Insights editorial roadmap: seven planned field guides on AI general contracting, AI for HVAC and roofing operations, human-in-the-loop boundaries, and discovery in the age of AI search.",
+    "Livingry Insights: the published field guide on AI for HVAC companies, plus the editorial roadmap of guides on AI general contracting, human-in-the-loop boundaries, and discovery in the age of AI search.",
   alternates: { canonical: "/insights" },
   openGraph: {
     title: "Insights — AI General Contracting Field Guides for Trade Businesses",
@@ -19,11 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-// The editorial roadmap. Every entry is a commitment, not a published page — no
-// article routes exist yet, so nothing here links to a thin URL. Status is the
-// honest state of the work; the case study stays "Evidence pending" until the
-// Founding Five program produces results we can actually verify and show.
-type PillarStatus = "In development" | "Planned" | "Evidence pending";
+// The editorial roadmap. Every entry is a commitment; only entries carrying an
+// href are actually published, and the rest link nowhere rather than to a thin
+// URL. Status is the honest state of the work; the case study stays "Evidence
+// pending" until the Founding Five program produces results we can verify.
+type PillarStatus = "Published" | "In development" | "Planned" | "Evidence pending";
 
 const pillars: {
   title: string;
@@ -31,13 +33,15 @@ const pillars: {
   tag: string;
   status: PillarStatus;
   answers: string;
+  href?: string;
 }[] = [
   {
-    title: "AI for HVAC Companies: A Field Guide",
+    title: aiForHvacCompanies.title,
     dek: "What AI actually does inside an HVAC operation today, what is still hype, and a tool-agnostic way to compare options without a vendor in the room.",
     tag: "HVAC",
-    status: "In development",
+    status: "Published",
     answers: "What can AI realistically do for an HVAC company right now?",
+    href: aiForHvacCompanies.path,
   },
   {
     title: "AI General Contracting: A New Category for Trade Businesses",
@@ -84,18 +88,26 @@ const pillars: {
 ];
 
 const statusStyle: Record<PillarStatus, string> = {
+  Published: "pill-active",
   "In development": "pill-next",
   Planned: "pill-future",
   "Evidence pending": "pill-future",
 };
 
+const publishedOn = new Date(`${aiForHvacCompanies.published}T00:00:00Z`).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
 export default function Insights() {
   const crumbs = [{ label: "Home", href: "/" }, { label: "Insights", href: "/insights" }];
 
-  // CollectionPage + ItemList describe the roadmap as a list of planned works.
-  // Deliberately no Article/BlogPosting schema and no datePublished: nothing here
-  // is published yet, and claiming otherwise would be the fabrication this hub
-  // exists to avoid.
+  // CollectionPage + ItemList describe the hub's contents. Only the published
+  // guide carries a url; the planned entries stay bare names, because marking an
+  // unwritten piece as a work with an address is the fabrication this hub exists
+  // to avoid. The Article schema itself lives on the article route.
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -103,13 +115,13 @@ export default function Insights() {
     url: `${site.primaryDomain}/insights`,
     name: "Livingry Insights",
     description:
-      "The editorial roadmap for Livingry Services: seven planned field guides on AI general contracting for trade and professional practices.",
+      "The editorial programme for Livingry Services: seven field guides on AI general contracting for trade and professional practices, published as each one can be written from real implementation evidence.",
     isPartOf: { "@id": `${site.primaryDomain}/#website` },
     publisher: { "@id": `${site.primaryDomain}/#organization` },
     inLanguage: "en-US",
     mainEntity: {
       "@type": "ItemList",
-      name: "Planned pillar guides",
+      name: "Pillar field guides",
       itemListOrder: "https://schema.org/ItemListOrderAscending",
       numberOfItems: pillars.length,
       itemListElement: pillars.map((p, i) => ({
@@ -117,6 +129,7 @@ export default function Insights() {
         position: i + 1,
         name: p.title,
         description: p.dek,
+        ...(p.href ? { url: `${site.primaryDomain}${p.href}` } : {}),
       })),
     },
   };
@@ -129,10 +142,54 @@ export default function Insights() {
       <PageHero
         eyebrow="Insights"
         title="Field guides on AI general contracting."
-        lede="Livingry Insights is a working editorial roadmap, not a blog archive. It lists the seven guides we are writing on what AI actually does inside a trade or professional practice — each published only when it can be written from real implementation evidence rather than vendor marketing."
+        lede="Livingry Insights is a working editorial programme, not a blog archive. Seven guides on what AI actually does inside a trade or professional practice — each published only when it can be written from real implementation evidence rather than vendor marketing. The first one is live."
         primaryCta={{ label: "Book a Free System Review", href: "/system-review" }}
         secondaryCta={{ label: "Take the 10-Minute Leak Assessment", href: "/assessment" }}
       />
+
+      <section className="section-tight" aria-labelledby="published-heading">
+        <div className="container">
+          <div className="rule-label">Published</div>
+          <h2 id="published-heading" className="sr-only">
+            Published field guides
+          </h2>
+          <article className="card grid gap-8 lg:grid-cols-12 items-start" style={{ padding: "clamp(1.25rem, 2.5vw, 2rem)" }}>
+            <div className="lg:col-span-5">
+              <Link href={aiForHvacCompanies.path} tabIndex={-1} aria-hidden>
+                <IllustrativeImage
+                  base="insights/ai-for-hvac-companies-hero"
+                  width={1536}
+                  height={1024}
+                  sizes="(min-width: 1024px) 460px, 100vw"
+                  alt=""
+                  style={{ borderRadius: "6px", border: "1px solid var(--rule)" }}
+                />
+              </Link>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="eyebrow">{aiForHvacCompanies.category}</span>
+                <span className="pill pill-active">Published</span>
+              </div>
+              <h3 className="serif mt-4" style={{ fontSize: "var(--step-3)", lineHeight: 1.1 }}>
+                <Link href={aiForHvacCompanies.path} className="hover:text-forest">
+                  {aiForHvacCompanies.title}
+                </Link>
+              </h3>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                {aiForHvacCompanies.excerpt}
+              </p>
+              <p className="mt-4 text-[0.85rem]" style={{ color: "var(--ink-3)" }}>
+                <time dateTime={aiForHvacCompanies.published}>{publishedOn}</time> ·{" "}
+                {aiForHvacCompanies.words.toLocaleString("en-US")} words · Tool-agnostic, fully cited
+              </p>
+              <Link href={aiForHvacCompanies.path} className="btn btn-primary mt-6">
+                Read the field guide <span aria-hidden>→</span>
+              </Link>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <section className="section-tight">
         <div className="container grid gap-10 lg:grid-cols-12">
@@ -148,7 +205,8 @@ export default function Insights() {
               These guides are the opposite. Each one is tool-agnostic, names its own boundaries, and is written from work we have actually done. That is also why they are dated by readiness rather than by a publishing calendar — we would rather publish fewer honest guides than pad the list to hit a number.
             </p>
             <p className="mt-4 text-[0.95rem]" style={{ color: "var(--ink-3)" }}>
-              No article pages are live yet. Statuses below are the real state of each piece.
+              One guide is published so far. Statuses below are the real state of each piece — the six without a link
+              are not written yet.
             </p>
           </div>
         </div>
@@ -173,7 +231,13 @@ export default function Insights() {
                   <span className={`pill ${statusStyle[p.status]} mt-3 inline-block`}>{p.status}</span>
                 </div>
                 <div className="lg:col-span-9">
-                  <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>{p.title}</h3>
+                  <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>
+                    {p.href ? (
+                      <Link href={p.href} className="hover:text-forest">{p.title}</Link>
+                    ) : (
+                      p.title
+                    )}
+                  </h3>
                   <p className="mt-3 max-w-2xl" style={{ color: "var(--ink-2)" }}>{p.dek}</p>
                   <p className="mt-3 text-[0.92rem]" style={{ color: "var(--ink-3)" }}>
                     <span className="eyebrow" style={{ color: "var(--copper-2)" }}>Answers</span>

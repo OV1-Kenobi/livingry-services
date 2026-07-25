@@ -91,7 +91,7 @@ test.describe("homepage — AI general contracting", () => {
 });
 
 test.describe("insights hub", () => {
-  test("lists the seven planned pillars with honest statuses and no article links", async ({ page }) => {
+  test("lists the seven pillars, and links only to the one that is written", async ({ page }) => {
     await page.setViewportSize(DESKTOP);
     await page.goto("/insights", { waitUntil: "networkidle" });
 
@@ -99,12 +99,21 @@ test.describe("insights hub", () => {
     const headings = page.locator("main li h3, main li h2");
     await expect(headings).toHaveCount(7);
 
-    await expect(page.getByText("No article pages are live yet", { exact: false })).toBeVisible();
-    // Nothing is published, so no link may point into a pillar URL.
-    await expect(page.locator('main a[href^="/insights/"]')).toHaveCount(0);
+    await expect(page.getByText("One guide is published so far", { exact: false })).toBeVisible();
 
+    // Six pillars are unwritten, so the hub may link to exactly one article —
+    // the featured card and the roadmap row both point at the same route.
+    const articleLinks = page.locator('main a[href^="/insights/"]');
+    const hrefs = new Set(await articleLinks.evaluateAll((els) => els.map((e) => e.getAttribute("href"))));
+    expect([...hrefs]).toEqual(["/insights/ai-for-hvac-companies"]);
+
+    const resp = await page.goto("/insights/ai-for-hvac-companies", { waitUntil: "networkidle" });
+    expect(resp?.ok(), "the article the hub links to actually resolves").toBeTruthy();
+
+    await page.goBack({ waitUntil: "networkidle" });
     const body = await page.locator("body").innerText();
     // The status pills are uppercased in CSS, so compare case-insensitively.
+    expect(body).toMatch(/published/i);
     expect(body).toMatch(/evidence pending/i);
     expect(body).toMatch(/in development/i);
     expect(body).toMatch(/planned/i);

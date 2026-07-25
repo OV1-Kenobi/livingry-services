@@ -1,10 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { site } from "../src/lib/site";
 import { homepageFaq } from "../src/lib/faq";
+import { publishedArticles } from "../src/lib/insights";
 
 // Guards for the AI general contracting positioning, the Insights content hub
 // scaffold, and the AEO/SEO surfaces (llms files, robots, sitemap, schema).
@@ -155,7 +156,7 @@ test("the Insights hub lists all seven pillar topics with honest statuses", () =
   const pillars = insightsPage.match(/\n    dek: "/g) ?? [];
   assert.equal(pillars.length, 7, "seven pillar topics from the audit roadmap");
 
-  for (const status of ["In development", "Planned", "Evidence pending"]) {
+  for (const status of ["Published", "In development", "Planned", "Evidence pending"]) {
     assert.ok(insightsPage.includes(`"${status}"`), `${status} is an available status`);
   }
   assert.ok(
@@ -164,18 +165,30 @@ test("the Insights hub lists all seven pillar topics with honest statuses", () =
   );
 });
 
-test("the hub fabricates no articles, dates, authors, or read times", () => {
+test("the hub links only to articles that exist, and fabricates nothing about the rest", () => {
   const shipped = stripComments(insightsPage);
-  assert.ok(!/datePublished|dateModified/.test(shipped), "no publication dates are claimed");
-  assert.ok(!/"@type": "(Article|BlogPosting|NewsArticle)"/.test(shipped), "nothing is marked up as a published article");
-  assert.ok(!/\bmin read\b|\bread time\b/i.test(shipped), "no invented read times");
-  assert.ok(!/\bauthor\b/i.test(shipped), "no invented bylines");
-  assert.ok(!/\b20\d\d-\d\d-\d\d\b/.test(shipped), "no hard-coded publication date");
-  assert.ok(
-    insightsPage.includes("No article pages are live yet"),
-    "the hub states plainly that nothing is published yet",
+
+  // Exactly one pillar carries an href, and it is the one that is published.
+  const hrefs = shipped.match(/href: aiForHvacCompanies\.path|href\?: string/g) ?? [];
+  assert.ok(hrefs.length > 0, "the published pillar carries a route");
+  assert.equal(
+    (shipped.match(/^\s{4}href: /gm) ?? []).length,
+    1,
+    "only one pillar links out — the other six are unwritten",
   );
-  assert.ok(!/href="\/insights\//.test(insightsPage), "no links to non-existent article URLs");
+  assert.ok(
+    publishedArticles.every((a) => existsSync(resolve(root, `src/app${a.path}/page.tsx`))),
+    "every article the hub links to has a real route",
+  );
+
+  assert.ok(!/"@type": "(Article|BlogPosting|NewsArticle)"/.test(shipped),
+    "the hub does not duplicate the Article schema that lives on the article route");
+  assert.ok(!/\bmin read\b|\bread time\b/i.test(shipped), "no invented read times");
+  assert.ok(!/\b20\d\d-\d\d-\d\d\b/.test(shipped), "publication dates come from the article record, not hard-coded copy");
+  assert.ok(
+    /One guide is published so far/.test(insightsPage) && /are not written yet/.test(insightsPage),
+    "the hub states plainly how much is published",
+  );
 });
 
 test("the hub carries no newsletter capture, since no email provider is connected", () => {

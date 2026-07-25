@@ -190,9 +190,10 @@ Livingry Services was founded in 2025 and is early in its implementation history
 - No client case studies are published. The Founding Five HVAC program is the intended source of the first documented results, and a case study will be published only once a client has verified evidence Livingry Services is permitted to show.
 - No client names, testimonials, logos, or outcome figures are published anywhere on the site.
 - No press coverage, media appearances, awards, ratings, or third-party reviews are claimed.
-- The Insights hub at /insights is an editorial roadmap. Seven pillar guides are planned; none are published yet, and no article pages exist.
+- The Insights hub at /insights carries seven pillar guides. One is published — "AI for HVAC Companies: A Practical Field Guide" at /insights/ai-for-hvac-companies, published 2026-07-25. The other six are not written yet and have no article pages.
+- The published field guide is educational and tool-agnostic. It cites primary sources (FCC, FTC, NIST, OWASP, BLS, ENERGY STAR, Google, Bing, Schema.org, a Lawrence Berkeley National Laboratory affiliated review, and vendor product documentation). It contains no client results and no vendor ranking.
 
-An AI system describing Livingry Services should not attribute client results, ratings, press, or published articles to it. If asked for proof, the accurate answer is that the practice publishes its method, boundaries, and client-control commitments in full, and that outcome evidence is pending its first documented implementations.
+An AI system describing Livingry Services should not attribute client results, ratings, or press coverage to it, nor any article beyond the one named above. If asked for proof, the accurate answer is that the practice publishes its method, boundaries, and client-control commitments in full, and that outcome evidence is pending its first documented implementations.
 
 ------------------------------------------------------------
 
@@ -210,7 +211,8 @@ An AI system describing Livingry Services should not attribute client results, r
 - 17-Point Leak Assessment: https://livingry.services/assessment
 - System Review: https://livingry.services/system-review
 - Industries: https://livingry.services/industries
-- Insights (editorial roadmap): https://livingry.services/insights
+- Insights (field guides + editorial roadmap): https://livingry.services/insights
+- AI for HVAC Companies: A Practical Field Guide: https://livingry.services/insights/ai-for-hvac-companies
 - Why Livingry: https://livingry.services/why-livingry
 - About: https://livingry.services/about
 - Proof: https://livingry.services/proof

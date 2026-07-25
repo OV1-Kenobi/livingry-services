@@ -19,6 +19,7 @@ const ROUTES = [
   { name: "what-we-build", path: "/what-we-build" },
   { name: "how-it-works", path: "/how-it-works" },
   { name: "insights", path: "/insights" },
+  { name: "insights-ai-for-hvac", path: "/insights/ai-for-hvac-companies" },
   { name: "industries-hvac", path: "/industries/hvac" },
   { name: "founding-five", path: "/hvac/founding-five" },
   { name: "explore-demo", path: "/explore-demo" },

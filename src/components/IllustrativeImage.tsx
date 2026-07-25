@@ -1,10 +1,10 @@
 import type { CSSProperties } from "react";
 
-// Renders an optimized <picture> (AVIF → WebP → PNG fallback) for the two
+// Renders an optimized <picture> (AVIF → WebP → PNG fallback) for the
 // pre-optimized editorial assets in /public/assets. Alt text is required and
 // must describe the image as illustrative — never as a real customer, case
 // study, or documentary portrait. Width/height are set to reserve layout space
-// and prevent shift; the intrinsic assets are 1600px wide.
+// and prevent shift; the intrinsic assets are at most 1600px wide.
 export function IllustrativeImage({
   base,
   alt,
@@ -15,7 +15,13 @@ export function IllustrativeImage({
   sizes = "(min-width: 1024px) 640px, 100vw",
   priority = false,
 }: {
-  base: "founder-origin-collage" | "hvac-field-context";
+  base:
+    | "founder-origin-collage"
+    | "hvac-field-context"
+    | "insights/ai-for-hvac-companies-hero"
+    | "insights/hvac-customer-lifecycle"
+    | "insights/hvac-ai-autonomy-ceiling"
+    | "insights/hvac-ai-90-day-roadmap";
   alt: string;
   width?: number;
   height: number;

@@ -74,7 +74,8 @@ Poor fit: companies wanting a chatbot that pretends to be human, companies plann
 - [17-Point Leak Assessment](https://livingry.services/assessment): free self-scoring assessment, ~10 minutes, no email required.
 - [System Review](https://livingry.services/system-review): request the free first review.
 - [Industries](https://livingry.services/industries): who we work with today and next.
-- [Insights](https://livingry.services/insights): editorial roadmap of planned field guides. No articles published yet.
+- [Insights](https://livingry.services/insights): the published field guides plus the editorial roadmap of the remaining six.
+- [AI for HVAC Companies: A Practical Field Guide](https://livingry.services/insights/ai-for-hvac-companies): published 2026-07-25. Where AI helps an HVAC operation, what is still hype, how to set the autonomy ceiling, the 17 questions to ask any vendor, and a controlled 90-day pilot. Tool-agnostic and cited to primary sources.
 - [Why Livingry](https://livingry.services/why-livingry): the philosophy behind the name.
 - [About](https://livingry.services/about): the founder, the origin story, and how we work.
 - [Proof](https://livingry.services/proof): client-control covenant and why records must be portable.
