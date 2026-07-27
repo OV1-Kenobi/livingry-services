@@ -6,8 +6,8 @@ import { Logo } from "./Logo";
 
 const nav = [
   {
-    label: "What We Build",
-    href: "/what-we-build",
+    label: "Operations",
+    href: "/operations",
     children: [
       { label: "Response Systems", href: "/systems/response-systems" },
       { label: "Recovery Systems", href: "/systems/recovery-systems" },
@@ -17,6 +17,10 @@ const nav = [
       { label: "Workflow Systems", href: "/systems/workflow-systems" },
       { label: "TradeOps Layer", href: "/systems/tradeops-layer" },
     ],
+  },
+  {
+    label: "Habitats",
+    href: "/habitats",
   },
   {
     label: "Industries",

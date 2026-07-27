@@ -1,40 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { homepageFaq } from "@/lib/faq";
+import { homepageMethod } from "@/lib/homepage-framework";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { IllustrativeImage } from "@/components/IllustrativeImage";
-import { RevenueLeakDiagram } from "@/components/diagrams/RevenueLeakDiagram";
 
-// Each row pairs the owner's real need with the shortcut most owners reach for
-// and the general-contracting alternative. Deliberately tool-agnostic: we name
-// categories of tooling, never a vendor we have not actually selected for a client.
-const gcRows = [
+// Umbrella homepage FAQ — shrunk from 6 to 4 per spec §3.9. Operations page
+// keeps all 6. These questions are written to apply to either Operations or Habitats.
+const umbrellaFaq = [
   {
-    need: "Speed-to-lead on web and phone inquiries",
-    alone: "Buy a chatbot and hope it converts.",
-    gc: "Curate the lead-routing path that fits your CRM, send after-hours demand to a real responder, and put written limits on what the AI is allowed to say.",
+    q: "What does Livingry Services do?",
+    a: "Livingry Services designs and implements life-supporting systems for organizations and places. Livingry Operations provides AI general contracting for trade and professional practices. Livingry Habitats provides regenerative land and development planning for landowners and aligned partners.",
   },
   {
-    need: "Estimate follow-through",
-    alone: "Set a calendar reminder.",
-    gc: "Build a reactivation workflow that drafts the right nudge at the right interval from your own estimate records, with a person approving anything before it leaves.",
+    q: "Do you sell AI software or land-planning software?",
+    a: "No. We design and implement systems, then hand control to the people who will use them. You own the tools, the records, and the decision-making authority.",
   },
   {
-    need: "Customer continuity",
-    alone: "Send one annual email.",
-    gc: "Sequence maintenance, warranty, replacement-eligibility, and seasonal contact on the cadence your service history actually justifies.",
+    q: "Will AI make decisions without human approval?",
+    a: "Only within workflows you have explicitly approved, and never for decisions that require professional judgment, legal authority, or client commitment. Humans stay accountable.",
   },
   {
-    need: "Knowledge trapped in your team",
-    alone: "Start a wiki nobody updates.",
-    gc: "Put a retrieval layer over the documents and threads you already have, scoped by role, so answers come on demand instead of through one busy person.",
-  },
-  {
-    need: "Discovery on AI search and answer engines",
-    alone: "Ignore it.",
-    gc: "Build the AI-readable structure — structured data, llms.txt, canonical facts, answerable FAQs — so answer engines describe you accurately, then monitor what they say.",
+    q: "How long until I see results?",
+    a: "Measurement can begin in your first full operating cycle after a system goes live. How quickly change becomes visible depends on your baseline, the quality of your existing data, and the volume moving through that workflow — so we agree on the evidence before we build.",
   },
 ];
 
@@ -42,27 +31,27 @@ const gcRows = [
 // title so the brand name is not appended twice.
 export const metadata: Metadata = {
   title: {
-    absolute: "AI General Contracting for Trade & Professional Practices — Livingry Services",
+    absolute: "Systems in Service of Life and Capability — Livingry Services",
   },
   description:
-    "Livingry Services is the AI general contractor for trade and professional practices. We curate, integrate, and govern AI tools inside the systems you already run — so leads, estimates, customers, and knowledge stop leaking away.",
+    "Livingry Services designs and implements life-supporting systems for more capable organizations and places. Livingry Operations provides AI general contracting for trade and professional operations. Livingry Habitats provides regenerative development systems for landowners and aligned partners.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "AI General Contracting for Trade & Professional Practices — Livingry Services",
+    title: "Systems in Service of Life and Capability — Livingry Services",
     description:
-      "We curate the right AI tools for your operation, integrate them into the systems you already use, and stay accountable when something breaks.",
+      "Livingry designs and implements life-supporting systems for organizations and places — helping retain more of the opportunity, knowledge, energy, trust, and capability already available.",
     url: "/",
     type: "website",
   },
 };
 
 export default function Home() {
-  // FAQPage schema mirrors the six questions rendered visibly below. Keeping the
-  // two generated from one source is what keeps the markup honest.
+  // FAQPage schema mirrors the 4 questions rendered visibly below (shrunk from 6 per spec).
+  // Keeping the two generated from one source is what keeps the markup honest.
   const homepageFaqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: homepageFaq.map((f) => ({
+    mainEntity: umbrellaFaq.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -73,127 +62,97 @@ export default function Home() {
     <>
       <JsonLd data={homepageFaqLd} />
 
-      {/* HERO */}
+      {/* HERO — Umbrella positioning per spec §3.1 */}
       <section className="section paper-grain" aria-labelledby="hero-heading">
         <div className="container">
           <div className="max-w-4xl">
-            <div className="eyebrow">Livingry Services · AI General Contracting</div>
+            <div className="eyebrow">Livingry Services · Systems in service of life and capability</div>
             <h1 id="hero-heading" className="serif mt-6">
-              {site.positioning.headline}
+              Stop already-earned value from leaking away.
             </h1>
-            <p className="mt-6 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)", maxWidth: "48rem" }}>
-              {site.positioning.subhead}
-            </p>
-            <p className="mt-6" style={{ color: "var(--ink-2)", maxWidth: "46rem" }}>
-              You did not start your business to become an AI expert. But the tooling that used to be a big-company advantage is now within reach, and your competitors are quietly wiring it up. We curate the right AI tools for your operation, integrate them into the systems you already use, and stay accountable when something breaks. You run the business. We run the AI stack behind it.
+            <p className="mt-6 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)" }}>
+              Livingry designs and implements life-supporting systems for organizations
+              and places — helping retain more of the opportunity, knowledge, energy,
+              trust, and capability already available.
             </p>
             <div className="mt-9 flex flex-wrap gap-3 items-center">
-              <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
-              <Link href="/assessment" className="btn btn-secondary">Take the 10-Minute Leak Assessment</Link>
+              <Link href="/operations" className="btn btn-primary">Improve an organization <span aria-hidden>→</span></Link>
+              <Link href="/habitats" className="btn btn-secondary">Explore what land could become</Link>
             </div>
-            <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)", maxWidth: "44rem" }}>
-              Named for Buckminster Fuller&rsquo;s <em>livingry</em> — technology pointed at preserving and extending human life rather than extracting from it. We build in tools you control, with records you can carry forward.
+            <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
+              Human-accountable · Vendor-independent · Built around tools and records you control
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Current focus strip */}
-          <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4 items-start">
-            <div className="eyebrow" style={{ color: "var(--ink-3)" }}>Current implementation focus</div>
-            <div className="lg:col-span-3 flex flex-wrap gap-2.5">
-              <span className="pill pill-active">HVAC · Active</span>
-              <span className="pill pill-next">Roofing · Founding partners</span>
-              <span className="pill pill-future">Legal · In development</span>
-              <span className="pill pill-future">Medical · In development</span>
-            </div>
-            <div className="lg:col-start-2 lg:col-span-3 text-[0.9rem]">
-              <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
-                See the Founding Five HVAC program →
-              </Link>
-            </div>
-          </div>
+      <hr />
 
-          <div className="mt-14">
-            <RevenueLeakDiagram />
+      {/* TWO-PATH SELECTOR — Operations vs Habitats per spec §3.2 */}
+      <section className="section" aria-labelledby="practices-heading">
+        <div className="container">
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Operations Card */}
+            <Reveal>
+              <div className="card h-full" style={{ borderLeft: "3px solid var(--forest)" }}>
+                <div className="eyebrow" style={{ color: "var(--forest)" }}>Livingry Operations</div>
+                <h2 className="serif mt-3" style={{ fontSize: "var(--step-2)" }}>
+                  AI general contracting for trade and professional operations
+                </h2>
+                <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                  Coordinate specialist AI tools, workflows, and human approvals to close operational leaks without forcing businesses into another disconnected platform. Built for HVAC, roofing, and professional practices.
+                </p>
+                <div className="mt-6">
+                  <span className="pill pill-active text-[0.85rem]">Active pilots · HVAC Founding Five</span>
+                </div>
+                <div className="mt-6">
+                  <Link href="/operations" className="link" style={{ color: "var(--forest)" }}>
+                    Explore Operations →
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Habitats Card */}
+            <Reveal>
+              <div className="card h-full" style={{ borderLeft: "3px solid var(--copper-2)" }}>
+                <div className="eyebrow" style={{ color: "var(--copper-2)" }}>Livingry Habitats</div>
+                <h2 className="serif mt-3" style={{ fontSize: "var(--step-2)" }}>
+                  Regenerative development systems for landowners
+                </h2>
+                <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                  Explore the constraints, opportunities, systems, and next investigations that determine what your land could responsibly become. Pattern Language, permaculture, climate-responsive design, natural materials, and private home systems.
+                </p>
+                <div className="mt-6">
+                  <span className="pill pill-next text-[0.85rem]">Founding landowner conversations opening</span>
+                </div>
+                <div className="mt-6">
+                  <Link href="/habitats" className="link" style={{ color: "var(--copper-2)" }}>
+                    Explore Habitats →
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <hr />
 
-      {/* WHAT IS AI GENERAL CONTRACTING */}
-      <section className="section" aria-labelledby="gc-heading">
+      {/* COMPACT SYSTEM FAMILIES — 2-line-per-family per spec §3.4 */}
+      <section className="section" aria-labelledby="systems-heading">
         <div className="container">
-          <div className="rule-label">01 · The short answer</div>
+          <div className="rule-label">01 · System families</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 id="gc-heading" className="serif">What is AI general contracting?</h2>
-              <p className="mt-5 serif" style={{ fontSize: "var(--step-1)", lineHeight: 1.45, color: "var(--ink)" }}>
-                Livingry Services is an AI general contractor for trade and professional practices. We curate, integrate, and govern AI tools inside the systems a business already runs — closing the places where leads, estimates, customers, knowledge, and trust leak away, with humans accountable throughout.
-              </p>
-            </div>
-            <div className="lg:col-span-7 grid gap-5">
-              <p style={{ color: "var(--ink-2)" }}>
-                A general contractor does not pour the foundation or run the wire. They hire the right subs, sequence the work, hold them to scope, and own the result. <strong>For your business&rsquo;s AI stack, we play that role.</strong> You never need to choose between two scheduling tools, stand up a retrieval layer, or work out how a chatbot should behave against your CRM. That is our job.
-              </p>
-              <p style={{ color: "var(--ink-2)" }}>
-                Running an HVAC, roofing, legal, or medical practice is already a full-time job, and AI tooling changes faster than any owner can track. Most of what is written about &ldquo;AI for business&rdquo; is either a vendor pitch or a shallow list. <strong>We sit between you and the AI vendors</strong> — testing, comparing, integrating, governing, and handing the keys back to your team.
-              </p>
-              <p style={{ color: "var(--ink-2)" }}>
-                The belief worth discarding first is that <em>AI is one tool you can buy that will fix the leak.</em> It is not. Every workflow that loses value has its own shape, and each leak needs the right tool wired in correctly — with a person still accountable for anything a customer will read as a promise.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <table className="gc-table" role="table">
-              <caption className="sr-only">
-                What a trade or professional practice actually needs, the shortcut most owners reach for on their own, and what Livingry Services does as an AI general contractor.
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">What you actually need</th>
-                  <th scope="col">What you might do alone</th>
-                  <th scope="col">What we do as your AI general contractor</th>
-                </tr>
-              </thead>
-              <tbody>
-                {gcRows.map((r) => (
-                  <tr key={r.need}>
-                    <th scope="row" data-label="What you actually need">{r.need}</th>
-                    <td data-label="What you might do alone">{r.alone}</td>
-                    <td data-label="What we do as your AI general contractor" className="gc-does">{r.gc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
-            <Link href="/how-it-works" className="btn btn-ghost">See how the work runs <span aria-hidden>→</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <hr />
-
-      {/* WHAT WE DO — leak table */}
-      <section className="section" aria-labelledby="leaks-heading">
-        <div className="container">
-          <div className="rule-label">02 · What we do</div>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <h2 id="leaks-heading" className="serif">
-                Where does your business leak what it already earned?
+              <h2 id="systems-heading" className="serif">
+                Seven system families for organizations and places
               </h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-                Most businesses do not only have a lead problem. They have a leakage problem: attention is earned but not captured; trust is built but not carried forward; knowledge exists but cannot be used; and good prospects disappear between one step and the next.
-              </p>
-              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                Each of the seven system families below names a specific leak — and the AI work we take on to close it.
+                Each family names a specific leak and the system we build to close it. The full AI general contracting work lives in Operations; the underlying method applies to both operations and development planning.
               </p>
               <div className="mt-8">
-                <Link href="/system-review" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
+                <Link href="/operations" className="btn btn-primary">See Operations Systems <span aria-hidden>→</span></Link>
               </div>
             </div>
             <div className="lg:col-span-7">
@@ -202,23 +161,19 @@ export default function Home() {
                   <li key={s.slug}>
                     <Link
                       href={`/systems/${s.slug}`}
-                      className="grid gap-1 py-6 group"
+                      className="grid gap-1.5 py-5 group"
                       style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}
                     >
                       <div className="flex items-baseline justify-between gap-6">
                         <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{s.title}</h3>
                         <span className="mono text-[0.72rem]" style={{ color: "var(--ink-3)" }}>{String(i + 1).padStart(2, "0")}</span>
                       </div>
-                      <div className="mt-1 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
-                        <span style={{ color: "var(--copper-2)" }}>Leak · </span>{s.leak}
+                      <div className="text-[0.93rem]" style={{ color: "var(--ink-2)" }}>
+                        <span style={{ color: "var(--copper-2)" }}>Leak:</span> {s.leak}
                       </div>
-                      <div className="text-[0.95rem]" style={{ color: "var(--ink-3)" }}>
-                        <span style={{ color: "var(--forest)" }}>Fix · </span>{s.improves}
+                      <div className="text-[0.93rem]" style={{ color: "var(--ink-3)" }}>
+                        <span style={{ color: "var(--forest)" }}>Fix:</span> {s.improves}
                       </div>
-                      <p className="mt-2 text-[0.92rem]" style={{ color: "var(--ink-2)", borderLeft: "2px solid var(--copper)", paddingLeft: "0.85rem" }}>
-                        <span className="eyebrow" style={{ color: "var(--copper-2)" }}>AI general contracting here</span>
-                        <span className="block mt-1.5">{s.aiGc}</span>
-                      </p>
                     </Link>
                   </li>
                 ))}
@@ -231,18 +186,18 @@ export default function Home() {
 
       <hr />
 
-      {/* METHOD */}
+      {/* LEAKPROOFING FRAMEWORK — Widened for umbrella per spec §3.3 */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="method-heading">
         <div className="container">
-          <div className="rule-label">03 · The method</div>
+          <div className="rule-label">02 · The method</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 id="method-heading" className="serif">The Livingry Leakproofing Framework.</h2>
+              <h2 id="method-heading" className="serif">The Livingry Leakproofing Framework</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-                Adding traffic, tools, or automation to a workflow that already leaks only multiplies the waste. A system that is unsealed cannot be scaled — so we seal the workflow first, then scale the work.
+                Adding traffic, tools, or automation to a system that already leaks only multiplies the waste. A system that is unsealed cannot be scaled — so we seal the gap first, then scale the work.
               </p>
               <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                We do not start by adding another tool. We start by identifying the point where value leaks out of the business — then close that gap with the smallest practical combination of process, content, training, automation, AI, and human accountability.
+                We do not start by adding another tool or making another plan. We start by identifying the point where value leaks away — whether that is in a customer journey, a workflow, an information path, or the development potential of a place — then close that gap with the smallest practical system.
               </p>
               <p className="mt-4 serif italic" style={{ color: "var(--copper-2)", fontSize: "var(--step-1)" }}>
                 Find the leak. Seal the gap. Keep more of what you already earned.
@@ -252,7 +207,7 @@ export default function Home() {
               </p>
             </div>
             <ol className="lg:col-span-7 grid gap-0">
-              {site.method.map((m, i) => (
+              {homepageMethod.map((m, i) => (
                 <li key={m.n} className="grid grid-cols-[auto_1fr] gap-6 py-6" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
                   <div className="num" style={{ minWidth: "3rem" }}>{m.n}</div>
                   <div>
@@ -269,22 +224,19 @@ export default function Home() {
 
       <hr />
 
-      {/* FOUNDER CREDIBILITY */}
+      {/* FOUNDER BLOCK — Shortened ~60% per spec §3.5 */}
       <section className="section" aria-labelledby="founder-heading">
         <div className="container">
-          <div className="rule-label">04 · Who does the work</div>
+          <div className="rule-label">03 · Who does the work</div>
           <div className="grid gap-10 lg:grid-cols-12 items-start">
             <div className="lg:col-span-7">
-              <h2 id="founder-heading" className="serif">Built by someone who has done the work.</h2>
+              <h2 id="founder-heading" className="serif">Built by someone who has done the work</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-                Livingry Services is an independent practice. The founder came up through hands-on trades and field work — permaculture design, solar, and HVAC — before years of building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems. That combination is the point: an AI general contractor has to understand the job site as well as the stack.
-              </p>
-              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses are the design requirements behind Livingry: build in tools the client controls, with records they can carry forward.
+                Livingry Services is an independent practice. The founder came up through hands-on trades — permaculture design, solar, and HVAC — before years of building AI agents, Bitcoin systems, and legal-tech infrastructure. That combination is the point: to design systems for life and capability, you have to understand the work site as well as the stack.
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
-                <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Why Livingry →</Link>
-                <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Read the origin story →</Link>
+                <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Read the full story →</Link>
+                <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why ownership matters →</Link>
               </div>
             </div>
             <div className="lg:col-span-5">
@@ -306,89 +258,66 @@ export default function Home() {
 
       <hr />
 
-      {/* INDUSTRIES */}
+      {/* INDUSTRIES — Compact per spec §3.6, HVAC Founding Five link preserved */}
       <section className="section" aria-labelledby="industries-heading">
         <div className="container">
-          <div className="rule-label">05 · Industries</div>
+          <div className="rule-label">04 · Industries (Operations)</div>
           <div className="max-w-3xl">
-            <h2 id="industries-heading" className="serif">Built for the realities of your industry.</h2>
+            <h2 id="industries-heading" className="serif">Operations systems for trade and professional practices</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-              The underlying method stays consistent. The workflows, language, data, approvals, and handoffs must fit the business that will use them.
+              The underlying method stays consistent. The workflows, language, data, approvals, and handoffs must fit the industry that will use them.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-4">
             {site.industries.map((ind) => (
-              <Reveal key={ind.slug}>
-                <Link
-                  href={`/industries/${ind.slug}`}
-                  className="card block h-full transition-transform"
-                  style={{ transitionDuration: "180ms" }}
-                >
-                  <span className={`pill ${ind.status === "active" ? "pill-active" : ind.status === "next" ? "pill-next" : "pill-future"}`}>
+              <div key={ind.slug} className="grid gap-1.5">
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <Link href={`/industries/${ind.slug}`} className="serif" style={{ fontSize: "var(--step-1)", color: "var(--ink)" }}>
+                    {ind.title}
+                  </Link>
+                  <span className={`pill text-[0.85rem] ${ind.status === "active" ? "pill-active" : ind.status === "next" ? "pill-next" : "pill-future"}`}>
                     {ind.statusLabel}
                   </span>
-                  <h3 className="serif mt-5">{ind.title}</h3>
-                  <p className="mt-3 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>{ind.promise}</p>
-                  <div className="mt-6 inline-flex items-center gap-2 text-[0.9rem]" style={{ color: "var(--forest)" }}>
-                    {ind.cta} <span aria-hidden>→</span>
+                </div>
+                <p className="text-[0.93rem]" style={{ color: "var(--ink-2)" }}>{ind.promise}</p>
+                {ind.slug === "hvac" && (
+                  <div className="mt-1">
+                    <Link href="/hvac/founding-five" className="link text-[0.9rem]" style={{ color: "var(--forest)" }}>
+                      See the Founding Five HVAC pilot →
+                    </Link>
                   </div>
-                </Link>
-              </Reveal>
+                )}
+              </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <hr />
-
-      {/* WHY LIVINGRY */}
-      <section className="section" style={{ background: "var(--ink)", color: "var(--paper)" }} aria-labelledby="why-heading">
-        <div className="container">
-          <div className="rule-label" style={{ color: "var(--seal)" }}>
-            <span style={{ color: "var(--seal)" }}>06 · Why livingry</span>
-          </div>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <h2 id="why-heading" className="serif" style={{ color: "var(--paper)" }}>
-                Technology should increase our capacity to care for life — and for the useful work of the people around us.
-              </h2>
-            </div>
-            <div className="lg:col-span-6">
-              <p style={{ color: "var(--paper)", opacity: 0.85 }}>
-                The name comes from Buckminster Fuller&apos;s distinction between <em>weaponry</em> and <em>livingry</em>: systems directed toward human-life advantage rather than conflict, waste, and extraction.
-              </p>
-              <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.85 }}>
-                Livingry Services applies that principle at the organizational level. We help useful businesses and practices use modern tools — including AI — to respond to people faster, reduce wasted effort, preserve hard-won knowledge, and keep responsibility in human hands.
-              </p>
-              <div className="mt-8">
-                <Link href="/why-livingry" className="btn btn-secondary" style={{ borderColor: "var(--paper)", color: "var(--paper)" }}>
-                  Read the full thinking
-                </Link>
-              </div>
-            </div>
+          <div className="mt-8">
+            <Link href="/operations" className="link" style={{ color: "var(--forest)" }}>
+              Explore all Operations systems →
+            </Link>
           </div>
         </div>
       </section>
 
       <hr />
 
-      {/* FAQ */}
+      {/* FAQ — Shrunk from 6 to 4 questions per spec §3.9 */}
       <section className="section" aria-labelledby="faq-heading">
         <div className="container">
-          <div className="rule-label">07 · Common questions</div>
+          <div className="rule-label">05 · Common questions</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <h2 id="faq-heading" className="serif">Questions owners actually ask.</h2>
+              <h2 id="faq-heading" className="serif">Questions people actually ask</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-                Straight answers about what an AI general contractor does, what we will not do, and where the human stays accountable.
+                Straight answers about what Livingry Services does, what we will not do, and where the human stays accountable.
               </p>
               <p className="mt-6">
                 <Link href="/faq" className="link" style={{ color: "var(--forest)" }}>Read the full FAQ →</Link>
               </p>
             </div>
             <div className="lg:col-span-8 grid gap-0">
-              {homepageFaq.map((f, i) => (
+              {umbrellaFaq.map((f, i) => (
                 <div key={f.q} className="py-6" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
                   <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{f.q}</h3>
                   <p className="mt-3" style={{ color: "var(--ink-2)" }}>{f.a}</p>
@@ -402,16 +331,16 @@ export default function Home() {
 
       <hr />
 
-      {/* PROOF THAT CAN TRAVEL */}
+      {/* PROOF POSTURE — Preserved per spec §3.9 */}
       <section className="section" aria-labelledby="proof-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <div className="rule-label">Records you can carry forward</div>
-            <h2 id="proof-heading" className="serif">Your business history should not disappear with a vendor.</h2>
+            <div className="rule-label">06 · Records you can carry forward</div>
+            <h2 id="proof-heading" className="serif">Your work should not disappear with a vendor</h2>
           </div>
           <div className="lg:col-span-6">
             <p style={{ color: "var(--ink-2)" }}>
-              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry builds in tools you control, with records you can carry forward — so what your business earns stays with your business, even if a vendor or a tool goes away.
+              Credentials expire. Companies close. Documents are destroyed. Platforms change. Livingry builds in tools you control, with records you can carry forward — so what you earn stays with you, even if a vendor or a tool goes away.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/proof" className="link" style={{ color: "var(--forest)" }}>Why ownership matters →</Link>
@@ -421,22 +350,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* DUAL CTA — Operations and Habitats per spec §3.7 */}
       <section className="section-tight paper-grain" aria-labelledby="cta-heading">
         <div className="container">
-          <div className="grid gap-6 lg:grid-cols-2 items-end">
-            <div>
-              <div className="eyebrow">Free · No sales pressure</div>
-              <h2 id="cta-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>
-                Find the highest-value leak in your business.
-              </h2>
-              <p className="mt-4 max-w-xl" style={{ color: "var(--ink-2)" }}>
+          <h2 id="cta-heading" className="serif mb-10" style={{ fontSize: "var(--step-3)" }}>
+            Start with the system you need to understand.
+          </h2>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="card" style={{ borderLeft: "3px solid var(--forest)" }}>
+              <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>Find an operational leak</h3>
+              <p className="mt-3" style={{ color: "var(--ink-2)" }}>
                 In one focused review, we identify where demand, customer trust, knowledge, or capacity is escaping — and the first system worth building to close it.
               </p>
+              <div className="mt-6">
+                <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
-              <Link href="/assessment" className="btn btn-ghost">Take the Leak Assessment <span aria-hidden>→</span></Link>
+
+            <div className="card" style={{ borderLeft: "3px solid var(--copper-2)" }}>
+              <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>Review the potential of your land</h3>
+              <p className="mt-3" style={{ color: "var(--ink-2)" }}>
+                Explore the constraints, opportunities, systems, and next investigations that determine what your land could responsibly become.
+              </p>
+              <div className="mt-6">
+                <Link href="/land-review" className="btn btn-secondary">Request a Land Potential Review <span aria-hidden>→</span></Link>
+              </div>
             </div>
           </div>
         </div>

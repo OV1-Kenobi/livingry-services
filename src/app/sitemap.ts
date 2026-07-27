@@ -8,6 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "/",
     "/what-we-build",
+    "/operations",
+    "/habitats",
+    "/habitats/land-potential-review",
+    "/land-review",
     "/industries",
     "/how-it-works",
     "/assessment",
@@ -30,13 +34,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const all = [...staticRoutes, ...systemRoutes, ...industryRoutes, ...articleRoutes];
 
-  // The two conversion routes rank alongside the service and industry pages:
-  // they are the pages a search or answer engine should surface for an owner who
-  // has already decided to act.
+  // Conversion routes and practice pages rank high for search/answer engines.
+  // Per umbrella expansion: /operations and /habitats are practice entry points,
+  // /land-review is the Habitats conversion funnel.
   const conversionRoutes = new Set(["/system-review", "/assessment"]);
+  const practicePages = new Set(["/operations", "/habitats"]);
   const priorityFor = (path: string) => {
     if (path === "/") return 1;
-    if (conversionRoutes.has(path)) return 0.9;
+    if (path === "/land-review") return 0.95;
+    if (conversionRoutes.has(path) || practicePages.has(path)) return 0.9;
+    if (path === "/habitats/land-potential-review") return 0.85;
     if (path.startsWith("/industries/") || path.startsWith("/systems/")) return 0.8;
     if (path.startsWith("/insights/")) return 0.8;
     if (path === "/insights" || path === "/faq" || path === "/how-it-works") return 0.7;

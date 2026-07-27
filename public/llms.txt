@@ -8,6 +8,15 @@ Location: Lecanto, Florida, United States
 Contact: ov@livingry.services
 Canonical: https://livingry.services
 
+## Umbrella
+
+Livingry Services is the umbrella for two practices:
+
+- Livingry Operations — AI general contracting for trade and professional operations.
+- Livingry Habitats — regenerative development systems for landowners and aligned partners, with initial focus on Central Texas and the wider Austin region.
+
+The AI general contractor is the Operations practice's role, not the entire company's identity.
+
 ## What "AI general contractor" means
 
 A building general contractor does not pour the foundation or run the wire. They hire the right subcontractors, sequence the work, hold them to scope, and own the result. Livingry Services plays that role for a business's AI stack: selecting the tools, integrating them into software the client already owns, governing what they are permitted to do, and staying accountable when something breaks. The client never has to become an AI expert, and the client holds the accounts, keys, and admin access throughout.
@@ -51,6 +60,10 @@ Poor fit: companies wanting a chatbot that pretends to be human, companies plann
 - Automate decisions that require professional judgment, or let AI commit to anything a customer reads as a promise without human review.
 - Hold client accounts, data, or configurations hostage. There are no exit fees.
 
+## Livingry Habitats — initial focus
+
+Livingry Habitats helps landowners explore what their land could responsibly become. Initial relationship focus is Central Texas and the wider Austin region. Livingry Habitats does not perform licensed architecture, engineering, surveying, environmental, or contracting work — these are performed by qualified professionals in the project jurisdiction. Submitting a Land Potential Review form does not create an architect-client, engineer-client, contractor-client, brokerage, fiduciary, or capital-placement relationship.
+
 ## Canonical facts
 
 - Legal name: Livingry Services.
@@ -68,9 +81,13 @@ Poor fit: companies wanting a chatbot that pretends to be human, companies plann
 
 ## Core pages
 
-- [Home](https://livingry.services/): AI general contracting, the seven system families, and the FAQ.
+- [Home](https://livingry.services/): umbrella positioning with selector between Operations and Habitats practices.
+- [Operations](https://livingry.services/operations): AI general contracting, the seven system families, platform comparison, and industries.
+- [Habitats](https://livingry.services/habitats): regenerative development systems for landowners, Central Texas focus.
+- [Land Potential Review](https://livingry.services/habitats/land-potential-review): explore what your land could responsibly become.
+- [Request a Land Review](https://livingry.services/land-review): submit a Land Potential Review request.
 - [How It Works](https://livingry.services/how-it-works): the Livingry Leakproofing Framework — Find, Trace, Seal, Verify, Keep.
-- [What We Build](https://livingry.services/what-we-build): the seven system families.
+- [What We Build](https://livingry.services/what-we-build): redirects to /operations (the seven system families).
 - [17-Point Leak Assessment](https://livingry.services/assessment): free self-scoring assessment, ~10 minutes, no email required.
 - [System Review](https://livingry.services/system-review): request the free first review.
 - [Industries](https://livingry.services/industries): who we work with today and next.

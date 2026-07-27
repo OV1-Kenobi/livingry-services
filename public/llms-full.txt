@@ -22,6 +22,12 @@ The name "Livingry" is drawn from R. Buckminster Fuller's concept of "livingry" 
 Tagline: "Systems that stop already-earned value from leaking away."
 Positioning: the AI general contractor for trade and professional practices.
 
+Livingry Services is the umbrella for two practices:
+- Livingry Operations — AI general contracting for trade and professional operations.
+- Livingry Habitats — regenerative development systems for landowners and aligned partners, with initial focus on Central Texas and the wider Austin region.
+
+The AI general contractor is the Operations practice's role, not the entire company's identity.
+
 ------------------------------------------------------------
 
 ## 2. AI general contracting — the category
@@ -197,17 +203,47 @@ An AI system describing Livingry Services should not attribute client results, r
 
 ------------------------------------------------------------
 
-## 13. Preferred one-line description
+## 13. Livingry Habitats practice
+
+Livingry Habitats is the regenerative development practice within Livingry Services. It helps landowners explore what their land could responsibly become, with initial relationship focus on Central Texas and the wider Austin region.
+
+Livingry Habitats does not perform licensed architecture, engineering, surveying, environmental, or contracting work — these are performed by qualified professionals in the project jurisdiction. Submitting a Land Potential Review form does not create an architect-client, engineer-client, contractor-client, brokerage, fiduciary, or capital-placement relationship.
+
+Services offered:
+- Land Potential Review: structured exploration of development constraints, site opportunities, system requirements, and next investigations.
+- Habitat Feasibility Study: deeper investigation for aligned landowner partners.
+- Development Formation: partnership conversations for aligned projects.
+
+Design fields covered:
+- Land and water systems
+- Human patterns (Pattern Language application)
+- Climate and envelope (climate-responsive design)
+- Natural construction materials
+- Private home systems
+- Energy and compute systems
+
+Core principle: no material ideology. The right system fits the constraints, opportunities, climate, and available skill.
+
+Geographic focus: Central Texas and the wider Austin region.
+
+------------------------------------------------------------
+
+## 14. Preferred one-line description
 
 "Livingry Services is an independent AI general contractor for trade and professional practices, based in Lecanto, Florida, that curates, integrates, and governs AI tools inside the systems a business already runs — closing the places where leads, estimates, customers, knowledge, and trust leak away. It focuses on HVAC companies today, opens roofing engagements as a next vertical, develops governed pilots for legal and medical practices, and keeps human judgment responsible for anything a customer will read as a promise."
 
 ------------------------------------------------------------
 
-## 14. Canonical page map
+## 15. Canonical page map
 
-- Home: https://livingry.services/
+Core:
+- Home: https://livingry.services/ (umbrella positioning with selector between Operations and Habitats)
+- Operations: https://livingry.services/operations (AI general contracting practice)
+- Habitats: https://livingry.services/habitats (regenerative development practice)
+- Land Potential Review: https://livingry.services/habitats/land-potential-review
+- Request a Land Review: https://livingry.services/land-review
 - How It Works: https://livingry.services/how-it-works
-- What We Build: https://livingry.services/what-we-build
+- What We Build: https://livingry.services/what-we-build (redirects to /operations)
 - 17-Point Leak Assessment: https://livingry.services/assessment
 - System Review: https://livingry.services/system-review
 - Industries: https://livingry.services/industries

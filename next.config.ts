@@ -10,6 +10,13 @@ const nextConfig: NextConfig = {
         destination: "/hvac/founding-five",
         permanent: true,
       },
+      {
+        // Umbrella expansion: /what-we-build redirects to /operations (the Operations practice).
+        // Per spec §4.8, permanent 301 redirect.
+        source: "/what-we-build",
+        destination: "/operations",
+        permanent: true,
+      },
     ];
   },
 };
