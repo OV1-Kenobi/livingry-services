@@ -4,12 +4,12 @@ import { CATEGORIES, FLOW_EDGES, CANDIDATE_CATALOG, CATEGORY_BY_ID } from "../sr
 
 const VALID_IDS = new Set(CATEGORIES.map((c) => c.id));
 
-test("exactly one orchestration layer, seven systems", () => {
+test("exactly one orchestration layer, eight systems", () => {
   const orchestration = CATEGORIES.filter((c) => c.kind === "orchestration");
   const systems = CATEGORIES.filter((c) => c.kind === "system");
   assert.equal(orchestration.length, 1);
   assert.equal(orchestration[0].id, "ops_layer");
-  assert.equal(systems.length, 7);
+  assert.equal(systems.length, 8);
 });
 
 test("category ids are unique", () => {

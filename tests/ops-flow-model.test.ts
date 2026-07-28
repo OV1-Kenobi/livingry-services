@@ -86,7 +86,7 @@ test("every flow category id resolves to a real category", () => {
   }
 });
 
-test("the diagram covers all seven systems exactly once", () => {
+test("the diagram covers all eight systems exactly once", () => {
   const systems = Object.values(CATEGORY_BY_ID).filter((c) => c.kind === "system").map((c) => c.id).sort();
   const covered = [...FLOW_STAGE_CATEGORY_IDS].sort();
   assert.deepEqual(covered, systems);

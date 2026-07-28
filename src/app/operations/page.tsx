@@ -103,7 +103,7 @@ export default function Operations() {
       {/* SEVEN SYSTEM FAMILIES per spec §4.2.3 — Full Leak/Fix/AI-GC-here for each */}
       <section className="section" aria-labelledby="systems-heading">
         <div className="container">
-          <div className="rule-label">02 · Seven system families</div>
+          <div className="rule-label">02 · Eight system families</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 id="systems-heading" className="serif">Where does your business leak what it already earned?</h2>
@@ -111,7 +111,7 @@ export default function Operations() {
                 Most businesses do not only have a lead problem. They have a leakage problem: attention is earned but not captured; trust is built but not carried forward; knowledge exists but cannot be used; and good prospects disappear between one step and the next.
               </p>
               <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                Each of the seven system families below names a specific leak — and the AI work we take on to close it.
+                Each of the eight system families below names a specific leak — and the AI work we take on to close it.
               </p>
             </div>
             <div className="lg:col-span-7">
@@ -255,9 +255,9 @@ export default function Operations() {
         <div className="container">
           <div className="rule-label">05 · See how the systems coordinate</div>
           <div className="max-w-3xl">
-            <h2 id="demo-heading" className="serif">One operations layer over seven categories</h2>
+            <h2 id="demo-heading" className="serif">One operations layer over eight categories</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-              Individual systems close individual leaks. The Ops layer is the eighth system: it observes and coordinates across all seven categories, applies policy gates, and keeps a human in control of every consequential action.
+              Individual systems close individual leaks. The Ops layer is the ninth layer: it observes and coordinates across all eight categories, applies policy gates, and keeps a human in control of every consequential action.
             </p>
           </div>
           <div className="mt-10">

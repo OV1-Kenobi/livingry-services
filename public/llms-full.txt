@@ -53,15 +53,15 @@ Who it is not for: companies wanting a chatbot that pretends to be human, compan
 
 ------------------------------------------------------------
 
-## 3. What Livingry Services does — the seven system families
+## 3. What Livingry Services does — the eight system families
 
-Livingry Services designs and installs seven families of systems inside established businesses. Each entry notes the leak it closes and the specific AI general contracting work involved.
+Livingry Services designs and installs eight families of systems inside established businesses. Each entry notes the leak it closes and the specific AI general contracting work involved.
 
 - Response Systems — reduce lost inbound demand from calls, forms, chats, and referrals. Faster useful response, better routing to the right person, no promises the business cannot keep. AI general contracting here: curating the after-hours answering path, voicemail-to-text or AI receptionist, lead-routing rules, and the CRM handoff that fit the operation, then writing the limits on what the AI is allowed to say.
 
 - Recovery Systems — revive cold estimates, proposals, and consultations with appropriate, non-manipulative follow-up. AI general contracting here: selecting and wiring the reactivation tooling that reads the client's own estimate records and drafts the right nudge at the right interval, with a person approving anything before it reaches a customer.
 
-- Customer Continuity — keep existing customers active with relevant maintenance, seasonal, review, referral, and renewal moments. AI general contracting here: choosing and sequencing maintenance, warranty, and replacement-eligibility tooling against real service history, so cadence comes from what was actually installed and when, not a generic drip template.
+- Customer Continuity — keep existing customers active with relevant maintenance, seasonal, and renewal moments. AI general contracting here: choosing and sequencing maintenance, warranty, and replacement-eligibility tooling against real service history, so cadence comes from what was actually installed and when, not a generic drip template.
 
 - Discovery & Trust Systems — make services, proof, and differentiators clear to both humans and AI systems on the web. AI general contracting here: building the AI-readable layer — structured data, llms.txt, canonical facts, answerable FAQ structure — so answer engines describe the business accurately, then monitoring what they actually say.
 
@@ -70,6 +70,8 @@ Livingry Services designs and installs seven families of systems inside establis
 - Workflow Systems — fix handoffs, dropped ownership, and duplicated work so information moves cleanly through the business. AI general contracting here: picking the automation and handoff tooling that fits the software already in use, wiring in named ownership and exception alerts so work cannot silently stall between two people who each assume the other has it.
 
 - TradeOps Layer — one vendor-agnostic operations layer over whatever field-service, accounting, and scheduling software a trade business already runs, including spreadsheets or nothing at all. Canonical job events, policy gates, human approval, and leak dashboards. AI general contracting here: acting as the integrator across those systems, normalizing job events into one record, and keeping the operations layer portable if the client changes vendors.
+
+- Review & Referral Systems — turn verified delivery into approved proof, attributed referrals, reusable proof, and stronger discovery signals. While routing unresolved concerns to a human before any public request is made. AI general contracting here: connecting verified completion records, customer communication, review destinations, referral intake, proof approval, CRM routing, and discovery publishing into one governed workflow. AI may prepare, summarize, classify, and route; humans approve outreach, resolve negative feedback, and authorize anything published as proof. No fabricated reviews, rating manipulation, or outreach during unresolved service issues.
 
 ------------------------------------------------------------
 

@@ -125,10 +125,10 @@ test("founder band is compacted on umbrella homepage", () => {
   assert.ok(wordCount > 100, "homepage has content (not empty)");
 });
 
-test("all seven system families have AI-GC annotations on /operations", () => {
-  // Per umbrella expansion: system families are compacted on homepage, full on /operations
+test("all eight system families have AI-GC annotations on /operations", () => {
+  // Per Review & Referral Systems restoration: eight system families total
   const operationsPage = read("src/app/operations/page.tsx");
-  assert.equal(site.systemFamilies.length, 7, "seven system families are defined");
+  assert.equal(site.systemFamilies.length, 8, "eight system families are defined");
   const seen = new Set<string>();
   for (const family of site.systemFamilies) {
     assert.ok(family.aiGc && family.aiGc.length > 80, `${family.title} has a substantive annotation`);
@@ -268,7 +268,7 @@ test("the hub is reachable from header and footer navigation", () => {
 test("llms.txt covers summary, all seven families, customers, routes, and canonical facts", () => {
   for (const heading of [
     "## What \"AI general contractor\" means",
-    "## The seven system families",
+    "## The eight system families",
     "## The method",
     "## Ideal customers",
     "## What we do not do",
@@ -352,7 +352,7 @@ test("sitemap exposes the conversion, hub, service, and methodology routes", () 
 
 test("global schema is accurate and asserts no unverified trust signals", () => {
   assert.ok(layout.includes('"ProfessionalService"'), "the practice is typed as a ProfessionalService");
-  assert.ok(layout.includes("hasOfferCatalog"), "the seven system families are exposed as services");
+  assert.ok(layout.includes("hasOfferCatalog"), "the eight system families are exposed as services");
   const shipped = stripComments(layout);
   for (const forbidden of ["aggregateRating", "review:", "priceRange", "award", "openingHours"]) {
     assert.ok(!shipped.includes(forbidden), `global schema asserts no ${forbidden}`);

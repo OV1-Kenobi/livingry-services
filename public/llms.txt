@@ -21,15 +21,16 @@ The AI general contractor is the Operations practice's role, not the entire comp
 
 A building general contractor does not pour the foundation or run the wire. They hire the right subcontractors, sequence the work, hold them to scope, and own the result. Livingry Services plays that role for a business's AI stack: selecting the tools, integrating them into software the client already owns, governing what they are permitted to do, and staying accountable when something breaks. The client never has to become an AI expert, and the client holds the accounts, keys, and admin access throughout.
 
-## The seven system families
+## The eight system families
 
 - Response Systems: reduce missed inbound demand (calls, forms, chats, referrals). AI general contracting here: curating the after-hours answering path, voicemail-to-text or AI receptionist, lead-routing rules, and CRM handoff, with written limits on what AI may say.
 - Recovery Systems: revive cold estimates, proposals, and consultations appropriately. AI general contracting here: selecting reactivation tooling that drafts the right nudge at the right interval from the client's own estimate records, with human approval before anything sends.
-- Customer Continuity: keep existing customers active with relevant follow-ups. AI general contracting here: sequencing maintenance, warranty, replacement-eligibility, and seasonal contact against real service history rather than a generic drip template.
+- Customer Continuity: keep existing customers active with relevant return, renewal, and maintenance opportunities. AI general contracting here: sequencing maintenance, warranty, replacement-eligibility, and seasonal contact against real service history rather than a generic drip template.
 - Discovery & Trust Systems: make services, proof, and differentiators legible to humans and AI. AI general contracting here: building the AI-readable layer — structured data, llms.txt, canonical facts, answerable FAQs — and monitoring how answer engines actually describe the business.
 - Knowledge Systems: turn tribal knowledge into reusable, safer team knowledge. AI general contracting here: installing a retrieval layer over existing documents and threads, scoped by role, so answers arrive on demand instead of through one busy person.
 - Workflow Systems: fix handoffs, ownership, and duplicated work. AI general contracting here: choosing automation and handoff tooling that fits existing software, with named ownership and exception alerts so work cannot silently stall.
 - TradeOps Layer: one vendor-agnostic operations layer over whatever field-service software a trade business runs. AI general contracting here: normalizing job events into one record, adding policy gates and human approval, and keeping the layer portable across vendor changes.
+- Review & Referral Systems: turn verified delivery into approved proof, attributed referrals, and stronger discovery evidence while routing unresolved concerns to a human first. AI general contracting here: connecting verified completion records, customer communication, review destinations, referral intake, proof approval, CRM routing, and discovery publishing into one governed workflow — with humans approving outreach, exceptions, and public proof.
 
 ## The method — the Livingry Leakproofing Framework
 
@@ -82,12 +83,12 @@ Livingry Habitats helps landowners explore what their land could responsibly bec
 ## Core pages
 
 - [Home](https://livingry.services/): umbrella positioning with selector between Operations and Habitats practices.
-- [Operations](https://livingry.services/operations): AI general contracting, the seven system families, platform comparison, and industries.
+- [Operations](https://livingry.services/operations): AI general contracting, the eight system families, platform comparison, and industries.
 - [Habitats](https://livingry.services/habitats): regenerative development systems for landowners, Central Texas focus.
 - [Land Potential Review](https://livingry.services/habitats/land-potential-review): explore what your land could responsibly become.
 - [Request a Land Review](https://livingry.services/land-review): submit a Land Potential Review request.
 - [How It Works](https://livingry.services/how-it-works): the Livingry Leakproofing Framework — Find, Trace, Seal, Verify, Keep.
-- [What We Build](https://livingry.services/what-we-build): redirects to /operations (the seven system families).
+- [What We Build](https://livingry.services/what-we-build): redirects to /operations (the eight system families).
 - [17-Point Leak Assessment](https://livingry.services/assessment): free self-scoring assessment, ~10 minutes, no email required.
 - [System Review](https://livingry.services/system-review): request the free first review.
 - [Industries](https://livingry.services/industries): who we work with today and next.

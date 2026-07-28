@@ -69,9 +69,23 @@ export const RECOVERY_LOOP = {
   flowsBackTo: ["response", "workflow"] as CategoryId[],
 };
 
-// Every non-ops category referenced by the lifecycle + recovery loop, in the
+// Review & Referral is the bridge between EXECUTE (TradeOps) and RETAIN
+// (Continuity). It closes the operational loop by turning verified completion
+// into proof, referrals, and discovery signals before flowing to continuity.
+export const REVIEW_REFERRAL_BRIDGE = {
+  id: "review_referral" as CategoryId,
+  eyebrow: "Close & Feed",
+  title: "Review & Referral Systems",
+  role: "bridge" as const,
+  carries: "verified completion → proof, referrals, discovery signals",
+  flowsFrom: "tradeops" as CategoryId,
+  flowsTo: ["discovery_trust", "response", "continuity"] as CategoryId[],
+};
+
+// Every non-ops category referenced by the lifecycle + recovery loop + review/referral bridge, in the
 // order they appear. Used to sanity-check coverage in tests.
 export const FLOW_STAGE_CATEGORY_IDS: CategoryId[] = [
   ...LIFECYCLE_STAGES.flatMap((s) => s.lanes.map((l) => l.id)),
   RECOVERY_LOOP.id,
+  REVIEW_REFERRAL_BRIDGE.id,
 ];

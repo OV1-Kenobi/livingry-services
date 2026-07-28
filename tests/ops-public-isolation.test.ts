@@ -16,10 +16,10 @@ test("public payload contains no private vendor brand names", () => {
   }
 });
 
-test("public payload is explicitly public mode with all eight categories", () => {
+test("public payload is explicitly public mode with all nine categories", () => {
   const data = getPublicDashboardData();
   assert.equal(data.mode, "public");
-  assert.equal(data.categories.length, 8);
+  assert.equal(data.categories.length, 9);
   const ids = data.categories.map((c) => c.id).sort();
   assert.deepEqual(ids, [
     "continuity",
@@ -28,6 +28,7 @@ test("public payload is explicitly public mode with all eight categories", () =>
     "ops_layer",
     "recovery",
     "response",
+    "review_referral",
     "tradeops",
     "workflow",
   ]);

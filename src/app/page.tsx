@@ -146,7 +146,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 id="systems-heading" className="serif">
-                Seven system families for organizations and places
+                Eight system families for organizations and places
               </h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
                 Each family names a specific leak and the system we build to close it. The full AI general contracting work lives in Operations; the underlying method applies to both operations and development planning.

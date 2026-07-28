@@ -19,8 +19,8 @@ export const AUTOMATION_LABEL: Record<AutomationLevel, string> = {
   A3_escalate: "Escalate",
 };
 
-// The seven functional categories already represented across the Livingry
-// site, plus the eighth orchestration/governance layer (Dashboard / Ops).
+// The eight functional categories already represented across the Livingry
+// site, plus the ninth orchestration/governance layer (Dashboard / Ops).
 export type CategoryId =
   | "response"
   | "recovery"
@@ -29,6 +29,7 @@ export type CategoryId =
   | "knowledge"
   | "workflow"
   | "tradeops"
+  | "review_referral"
   | "ops_layer";
 
 // Keys used by the existing Postgres integration_connections taxonomy, so a

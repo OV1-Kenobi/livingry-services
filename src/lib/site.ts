@@ -69,8 +69,8 @@ export const site = {
     {
       slug: "customer-continuity",
       title: "Customer Continuity",
-      leak: "Existing customers are forgotten until a competitor appears.",
-      improves: "Relevant return, renewal, referral, and maintenance opportunities.",
+      leak: "Satisfied customers receive no relevant reason to return before a competitor appears.",
+      improves: "Relevant return, renewal, maintenance, and retention opportunities.",
       aiGc:
         "We choose and sequence the maintenance, warranty, and replacement-eligibility tooling against your own service history, so cadence comes from what you actually installed and when — not a generic drip template.",
       family: "Growth Systems",
@@ -110,6 +110,15 @@ export const site = {
       aiGc:
         "We act as the integrator across whatever field-service, accounting, and scheduling software you already run — normalizing job events into one record, adding policy gates and human approval, and keeping the operations layer portable if you change vendors.",
       family: "Knowledge & Workflow",
+    },
+    {
+      slug: "review-and-referral-systems",
+      title: "Review & Referral Systems",
+      leak: "Successful work ends without capturing the customer's approved review, referral, proof, or next appropriate opportunity.",
+      improves: "More verified reviews, attributable referrals, reusable proof, and trusted discovery signals — with unresolved concerns routed to a human first.",
+      aiGc:
+        "We connect verified completion records, customer communication, review destinations, referral intake, proof approval, CRM routing, and discovery publishing into one governed workflow — with humans approving outreach, exceptions, and public proof.",
+      family: "Growth & Trust Systems",
     },
   ],
   industries: [
