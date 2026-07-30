@@ -19,7 +19,17 @@ export const HVAC_EVENTS = {
   pilotWon: "hvac_pilot_won",
 } as const;
 
-export type HvacEvent = (typeof HVAC_EVENTS)[keyof typeof HVAC_EVENTS];
+export type HvacEvent =
+  | (typeof HVAC_EVENTS)[keyof typeof HVAC_EVENTS]
+  // HVAC Operations landing page (/operations/hvac) event names. Declared here
+  // so both funnels share the same PII guard and dispatch path.
+  | "hvac_ops_page_view"
+  | "hvac_ops_hero_primary_cta_click"
+  | "hvac_ops_hero_secondary_cta_click"
+  | "hvac_ops_leak_map_view"
+  | "hvac_ops_tradeops_view"
+  | "hvac_ops_intake_click"
+  | "hvac_ops_fit_conversation_click";
 
 // Keys that must never appear in an analytics payload.
 const PII_KEYS = new Set([
