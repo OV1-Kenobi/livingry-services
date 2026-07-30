@@ -9,6 +9,7 @@ const nav = [
     label: "Operations",
     href: "/operations",
     children: [
+      { label: "HVAC Operations", href: "/operations/hvac" },
       { label: "Response Systems", href: "/systems/response-systems" },
       { label: "Recovery Systems", href: "/systems/recovery-systems" },
       { label: "Customer Continuity", href: "/systems/customer-continuity" },
@@ -26,6 +27,7 @@ const nav = [
     label: "Industries",
     href: "/industries",
     children: [
+      { label: "HVAC Operations", href: "/operations/hvac" },
       { label: "HVAC Companies", href: "/industries/hvac" },
       { label: "HVAC · Founding Five Pilot", href: "/hvac/founding-five" },
       { label: "Roofing Companies", href: "/industries/roofing" },

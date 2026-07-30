@@ -105,6 +105,19 @@ export default function Home() {
                 <div className="mt-6">
                   <span className="pill pill-active text-[0.85rem]">Active pilots · HVAC Founding Five</span>
                 </div>
+                {/* HVAC-specific entry point — the active implementation focus gets
+                    its own path off the corporate homepage. */}
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid var(--rule)" }}>
+                  <div className="eyebrow" style={{ color: "var(--copper-2)" }}>For HVAC operators</div>
+                  <p className="mt-2 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                    Stop losing booked work, unsold estimates, and repeat customers between the systems you already use.
+                  </p>
+                  <div className="mt-3">
+                    <Link href="/operations/hvac" className="link" style={{ color: "var(--forest)" }}>
+                      Explore HVAC Operations →
+                    </Link>
+                  </div>
+                </div>
                 <div className="mt-6">
                   <Link href="/operations" className="link" style={{ color: "var(--forest)" }}>
                     Explore Operations →
@@ -282,7 +295,10 @@ export default function Home() {
                 </div>
                 <p className="text-[0.93rem]" style={{ color: "var(--ink-2)" }}>{ind.promise}</p>
                 {ind.slug === "hvac" && (
-                  <div className="mt-1">
+                  <div className="mt-1 flex flex-wrap gap-x-5 gap-y-1">
+                    <Link href="/operations/hvac" className="link text-[0.9rem]" style={{ color: "var(--forest)" }}>
+                      Explore HVAC Operations →
+                    </Link>
                     <Link href="/hvac/founding-five" className="link text-[0.9rem]" style={{ color: "var(--forest)" }}>
                       See the Founding Five HVAC pilot →
                     </Link>

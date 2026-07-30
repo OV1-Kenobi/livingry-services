@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/agents",
     "/system-review",
+    "/operations/hvac",
     "/hvac/founding-five",
     "/ops",
     "/explore-demo",
@@ -37,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Conversion routes and practice pages rank high for search/answer engines.
   // Per umbrella expansion: /operations and /habitats are practice entry points,
   // /land-review is the Habitats conversion funnel.
-  const conversionRoutes = new Set(["/system-review", "/assessment"]);
+  const conversionRoutes = new Set(["/system-review", "/assessment", "/operations/hvac"]);
   const practicePages = new Set(["/operations", "/habitats"]);
   const priorityFor = (path: string) => {
     if (path === "/") return 1;

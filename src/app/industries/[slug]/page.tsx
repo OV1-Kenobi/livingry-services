@@ -86,8 +86,12 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           {c.slug === "hvac" && (
             <p className="mt-8 text-[0.95rem]" style={{ color: "var(--ink-2)", maxWidth: "46rem" }}>
               Running an established US HVAC company?{" "}
+              <Link href="/operations/hvac" className="link" style={{ color: "var(--forest)" }}>
+                Explore HVAC Operations →
+              </Link>{" "}
+              or{" "}
               <Link href="/hvac/founding-five" className="link" style={{ color: "var(--forest)" }}>
-                See the Founding Five HVAC program →
+                see the Founding Five HVAC program →
               </Link>
             </p>
           )}

@@ -78,6 +78,23 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
         secondaryCta={c.cta.secondary ? { label: c.cta.secondary, href: "/how-it-works" } : undefined}
       />
 
+      {/* HVAC-specific application of the TradeOps Layer */}
+      {c.slug === "tradeops-layer" && (
+        <section className="section-tight">
+          <div className="container max-w-4xl">
+            <p style={{ color: "var(--ink-2)" }}>
+              For HVAC teams, the TradeOps Layer connects the operational events
+              that move between inquiry, estimate, booked job, field work,
+              customer follow-up, and maintenance — without requiring a forced
+              platform migration.{" "}
+              <Link href="/operations/hvac" className="link" style={{ color: "var(--forest)" }}>
+                See how it applies to HVAC operations →
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
+
       <hr />
 
       {/* Problem */}

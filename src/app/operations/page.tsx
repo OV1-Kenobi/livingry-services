@@ -234,9 +234,12 @@ export default function Operations() {
                     {ind.cta} <span aria-hidden>→</span>
                   </Link>
                 </div>
-                {/* HVAC Founding Five secondary CTA per spec §4.4 */}
+                {/* HVAC Founding Five secondary CTAs per spec §4.4 */}
                 {ind.slug === "hvac" && (
-                  <div className="mt-3">
+                  <div className="mt-3 grid gap-1.5">
+                    <Link href="/operations/hvac" className="link text-[0.9rem]" style={{ color: "var(--copper-2)" }}>
+                      Explore HVAC Operations <span aria-hidden>→</span>
+                    </Link>
                     <Link href="/hvac/founding-five" className="link text-[0.9rem]" style={{ color: "var(--copper-2)" }}>
                       See the Founding Five pilot <span aria-hidden>→</span>
                     </Link>
