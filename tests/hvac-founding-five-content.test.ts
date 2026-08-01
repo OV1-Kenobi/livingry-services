@@ -12,6 +12,10 @@ import {
   faq,
   findCalendarReferences,
   findProhibitedClaims,
+  founder,
+  hero,
+  offer,
+  pricing,
   showPilotPrice,
   HVAC_ROUTE,
 } from "../src/lib/hvac-founding-five/content";
@@ -112,4 +116,52 @@ test("Breadcrumb JSON-LD ends at the founding-five route", () => {
   const ld = buildBreadcrumbLd();
   const last = ld.itemListElement[ld.itemListElement.length - 1];
   assert.match(String(last.item), /\/hvac\/founding-five$/);
+});
+
+// --- Strategic Alliance positioning (added with the 2026-08 repositioning) ---
+
+test("offer sells the four-workflow system, never a single workflow", () => {
+  assert.match(offer.heading, /Always together/i);
+  assert.equal(offer.workflows.length, 4);
+  assert.match(offer.workflows[0], /Missed-call recovery/);
+  assert.match(offer.workflows[1], /Estimate continuity/);
+  assert.match(offer.workflows[2], /Customer reactivation/);
+  assert.match(offer.workflows[3], /Referral continuity/);
+  assert.match(offer.intro, /no partner is sold one workflow/i);
+});
+
+test("hero leads with the Strategic Alliance application posture", () => {
+  assert.match(hero.title, /Strategic Alliances/i);
+  assert.match(hero.primaryCta, /Apply/i);
+  assert.doesNotMatch(hero.proofStrip, /One workflow/);
+});
+
+test("terms publish the $799 setup fee and gate the service fee", () => {
+  assert.match(pricing.body, /\$799 non-refundable setup fee/);
+  assert.match(pricing.body, /deferred/i);
+  assert.doesNotMatch(pricing.body, /\$1,?000\s*(per|\/|a)?\s*(business\s*)?week/i);
+  assert.doesNotMatch(pricing.body, /\$4,?000/);
+  assert.doesNotMatch(pricing.gatedPrice, /\$3,?500/);
+});
+
+test("faq explains the conditional fee-waiver instead of denying a guarantee", () => {
+  const g = faq.find((f) => /guarantee revenue/i.test(f.q));
+  assert.ok(g);
+  assert.match(g.a, /fee structure, not an outcome/i);
+  assert.doesNotMatch(g.a, /^No\./);
+});
+
+test("founder story keeps credential discipline and includes the 2019 book", () => {
+  const joined = founder.body.join(" ");
+  assert.match(joined, /HVAC certification training in 2012/);
+  assert.match(joined, /independent residential contractor/);
+  assert.match(joined, /2019/);
+  assert.match(joined, /book/i);
+  assert.doesNotMatch(joined, /licensed HVAC/i);
+});
+
+test("service schema describes the alliance, not a one-workflow pilot", () => {
+  const ld = buildServiceLd();
+  assert.match(ld.name, /Revenue Continuity System/i);
+  assert.doesNotMatch(ld.name, /Pilot/i);
 });

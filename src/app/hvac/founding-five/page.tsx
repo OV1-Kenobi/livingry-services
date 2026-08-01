@@ -52,7 +52,7 @@ export default function FoundingFivePage() {
   const crumbs = [
     { label: "Home", href: "/" },
     { label: "HVAC", href: "/industries/hvac" },
-    { label: "Founding Five Pilot", href: HVAC_ROUTE },
+    { label: "Founding Five Alliance", href: HVAC_ROUTE },
   ];
 
   return (
@@ -83,7 +83,7 @@ export default function FoundingFivePage() {
           <p className="mt-6 eyebrow" style={{ color: "var(--ink-3)" }}>{hero.proofStrip}</p>
 
           <div className="mt-9 flex flex-wrap gap-3 items-center">
-            <a href="#request-review" className="btn btn-primary" data-analytics="hvac-primary-cta">
+            <a href="#request-review" className="btn btn-primary" data-analytics="hvac-alliance-apply">
               {hero.primaryCta} <span aria-hidden>→</span>
             </a>
             <a href="#how-it-works" className="btn btn-secondary">{hero.secondaryAnchor}</a>
@@ -205,7 +205,7 @@ export default function FoundingFivePage() {
       {/* PROCESS */}
       <section className="section" id="how-it-works" aria-labelledby="ff-process-heading">
         <div className="container">
-          <div className="rule-label">03 · How the pilot works</div>
+          <div className="rule-label">03 · How an alliance begins</div>
           <h2 id="ff-process-heading" className="serif max-w-3xl">{process.heading}</h2>
           <ol className="mt-10 grid gap-0">
             {process.steps.map((s, i) => (
@@ -349,15 +349,31 @@ export default function FoundingFivePage() {
 
       <hr />
 
-      {/* PRICING */}
-      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-pricing-heading">
+      {/* TERMS */}
+      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-pricing-heading" data-analytics-view="alliance-terms">
         <div className="container max-w-3xl">
-          <div className="rule-label">07 · Pricing</div>
+          <div className="rule-label">07 · Terms</div>
           <h2 id="ff-pricing-heading" className="serif">{pricing.heading}</h2>
           <p className="mt-5" style={{ color: "var(--ink-2)" }}>{pricing.body}</p>
           {priceVisible && (
             <p className="mt-4 card" style={{ color: "var(--ink)" }}>{pricing.gatedPrice}</p>
           )}
+        </div>
+      </section>
+
+      <hr />
+
+      {/* GUARANTEE — conditional fee-waiver only */}
+      <section className="section" aria-labelledby="ff-guarantee-heading">
+        <div className="container max-w-3xl">
+          <div className="rule-label" style={{ color: "var(--forest)" }}>The guarantee</div>
+          <h2 id="ff-guarantee-heading" className="serif">The guarantee, in plain terms.</h2>
+          <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+            If the four-part recovery system does not produce at least the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period.
+          </p>
+          <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+            We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.
+          </p>
         </div>
       </section>
 

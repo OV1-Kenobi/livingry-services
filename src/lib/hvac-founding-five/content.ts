@@ -15,34 +15,34 @@ export const FOUNDING_FIVE_CAPACITY = 5;
 export const sealedSystemPrinciple = "A system that is unsealed cannot be scaled.";
 
 export const seo = {
-  title: "Founding Five HVAC Pilot | Livingry Services",
+  title: "HVAC/R Strategic Alliance — Founding Five | Livingry Services",
   description:
-    "Livingry is selecting five established U.S. HVAC companies for founder-led, remote implementation of one measurable operational workflow.",
-  ogTitle: "One HVAC workflow is costing you more than it should.",
+    "Livingry is accepting applications from established U.S. HVAC/R companies for a limited number of Strategic Alliances: a four-part Revenue Continuity System with a shared proof ledger and a conditional fee-waiver guarantee.",
+  ogTitle: "Applications are open for a limited number of HVAC/R Strategic Alliances.",
   ogDescription:
-    "One workflow. Human-controlled AI. A measured before-and-after implementation for five founding HVAC partners.",
+    "One Revenue Continuity System around missed calls, open estimates, past customers, and referrals. Human-controlled AI. Measured against a shared proof ledger.",
 } as const;
 
 // A direct, server-rendered 40–80 word answer placed near the top of the page
 // for humans and AI systems. (Word count verified in tests.)
 export const directAnswer =
-  "The Founding Five HVAC Pilot is a paid, founder-led program in which Livingry Services selects five established U.S. HVAC companies and remotely implements one bounded operational workflow for each. Livingry diagnoses one place where calls, estimates, promises, reviews, or repeat business fall through, redesigns that workflow with human-controlled AI, and measures the result before and after.";
+  "The Founding Five is the entry cohort of Livingry's HVAC/R Strategic Alliance program: a founder-led engagement that installs a four-part Revenue Continuity System — missed-call recovery, estimate continuity, customer reactivation, and referral continuity — around the customers and opportunities an established company has already earned. Every recovered dollar is measured against a shared proof ledger, and Livingry's accrued service fee is waived if the agreed recovery level is not met during the guarantee period.";
 
 export const hero = {
   eyebrow: "THE LIVINGRY FOUNDING FIVE",
-  title: "One HVAC workflow is costing you more than it should.",
+  title: "Applications are open for a limited number of HVAC/R Strategic Alliances.",
   intro:
-    "Livingry Services is selecting five established U.S. HVAC companies for founder-led implementations.",
+    "Livingry installs a full Revenue Continuity System around the customers and opportunities your company has already earned.",
   premise:
-    "Adding more calls, more tools, or more automation to a workflow that already leaks only multiplies the waste. Seal the workflow first — then scale the work.",
+    "Missed calls. Open estimates. Past customers. Referrals that were never asked for. These are not four separate problems — they are one system leaking at four handoffs.",
   belief: sealedSystemPrinciple,
-  body: "We identify one place where calls, estimates, customer promises, reviews, or repeat business are falling between the cracks. Then we redesign that workflow, implement the smallest useful correction, and measure what changed.",
+  body: "We do not sell a loose collection of AI tools. We build the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, the completed job, and the next customer need — and we measure every recovered dollar against a shared proof ledger.",
   proofStrip:
-    "Remote implementation · One workflow · Human-controlled AI · Five founding partners",
-  primaryCta: "Request a Private Workflow Review",
-  secondaryAnchor: "See how the pilot works",
+    "Four connected workflows · Shared proof ledger · Human approval on consequential actions · Conditional fee-waiver guarantee",
+  primaryCta: "Apply for a Founding Five Alliance",
+  secondaryAnchor: "See how an alliance works",
   noCalendarNote:
-    "No public calendar. Qualified companies receive a private workflow observation before a fit call is offered.",
+    "No public calendar. Applications are reviewed first; fit conversations follow for qualified companies.",
 } as const;
 
 export const problem = {
@@ -50,31 +50,27 @@ export const problem = {
   intro:
     "Most established HVAC companies already have phones, forms, field-service software, office procedures, and capable people. The leaks appear between them:",
   leaks: [
-    "An after-hours caller reaches voicemail and receives no accountable next step.",
-    "A web inquiry is acknowledged but never clearly owned.",
-    "An unsold estimate receives inconsistent follow-up.",
-    "A promise made on a call never reaches the responsible person.",
-    "A completed job never triggers the right review request.",
-    "An existing customer opportunity remains buried in old records.",
+    "A caller reaches voicemail and receives no accountable next step — the demand dies before a qualified response.",
+    "A valid estimate is sent, then worked inconsistently or not at all.",
+    "A past customer who would have rebooked is never appropriately contacted again.",
+    "A satisfied customer is never given a simple, timely opportunity to refer.",
   ],
   pullQuote:
     "If the next action depends on one person remembering, it is not yet a dependable workflow.",
 } as const;
 
 export const offer = {
-  heading: "Five companies. Five workflows. Five measured implementations.",
+  heading: "One Revenue Continuity System. Four connected workflows. Always together.",
   intro:
-    "Each Founding Five partner chooses one bounded workflow to diagnose, redesign, and implement:",
+    "Every alliance includes all four continuity workflows. The implementation order may vary based on your baseline, but no partner is sold one workflow as the complete product:",
   workflows: [
-    "Missed-call recovery.",
-    "New-inquiry response.",
-    "Unsold-estimate follow-up.",
-    "Promise and next-action extraction.",
-    "Completed-job review continuity.",
-    "Existing-customer reactivation, when data quality and communication permissions support it.",
+    "Missed-call recovery — capture, classify, route, time-limit, escalate, and log every eligible inbound opportunity.",
+    "Estimate continuity — identify eligible open estimates and execute the approved follow-up cadence with recorded dispositions.",
+    "Customer reactivation — segment eligible prior customers and run the approved contact sequence, routing replies and bookings.",
+    "Referral continuity — trigger a timely, approved referral invitation after eligible completed jobs, with source attribution.",
   ],
   closer:
-    "This is not a replacement of the company’s entire software stack. It is one controlled improvement around a real operating problem.",
+    "Booked-job handoffs and technician knowledge are implemented inside every alliance as operating scope — they are how the four workflows hold up in the field, not separate products.",
 } as const;
 
 // The seven-part diagnostic model. Plain operational names first; the short
@@ -142,31 +138,31 @@ export const identity = {
 } as const;
 
 export const process = {
-  heading: "How the pilot works",
+  heading: "How an alliance begins",
   steps: [
     {
-      title: "Request a private review.",
-      body: "Tell Livingry which repeated workflow causes the most frustration or lost follow-through.",
+      title: "Apply.",
+      body: "Tell us about your operation and the leak that costs you the most. Poor-fit applications get a fast, honest answer.",
     },
     {
-      title: "Receive a private observation.",
-      body: "Livingry researches one externally observable workflow and records a short, company-specific micro-audit.",
+      title: "Fit conversation.",
+      body: "A short call confirms authority, data access, volume, capacity, and your internal operator — before any promise is made.",
     },
     {
-      title: "Confirm or correct the hypothesis.",
-      body: "If the observation is relevant, a short Pilot Fit Call examines what actually happens inside the operation.",
+      title: "Baseline and system map.",
+      body: "We sign the alliance and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. The guarantee clock does not start until readiness is signed off.",
     },
     {
-      title: "Map before and after.",
-      body: "Livingry documents the current handoffs, the proposed correction, human approvals, exception handling, and measurement.",
+      title: "Four-workflow launch.",
+      body: "Missed-call capture, estimate follow-up, reactivation, and referral invitations go live — validated on test records before touching production data.",
     },
     {
-      title: "Implement one workflow.",
-      body: "The workflow is built, tested, launched under supervision, and refined.",
+      title: "Guarantee period.",
+      body: "All four workflows run. The proof ledger and exception desk are reviewed daily, and your scorecard arrives every Friday.",
     },
     {
-      title: "Measure what changed.",
-      body: "Both parties compare the agreed baseline and post-launch result. Low-volume workflows may need more than 30 days to evaluate.",
+      title: "Reconciliation and continuation.",
+      body: "We reconcile the ledger together. If the agreed recovery level is met, accrued fees are collected and weekly service continues. If not — and you met your commitments — the accrued fees are waived, and we review why before deciding anything.",
     },
   ],
 } as const;
@@ -200,49 +196,50 @@ export const workflow = {
 export const deliverables = {
   heading: "What a founding partner receives",
   items: [
-    "Private workflow diagnosis.",
-    "Current-state workflow map.",
-    "Proposed before-and-after map.",
-    "Implementation of one bounded workflow.",
+    "Baseline extraction and a current-state leak map.",
+    "System-of-record map and field mappings.",
+    "Eligibility rules, approved scripts, and escalation paths.",
+    "All four continuity workflows, configured and tested.",
     "Human-control and exception rules.",
-    "Basic staff orientation.",
-    "Baseline and post-implementation measurement.",
-    "30 days of monitoring and refinement after supervised launch.",
-    "Final before-and-after report.",
+    "Shared proof ledger with source-record links.",
+    "Weekly executive scorecard, delivered every Friday.",
+    "Weekly 30-minute alliance review with your operating owner.",
+    "Guarantee-period reconciliation ledger.",
+    "Staff orientation and full documentation handoff.",
   ],
 } as const;
 
 export const commitment = {
   heading: "What Livingry needs from you",
   items: [
-    "Access to the relevant people, workflow, and software.",
-    "One responsible decision-maker.",
+    "A named operating owner with authority and availability.",
+    "Read access or exports from your field-service, CRM, phone, and invoicing systems.",
     "Accurate baseline information.",
-    "Timely review and approval.",
-    "Permission to measure the selected workflow.",
-    "Permission to tell the story, anonymously if preferred.",
+    "Timely review, approval, and disposition updates.",
+    "Direct payment of third-party tool, messaging, and telephony costs.",
+    "Capacity to serve the work the system recovers.",
   ],
-  note: "No public testimonial or named case study is required.",
+  note: "No public testimonial or named case study is ever required.",
 } as const;
 
 export const fit = {
-  isHeading: "This is likely a fit if",
+  isHeading: "A strong fit looks like",
   is: [
-    "The company is an established U.S. HVAC operation.",
-    "A decision-maker will participate.",
-    "The company has enough recurring volume to observe the workflow.",
-    "A repeated operational bottleneck is identifiable.",
-    "Remote access and meetings are workable.",
-    "The company can begin within 30 days.",
-    "The company is willing to measure one process before and after.",
+    "An established U.S. HVAC/R operation with enough inbound demand, estimates, and customer history to create a real recovery opportunity.",
+    "An owner, GM, or operations leader with authority to change workflow.",
+    "Read access or exports from the field-service, CRM, phone, and invoicing systems.",
+    "One accountable internal operator we can work with each week.",
+    "Scheduling capacity to serve recovered work.",
+    "Willingness to use standardized dispositions and join a weekly reconciliation.",
+    "Direct payment of third-party tool and usage costs.",
   ],
-  isNotHeading: "This is not a fit if",
+  isNotHeading: "We will decline or defer when",
   isNot: [
-    "The goal is free AI advice or a generic chatbot demonstration.",
-    "The company wants guaranteed revenue.",
-    "Nobody will own the pilot internally.",
-    "The company will not provide baseline information or relevant access.",
-    "The request is to replace the entire CRM or build unrelated custom software.",
+    "Someone wants “AI” without a business process owner.",
+    "Leads, estimates, customers, jobs, and paid invoices cannot be identified or exported.",
+    "There is no capacity to serve recovered demand.",
+    "The ask is unlimited customization or unsupervised commitments to customers.",
+    "Livingry would have to make technical diagnoses, pricing decisions, dispatch commitments, or customer promises without authorized human approval.",
     "The work would require Livingry to perform licensed HVAC services.",
   ],
 } as const;
@@ -250,8 +247,9 @@ export const fit = {
 export const founder = {
   heading: "Built from the field outward",
   body: [
-    "I have worked as an HVAC technician and independent contractor. I understand what happens when the person solving the customer’s problem must also answer calls, document work, follow up, collect payment, request the review, and remember every unfinished promise.",
-    "Livingry builds the operating systems I needed then—not another collection of disconnected tools.",
+    "I have run the calls this system recovers. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018, and years as an independent residential contractor — answering the phone, writing the estimate, doing the work, sending the invoice, and asking for the review, all myself. I know exactly where a small operation loses the thread between an inquiry and a paid job.",
+    "I spent the following years building software — business apps, then AI agents and payment infrastructure — and kept seeing the same pattern from the other side: the tools worked, but the handoffs between them leaked. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
+    "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps.",
   ],
   // Approved Proof Matters disclosure, adjacent to the founder copy. Does not
   // imply current licensure; links to the canonical /proof page.
@@ -262,41 +260,53 @@ export const founder = {
 } as const;
 
 export const pricing = {
-  heading: "A paid, bounded pilot",
-  body: "Founding Five projects are paid implementation engagements, not free consulting. Qualified companies receive a one-page proposal after the workflow is confirmed. Third-party software and communication usage are disclosed separately.",
+  heading: "Founding Five terms",
+  body: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the tools configured for their business. Livingry's service fee accrues from day one but is deferred until the shared proof ledger demonstrates the agreed level of recovered, attributable paid revenue. Exact fee and threshold figures are set out in the one-page proposal qualified companies receive after the fit conversation.",
   // Gated copy — only rendered when SHOW_HVAC_PILOT_PRICE is explicitly enabled.
   gatedPrice:
-    "Founding Five Pilot: $3,500 plus direct third-party usage costs. A 50% payment reserves the position; the remainder is due when the workflow enters supervised production.",
+    "Founding Five Alliance: $799 non-refundable setup plus direct third-party costs. Livingry's weekly service fee accrues deferred and is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
 } as const;
 
 export const faq: { q: string; a: string }[] = [
   {
-    q: "Is this an AI receptionist?",
-    a: "Not necessarily. A missed-call workflow may use voice, text, forms, or existing staff. The pilot selects the smallest useful correction rather than forcing one product.",
+    q: "Is this an AI receptionist or a collection of AI tools?",
+    a: "No. The Revenue Continuity System is four connected workflows — missed calls, estimates, past customers, and referrals — installed and operated as one system. AI may classify, summarize, draft, and route inside those workflows; people approve everything consequential.",
   },
   {
     q: "Will Livingry replace our CRM or field-service platform?",
-    a: "No. The default is to work around existing systems where reliable access is available. Any limitation is identified before implementation.",
-  },
-  {
-    q: "Does AI communicate with customers without approval?",
-    a: "Only within an approved workflow and defined authority. Consequential actions and uncertain cases are routed to a responsible person.",
-  },
-  {
-    q: "Can the work be completed remotely?",
-    a: "Yes. The founding program is designed for qualified U.S. HVAC companies able to provide appropriate remote access and participate in remote meetings.",
+    a: "No. Your company remains the system of record. The system works around the tools you already run, and anything we build is documented and handed to you.",
   },
   {
     q: "Do you guarantee revenue?",
-    a: "No. Livingry agrees on a workflow and measurement; it does not promise unsupported revenue outcomes.",
+    a: "We guarantee the fee structure, not an outcome. If the system does not produce the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period. We never promise lead volume, close rates, or revenue totals.",
   },
   {
-    q: "Do we have to publicly endorse Livingry?",
-    a: "No. The pilot requires permission to document the result, but the story may be anonymized.",
+    q: "What do we pay to start?",
+    a: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the third-party tools configured for their business. Livingry's service fee accrues but is deferred until the proof ledger demonstrates the agreed recovery level.",
   },
   {
-    q: "How long does it take?",
-    a: "The working target is one week for mapping and baseline confirmation, one week to build and test, one week of supervised operation, and one week for bounded launch. Measurement may continue longer when volume is low.",
+    q: "Why is capacity limited?",
+    a: "Every alliance receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation. That operating load is real, so Year One is capped and a waitlist forms once active capacity is full.",
+  },
+  {
+    q: "What counts as recovered revenue?",
+    a: "Only paid eligible invoices with a complete proof chain: original opportunity, eligibility decision, workflow enrollment, logged contacts, customer response, completed job, paid invoice, and reconciliation approval. Booked appointments, positive replies, and dashboard totals do not count.",
+  },
+  {
+    q: "Does AI communicate with our customers without approval?",
+    a: "Only within approved workflows, channels, and consent rules. Pricing, discounts, safety guidance, dispatch exceptions, technical advice, and nonstandard commitments always route to a named person on your team.",
+  },
+  {
+    q: "Can the work be done remotely?",
+    a: "Yes. The program is designed for established U.S. HVAC/R companies able to provide appropriate system access and participate in remote reviews.",
+  },
+  {
+    q: "Do we have to endorse Livingry publicly?",
+    a: "No. Case-study consideration is optional and requires your explicit approval; anonymized outcome reporting is the default.",
+  },
+  {
+    q: "What happens if the threshold is not met?",
+    a: "If your team met its operating commitments, the accrued Livingry service fees for the guarantee period are waived. We then do a joint root-cause review of the ledger before any continuation decision — a pilot that misses the threshold still has to explain why.",
   },
   {
     q: "What happens if an integration is not technically possible?",
@@ -305,15 +315,15 @@ export const faq: { q: string; a: string }[] = [
 ];
 
 export const finalCta = {
-  heading: "You do not need to commit to an AI transformation.",
-  body: "You need to determine whether one costly, repeated workflow can work better than it does today.",
-  cta: "Request My Private Review",
-  note: "Requests are reviewed before scheduling access is provided.",
+  heading: "The first five partners shape the operating standard.",
+  body: "You cover the direct cost of the tools configured for your business. Livingry defers its initial service fee until the shared proof ledger demonstrates the agreed level of recovered, attributable paid revenue. Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
+  cta: "Apply for a Founding Five Alliance",
+  note: "Applications are reviewed before a fit conversation is offered.",
 } as const;
 
 export const successState = {
-  heading: "Your request has been received.",
-  body: "Livingry will review your company and the workflow you described to see where it may be unsealed and whether a private observation is warranted. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification. Scheduling access is provided only after an observation is confirmed as worth discussing.",
+  heading: "Your application has been received.",
+  body: "Livingry reviews every application against the alliance fit criteria: authority, data access, volume, capacity, and an accountable internal operator. If the fit looks real, you will receive a fit-conversation invitation or a request for clarification. If it does not, you will get a fast, honest answer rather than a slow maybe.",
 } as const;
 
 export const consent = {
@@ -419,7 +429,7 @@ export function buildBreadcrumbLd() {
   const crumbs = [
     { label: "Home", href: "/" },
     { label: "HVAC", href: "/industries/hvac" },
-    { label: "Founding Five Pilot", href: HVAC_ROUTE },
+    { label: "Founding Five Alliance", href: HVAC_ROUTE },
   ];
   return {
     "@context": "https://schema.org",
@@ -437,13 +447,13 @@ export function buildServiceLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Founding Five HVAC Workflow Implementation Pilot",
-    serviceType: "Operational workflow implementation",
+    name: "HVAC/R Revenue Continuity System — Strategic Alliance",
+    serviceType: "Revenue continuity system implementation and operation",
     provider: { "@id": `${site.primaryDomain}/#organization` },
     areaServed: { "@type": "Country", name: "United States" },
     audience: {
       "@type": "BusinessAudience",
-      audienceType: "Established HVAC companies",
+      audienceType: "Established HVAC/R companies",
     },
     description: directAnswer,
     url: HVAC_URL,
