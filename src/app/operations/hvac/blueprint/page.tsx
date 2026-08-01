@@ -228,6 +228,9 @@ export default function BlueprintPage() {
               {blueprint.primaryCta} <span aria-hidden>→</span>
             </Link>
           </p>
+          <p className="mt-8 serif" style={{ fontSize: "var(--step-1)", color: "var(--copper-2)" }}>
+            Seal the client container.
+          </p>
         </div>
       </section>
     </>
