@@ -26,7 +26,7 @@ import {
   showPilotPrice,
   workflow,
 } from "@/lib/hvac-founding-five/content";
-import { FoundingFiveForm } from "./FoundingFiveForm";
+import { AllianceApplicationForm } from "./AllianceApplicationForm";
 import { HvacAnalytics } from "./HvacAnalytics";
 import { HvacFieldContext } from "@/components/HvacFieldContext";
 
@@ -395,17 +395,17 @@ export default function FoundingFivePage() {
         </div>
       </section>
 
-      {/* FINAL CTA + FORM */}
+      {/* FINAL CTA + APPLICATION */}
       <section className="section paper-grain" id="request-review" aria-labelledby="ff-final-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="eyebrow">Request a private review</div>
+            <div className="eyebrow">Apply for a Strategic Alliance</div>
             <h2 id="ff-final-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>{finalCta.heading}</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>{finalCta.body}</p>
             <p className="mt-6" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>
           </div>
           <div className="lg:col-span-7">
-            <FoundingFiveForm />
+            <AllianceApplicationForm />
           </div>
         </div>
       </section>

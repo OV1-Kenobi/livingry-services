@@ -33,7 +33,11 @@ export type HvacEvent =
   // Revenue Continuity / Strategic Alliance funnel events.
   | "hvac_alliance_apply_click"
   | "hvac_alliance_terms_view"
-  | "hvac_proof_standard_view";
+  | "hvac_proof_standard_view"
+  // AI Opportunity Blueprint events.
+  | "hvac_blueprint_page_view"
+  | "hvac_blueprint_primary_cta_click"
+  | "hvac_blueprint_scope_view";
 
 // Keys that must never appear in an analytics payload.
 const PII_KEYS = new Set([

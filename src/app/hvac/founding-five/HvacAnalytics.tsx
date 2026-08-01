@@ -36,6 +36,7 @@ export function HvacAnalytics() {
       else if (kind === "hvac-proof-matters") trackClientEvent(HVAC_EVENTS.proofMattersClick);
       else if (kind === "hvac-email") trackClientEvent(HVAC_EVENTS.emailClick);
       else if (kind === "hvac-alliance-apply") trackClientEvent("hvac_alliance_apply_click");
+      else if (kind === "hvac-fit-call") trackClientEvent(HVAC_EVENTS.fitCallBooked);
     }
     document.addEventListener("click", onClick);
     return () => {
