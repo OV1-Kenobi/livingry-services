@@ -248,17 +248,19 @@ export const founder = {
   beats: [
     {
       label: "The field",
-      body: "I have run the calls this system recovers. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018, and years as an independent residential contractor — answering the phone, writing the estimate, doing the work, sending the invoice, and asking for the review, all myself. I know exactly where a small operation loses the thread between an inquiry and a paid job.",
+      body: "I spent years as a solo residential contractor in Austin — tools in hand, clients watching, phone buzzing with leads I was paying for and couldn't answer. Thumbtack and HouseCall Pro sent the same leads to my competitors at the same time they sent them to me; I lost jobs I never even knew about. I failed to follow up on estimates in time to close, failed to take the before-and-after pictures, failed to ask for the testimonials, reviews, and referrals. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018 — and probably failed to realize over 30% of my productive capacity, even as a one-man operation.",
     },
     {
       label: "The systems turn",
-      body: "I spent the following years building software — business apps, then AI agents and payment infrastructure — and kept seeing the same pattern from the other side: the tools worked, but the handoffs between them leaked. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
+      body: "I spent the following years building software — business apps, then AI agents and payment infrastructure, including three months as Operations Lead at an open-source AI lab. When I started building seriously with AI, I realized the tools that could have saved my contracting business already exist — unevenly distributed, buried under hype, and locked behind institutional budgets most tradesmen can't touch. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
     },
     {
       label: "Why this offer exists",
-      body: "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps.",
+      body: "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps. I don't remove the human from the loop — I make sure the loop doesn't break when the human is in an attic. I built this for the contractor I was at 35.",
     },
   ],
+  principle:
+    "I seek Win/Win/Win outcomes — for the owners, the employees, and the customers. If that alignment isn't possible, I don't act.",
 } as const;
 
 export const allianceFaq: { q: string; a: string }[] = [

@@ -126,7 +126,7 @@ export const leakproofingMap = {
     },
   ],
   disclaimer:
-    "This is a diagnostic map, not a promise. A single Founding Five pilot does not rebuild all seven layers. It seals one bounded workflow — usually inside one or two of these layers — and measures the result.",
+    "This is a diagnostic map, not a promise. An alliance does not rebuild all seven layers on day one. It seals the four follow-through workflows that cut across them — and measures the result against the ledger.",
 } as const;
 
 // Aspirational operating identity. Defined in plain terms on first use, and
@@ -134,7 +134,7 @@ export const leakproofingMap = {
 // verified status, or a mark we claim to own.
 export const identity = {
   heading: "Built for leakproof operators",
-  body: "The owners who get the most from this pilot share one instinct: they refuse to pour more traffic, tools, or automation into a workflow that already leaks. We call that operating identity a leakproof operator. It is not a membership, a certification, or a badge you earn — just a way of running a business that treats an unsealed workflow as the first thing to fix.",
+  body: "The owners who get the most from an alliance share one instinct: they refuse to pour more traffic, tools, or automation into a system that already leaks. We call that operating identity a leakproof operator. It is not a membership, a certification, or a badge you earn — just a way of running a business that treats an unsealed workflow as the first thing to fix.",
 } as const;
 
 export const process = {
@@ -247,9 +247,9 @@ export const fit = {
 export const founder = {
   heading: "Built from the field outward",
   body: [
-    "I have run the calls this system recovers. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018, and years as an independent residential contractor — answering the phone, writing the estimate, doing the work, sending the invoice, and asking for the review, all myself. I know exactly where a small operation loses the thread between an inquiry and a paid job.",
-    "I spent the following years building software — business apps, then AI agents and payment infrastructure — and kept seeing the same pattern from the other side: the tools worked, but the handoffs between them leaked. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
-    "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps.",
+    "I spent years as a solo residential contractor in Austin — tools in hand, clients watching, phone buzzing with leads I was paying for and couldn't answer. Thumbtack and HouseCall Pro sent the same leads to my competitors at the same time they sent them to me; I lost jobs I never even knew about. I failed to follow up on estimates in time to close, failed to take the before-and-after pictures, failed to ask for the testimonials, reviews, and referrals. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018 — and I probably failed to realize over 30% of my productive capacity, even as a one-man operation.",
+    "I spent the following years building software — business apps, then AI agents and payment infrastructure, including three months as Operations Lead at an open-source AI lab. When I started building seriously with AI, I realized the tools that could have saved my contracting business already exist — unevenly distributed, buried under hype, locked behind institutional budgets most tradesmen can't touch. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
+    "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps. I don't remove the human from the loop — I make sure the loop doesn't break when the human is in an attic. I built this for the contractor I was at 35.",
   ],
   // Approved Proof Matters disclosure, adjacent to the founder copy. Does not
   // imply current licensure; links to the canonical /proof page.
@@ -319,6 +319,7 @@ export const finalCta = {
   body: "The diagnostic and findings call come first. The $799 findings report is the only payment before your workflow launch — and it credits in full when you proceed. Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
   cta: "Apply for a Founding Five Alliance",
   note: "Applications are reviewed before a fit conversation is offered.",
+  signature: "Seal the client container.",
 } as const;
 
 export const successState = {

@@ -157,7 +157,7 @@ test("faq explains the conditional fee-waiver instead of denying a guarantee", (
 test("founder story keeps credential discipline and includes the 2019 book", () => {
   const joined = founder.body.join(" ");
   assert.match(joined, /HVAC certification training in 2012/);
-  assert.match(joined, /independent residential contractor/);
+  assert.match(joined, /(solo|independent) residential contractor/);
   assert.match(joined, /2019/);
   assert.match(joined, /book/i);
   assert.doesNotMatch(joined, /licensed HVAC/i);

@@ -96,7 +96,7 @@ test("founder story is three beats with credential discipline", () => {
   assert.equal(rc.founder.beats.length, 3);
   const fieldBeat = rc.founder.beats[0].body;
   assert.match(fieldBeat, /HVAC certification training in 2012/);
-  assert.match(fieldBeat, /independent residential contractor/);
+  assert.match(fieldBeat, /(solo|independent) residential contractor/);
   const systemsBeat = rc.founder.beats[1].body;
   assert.match(systemsBeat, /2019/);
   assert.match(systemsBeat, /book/i);

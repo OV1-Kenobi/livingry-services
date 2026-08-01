@@ -331,6 +331,9 @@ export default function FoundingFivePage() {
             {founder.body.map((p, i) => (
               <p key={i} className={i === 0 ? "" : "mt-4"} style={{ color: "var(--ink-2)" }}>{p}</p>
             ))}
+            <p className="mt-6 serif" style={{ color: "var(--forest)", fontSize: "1.0625rem" }}>
+              I seek Win/Win/Win outcomes — for the owners, the employees, and the customers. If that alignment isn't possible, I don't act.
+            </p>
             <div className="mt-6 card" style={{ background: "var(--paper-2)" }}>
               <span className="eyebrow">Proof Matters</span>
               <p className="mt-2" style={{ color: "var(--ink-2)" }}>{founder.proofDisclosure}</p>
@@ -403,6 +406,7 @@ export default function FoundingFivePage() {
             <h2 id="ff-final-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>{finalCta.heading}</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>{finalCta.body}</p>
             <p className="mt-6" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>
+            <p className="mt-8 serif" style={{ fontSize: "var(--step-2)", color: "var(--forest)" }}>{finalCta.signature}</p>
           </div>
           <div className="lg:col-span-7">
             <AllianceApplicationForm />
