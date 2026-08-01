@@ -11,7 +11,7 @@ import { IllustrativeImage } from "@/components/IllustrativeImage";
 const umbrellaFaq = [
   {
     q: "What does Livingry Services do?",
-    a: "Livingry Services designs and implements life-supporting systems for organizations and places. Livingry Operations provides AI general contracting for trade and professional practices. Livingry Habitats provides regenerative land and development planning for landowners and aligned partners.",
+    a: "Livingry Services installs Revenue Continuity Systems for established U.S. HVAC/R companies — sealing the client container against the four revenue leaks: missed calls, quiet estimates, past customers, and unasked referrals. Roofing is a planned expansion.",
   },
   {
     q: "Do you sell AI software or land-planning software?",
@@ -19,7 +19,7 @@ const umbrellaFaq = [
   },
   {
     q: "Will AI make decisions without human approval?",
-    a: "Only within workflows you have explicitly approved, and never for decisions that require professional judgment, legal authority, or client commitment. Humans stay accountable.",
+    a: "Only within workflows you have explicitly approved, and never for decisions that require your judgment, your pricing authority, or a commitment to a customer. Humans stay accountable.",
   },
   {
     q: "How long until I see results?",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     absolute: "Systems in Service of Life and Capability — Livingry Services",
   },
   description:
-    "Livingry Services designs and implements life-supporting systems for more capable organizations and places. Livingry Operations provides AI general contracting for trade and professional operations. Livingry Habitats provides regenerative development systems for landowners and aligned partners.",
+    "Livingry Services installs Revenue Continuity Systems for established U.S. HVAC/R companies. Four connected workflows — missed calls, estimates, past customers, and referrals — with human approval on every consequential action.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Systems in Service of Life and Capability — Livingry Services",
@@ -71,13 +71,14 @@ export default function Home() {
               Stop already-earned value from leaking away.
             </h1>
             <p className="mt-6 serif" style={{ fontSize: "var(--step-2)", lineHeight: 1.4, color: "var(--ink-2)" }}>
-              Livingry designs and implements life-supporting systems for organizations
-              and places — helping retain more of the opportunity, knowledge, energy,
-              trust, and capability already available.
+              Revenue leaks through four cracks: missed calls nobody returns, estimates
+              that go quiet, past customers who never hear from you again, and referrals
+              nobody asks for. Livingry seals the client container — four connected
+              workflows, human approval on every consequential action.
             </p>
             <div className="mt-9 flex flex-wrap gap-3 items-center">
-              <Link href="/operations" className="btn btn-primary">Improve an organization <span aria-hidden>→</span></Link>
-              <Link href="/habitats" className="btn btn-secondary">Explore what land could become</Link>
+              <Link href="/operations/hvac" className="btn btn-primary">Seal the Client Container <span aria-hidden>→</span></Link>
+              <Link href="/operations/hvac/blueprint" className="btn btn-secondary">Start with the AI Opportunity Blueprint</Link>
             </div>
             <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
               Human-accountable · Vendor-independent · Built around tools and records you control
@@ -91,16 +92,16 @@ export default function Home() {
       {/* TWO-PATH SELECTOR — Operations vs Habitats per spec §3.2 */}
       <section className="section" aria-labelledby="practices-heading">
         <div className="container">
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6">
             {/* Operations Card */}
             <Reveal>
               <div className="card h-full" style={{ borderLeft: "3px solid var(--forest)" }}>
                 <div className="eyebrow" style={{ color: "var(--forest)" }}>Livingry Operations</div>
                 <h2 className="serif mt-3" style={{ fontSize: "var(--step-2)" }}>
-                  AI general contracting for trade and professional operations
+                  AI general contracting for HVAC/R operations
                 </h2>
                 <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                  Coordinate specialist AI tools, workflows, and human approvals to close operational leaks without forcing businesses into another disconnected platform. Built for HVAC, roofing, and professional practices.
+                  Coordinate specialist AI tools, workflows, and human approvals to close operational leaks without forcing businesses into another disconnected platform. Built for HVAC/R; roofing is a planned expansion.
                 </p>
                 <div className="mt-6">
                   <span className="pill pill-active text-[0.85rem]">Active pilots · HVAC Founding Five</span>
@@ -126,26 +127,6 @@ export default function Home() {
               </div>
             </Reveal>
 
-            {/* Habitats Card */}
-            <Reveal>
-              <div className="card h-full" style={{ borderLeft: "3px solid var(--copper-2)" }}>
-                <div className="eyebrow" style={{ color: "var(--copper-2)" }}>Livingry Habitats</div>
-                <h2 className="serif mt-3" style={{ fontSize: "var(--step-2)" }}>
-                  Regenerative development systems for landowners
-                </h2>
-                <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-                  Explore the constraints, opportunities, systems, and next investigations that determine what your land could responsibly become. Pattern Language, permaculture, climate-responsive design, natural materials, and private home systems.
-                </p>
-                <div className="mt-6">
-                  <span className="pill pill-next text-[0.85rem]">Founding landowner conversations opening</span>
-                </div>
-                <div className="mt-6">
-                  <Link href="/habitats" className="link" style={{ color: "var(--copper-2)" }}>
-                    Explore Habitats →
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
@@ -245,7 +226,7 @@ export default function Home() {
             <div className="lg:col-span-7">
               <h2 id="founder-heading" className="serif">Built by someone who has done the work</h2>
               <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-                Livingry Services is an independent practice. The founder came up through hands-on trades — permaculture design, solar, and HVAC — before years of building AI agents, Bitcoin systems, and legal-tech infrastructure. That combination is the point: to design systems for life and capability, you have to understand the work site as well as the stack.
+                Livingry Services is an independent practice. The founder came up through hands-on trades — permaculture design, solar, and HVAC — before years as a solo residential contractor and years of building AI agents and Bitcoin payment infrastructure, including three months as Operations Lead at an open-source AI lab. That combination is the point: to seal the client container, you have to understand the work site as well as the stack. I built this for the contractor I was at 35.
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Read the full story →</Link>
@@ -276,7 +257,7 @@ export default function Home() {
         <div className="container">
           <div className="rule-label">04 · Industries (Operations)</div>
           <div className="max-w-3xl">
-            <h2 id="industries-heading" className="serif">Operations systems for trade and professional practices</h2>
+            <h2 id="industries-heading" className="serif">Revenue Continuity Systems for HVAC/R companies</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
               The underlying method stays consistent. The workflows, language, data, approvals, and handoffs must fit the industry that will use them.
             </p>
@@ -370,7 +351,7 @@ export default function Home() {
       <section className="section-tight paper-grain" aria-labelledby="cta-heading">
         <div className="container">
           <h2 id="cta-heading" className="serif mb-10" style={{ fontSize: "var(--step-3)" }}>
-            Start with the system you need to understand.
+            Seal the client container.
           </h2>
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="card" style={{ borderLeft: "3px solid var(--forest)" }}>
@@ -384,12 +365,12 @@ export default function Home() {
             </div>
 
             <div className="card" style={{ borderLeft: "3px solid var(--copper-2)" }}>
-              <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>Review the potential of your land</h3>
+              <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>See where AI pays for itself</h3>
               <p className="mt-3" style={{ color: "var(--ink-2)" }}>
-                Explore the constraints, opportunities, systems, and next investigations that determine what your land could responsibly become.
+                The AI Opportunity Blueprint maps your workflows, ranks the highest-return opportunities, and prices the build — the diagnostic and findings call come first, and the findings report credits in full toward your launch.
               </p>
               <div className="mt-6">
-                <Link href="/land-review" className="btn btn-secondary">Request a Land Potential Review <span aria-hidden>→</span></Link>
+                <Link href="/operations/hvac/blueprint" className="btn btn-secondary">See the Blueprint <span aria-hidden>→</span></Link>
               </div>
             </div>
           </div>

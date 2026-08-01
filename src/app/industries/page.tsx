@@ -6,7 +6,7 @@ import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "Industries — Livingry Services",
-  description: "The Livingry method stays consistent. The workflows, language, data, approvals, and handoffs fit the industry. HVAC is our active focus; roofing is next; professional practices are in governed development.",
+  description: "The Livingry method stays consistent. The workflows, language, data, approvals, and handoffs fit the industry. HVAC/R is our active focus; roofing is a planned expansion.",
   alternates: { canonical: "/industries" },
 };
 

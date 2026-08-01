@@ -36,7 +36,7 @@ export const site = {
   // Leakproofing Framework below is the proof of how the work actually happens.
   positioning: {
     headline: "Stop earning revenue you keep walking away from.",
-    subhead: "We are the AI general contractor for trade and professional practices.",
+    subhead: "We are the AI general contractor for HVAC/R companies — sealing the client container against the four revenue leaks: missed calls, quiet estimates, past customers, and unasked referrals.",
     definition:
       "An AI general contractor curates, integrates, and governs the AI tools across a business's operation the way a building general contractor hires and coordinates subcontractors — the owner never has to learn the trade themselves, and one party stays accountable for the result.",
   },
@@ -135,19 +135,10 @@ export const site = {
       slug: "roofing",
       title: "Roofing Companies",
       status: "next",
-      statusLabel: "Now Opening Founding-Partner Conversations",
+      statusLabel: "Planned Expansion — Not Yet Enrolling",
       promise:
         "Turn storm-season and homeowner interest into timely, well-routed conversations — with clearer service information, stronger inspection follow-up, and better continuity from first inquiry through estimate review.",
       cta: "Find My Roofing Growth Leaks",
-    },
-    {
-      slug: "professional-practices",
-      title: "Professional Practices",
-      status: "future",
-      statusLabel: "Governed Pilots in Development",
-      promise:
-        "For established firms and practices that need better intake, knowledge, client communication, and discovery — implemented with appropriate professional, privacy, and security controls.",
-      cta: "Review My Intake Gaps",
     },
   ],
 } as const;

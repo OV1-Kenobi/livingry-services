@@ -46,32 +46,37 @@ test("hero leads with umbrella positioning (not AI-GC-specific)", () => {
     !h1Text.toLowerCase().includes("ai general contractor"),
     "homepage H1 should not mention AI general contractor (umbrella positioning)",
   );
-  // Umbrella homepage should mention both practices
+  // HVAC-first repositioning: homepage leads with Operations; Habitats routes
+  // stay live but are no longer promoted on the homepage.
   assert.ok(
     homepage.includes("Operations") || homepage.includes("operations"),
     "homepage mentions Operations practice",
   );
   assert.ok(
-    homepage.includes("Habitats") || homepage.includes("habitats"),
-    "homepage mentions Habitats practice",
+    !homepage.includes("/habitats"),
+    "homepage no longer promotes Habitats routes",
   );
 });
 
-test("homepage offers dual CTAs for Operations and Habitats", () => {
-  // Per umbrella expansion: homepage has two-path selector
+test("homepage offers Operations and Blueprint conversion paths", () => {
+  // HVAC-first repositioning: the two-path selector is Operations + Blueprint.
   assert.ok(
     homepage.includes("/operations") || homepage.includes("operations"),
     "homepage links to Operations practice",
   );
   assert.ok(
-    homepage.includes("/habitats") || homepage.includes("habitats"),
-    "homepage links to Habitats practice",
+    homepage.includes("/operations/hvac/blueprint"),
+    "homepage links to the AI Opportunity Blueprint",
   );
-  // Final CTA should offer both paths
+  // Final CTA offers the alliance funnel and the Blueprint
   const flat = homepage.replace(/\s+/g, " ");
   assert.ok(
-    /system-review|assessment/i.test(flat),
+    /system-review|blueprint/i.test(flat),
     "homepage still offers Operations conversion paths",
+  );
+  assert.ok(
+    flat.includes("Seal the client container"),
+    "homepage closes with the signature phrase",
   );
 });
 
@@ -295,7 +300,6 @@ test("llms-full.txt carries the definition, founder bio, framework, FAQs, and ev
     "Frequently asked questions",
     "Evidence status",
     "Canonical page map",
-    "Livingry Habitats practice", // New section per umbrella
   ]) {
     assert.ok(llmsFull.includes(heading), `llms-full.txt has "${heading}"`);
   }

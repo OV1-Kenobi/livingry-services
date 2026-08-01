@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Insights — AI General Contracting Field Guides for Trade Businesses",
     description:
-      "Seven planned field guides on what AI actually does inside a trade or professional practice — published as each one can be written from real implementation evidence.",
+      "Field guides on what AI actually does inside an HVAC/R operation — published as each one can be written from real implementation evidence.",
     url: "/insights",
     type: "website",
   },
@@ -115,7 +115,7 @@ export default function Insights() {
     url: `${site.primaryDomain}/insights`,
     name: "Livingry Insights",
     description:
-      "The editorial programme for Livingry Services: seven field guides on AI general contracting for trade and professional practices, published as each one can be written from real implementation evidence.",
+      "The editorial programme for Livingry Services: field guides on AI general contracting for HVAC/R operations, published as each one can be written from real implementation evidence.",
     isPartOf: { "@id": `${site.primaryDomain}/#website` },
     publisher: { "@id": `${site.primaryDomain}/#organization` },
     inLanguage: "en-US",
@@ -142,7 +142,7 @@ export default function Insights() {
       <PageHero
         eyebrow="Insights"
         title="Field guides on AI general contracting."
-        lede="Livingry Insights is a working editorial programme, not a blog archive. Seven guides on what AI actually does inside a trade or professional practice — each published only when it can be written from real implementation evidence rather than vendor marketing. The first one is live."
+        lede="Livingry Insights is a working editorial programme, not a blog archive. Field guides on what AI actually does inside an HVAC/R operation — each published only when it can be written from real implementation evidence rather than vendor marketing. The first one is live."
         primaryCta={{ label: "Book a Free System Review", href: "/system-review" }}
         secondaryCta={{ label: "Take the 10-Minute Leak Assessment", href: "/assessment" }}
       />
@@ -199,7 +199,7 @@ export default function Insights() {
           </div>
           <div className="lg:col-span-7">
             <p style={{ color: "var(--ink-2)" }}>
-              An owner researching AI for an HVAC company, a roofing crew, or a professional practice mostly finds two things: software marketing, and listicles written by people who have never stood in a dispatch office. Neither helps you decide anything.
+              An owner researching AI for an HVAC/R company mostly finds two things: software marketing, and listicles written by people who have never stood in a dispatch office. Neither helps you decide anything.
             </p>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>
               These guides are the opposite. Each one is tool-agnostic, names its own boundaries, and is written from work we have actually done. That is also why they are dated by readiness rather than by a publishing calendar — we would rather publish fewer honest guides than pad the list to hit a number.

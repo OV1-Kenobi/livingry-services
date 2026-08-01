@@ -39,7 +39,7 @@ export default function WhyLivingryAbout() {
             <div className="rule-label">Where this comes from</div>
             <h2 className="serif">Grounded in field work, not slideware.</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-              The founder came up through hands-on trades and field work — permaculture design, solar, and HVAC — before years of building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems. That combination is the point: technology only earns its place when it makes real, useful work easier to do and easier to keep.
+              The founder came up through hands-on trades and field work — a Permaculture Design Certificate with Scott Pittman, organizing the first Permaculture Design Course at the Kerrville Folk Festival ranch, Texas HVAC certification training in 2012, PV solar design-and-install training in 2018, and years as a solo residential contractor — before years of building AI agents and Bitcoin-native payment infrastructure, including a 2019 book on Bitcoin and three months as Operations Lead at an open-source AI lab. That combination is the point: technology only earns its place when it makes real, useful work easier to do and easier to keep.
             </p>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
               It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses became the design requirements behind Livingry.
@@ -103,7 +103,7 @@ export default function WhyLivingryAbout() {
               We begin with trades and home-services businesses — HVAC first, roofing next — because their work is concrete, their leaks are measurable, and getting it right there is unforgiving. That focus sharpens the systems.
             </p>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-              But the underlying idea — capture value while the work happens, keep humans accountable, and leave the client in control — applies well beyond the trades. Legal and medical practices are already in governed pilot development. Trades are where we prove it, not where it stops.
+              But the underlying idea — capture value while the work happens, keep humans accountable, and leave the client in control — has to be proven somewhere first. HVAC/R is where we prove it. I built this for the contractor I was at 35.
             </p>
           </div>
         </div>

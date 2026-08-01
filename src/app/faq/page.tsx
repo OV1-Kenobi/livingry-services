@@ -92,7 +92,6 @@ export default function Faq() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/industries/hvac" className="btn btn-secondary">HVAC FAQ</Link>
             <Link href="/industries/roofing" className="btn btn-secondary">Roofing FAQ</Link>
-            <Link href="/industries/professional-practices" className="btn btn-secondary">Professional Practices FAQ</Link>
           </div>
         </div>
       </section>

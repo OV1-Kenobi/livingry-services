@@ -85,13 +85,13 @@ export default function Operations() {
                 A general contractor does not pour the foundation or run the wire. They hire the right subs, sequence the work, hold them to scope, and own the result. <strong>For your business&rsquo;s AI stack, we play that role.</strong> You never need to choose between two scheduling tools, stand up a retrieval layer, or work out how a chatbot should behave against your CRM. That is our job.
               </p>
               <p style={{ color: "var(--ink-2)" }}>
-                Running an HVAC, roofing, legal, or medical practice is already a full-time job, and AI tooling changes faster than any owner can track. Most of what is written about &ldquo;AI for business&rdquo; is either a vendor pitch or a shallow list. <strong>We sit between you and the AI vendors</strong> — testing, comparing, integrating, governing, and handing the keys back to your team.
+                Running an HVAC/R operation is already a full-time job, and AI tooling changes faster than any owner can track. Most of what is written about &ldquo;AI for business&rdquo; is either a vendor pitch or a shallow list. <strong>We sit between you and the AI vendors</strong> — testing, comparing, integrating, governing, and handing the keys back to your team.
               </p>
               <p style={{ color: "var(--ink-2)" }}>
                 The belief worth discarding first is that <em>AI is one tool you can buy that will fix the leak.</em> It is not. Every workflow that loses value has its own shape, and each leak needs the right tool wired in correctly — with a person still accountable for anything a customer will read as a promise.
               </p>
               <p className="mt-4 text-[0.9rem]" style={{ color: "var(--ink-3)", fontStyle: "italic" }}>
-                Disclaimer: Livingry does not replace licensed or regulated professionals. We build operational systems; professional judgment, licensure, and client relationships remain with qualified practitioners.
+                Disclaimer: Livingry does not perform licensed HVAC work. We build operational systems; technical judgment, licensure, and customer relationships remain with your qualified team.
               </p>
             </div>
           </div>
@@ -286,7 +286,7 @@ export default function Operations() {
               <ul className="mt-6 grid gap-3">
                 <li className="flex gap-3" style={{ color: "var(--ink-2)" }}>
                   <span aria-hidden style={{ color: "var(--forest)" }}>✓</span>
-                  <span>You run an established, useful service business or professional practice</span>
+                  <span>You run an established U.S. HVAC/R operation</span>
                 </li>
                 <li className="flex gap-3" style={{ color: "var(--ink-2)" }}>
                   <span aria-hidden style={{ color: "var(--forest)" }}>✓</span>

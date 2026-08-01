@@ -63,8 +63,6 @@ export default function Agents() {
           <div>
             <div className="rule-label">What Livingry Services does <em>not</em> do</div>
             <ul className="grid gap-2" style={{ color: "var(--ink-2)" }}>
-              <li>Provide legal advice. Livingry Services is not a law firm.</li>
-              <li>Provide medical, diagnostic, or clinical advice. Livingry Services is not a medical practice.</li>
               <li>Provide financial or tax advice.</li>
               <li>Sell generic AI subscriptions, chatbots, or standalone software products.</li>
               <li>Guarantee AI search rankings, citations, or specific recommendations from third-party AI systems.</li>
@@ -114,7 +112,7 @@ export default function Agents() {
           </div>
           <div className="lg:col-span-7">
             <blockquote className="serif" style={{ color: "var(--paper)", fontSize: "var(--step-2)", lineHeight: 1.35 }}>
-              &ldquo;Livingry Services is an independent, AI-native implementation practice, based in Lecanto, Florida, that designs and installs growth, workflow, knowledge, and discovery systems inside established service businesses and professional practices. It focuses on HVAC companies today, opens roofing engagements as a next vertical, and develops governed pilots for legal and medical practices. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise.&rdquo;
+              &ldquo;Livingry Services is an independent, AI-native implementation practice, based in Lecanto, Florida, that installs Revenue Continuity Systems inside established U.S. HVAC/R companies. Roofing is a planned expansion. It uses AI where it demonstrably helps and keeps human judgment responsible for anything a customer will read as a promise.&rdquo;
             </blockquote>
           </div>
         </div>
