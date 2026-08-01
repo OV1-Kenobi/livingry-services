@@ -136,11 +136,14 @@ test("hero leads with the Strategic Alliance application posture", () => {
   assert.doesNotMatch(hero.proofStrip, /One workflow/);
 });
 
-test("terms publish the $799 setup fee and gate the service fee", () => {
-  assert.match(pricing.body, /\$799 non-refundable setup fee/);
-  assert.match(pricing.body, /deferred/i);
+test("terms are Blueprint-first: findings call, then $799 report, launch range, arrears billing", () => {
+  assert.match(pricing.body, /diagnostic and findings call first/i);
+  assert.match(pricing.body, /\$799 findings report/);
+  assert.match(pricing.body, /credits in full/i);
+  assert.match(pricing.body, /\$2,500\u2013\$4,500|\$2,500.\$4,500/);
+  assert.match(pricing.body, /2x/);
   assert.doesNotMatch(pricing.body, /\$1,?000\s*(per|\/|a)?\s*(business\s*)?week/i);
-  assert.doesNotMatch(pricing.body, /\$4,?000/);
+  assert.doesNotMatch(pricing.body, /\$3,?500/);
   assert.doesNotMatch(pricing.gatedPrice, /\$3,?500/);
 });
 

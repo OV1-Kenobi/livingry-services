@@ -261,10 +261,10 @@ export const founder = {
 
 export const pricing = {
   heading: "Founding Five terms",
-  body: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the tools configured for their business. Livingry's service fee accrues from day one but is deferred until the shared proof ledger demonstrates the agreed level of recovered, attributable paid revenue. Exact fee and threshold figures are set out in the one-page proposal qualified companies receive after the fit conversation.",
+  body: "Every alliance begins with the AI Opportunity Blueprint: a diagnostic and findings call first — you pay the $799 findings report only if you decide the findings are worth having in writing. That fee credits in full toward a workflow launch scoped at $2,500–$4,500 for your company's specific configuration, and ongoing operational fees are billed only after rendered services have produced recovered, attributable revenue covering at least 2x those fees.",
   // Gated copy — only rendered when SHOW_HVAC_PILOT_PRICE is explicitly enabled.
   gatedPrice:
-    "Founding Five Alliance: $799 non-refundable setup plus direct third-party costs. Livingry's weekly service fee accrues deferred and is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
+    "Founding Five Alliance: $799 findings report (after the findings call, only if you want it), credited in full toward a $2,500–$4,500 workflow launch within 30 days. Operational fees bill in arrears behind 2x recovered-revenue coverage, and Livingry's accrued service fee is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
 } as const;
 
 export const faq: { q: string; a: string }[] = [
@@ -282,7 +282,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "What do we pay to start?",
-    a: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the third-party tools configured for their business. Livingry's service fee accrues but is deferred until the proof ledger demonstrates the agreed recovery level.",
+    a: "Nothing before the findings call. Every alliance begins with the AI Opportunity Blueprint: we map your workflows and walk you through the findings live. The $799 findings report is your call — pay only if you want it in writing — and it credits in full toward a workflow launch scoped at $2,500–$4,500. Ongoing operational fees bill only after recovered, attributable revenue has covered them 2x over.",
   },
   {
     q: "Why is capacity limited?",
@@ -316,14 +316,14 @@ export const faq: { q: string; a: string }[] = [
 
 export const finalCta = {
   heading: "The first five partners shape the operating standard.",
-  body: "You cover the direct cost of the tools configured for your business. Livingry defers its initial service fee until the shared proof ledger demonstrates the agreed level of recovered, attributable paid revenue. Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
+  body: "The diagnostic and findings call come first. The $799 findings report is the only payment before your workflow launch — and it credits in full when you proceed. Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
   cta: "Apply for a Founding Five Alliance",
   note: "Applications are reviewed before a fit conversation is offered.",
 } as const;
 
 export const successState = {
   heading: "Your application has been received.",
-  body: "Livingry reviews every application against the alliance fit criteria: authority, data access, volume, capacity, and an accountable internal operator. If the fit looks real, you will receive a fit-conversation invitation or a request for clarification. If it does not, you will get a fast, honest answer rather than a slow maybe.",
+  body: "Livingry reviews every application against the alliance fit criteria: authority, data access, volume, capacity, and an accountable internal operator. If the fit looks real, you will receive an invitation to schedule your Strategic Alliance Review — a calendar link arrives with your confirmation email. If it does not, you will get a fast, honest answer rather than a slow maybe.",
 } as const;
 
 export const consent = {
