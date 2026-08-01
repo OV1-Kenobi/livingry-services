@@ -27,14 +27,14 @@ export const seo = {
 } as const;
 
 export const hero = {
-  eyebrow: "Livingry Operations · HVAC Founding Five",
+  eyebrow: "Livingry Operations · HVAC/R Revenue Continuity",
   title:
-    "Stop losing booked work, unsold estimates, and repeat customers between the tools you already use.",
-  lede: "Livingry helps HVAC companies design a vendor-independent operating layer across inquiries, estimates, jobs, technician context, follow-up, and customer continuity — without forcing a platform migration.",
+    "Most HVAC companies don't have a lead problem. They have a follow-up problem.",
+  lede: "Revenue leaks through four cracks: missed calls nobody returns, estimates that go quiet, past customers who never hear from you again, and referrals nobody asks for. Livingry installs the Revenue Continuity System — four connected workflows, human approval on every consequential action — around the customers you've already earned.",
   trustLine:
-    "Built around the tools, records, and decision authority your company already has.",
-  primaryCta: "Map Your First Operational Leak",
-  secondaryCta: "See the TradeOps Layer",
+    "Every alliance begins with the AI Opportunity Blueprint: the diagnostic and findings call come first, and the $799 findings report credits in full toward your workflow launch.",
+  primaryCta: "Apply for a Strategic Alliance",
+  secondaryCta: "See the Blueprint",
 } as const;
 
 // The job-lifecycle stages shown in the hero flow map. The point of the visual
@@ -229,10 +229,10 @@ export const ownership = {
 } as const;
 
 export const foundingFive = {
-  heading: "Join the HVAC Founding Five.",
-  body: "Livingry is inviting a small number of HVAC operators to help shape and test a governed, vendor-independent operations implementation around real workflows.",
-  primaryCta: "Request a Leak Review",
-  secondaryCta: "Schedule a Fit Conversation",
+  heading: "Start with the Blueprint. Build into the alliance.",
+  body: "Every engagement begins with the AI Opportunity Blueprint: a fixed-scope diagnostic and findings call. The $799 findings report is your call — and it credits in full toward a workflow launch scoped for your company. Founding Five alliances carry the four-week gate: weekly fees accrue but invoice only behind 2x recovered-revenue coverage.",
+  primaryCta: "Apply for a Strategic Alliance",
+  secondaryCta: "See the AI Opportunity Blueprint",
   qualification:
-    "For owners and operators prepared to examine where customer value, team context, and operating responsibility are being lost between systems.",
+    "For established U.S. HVAC/R operators with the records, capacity, and an accountable internal operator to run a measured system.",
 } as const;

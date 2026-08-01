@@ -31,10 +31,12 @@ test("route is the canonical /operations/hvac", () => {
   assert.equal(content.HVAC_OPS_ROUTE, "/operations/hvac");
 });
 
-test("hero leads with the cross-tool leak promise", () => {
-  assert.match(content.hero.title, /tools you already use/i);
-  assert.match(content.hero.lede, /vendor-independent/i);
-  assert.match(content.hero.lede, /without forcing a platform migration/i);
+test("hero leads with the follow-up problem and four cracks", () => {
+  assert.match(content.hero.title, /follow-up problem/i);
+  assert.match(content.hero.lede, /four cracks/i);
+  assert.match(content.hero.lede, /Revenue Continuity System/i);
+  assert.match(content.hero.trustLine, /AI Opportunity Blueprint/);
+  assert.match(content.hero.trustLine, /credits in full/i);
 });
 
 test("lifecycle flow covers inquiry through customer continuity", () => {
@@ -106,7 +108,7 @@ test("page links the intake anchor and both conversion paths", () => {
   assert.match(pageSource, /href="#leak-review"/);
   assert.match(pageSource, /id="leak-review"/);
   assert.match(pageSource, /\/hvac\/founding-five#request-review/);
-  assert.match(pageSource, /site\.booking\.url/);
+  assert.match(pageSource, /\/operations\/hvac\/blueprint/);
 });
 
 test("page exposes analytics hooks without PII", () => {

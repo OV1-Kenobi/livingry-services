@@ -101,9 +101,9 @@ export default function HvacOperationsPage() {
               <a href="#leak-review" className="btn btn-primary" data-analytics="hvac-ops-hero-primary">
                 {hero.primaryCta} <span aria-hidden>→</span>
               </a>
-              <a href="#tradeops-layer" className="btn btn-secondary" data-analytics="hvac-ops-hero-secondary">
+              <Link href="/operations/hvac/blueprint" className="btn btn-secondary" data-analytics="hvac-ops-hero-secondary">
                 {hero.secondaryCta}
-              </a>
+              </Link>
             </div>
             <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
               {hero.trustLine}
@@ -387,20 +387,21 @@ export default function HvacOperationsPage() {
               >
                 {foundingFive.primaryCta} <span aria-hidden>→</span>
               </Link>
-              <a
-                href={site.booking.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/operations/hvac/blueprint"
                 className="btn btn-ghost"
                 data-analytics="hvac-ops-fit-call"
               >
                 {foundingFive.secondaryCta} <span aria-hidden>→</span>
-              </a>
+              </Link>
             </div>
           </div>
           <p className="mt-6 text-[0.85rem]" style={{ color: "var(--ink-3)", maxWidth: "46rem" }}>
             A request is not an implementation commitment. Livingry reviews the
             operating problem you describe and responds with the appropriate next step.
+          </p>
+          <p className="mt-8 serif" style={{ fontSize: "var(--step-2)", color: "var(--forest)" }}>
+            Seal the client container.
           </p>
         </div>
       </section>
