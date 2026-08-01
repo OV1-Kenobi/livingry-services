@@ -243,6 +243,8 @@ export function AllianceApplicationForm() {
   const [values, setValues] = useState<Values>({});
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [applicationId, setApplicationId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const missing = useMemo(() => {
@@ -274,7 +276,7 @@ export function AllianceApplicationForm() {
       setValues((prev) => ({ ...prev, [id]: v }));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (missing.length > 0) {
       setError(`Please complete: ${missing.slice(0, 3).join(", ")}${missing.length > 3 ? ` and ${missing.length - 3} more` : ""}.`);
@@ -285,14 +287,53 @@ export function AllianceApplicationForm() {
       return;
     }
     setError(null);
+    setSubmitting(true);
     trackClientEvent("hvac_alliance_apply_click");
-    setSubmitted(true);
+
+    try {
+      const res = await fetch("/api/hvac-alliance-application", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          values,
+          consent,
+          formVersion: APPLICATION_VERSION,
+          consentVersion: applicationSubmit.consentVersion,
+          honeypot: "", // bots fill hidden fields; humans submit this empty
+        }),
+      });
+
+      if (res.status === 422) {
+        const data = (await res.json()) as { fields?: Record<string, string> };
+        const first = data.fields ? Object.values(data.fields)[0] : null;
+        setError(first ? `Please review your answers: ${first}.` : "Please review your answers and try again.");
+        return;
+      }
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setError(data.error ?? "We could not submit your application. Please try again or email ov@openagents.com.");
+        return;
+      }
+
+      const data = (await res.json()) as { applicationId?: string };
+      setApplicationId(data.applicationId ?? null);
+      setSubmitted(true);
+    } catch {
+      setError("Network error — your application was not submitted. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
     return (
       <div role="status">
         <h3 className="serif" style={{ fontSize: "1.5rem" }}>{applicationConfirmation.heading}</h3>
+        {applicationId && (
+          <p className="mt-3 eyebrow" style={{ color: "var(--forest)" }}>
+            Application ID: {applicationId}
+          </p>
+        )}
         <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{applicationConfirmation.body}</p>
         <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{applicationConfirmation.nextStep}</p>
         <div className="mt-8 card" style={{ borderLeft: "3px solid var(--forest)", background: "var(--paper-2)" }}>
@@ -372,8 +413,8 @@ export function AllianceApplicationForm() {
         )}
 
         <p className="mt-6">
-          <button type="submit" className="btn btn-primary">
-            {applicationSubmit.button} <span aria-hidden>→</span>
+          <button type="submit" className="btn btn-primary" disabled={submitting}>
+            {submitting ? "Submitting…" : applicationSubmit.button} <span aria-hidden>→</span>
           </button>
         </p>
         <p className="mt-3" style={{ color: "var(--ink-3)", fontSize: "0.8125rem", lineHeight: 1.6 }}>

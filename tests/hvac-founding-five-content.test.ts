@@ -56,7 +56,7 @@ const copyBlob = copyStrings.join("\n");
 
 const pageSources = [
   "src/app/hvac/founding-five/page.tsx",
-  "src/app/hvac/founding-five/FoundingFiveForm.tsx",
+  "src/app/hvac/founding-five/AllianceApplicationForm.tsx",
 ]
   .map((p) => readFileSync(resolve(root, p), "utf8"))
   .join("\n");

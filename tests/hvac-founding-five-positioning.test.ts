@@ -50,9 +50,9 @@ for (const [key, value] of Object.entries(content)) {
 const copyBlob = copyStrings.join("\n");
 
 const pageSource = readFileSync(resolve(root, "src/app/hvac/founding-five/page.tsx"), "utf8");
-const formSource = readFileSync(resolve(root, "src/app/hvac/founding-five/FoundingFiveForm.tsx"), "utf8");
 const adapterSource = readFileSync(resolve(root, "src/lib/hvac-founding-five/adapters.ts"), "utf8");
-const pageSources = [pageSource, formSource].join("\n");
+const allianceFormSource = readFileSync(resolve(root, "src/app/hvac/founding-five/AllianceApplicationForm.tsx"), "utf8");
+const pageSources = [pageSource, allianceFormSource].join("\n");
 
 test("no fabricated names, revenue figures, or case-study details in public copy", () => {
   assert.deepEqual(findFabrications(copyBlob), []);
