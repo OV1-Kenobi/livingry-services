@@ -47,18 +47,29 @@ test("proof standard requires a complete chain and never mixes measures", () => 
   assert.match(rc.proofStandard.reportingRule, /never mix them/i);
 });
 
-test("guarantee is a conditional fee-waiver with no dollar threshold", () => {
-  assert.match(rc.guarantee.body, /waives its accrued service fees/i);
+test("guarantee is the four-week gate with no outcome promises", () => {
+  assert.match(rc.guarantee.heading, /four-week gate/i);
+  assert.match(rc.guarantee.body, /invoiced only if/i);
+  assert.match(rc.guarantee.body, /2x/);
   assert.match(rc.guarantee.body, /met its operating commitments/i);
+  assert.match(rc.guarantee.body, /owe nothing for those weeks/i);
+  assert.match(rc.guarantee.body, /12-week test run/i);
+  assert.match(rc.guarantee.body, /keep everything we built/i);
   assert.doesNotMatch(rc.guarantee.body, /\$4,?000/);
   assert.doesNotMatch(rc.guarantee.body, /guarantee[sd]? revenue/i);
 });
 
-test("setup fee is public; service fee and threshold stay gated", () => {
-  assert.equal(rc.terms.setupFee, "$799");
-  assert.match(rc.terms.body, /\$799 non-refundable setup fee/);
+test("terms: $799 report public, launch range, weekly gate mechanics", () => {
+  assert.equal(rc.terms.findingFee.amount, "$799");
+  assert.match(rc.terms.findingFee.body, /credited in full/i);
+  assert.equal(rc.terms.launch.range, "$2,500–$4,500");
+  assert.match(rc.terms.weeklyFee.body, /weekly in arrears/i);
+  assert.match(rc.terms.gate.body, /owes? nothing/i);
+  assert.match(rc.terms.exit.body, /12-week/);
+  assert.match(rc.terms.vendorCosts, /opened in the partner's name/i);
   assert.doesNotMatch(blob, /\$1,?000\s*(per|\/|a)?\s*(business\s*)?week/i);
   assert.doesNotMatch(blob, /\$4,?000/);
+  assert.doesNotMatch(blob, /\$3,?500/);
 });
 
 test("copy carries no prohibited claims or invented proof", () => {

@@ -127,21 +127,36 @@ export const proofStandard = {
 // Commercial framework. Structure is public; the weekly fee and the proof
 // threshold stay gated to the private proposal.
 export const terms = {
-  heading: "Founding Five terms",
-  setupFee: "$799",
-  body: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the tools configured for their business. Livingry's service fee accrues from day one but is deferred until the shared proof ledger demonstrates the agreed level of recovered, attributable paid revenue.",
-  foundingBenefits: [
-    "Rate lock for the agreed initial term",
-    "Priority input on the operating roadmap",
-    "Quarterly benchmark access",
-    "Case-study consideration — only with your explicit approval",
-  ],
+  heading: "Terms, in plain language",
+  findingFee: {
+    name: "Findings report",
+    amount: "$799",
+    body: "The only payment before launch. Paid after the findings call, only if the company wants the written report — and credited in full toward the workflow launch if they proceed within four weeks of the findings call.",
+  },
+  launch: {
+    name: "Workflow launch",
+    range: "$2,500–$4,500",
+    body: "Scoped per company from the Blueprint findings — systems, records, and workflows differ, so the launch is priced from the diagnostic rather than a flat rate card.",
+  },
+  weeklyFee: {
+    name: "Weekly operational fee",
+    body: "Accrues from launch and bills weekly in arrears — except across the four-week gate, where the accrued weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x them by the end of week four.",
+  },
+  gate: {
+    name: "The four-week gate",
+    body: "If 2x coverage is not there by the end of week four — or the relationship is not working — the partner stops, owes nothing for those weeks, and keeps everything built.",
+  },
+  exit: {
+    name: "The 12-week test run",
+    body: "After the full 12-week run, if the system has not proven worth it to the partner, the parties go their separate ways. The partner keeps the build, the documentation, and the knowledge gained.",
+  },
+  vendorCosts:
+    "Third-party tool, messaging, and telephony costs are opened in the partner's name and paid directly by the partner.",
 } as const;
 
-// Conditional fee-waiver only. No dollar threshold, no revenue promise.
 export const guarantee = {
-  heading: "The guarantee, in plain terms",
-  body: "If the four-part recovery system does not produce at least the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period. We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger, and we put our fee behind it.",
+  heading: "The four-week gate, in plain terms",
+  body: "The weekly operational fee accrues from launch, but the first four weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x those fees by the end of week four — and your team has met its operating commitments. If coverage is not there, or the relationship is not working, you stop and owe nothing for those weeks. From week five, billing continues weekly in arrears against the ledger. After the full 12-week test run, if the system has not proven worth it to you, we go our separate ways and you keep everything we built. We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.",
 } as const;
 
 export const fit = {

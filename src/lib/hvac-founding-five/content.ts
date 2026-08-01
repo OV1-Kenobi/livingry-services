@@ -264,7 +264,7 @@ export const pricing = {
   body: "Every alliance begins with the AI Opportunity Blueprint: a diagnostic and findings call first — you pay the $799 findings report only if you decide the findings are worth having in writing. That fee credits in full toward a workflow launch scoped at $2,500–$4,500 for your company's specific configuration, and ongoing operational fees are billed only after rendered services have produced recovered, attributable revenue covering at least 2x those fees.",
   // Gated copy — only rendered when SHOW_HVAC_PILOT_PRICE is explicitly enabled.
   gatedPrice:
-    "Founding Five Alliance: $799 findings report (after the findings call, only if you want it), credited in full toward a $2,500–$4,500 workflow launch within 30 days. Operational fees bill in arrears behind 2x recovered-revenue coverage, and Livingry's accrued service fee is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
+    "Founding Five Alliance: $799 findings report (after the findings call, only if you want it), credited in full toward a $2,500–$4,500 workflow launch within four weeks. Operational fees bill in arrears behind 2x recovered-revenue coverage, and Livingry's accrued service fee is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
 } as const;
 
 export const faq: { q: string; a: string }[] = [

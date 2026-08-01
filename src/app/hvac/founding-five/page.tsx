@@ -367,12 +367,12 @@ export default function FoundingFivePage() {
       <section className="section" aria-labelledby="ff-guarantee-heading">
         <div className="container max-w-3xl">
           <div className="rule-label" style={{ color: "var(--forest)" }}>The guarantee</div>
-          <h2 id="ff-guarantee-heading" className="serif">The guarantee, in plain terms.</h2>
+          <h2 id="ff-guarantee-heading" className="serif">The four-week gate, in plain terms.</h2>
           <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-            If the four-part recovery system does not produce at least the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period.
+            The weekly operational fee accrues from launch, but the first four weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x those fees by the end of week four — and your team has met its operating commitments. If coverage is not there, or the relationship is not working, you stop and owe nothing for those weeks.
           </p>
           <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-            We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.
+            From week five, billing continues weekly in arrears against the ledger. After the full 12-week test run, if the system has not proven worth it to you, we go our separate ways and you keep everything we built. We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.
           </p>
         </div>
       </section>

@@ -37,11 +37,13 @@ export const blueprint = {
   priceNote:
     "The findings call comes first — you pay only if you decide you want the written findings report. The $799 covers the report, and any AI sub-contractor or vendor subscriptions your plan calls for are separate, opened in your name, and billed directly to you by those vendors.",
   creditMechanic:
-    "100% of the Blueprint fee credits toward your workflow launch if you proceed within 30 days. If you were ever going to build, the report is effectively free.",
+    "100% of the Blueprint fee credits toward your workflow launch if you proceed within four weeks of the findings call. If you were ever going to build, the report is effectively free.",
   launchRangeNote:
     "Workflow-launch engagements are scoped between $2,500 and $4,500 depending on your company's specific needs — as with your own customers, no two operations are identical, so the launch is priced from your Blueprint rather than a flat rate card.",
-  arrearsNote:
-    "Ongoing operational fees are billed only after the services already rendered have produced recovered, attributable revenue covering at least 2x those fees.",
+  gateNote:
+    "Billing is weekly. The first four weeks are a gate: the weekly operational fee accrues but is invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x those four weeks of fees by the end of week four. If it does, the accrued fees settle from covered revenue and weekly billing continues in arrears. If it does not — or the relationship is not working — you stop there, owe nothing for those weeks, and keep everything built.",
+  exitNote:
+    "After the full 12-week test run, if the system has not proven worth it to you, we go our separate ways. You keep everything we built, the documentation, and the knowledge your team gained.",
   primaryCta: "Book My Blueprint Call",
   secondaryCta: "See what the report includes",
 } as const;
@@ -67,12 +69,17 @@ export const blueprintFlow = {
     {
       n: 4,
       name: "Workflow launch — credited in full",
-      body: "If you proceed within 30 days, the entire $799 credits toward a launch scoped at $2,500–$4,500 for your company's specific configuration.",
+      body: "If you proceed within four weeks of the findings call, the entire $799 credits toward a launch scoped at $2,500–$4,500 for your company's specific configuration.",
     },
     {
       n: 5,
-      name: "Ongoing operations — billed in arrears",
-      body: "Operational fees are billed only after rendered services have produced recovered, attributable revenue covering at least 2x those fees. The ledger, not the calendar, triggers the invoice.",
+      name: "The four-week gate",
+      body: "Weekly fees accrue for the first four weeks but are invoiced only if the proof ledger shows recovered, attributable revenue covering at least 2x them by the end of week four. Covered — the accrued fees settle and weekly billing continues in arrears. Not covered, or the relationship is not working — you stop there, owe nothing, and keep everything built.",
+    },
+    {
+      n: 6,
+      name: "The 12-week test run",
+      body: "From week five on, weekly fees bill in arrears against the ledger. After the full 12-week run, if the system has not proven worth it to you, we go our separate ways — you keep the build, the documentation, and everything your team learned.",
     },
   ],
 } as const;
@@ -116,7 +123,7 @@ export const blueprintWhy = {
     },
     {
       name: "The ledger pays for the service.",
-      body: "Ongoing fees are billed only after recovered, attributable revenue has covered them 2x over. If the system is not paying for itself, you are not paying for it either.",
+      body: "The first four weeks are gated: fees accrue but are invoiced only when the proof ledger shows 2x coverage. From there, weekly billing stays in arrears. If the system is not paying for itself, you are not paying for it either.",
     },
   ],
 } as const;
@@ -138,15 +145,19 @@ export const blueprintFaq: { q: string; a: string }[] = [
   },
   {
     q: "What if I do not proceed after the report?",
-    a: "You keep the report. If you do proceed within 30 days, 100% of the $799 credits toward your workflow launch.",
+    a: "You keep the report. If you do proceed within four weeks, 100% of the $799 credits toward your workflow launch.",
   },
   {
     q: "Why is the launch priced as a range instead of a fixed number?",
     a: "Every company's systems, records, and workflows are different — as with your own customers, a fair price depends on the actual job. The launch is scoped between $2,500 and $4,500 based on what your Blueprint finds, never quoted flat for everyone.",
   },
   {
-    q: "When do ongoing operational fees start?",
-    a: "After the services already rendered have produced recovered, attributable revenue covering at least 2x those fees. Billing is in arrears and tied to the shared proof ledger — not to a calendar date.",
+    q: "When do the weekly operational fees actually get billed?",
+    a: "Weekly fees accrue from launch but stay unbilled through the first four weeks. At the end of week four, if the shared proof ledger shows recovered, attributable revenue covering at least 2x those accrued fees, they settle from covered revenue and weekly billing continues in arrears. If coverage is not there — or the relationship is not working — you stop and owe nothing for those weeks.",
+  },
+  {
+    q: "What happens after the 12-week test run?",
+    a: "If the system has proven itself, weekly service continues in arrears against the ledger. If it has not proven worth it to you, we go our separate ways: you keep everything we built, the full documentation, and the knowledge your team gained.",
   },
   {
     q: "How is this different from the Strategic Alliance?",
