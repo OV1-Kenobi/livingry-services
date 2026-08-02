@@ -67,6 +67,7 @@ async function accessToken(cfg: SheetsConfig): Promise<string> {
       grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
       assertion: signJwt(cfg),
     }),
+    signal: AbortSignal.timeout(10000), // 10s timeout for token exchange
   });
   if (!res.ok) throw new Error(`token exchange failed: ${res.status}`);
   const data = (await res.json()) as { access_token?: string };
@@ -86,7 +87,7 @@ export async function appendApplicationRow(
   const range = encodeURIComponent("Applications!A1");
   const url =
     `https://sheets.googleapis.com/v4/spreadsheets/${cfg.sheetId}/values/${range}:append` +
-    `?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
+    `?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
 
   const res = await fetch(url, {
     method: "POST",
@@ -95,6 +96,7 @@ export async function appendApplicationRow(
       "content-type": "application/json",
     },
     body: JSON.stringify({ majorDimension: "ROWS", values: [toSheetRow(app)] }),
+    signal: AbortSignal.timeout(15000), // 15s timeout for sheet append
   });
 
   if (!res.ok) {

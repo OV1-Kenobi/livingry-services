@@ -38,7 +38,7 @@ function asString(v: unknown): string {
 
 function asStringArray(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
-  return v.filter((x): x is string => typeof x === "string").map((x) => x.trim().slice(0, 500));
+  return v.slice(0, 50).filter((x): x is string => typeof x === "string").map((x) => x.trim().slice(0, 500));
 }
 
 function validateField(field: ApplicationField, v: unknown): string | null {
@@ -53,16 +53,44 @@ function validateField(field: ApplicationField, v: unknown): string | null {
       return EMAIL_RE.test(asString(v)) ? null : `${field.label} must be a valid email`;
     case "select":
       return field.options.includes(asString(v)) ? null : `${field.label} is required`;
-    case "multi":
-      return asStringArray(v).length > 0 ? null : `${field.label} is required`;
-    case "rank":
-      return asStringArray(v).length >= field.pick
-        ? null
-        : `${field.label} requires ${field.pick} selections`;
-    case "checkboxes":
-      return asStringArray(v).length >= field.options.length
-        ? null
-        : `All ${field.label.toLowerCase()} must be acknowledged`;
+    case "multi": {
+      const multiVals = asStringArray(v);
+      if (multiVals.length === 0) return `${field.label} is required`;
+      const invalid = multiVals.find((val) => !field.options.includes(val));
+      return invalid ? `${field.label} contains invalid selection` : null;
+    }
+    case "rank": {
+      const rankVals = asStringArray(v);
+      if (rankVals.length < field.pick) return `${field.label} requires ${field.pick} selections`;
+      const uniqueVals = [...new Set(rankVals)];
+      if (uniqueVals.length !== rankVals.length) return `${field.label} must have unique selections`;
+      const invalid = uniqueVals.find((val) => !field.options.includes(val));
+      return invalid ? `${field.label} contains invalid selection` : null;
+    }
+    case "checkboxes": {
+      const checkVals = asStringArray(v);
+      const unique = [...new Set(checkVals)];
+      const expectedSet = new Set(field.options);
+      const submittedSet = new Set(unique);
+
+      // Check for invalid values first
+      const hasInvalid = unique.some((val) => !expectedSet.has(val));
+      if (hasInvalid) {
+        return `${field.label} must exactly match expected options`;
+      }
+
+      // Then check completeness
+      if (checkVals.length < field.options.length) {
+        return `All ${field.label.toLowerCase()} must be acknowledged`;
+      }
+
+      // Finally verify exact match
+      if (unique.length !== field.options.length ||
+          ![...expectedSet].every((opt) => submittedSet.has(opt))) {
+        return `${field.label} must exactly match expected options`;
+      }
+      return null;
+    }
     case "grid": {
       const g = (v && typeof v === "object" && !Array.isArray(v) ? v : {}) as Record<string, unknown>;
       const missingRow = field.rows.find((r) => !r.options.includes(asString(g[r.id])));

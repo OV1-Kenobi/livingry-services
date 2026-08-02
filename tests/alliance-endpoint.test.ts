@@ -83,6 +83,35 @@ describe("alliance application server validation", () => {
       assert.equal(result.normalized.consentVersion, "hvac-alliance-consent-v1");
     }
   });
+
+  it("rejects multi field with out-of-options value", () => {
+    const values = completeValues();
+    values.work_types = ["Residential HVAC service & repair", "INVALID_OPTION"];
+    const result = validateApplication({ values, consent: true, formVersion: "", consentVersion: "" });
+    assert.equal(result.ok, false);
+    if (!result.ok) assert.match(result.errors.work_types, /invalid selection/);
+  });
+
+  it("rejects rank field with duplicate selections", () => {
+    const values = completeValues();
+    values.visible_leaks = ["Missed calls", "Missed calls"];
+    const result = validateApplication({ values, consent: true, formVersion: "", consentVersion: "" });
+    assert.equal(result.ok, false);
+    if (!result.ok) assert.match(result.errors.visible_leaks, /unique selections/);
+  });
+
+  it("rejects checkboxes with arbitrary value not in options", () => {
+    const values = completeValues();
+    values.commitments = [
+      "Weekly billing starts on launch, regardless of when the first booking arrives.",
+      "ARBITRARY_VALUE",
+      "I will show up for scheduled check-ins and respond to requests within one business day.",
+      "I commit to twelve weeks of test runs before either party cancels this alliance."
+    ];
+    const result = validateApplication({ values, consent: true, formVersion: "", consentVersion: "" });
+    assert.equal(result.ok, false);
+    if (!result.ok) assert.match(result.errors.commitments, /must exactly match/);
+  });
 });
 
 describe("sheet row contract", () => {

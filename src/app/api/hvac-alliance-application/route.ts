@@ -81,6 +81,7 @@ export async function POST(req: Request) {
       // P2 exception: tell the applicant we received the form but follow up
       // manually rather than pretending the CRM row exists.
       console.error("[hvac-alliance] sheet append failed:", sheet.note);
+      recordServerEvent("hvac_form_failure", {});
       return NextResponse.json({
         ok: true,
         applicationId: app.applicationId,

@@ -242,9 +242,11 @@ function Field({ field, value, onChange }: {
 export function AllianceApplicationForm() {
   const [values, setValues] = useState<Values>({});
   const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [applicationId, setApplicationId] = useState<string | null>(null);
+  const [pendingReview, setPendingReview] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const missing = useMemo(() => {
@@ -299,7 +301,7 @@ export function AllianceApplicationForm() {
           consent,
           formVersion: APPLICATION_VERSION,
           consentVersion: applicationSubmit.consentVersion,
-          honeypot: "", // bots fill hidden fields; humans submit this empty
+          honeypot, // bots fill hidden fields; humans submit this empty
         }),
       });
 
@@ -315,8 +317,11 @@ export function AllianceApplicationForm() {
         return;
       }
 
-      const data = (await res.json()) as { applicationId?: string };
+      const data = (await res.json().catch(() => ({}))) as { applicationId?: string; note?: string };
       setApplicationId(data.applicationId ?? null);
+      if (data.note === "received_pending_review") {
+        setPendingReview(true);
+      }
       setSubmitted(true);
     } catch {
       setError("Network error — your application was not submitted. Please try again.");
@@ -326,6 +331,25 @@ export function AllianceApplicationForm() {
   }
 
   if (submitted) {
+    if (pendingReview) {
+      return (
+        <div role="status">
+          <h3 className="serif" style={{ fontSize: "1.5rem" }}>Application Received</h3>
+          {applicationId && (
+            <p className="mt-3 eyebrow" style={{ color: "var(--forest)" }}>
+              Application ID: {applicationId}
+            </p>
+          )}
+          <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>
+            We received your application. Our team will confirm it manually and reply by email.
+          </p>
+          <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>
+            If your application meets the fit criteria, you'll receive instructions for scheduling your Strategic Alliance Review. Please check your email within the next business day.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div role="status">
         <h3 className="serif" style={{ fontSize: "1.5rem" }}>{applicationConfirmation.heading}</h3>
@@ -336,24 +360,26 @@ export function AllianceApplicationForm() {
         )}
         <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{applicationConfirmation.body}</p>
         <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{applicationConfirmation.nextStep}</p>
-        <div className="mt-8 card" style={{ borderLeft: "3px solid var(--forest)", background: "var(--paper-2)" }}>
-          <div className="rule-label" style={{ color: "var(--forest)" }}>Schedule your review</div>
-          <p className="mt-3" style={{ color: "var(--ink)", lineHeight: 1.7 }}>
-            Qualified applicants book their Strategic Alliance Review directly. If you believe your application
-            meets the fit criteria, you may schedule now — your slot is confirmed once the review is accepted.
-          </p>
-          <p className="mt-4">
-            <a
-              href={ALLIANCE_REVIEW_CALENDAR_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              data-analytics="hvac-fit-call"
-            >
-              Book Your Strategic Alliance Review <span aria-hidden>→</span>
-            </a>
-          </p>
-        </div>
+        {applicationId && (
+          <div className="mt-8 card" style={{ borderLeft: "3px solid var(--forest)", background: "var(--paper-2)" }}>
+            <div className="rule-label" style={{ color: "var(--forest)" }}>Schedule your review</div>
+            <p className="mt-3" style={{ color: "var(--ink)", lineHeight: 1.7 }}>
+              Qualified applicants book their Strategic Alliance Review directly. If you believe your application
+              meets the fit criteria, you may schedule now — your slot is confirmed once the review is accepted.
+            </p>
+            <p className="mt-4">
+              <a
+                href={ALLIANCE_REVIEW_CALENDAR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                data-analytics="hvac-fit-call"
+              >
+                Book Your Strategic Alliance Review <span aria-hidden>→</span>
+              </a>
+            </p>
+          </div>
+        )}
         <p className="mt-6" style={{ color: "var(--ink-3)", fontSize: "0.9375rem", lineHeight: 1.7 }}>
           {applicationConfirmation.whileYouWait}
         </p>
@@ -394,6 +420,17 @@ export function AllianceApplicationForm() {
           </div>
         </section>
       ))}
+
+      <input
+        type="text"
+        name="company_website_url"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+      />
 
       <div className="mt-10" style={{ borderTop: "1px solid var(--ink)", paddingTop: "1.5rem" }}>
         <label style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.9375rem", color: "var(--ink-2)", lineHeight: 1.6 }}>
