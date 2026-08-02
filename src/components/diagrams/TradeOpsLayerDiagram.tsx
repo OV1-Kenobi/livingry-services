@@ -29,10 +29,9 @@ export function TradeOpsLayerDiagram() {
       <div className="tol-layer">
         <span className="tol-layer-name">Livingry TradeOps Layer</span>
         <ul className="tol-parts" aria-label="What the layer provides">
-          <li>Canonical events</li>
-          <li>Policy gates</li>
-          <li>Human approvals</li>
-          <li>Operational visibility</li>
+          {tradeops.components.map((c) => (
+            <li key={c.name}>{c.name}</li>
+          ))}
         </ul>
       </div>
 

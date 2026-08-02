@@ -4,6 +4,7 @@
 // prohibited-claims tests all read from the same place.
 
 import { site } from "@/lib/site";
+import { founder as canonicalFounder, allianceFaq as canonicalFaq } from "@/lib/revenue-continuity/content";
 
 export const HVAC_ROUTE = "/hvac/founding-five";
 export const HVAC_URL = `${site.primaryDomain}${HVAC_ROUTE}`;
@@ -244,13 +245,13 @@ export const fit = {
   ],
 } as const;
 
+// Re-export canonical founder story from revenue-continuity to eliminate drift.
+// The revenue-continuity version is the source of truth; hvac-founding-five adds
+// the Proof Matters disclosure.
 export const founder = {
-  heading: "Built from the field outward",
-  body: [
-    "I spent years as a solo residential contractor in Austin — tools in hand, clients watching, phone buzzing with leads I was paying for and couldn't answer. Thumbtack and HouseCall Pro sent the same leads to my competitors at the same time they sent them to me; I lost jobs I never even knew about. I failed to follow up on estimates in time to close, failed to take the before-and-after pictures, failed to ask for the testimonials, reviews, and referrals. Texas HVAC certification training in 2012, PV solar design-and-install training in 2018 — and I probably failed to realize over 30% of my productive capacity, even as a one-man operation.",
-    "I spent the following years building software — business apps, then AI agents and payment infrastructure, including three months as Operations Lead at an open-source AI lab. When I started building seriously with AI, I realized the tools that could have saved my contracting business already exist — unevenly distributed, buried under hype, locked behind institutional budgets most tradesmen can't touch. In 2019 I published a book on Bitcoin and sovereign financial infrastructure; the through-line has always been systems their owners can actually keep.",
-    "Livingry installs the operating system I needed in the field: follow-through that does not depend on memory, a person accountable for every consequential action, and records the company keeps. I don't remove the human from the loop — I make sure the loop doesn't break when the human is in an attic. I built this for the contractor I was at 35.",
-  ],
+  ...canonicalFounder,
+  // Map beats array to body array for backwards compatibility with existing rendering
+  body: canonicalFounder.beats.map((beat) => beat.body),
   // Approved Proof Matters disclosure, adjacent to the founder copy. Does not
   // imply current licensure; links to the canonical /proof page.
   proofDisclosure:
@@ -267,47 +268,15 @@ export const pricing = {
     "Founding Five Alliance: $799 findings report (after the findings call, only if you want it), credited in full toward a $2,500–$4,500 workflow launch within four weeks. Operational fees bill in arrears behind 2x recovered-revenue coverage, and Livingry's accrued service fee is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
 } as const;
 
+// Re-export canonical FAQ from revenue-continuity, then add HVAC-specific questions.
+// The canonical allianceFaq is the source of truth for common questions.
 export const faq: { q: string; a: string }[] = [
-  {
-    q: "Is this an AI receptionist or a collection of AI tools?",
-    a: "No. The Revenue Continuity System is four connected workflows — missed calls, estimates, past customers, and referrals — installed and operated as one system. AI may classify, summarize, draft, and route inside those workflows; people approve everything consequential.",
-  },
-  {
-    q: "Will Livingry replace our CRM or field-service platform?",
-    a: "No. Your company remains the system of record. The system works around the tools you already run, and anything we build is documented and handed to you.",
-  },
-  {
-    q: "Do you guarantee revenue?",
-    a: "We guarantee the fee structure, not an outcome. If the system does not produce the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period. We never promise lead volume, close rates, or revenue totals.",
-  },
+  ...canonicalFaq.slice(0, 3), // First 3 canonical questions
   {
     q: "What do we pay to start?",
     a: "Nothing before the findings call. Every alliance begins with the AI Opportunity Blueprint: we map your workflows and walk you through the findings live. The $799 findings report is your call — pay only if you want it in writing — and it credits in full toward a workflow launch scoped at $2,500–$4,500. Ongoing operational fees bill only after recovered, attributable revenue has covered them 2x over.",
   },
-  {
-    q: "Why is capacity limited?",
-    a: "Every alliance receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation. That operating load is real, so Year One is capped and a waitlist forms once active capacity is full.",
-  },
-  {
-    q: "What counts as recovered revenue?",
-    a: "Only paid eligible invoices with a complete proof chain: original opportunity, eligibility decision, workflow enrollment, logged contacts, customer response, completed job, paid invoice, and reconciliation approval. Booked appointments, positive replies, and dashboard totals do not count.",
-  },
-  {
-    q: "Does AI communicate with our customers without approval?",
-    a: "Only within approved workflows, channels, and consent rules. Pricing, discounts, safety guidance, dispatch exceptions, technical advice, and nonstandard commitments always route to a named person on your team.",
-  },
-  {
-    q: "Can the work be done remotely?",
-    a: "Yes. The program is designed for established U.S. HVAC/R companies able to provide appropriate system access and participate in remote reviews.",
-  },
-  {
-    q: "Do we have to endorse Livingry publicly?",
-    a: "No. Case-study consideration is optional and requires your explicit approval; anonymized outcome reporting is the default.",
-  },
-  {
-    q: "What happens if the threshold is not met?",
-    a: "If your team met its operating commitments, the accrued Livingry service fees for the guarantee period are waived. We then do a joint root-cause review of the ledger before any continuation decision — a pilot that misses the threshold still has to explain why.",
-  },
+  ...canonicalFaq.slice(3), // Remaining canonical questions
   {
     q: "What happens if an integration is not technically possible?",
     a: "The limitation is documented and the parties decide whether to revise the workflow, use an alternative, or stop before unsupported work proceeds.",

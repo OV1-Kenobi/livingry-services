@@ -4,6 +4,10 @@
 // never contain PII (no name, email, phone, company, or free-text problem).
 // Only coarse, non-identifying context is allowed.
 
+import { HVAC_OPS_EVENTS } from "@/lib/hvac-operations/content";
+import { ALLIANCE_EVENTS } from "@/lib/revenue-continuity/content";
+import { BLUEPRINT_EVENTS } from "@/lib/ai-blueprint/content";
+
 export const HVAC_EVENTS = {
   pageView: "hvac_page_view",
   primaryCtaClick: "hvac_primary_cta_click",
@@ -19,25 +23,12 @@ export const HVAC_EVENTS = {
   pilotWon: "hvac_pilot_won",
 } as const;
 
+// Derive event union from source maps to prevent drift.
 export type HvacEvent =
   | (typeof HVAC_EVENTS)[keyof typeof HVAC_EVENTS]
-  // HVAC Operations landing page (/operations/hvac) event names. Declared here
-  // so both funnels share the same PII guard and dispatch path.
-  | "hvac_ops_page_view"
-  | "hvac_ops_hero_primary_cta_click"
-  | "hvac_ops_hero_secondary_cta_click"
-  | "hvac_ops_leak_map_view"
-  | "hvac_ops_tradeops_view"
-  | "hvac_ops_intake_click"
-  | "hvac_ops_fit_conversation_click"
-  // Revenue Continuity / Strategic Alliance funnel events.
-  | "hvac_alliance_apply_click"
-  | "hvac_alliance_terms_view"
-  | "hvac_proof_standard_view"
-  // AI Opportunity Blueprint events.
-  | "hvac_blueprint_page_view"
-  | "hvac_blueprint_primary_cta_click"
-  | "hvac_blueprint_scope_view";
+  | (typeof HVAC_OPS_EVENTS)[keyof typeof HVAC_OPS_EVENTS]
+  | (typeof ALLIANCE_EVENTS)[keyof typeof ALLIANCE_EVENTS]
+  | (typeof BLUEPRINT_EVENTS)[keyof typeof BLUEPRINT_EVENTS];
 
 // Keys that must never appear in an analytics payload.
 const PII_KEYS = new Set([

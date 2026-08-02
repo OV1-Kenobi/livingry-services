@@ -302,6 +302,6 @@ export const allianceFaq: { q: string; a: string }[] = [
   },
   {
     q: "What happens if the threshold is not met?",
-    a: "If your team met its operating commitments, the accrued Livingry service fees for the guarantee period are waived. We then do a joint root-cause review of the ledger before any continuation decision — a pilot that misses the threshold still has to explain why.",
+    a: "If your team met its operating commitments, the accrued Livingry service fees for the guarantee period are waived. We then do a joint root-cause review of the ledger before any continuation decision — an alliance that misses the threshold still has to explain why.",
   },
 ];

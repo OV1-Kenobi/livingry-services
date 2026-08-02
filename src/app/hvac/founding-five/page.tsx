@@ -26,6 +26,7 @@ import {
   showPilotPrice,
   workflow,
 } from "@/lib/hvac-founding-five/content";
+import { guarantee } from "@/lib/revenue-continuity/content";
 import { AllianceApplicationForm } from "./AllianceApplicationForm";
 import { HvacAnalytics } from "./HvacAnalytics";
 import { HvacFieldContext } from "@/components/HvacFieldContext";
@@ -332,7 +333,7 @@ export default function FoundingFivePage() {
               <p key={i} className={i === 0 ? "" : "mt-4"} style={{ color: "var(--ink-2)" }}>{p}</p>
             ))}
             <p className="mt-6 serif" style={{ color: "var(--forest)", fontSize: "1.0625rem" }}>
-              I seek Win/Win/Win outcomes — for the owners, the employees, and the customers. If that alignment isn't possible, I don't act.
+              {founder.principle}
             </p>
             <div className="mt-6 card" style={{ background: "var(--paper-2)" }}>
               <span className="eyebrow">Proof Matters</span>
@@ -370,12 +371,9 @@ export default function FoundingFivePage() {
       <section className="section" aria-labelledby="ff-guarantee-heading">
         <div className="container max-w-3xl">
           <div className="rule-label" style={{ color: "var(--forest)" }}>The guarantee</div>
-          <h2 id="ff-guarantee-heading" className="serif">The four-week gate, in plain terms.</h2>
+          <h2 id="ff-guarantee-heading" className="serif">{guarantee.heading}</h2>
           <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-            The weekly operational fee accrues from launch, but the first four weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x those fees by the end of week four — and your team has met its operating commitments. If coverage is not there, or the relationship is not working, you stop and owe nothing for those weeks.
-          </p>
-          <p className="mt-4" style={{ color: "var(--ink-2)" }}>
-            From week five, billing continues weekly in arrears against the ledger. After the full 12-week test run, if the system has not proven worth it to you, we go our separate ways and you keep everything we built. We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.
+            {guarantee.body}
           </p>
         </div>
       </section>
