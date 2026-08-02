@@ -21,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/agents",
     "/system-review",
-    "/operations/hvac",
     "/hvac/founding-five",
     "/ops",
     "/explore-demo",

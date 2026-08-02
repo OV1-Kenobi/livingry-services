@@ -8,12 +8,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { OrchestrationGraphic } from "@/components/diagrams/OrchestrationGraphic";
 
 export const metadata: Metadata = {
-  title: "AI General Contracting for Trade and Professional Operations — Livingry Services",
+  title: "AI General Contracting for HVAC/R Operations — Livingry Services",
   description:
     "Livingry Operations coordinates specialist AI tools, workflows, and human approvals to close operational leaks without forcing businesses into another disconnected platform.",
   alternates: { canonical: "/operations" },
   openGraph: {
-    title: "AI General Contracting for Trade and Professional Operations — Livingry Services",
+    title: "AI General Contracting for HVAC/R Operations — Livingry Services",
     description:
       "You run the business. We coordinate the AI stack behind it.",
     url: "/operations",
@@ -42,7 +42,7 @@ export default function Operations() {
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "AI General Contracting for Trade and Professional Operations",
+    name: "AI General Contracting for HVAC/R Operations",
     serviceType: "Operational AI implementation and governance",
     provider: { "@id": `${site.primaryDomain}/#organization` },
     areaServed: { "@type": "Country", name: "United States" },

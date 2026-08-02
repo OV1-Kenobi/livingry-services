@@ -80,7 +80,11 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             {c.lede}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/system-review" className="btn btn-primary">{c.cta.primary} <span aria-hidden>→</span></Link>
+            {c.status === "active" ? (
+              <Link href="/system-review" className="btn btn-primary">{c.cta.primary} <span aria-hidden>→</span></Link>
+            ) : (
+              <Link href="/industries" className="btn btn-secondary">See Active Industries</Link>
+            )}
             <Link href="/how-it-works" className="btn btn-secondary">See the Method</Link>
           </div>
           {c.slug === "hvac" && (
@@ -185,11 +189,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               </div>
             ))}
           </div>
-          <div className="mt-10">
-            <Link href="/system-review" className="btn btn-primary" style={{ background: "var(--copper)", color: "var(--paper)" }}>
-              {c.cta.primary} <span aria-hidden>→</span>
-            </Link>
-          </div>
+          {c.status === "active" && (
+            <div className="mt-10">
+              <Link href="/system-review" className="btn btn-primary" style={{ background: "var(--copper)", color: "var(--paper)" }}>
+                {c.cta.primary} <span aria-hidden>→</span>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -208,7 +214,11 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: c.cta.primary, href: "/system-review" }} />
+      {c.status === "active" ? (
+        <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: c.cta.primary, href: "/system-review" }} />
+      ) : (
+        <EndCta title="Ready to explore what's available today?" primary={{ label: "See Active Industries", href: "/industries" }} />
+      )}
     </>
   );
 }
