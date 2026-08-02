@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import { ALLIANCE_REVIEW_CALENDAR_URL } from "@/lib/site";
 import {
   APPLICATION_VERSION,
@@ -248,6 +248,13 @@ export function AllianceApplicationForm() {
   const [applicationId, setApplicationId] = useState<string | null>(null);
   const [pendingReview, setPendingReview] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const confirmationRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (submitted && confirmationRef.current) {
+      confirmationRef.current.focus();
+    }
+  }, [submitted]);
 
   const missing = useMemo(() => {
     const out: string[] = [];
@@ -334,7 +341,7 @@ export function AllianceApplicationForm() {
     if (pendingReview) {
       return (
         <div role="status">
-          <h3 className="serif" style={{ fontSize: "1.5rem" }}>Application Received</h3>
+          <h3 ref={confirmationRef} tabIndex={-1} className="serif" style={{ fontSize: "1.5rem" }}>Application Received</h3>
           {applicationId && (
             <p className="mt-3 eyebrow" style={{ color: "var(--forest)" }}>
               Application ID: {applicationId}
@@ -352,7 +359,7 @@ export function AllianceApplicationForm() {
 
     return (
       <div role="status">
-        <h3 className="serif" style={{ fontSize: "1.5rem" }}>{applicationConfirmation.heading}</h3>
+        <h3 ref={confirmationRef} tabIndex={-1} className="serif" style={{ fontSize: "1.5rem" }}>{applicationConfirmation.heading}</h3>
         {applicationId && (
           <p className="mt-3 eyebrow" style={{ color: "var(--forest)" }}>
             Application ID: {applicationId}

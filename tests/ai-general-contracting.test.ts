@@ -61,8 +61,8 @@ test("hero leads with umbrella positioning (not AI-GC-specific)", () => {
 test("homepage offers Operations and Blueprint conversion paths", () => {
   // HVAC-first repositioning: the two-path selector is Operations + Blueprint.
   assert.ok(
-    homepage.includes("/operations") || homepage.includes("operations"),
-    "homepage links to Operations practice",
+    /href=["']\/operations["']/.test(homepage),
+    "homepage links to Operations practice with exact /operations path",
   );
   assert.ok(
     homepage.includes("/operations/hvac/blueprint"),
