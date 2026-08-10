@@ -146,7 +146,6 @@ export const site = {
 export type Industry = (typeof site.industries)[number];
 export type SystemFamily = (typeof site.systemFamilies)[number];
 
-// Google Calendar appointment-scheduling link sent to qualified alliance
-// applicants after application review. Public booking page; no API needed.
-export const ALLIANCE_REVIEW_CALENDAR_URL =
-  "https://calendar.app.google/afa4S5C5yE2vHeUCA";
+// No public scheduling link exists for the Founding Five funnel: every
+// scorecard is human-reviewed, and fit conversations follow only for
+// qualified companies.

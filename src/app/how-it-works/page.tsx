@@ -62,7 +62,7 @@ export default function HowItWorks() {
         eyebrow="How It Works"
         title="Find the leak. Seal the gap. Keep more of what you already earned."
         lede="The Livingry Leakproofing Framework is deliberately simple. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system."
-        primaryCta={{ label: "Find My Biggest Leak", href: "/system-review" }}
+        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
       />
       <section className="section-tight">
         <div className="container">

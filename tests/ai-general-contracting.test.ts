@@ -58,21 +58,22 @@ test("hero leads with umbrella positioning (not AI-GC-specific)", () => {
   );
 });
 
-test("homepage offers Operations and Blueprint conversion paths", () => {
-  // HVAC-first repositioning: the two-path selector is Operations + Blueprint.
+test("homepage offers Operations and Founding Five conversion paths", () => {
+  // HVAC-first repositioning: the two-path selector is Operations + the
+  // Founding Five scorecard flow.
   assert.ok(
     /href=["']\/operations["']/.test(homepage),
     "homepage links to Operations practice with exact /operations path",
   );
   assert.ok(
-    homepage.includes("/operations/hvac/blueprint"),
-    "homepage links to the AI Opportunity Blueprint",
+    homepage.includes("/hvac/founding-five#scorecard"),
+    "homepage links to the Revenue Leak Scorecard flow",
   );
-  // Final CTA offers the alliance funnel and the Blueprint
+  // Final CTA offers the alliance funnel and the scorecard path.
   const flat = homepage.replace(/\s+/g, " ");
   assert.ok(
-    /system-review|blueprint/i.test(flat),
-    "homepage still offers Operations conversion paths",
+    /founding-five|scorecard/i.test(flat),
+    "homepage still offers the Founding Five conversion path",
   );
   assert.ok(
     flat.includes("Seal the client container"),
@@ -251,7 +252,7 @@ test("the hub carries no newsletter capture, since no email provider is connecte
 });
 
 test("the hub carries both conversion CTAs and metadata/schema", () => {
-  assert.ok(insightsPage.includes('href: "/system-review"'), "links to the System Review");
+  assert.ok(insightsPage.includes('href: "/hvac/founding-five#scorecard"'), "links to the Revenue Leak Scorecard");
   assert.ok(insightsPage.includes('href: "/assessment"'), "links to the assessment");
   assert.ok(insightsPage.includes('canonical: "/insights"'), "sets its own canonical");
   assert.ok(insightsPage.includes('"@type": "CollectionPage"'), "CollectionPage schema");

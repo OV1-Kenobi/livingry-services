@@ -61,7 +61,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href: string }[
 
 export function EndCta({
   title = "Find the highest-value leak in your business.",
-  primary = { label: "Find My Biggest Leak", href: "/system-review" },
+  primary = { label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" },
   secondary,
 }: {
   title?: string;

@@ -16,6 +16,7 @@ import {
   fit,
   founder,
   hero,
+  humanControl,
   identity,
   leakproofingMap,
   offer,
@@ -23,11 +24,10 @@ import {
   problem,
   process,
   seo,
-  showPilotPrice,
   workflow,
 } from "@/lib/hvac-founding-five/content";
-import { guarantee } from "@/lib/revenue-continuity/content";
-import { AllianceApplicationForm } from "./AllianceApplicationForm";
+import { recoveryThreshold } from "@/lib/revenue-continuity/content";
+import { RevenueLeakScorecard } from "./RevenueLeakScorecard";
 import { HvacAnalytics } from "./HvacAnalytics";
 import { HvacFieldContext } from "@/components/HvacFieldContext";
 
@@ -49,11 +49,10 @@ export const metadata: Metadata = {
 };
 
 export default function FoundingFivePage() {
-  const priceVisible = showPilotPrice();
   const crumbs = [
     { label: "Home", href: "/" },
     { label: "HVAC", href: "/industries/hvac" },
-    { label: "Founding Five Alliance", href: HVAC_ROUTE },
+    { label: "Founding Five Pilot", href: HVAC_ROUTE },
   ];
 
   return (
@@ -84,10 +83,10 @@ export default function FoundingFivePage() {
           <p className="mt-6 eyebrow" style={{ color: "var(--ink-3)" }}>{hero.proofStrip}</p>
 
           <div className="mt-9 flex flex-wrap gap-3 items-center">
-            <a href="#request-review" className="btn btn-primary" data-analytics="hvac-alliance-apply">
+            <a href="#scorecard" className="btn btn-primary" data-analytics="hvac-scorecard-start">
               {hero.primaryCta} <span aria-hidden>→</span>
             </a>
-            <a href="#how-it-works" className="btn btn-secondary">{hero.secondaryAnchor}</a>
+            <a href="#ff-path" className="btn btn-secondary">{hero.secondaryAnchor}</a>
           </div>
           <p className="mt-8" style={{ color: "var(--ink-3)", maxWidth: "46rem" }}>
             {hero.noCalendarNote}
@@ -130,17 +129,21 @@ export default function FoundingFivePage() {
 
       <hr />
 
-      {/* OFFER */}
+      {/* PILOT OFFER */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-offer-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="rule-label">02 · The offer</div>
+            <div className="rule-label">02 · The pilot</div>
             <h2 id="ff-offer-heading" className="serif">{offer.heading}</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>{offer.intro}</p>
+            <div className="mt-6 card" style={{ background: "var(--paper)", borderLeft: "3px solid var(--forest)" }}>
+              <p style={{ color: "var(--ink)", lineHeight: 1.7 }}>{offer.includedPriceNote}</p>
+            </div>
+            <p className="mt-4" style={{ color: "var(--ink-3)" }}>{offer.reactivationUpgrade}</p>
             <p className="mt-4" style={{ color: "var(--ink-3)" }}>{offer.closer}</p>
           </div>
           <ol className="lg:col-span-7 grid gap-0">
-            {offer.workflows.map((w, i) => (
+            {offer.foundations.map((w, i) => (
               <li key={i} className="py-4 flex items-baseline gap-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
                 <span className="mono text-[0.72rem]" style={{ color: "var(--forest)", width: "2rem" }}>{String(i + 1).padStart(2, "0")}</span>
                 <span style={{ color: "var(--ink)" }}>{w}</span>
@@ -203,10 +206,10 @@ export default function FoundingFivePage() {
 
       <hr />
 
-      {/* PROCESS */}
-      <section className="section" id="how-it-works" aria-labelledby="ff-process-heading">
+      {/* PROCESS — the Founding Five path */}
+      <section className="section" id="ff-path" aria-labelledby="ff-process-heading">
         <div className="container">
-          <div className="rule-label">03 · How an alliance begins</div>
+          <div className="rule-label">03 · The Founding Five path</div>
           <h2 id="ff-process-heading" className="serif max-w-3xl">{process.heading}</h2>
           <ol className="mt-10 grid gap-0">
             {process.steps.map((s, i) => (
@@ -353,28 +356,43 @@ export default function FoundingFivePage() {
 
       <hr />
 
-      {/* TERMS */}
+      {/* TERMS — always visible, never gated */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-pricing-heading" data-analytics-view="alliance-terms">
         <div className="container max-w-3xl">
           <div className="rule-label">07 · Terms</div>
           <h2 id="ff-pricing-heading" className="serif">{pricing.heading}</h2>
-          <p className="mt-5" style={{ color: "var(--ink-2)" }}>{pricing.body}</p>
-          {priceVisible && (
-            <p className="mt-4 card" style={{ color: "var(--ink)" }}>{pricing.gatedPrice}</p>
-          )}
+          <div className="mt-5 card" style={{ background: "var(--paper)", borderLeft: "3px solid var(--copper)" }}>
+            <div className="mono" style={{ color: "var(--copper)", fontSize: "1.4rem" }}>{pricing.pilotPrice}</div>
+            <p className="mt-3" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{pricing.body}</p>
+          </div>
+          <p className="mt-5" style={{ color: "var(--ink-2)" }}>{pricing.nextSixteen}</p>
+          <p className="mt-4" style={{ color: "var(--ink-2)" }}>{pricing.tier3}</p>
+          <p className="mt-4 serif" style={{ color: "var(--ink)" }}>{pricing.noGuarantee}</p>
+          <p className="mt-3" style={{ color: "var(--ink-3)" }}>{pricing.thirdParty}</p>
         </div>
       </section>
 
       <hr />
 
-      {/* GUARANTEE — conditional fee-waiver only */}
-      <section className="section" aria-labelledby="ff-guarantee-heading">
-        <div className="container max-w-3xl">
-          <div className="rule-label" style={{ color: "var(--forest)" }}>The guarantee</div>
-          <h2 id="ff-guarantee-heading" className="serif">{guarantee.heading}</h2>
-          <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-            {guarantee.body}
-          </p>
+      {/* RECOVERY THRESHOLD + HUMAN CONTROL — replaces the old guarantee section */}
+      <section className="section" aria-labelledby="ff-threshold-heading">
+        <div className="container grid gap-12 lg:grid-cols-2">
+          <div>
+            <div className="rule-label" style={{ color: "var(--forest)" }}>The recovery threshold</div>
+            <h2 id="ff-threshold-heading" className="serif">{recoveryThreshold.heading}</h2>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>{recoveryThreshold.body}</p>
+          </div>
+          <div>
+            <div className="rule-label" style={{ color: "var(--copper-2)" }}>Boundaries</div>
+            <h2 className="serif">{humanControl.heading}</h2>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>{humanControl.body}</p>
+            <ul className="mt-6 grid gap-0">
+              {humanControl.items.map((d, i) => (
+                <li key={i} className="py-3" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)", color: "var(--ink-2)" }}>{d}</li>
+              ))}
+              <li style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -396,18 +414,18 @@ export default function FoundingFivePage() {
         </div>
       </section>
 
-      {/* FINAL CTA + APPLICATION */}
-      <section className="section paper-grain" id="request-review" aria-labelledby="ff-final-heading">
+      {/* FINAL CTA + SCORECARD */}
+      <section className="section paper-grain" id="scorecard" aria-labelledby="ff-final-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="eyebrow">Apply for a Strategic Alliance</div>
+            <div className="eyebrow">Founding Five · Revenue Leak Scorecard</div>
             <h2 id="ff-final-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>{finalCta.heading}</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>{finalCta.body}</p>
             <p className="mt-6" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>
             <p className="mt-8 serif" style={{ fontSize: "var(--step-2)", color: "var(--forest)" }}>{finalCta.signature}</p>
           </div>
           <div className="lg:col-span-7">
-            <AllianceApplicationForm />
+            <RevenueLeakScorecard />
           </div>
         </div>
       </section>

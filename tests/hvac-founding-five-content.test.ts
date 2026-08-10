@@ -16,7 +16,6 @@ import {
   hero,
   offer,
   pricing,
-  showPilotPrice,
   HVAC_ROUTE,
 } from "../src/lib/hvac-founding-five/content";
 
@@ -33,6 +32,7 @@ function collectStrings(v: unknown, out: string[]): void {
 // Scan only visitor-facing copy, not the guardrail machinery (whose labels are
 // literally the prohibited phrases) or structured-data builders.
 const GUARDRAIL_EXPORTS = new Set([
+  "default",
   "PROHIBITED_PATTERNS",
   "CALENDAR_PATTERNS",
   "FABRICATION_PATTERNS",
@@ -44,7 +44,6 @@ const GUARDRAIL_EXPORTS = new Set([
   "buildBreadcrumbLd",
   "buildServiceLd",
   "buildFaqLd",
-  "showPilotPrice",
 ]);
 
 const copyStrings: string[] = [];
@@ -56,7 +55,7 @@ const copyBlob = copyStrings.join("\n");
 
 const pageSources = [
   "src/app/hvac/founding-five/page.tsx",
-  "src/app/hvac/founding-five/AllianceApplicationForm.tsx",
+  "src/app/hvac/founding-five/RevenueLeakScorecard.tsx",
 ]
   .map((p) => readFileSync(resolve(root, p), "utf8"))
   .join("\n");
@@ -79,6 +78,10 @@ test("no prohibited claims in public copy", () => {
     "You do not need to commit to an AI transformation.",
     "Do you guarantee revenue?",
     "The company wants guaranteed revenue.",
+    "Is there a fee-waiver guarantee?",
+    "No. Livingry does not offer any fee-waiver guarantee.",
+    "does not guarantee revenue",
+    "do not guarantee revenue",
   ];
   let scan = copyBlob;
   for (const phrase of APPROVED_NEGATIONS) scan = scan.split(phrase).join("");
@@ -90,12 +93,10 @@ test("no calendar references in copy or rendered page source", () => {
   assert.deepEqual(findCalendarReferences(pageSources), []);
 });
 
-test("price copy is gated by SHOW_HVAC_PILOT_PRICE", () => {
-  assert.equal(showPilotPrice({}), false);
-  assert.equal(showPilotPrice({ SHOW_HVAC_PILOT_PRICE: "false" }), false);
-  assert.equal(showPilotPrice({ SHOW_HVAC_PILOT_PRICE: "true" }), true);
-  // The page only renders the gated price behind the flag.
-  assert.ok(pageSources.includes("priceVisible &&"));
+test("the all-in pilot price is always visible, never gated", () => {
+  assert.equal(pricing.pilotPrice, "$2,500 all-in");
+  assert.ok(pageSources.includes("pricing.pilotPrice"), "the pilot price is rendered from the content constant");
+  assert.doesNotMatch(pageSources, /SHOW_HVAC_PILOT_PRICE/);
 });
 
 test("FAQ JSON-LD matches the visible FAQ", () => {
@@ -118,40 +119,42 @@ test("Breadcrumb JSON-LD ends at the founding-five route", () => {
   assert.match(String(last.item), /\/hvac\/founding-five$/);
 });
 
-// --- Strategic Alliance positioning (added with the 2026-08 repositioning) ---
+// --- Founding Five Tier 2 Pilot positioning (2026-08 rollover) ---
 
-test("offer sells the four-workflow system, never a single workflow", () => {
+test("offer sells the three foundations, never a single foundation alone", () => {
   assert.match(offer.heading, /Always together/i);
-  assert.equal(offer.workflows.length, 4);
-  assert.match(offer.workflows[0], /Missed-call recovery/);
-  assert.match(offer.workflows[1], /Estimate continuity/);
-  assert.match(offer.workflows[2], /Customer reactivation/);
-  assert.match(offer.workflows[3], /Referral continuity/);
-  assert.match(offer.intro, /no partner is sold one workflow/i);
+  assert.equal(offer.foundations.length, 3);
+  assert.match(offer.foundations[0], /^Missed-Call Recovery/);
+  assert.match(offer.foundations[1], /^Dropped-Estimate Recovery/);
+  assert.match(offer.foundations[2], /^Agentic Search Optimization/);
+  assert.match(offer.intro, /no partner is sold one foundation as the complete pilot/i);
 });
 
-test("hero leads with the Strategic Alliance application posture", () => {
-  assert.match(hero.title, /Strategic Alliances/i);
-  assert.match(hero.primaryCta, /Apply/i);
+test("hero leads with the scorecard / pilot posture", () => {
+  assert.match(hero.title, /Stop buying more leads/);
+  assert.match(hero.primaryCta, /Scorecard/);
   assert.doesNotMatch(hero.proofStrip, /One workflow/);
 });
 
-test("terms are Blueprint-first: findings call, then $799 report, launch range, arrears billing", () => {
-  assert.match(pricing.body, /diagnostic and findings call first/i);
-  assert.match(pricing.body, /\$799 findings report/);
-  assert.match(pricing.body, /credits in full/i);
-  assert.match(pricing.body, /\$2,500\u2013\$4,500|\$2,500.\$4,500/);
-  assert.match(pricing.body, /2x/);
-  assert.doesNotMatch(pricing.body, /\$1,?000\s*(per|\/|a)?\s*(business\s*)?week/i);
-  assert.doesNotMatch(pricing.body, /\$3,?500/);
-  assert.doesNotMatch(pricing.gatedPrice, /\$3,?500/);
+test("terms are pilot-first: $2,500 all-in, always visible, Tier 3 threshold", () => {
+  assert.equal(pricing.pilotPrice, "$2,500 all-in");
+  assert.match(pricing.body, /all-in for five HVAC\/R companies/);
+  assert.match(pricing.body, /\$199 Revenue Continuity Assessment/);
+  assert.match(pricing.body, /not credited and not added/);
+  assert.match(pricing.tier3, /\$1,000\/week/);
+  assert.match(pricing.tier3, /first four weekly cycles are delivered unpaid/);
+  assert.match(pricing.tier3, /\$10,000/);
+  assert.match(pricing.noGuarantee, /does not guarantee revenue/i);
 });
 
-test("faq explains the conditional fee-waiver instead of denying a guarantee", () => {
+test("faq states the all-in price and answers the guarantee question", () => {
   const g = faq.find((f) => /guarantee revenue/i.test(f.q));
   assert.ok(g);
-  assert.match(g.a, /fee structure, not an outcome/i);
-  assert.doesNotMatch(g.a, /^No\./);
+  assert.match(g.a, /(does not guarantee|never promise) revenue/i);
+  assert.match(g.a, /Recovery Ledger/i);
+  const p = faq.find((f) => /What do we pay, and when/i.test(f.q));
+  assert.ok(p);
+  assert.match(p.a, /\$2,500 all-in/);
 });
 
 test("founder story keeps credential discipline and includes the 2019 book", () => {
@@ -160,11 +163,17 @@ test("founder story keeps credential discipline and includes the 2019 book", () 
   assert.match(joined, /(solo|independent) residential contractor/);
   assert.match(joined, /2019/);
   assert.match(joined, /book/i);
-  assert.doesNotMatch(joined, /licensed HVAC/i);
+  // Training, never current licensure. Explicit negation strings ("No licensed
+  // HVAC work...", deferred-fit descriptions) are stripped before scanning.
+  const negations = [...content.humanControl.items, content.humanControl.body, ...content.fit.isNot];
+  let scan = copyBlob;
+  for (const s of negations) scan = scan.split(s).join("");
+  assert.doesNotMatch(scan, /licensed HVAC/i);
+  assert.doesNotMatch(scan, /currently certified/i);
 });
 
-test("service schema describes the alliance, not a one-workflow pilot", () => {
+test("service schema describes the Founding Five Tier 2 Pilot", () => {
   const ld = buildServiceLd();
-  assert.match(ld.name, /Revenue Continuity System/i);
-  assert.doesNotMatch(ld.name, /Pilot/i);
+  assert.match(ld.name, /Founding Five Tier 2 Pilot/);
+  assert.match(ld.name, /HVAC/i);
 });

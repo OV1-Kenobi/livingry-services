@@ -373,8 +373,8 @@ export default function AiForHvacCompanies() {
               <span>{site.name}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/system-review" className="btn btn-primary">
-                Book a Free System Review <span aria-hidden>→</span>
+              <Link href="/hvac/founding-five#scorecard" className="btn btn-primary">
+                Take the Revenue Leak Scorecard <span aria-hidden>→</span>
               </Link>
               <Link href="/assessment" className="btn btn-secondary">
                 Take the 17-Point Leak Assessment
@@ -1152,8 +1152,8 @@ export default function AiForHvacCompanies() {
             First determine whether earned opportunities are escaping from the systems already in use.
           </p>
           <div className="flex flex-wrap gap-3" style={{ marginTop: "0.5rem" }}>
-            <Link href="/system-review" className="btn btn-primary">
-              Book a Free System Review <span aria-hidden>→</span>
+            <Link href="/hvac/founding-five#scorecard" className="btn btn-primary">
+              Take the Revenue Leak Scorecard <span aria-hidden>→</span>
             </Link>
             <Link href="/assessment" className="btn btn-secondary">
               Complete the 17-Point Operational Leak Assessment
@@ -1172,7 +1172,7 @@ export default function AiForHvacCompanies() {
 
       <EndCta
         title="Find the leak before you shop for the tool."
-        primary={{ label: "Book a Free System Review", href: "/system-review" }}
+        primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
         secondary={{ label: "Take the 17-Point Leak Assessment", href: "/assessment" }}
       />
     </>

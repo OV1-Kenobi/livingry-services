@@ -81,7 +81,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             {c.status === "active" ? (
-              <Link href="/system-review" className="btn btn-primary">{c.cta.primary} <span aria-hidden>→</span></Link>
+              <Link href="/hvac/founding-five#scorecard" className="btn btn-primary">{c.cta.primary} <span aria-hidden>→</span></Link>
             ) : (
               <Link href="/industries" className="btn btn-secondary">See Active Industries</Link>
             )}
@@ -191,7 +191,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </div>
           {c.status === "active" && (
             <div className="mt-10">
-              <Link href="/system-review" className="btn btn-primary" style={{ background: "var(--copper)", color: "var(--paper)" }}>
+              <Link href="/hvac/founding-five#scorecard" className="btn btn-primary" style={{ background: "var(--copper)", color: "var(--paper)" }}>
                 {c.cta.primary} <span aria-hidden>→</span>
               </Link>
             </div>
@@ -215,7 +215,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       </section>
 
       {c.status === "active" ? (
-        <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: c.cta.primary, href: "/system-review" }} />
+        <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: c.cta.primary, href: "/hvac/founding-five#scorecard" }} />
       ) : (
         <EndCta title="Ready to explore what's available today?" primary={{ label: "See Active Industries", href: "/industries" }} />
       )}

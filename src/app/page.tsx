@@ -78,7 +78,7 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3 items-center">
               <Link href="/operations/hvac" className="btn btn-primary">Seal the Client Container <span aria-hidden>→</span></Link>
-              <Link href="/operations/hvac/blueprint" className="btn btn-secondary">Start with the AI Opportunity Blueprint</Link>
+              <Link href="/hvac/founding-five#scorecard" className="btn btn-secondary">Start with the Revenue Leak Scorecard</Link>
             </div>
             <p className="mt-8 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
               Human-accountable · Vendor-independent · Built around tools and records you control
@@ -360,17 +360,17 @@ export default function Home() {
                 In one focused review, we identify where demand, customer trust, knowledge, or capacity is escaping — and the first system worth building to close it.
               </p>
               <div className="mt-6">
-                <Link href="/system-review" className="btn btn-primary">Book a Free System Review <span aria-hidden>→</span></Link>
+                <Link href="/hvac/founding-five#scorecard" className="btn btn-primary">Take the Revenue Leak Scorecard <span aria-hidden>→</span></Link>
               </div>
             </div>
 
             <div className="card" style={{ borderLeft: "3px solid var(--copper-2)" }}>
               <h3 className="serif" style={{ fontSize: "var(--step-2)" }}>See where AI pays for itself</h3>
               <p className="mt-3" style={{ color: "var(--ink-2)" }}>
-                The AI Opportunity Blueprint maps your workflows, ranks the highest-return opportunities, and prices the build — the diagnostic and findings call come first, and the findings report credits in full toward your launch.
+                The Founding Five Path starts with a 15-minute scorecard: five leak sources, a score that shows where revenue is escaping, and a pilot price fixed before anything is built.
               </p>
               <div className="mt-6">
-                <Link href="/operations/hvac/blueprint" className="btn btn-secondary">See the Blueprint <span aria-hidden>→</span></Link>
+                <Link href="/hvac/founding-five" className="btn btn-secondary">See the Founding Five Path <span aria-hidden>→</span></Link>
               </div>
             </div>
           </div>

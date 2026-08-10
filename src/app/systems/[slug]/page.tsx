@@ -74,7 +74,7 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
         eyebrow={c.eyebrow}
         title={c.title}
         lede={c.lede}
-        primaryCta={{ label: c.cta.primary, href: "/system-review" }}
+        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
         secondaryCta={c.cta.secondary ? { label: c.cta.secondary, href: "/how-it-works" } : undefined}
       />
 
@@ -199,7 +199,7 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: c.cta.primary, href: "/system-review" }} />
+      <EndCta title={`Ready to close ${c.title.toLowerCase()} leaks?`} primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }} />
     </>
   );
 }

@@ -86,12 +86,12 @@ export default function HvacFunnelPage() {
           <p className="sr-only">{directAnswer}</p>
 
           <div className="mt-9 flex flex-wrap gap-3 items-center">
-            {/* Primary CTA routes to the Blueprint application flow. */}
+            {/* Primary CTA routes to the Founding Five scorecard flow. */}
             <Link href={BLUEPRINT_APPLY_HREF} className="btn btn-primary" data-analytics="hvac-funnel-primary-cta">
               {hero.primaryCta} <span aria-hidden>→</span>
             </Link>
-            {/* Secondary CTA scrolls to the Blueprint details section. */}
-            <a href="#blueprint-offer" className="btn btn-secondary" data-analytics="hvac-funnel-secondary-cta">
+            {/* Secondary CTA scrolls to the Founding Five path. */}
+            <a href="#pilot-path" className="btn btn-secondary" data-analytics="hvac-funnel-secondary-cta">
               {hero.secondaryCta}
             </a>
           </div>
@@ -191,8 +191,8 @@ export default function HvacFunnelPage() {
 
       <hr />
 
-      {/* 5) OFFER SECTION — THE HVAC REVENUE CONTINUITY BLUEPRINT */}
-      <section className="section" id="blueprint-offer" aria-labelledby="hvac-offer-heading" data-analytics-view="hvac-funnel-blueprint-section">
+      {/* 5) OFFER SECTION — THE FOUNDING FIVE TIER 2 PILOT */}
+      <section className="section" id="pilot-offer" aria-labelledby="hvac-offer-heading" data-analytics-view="hvac-funnel-blueprint-section">
         <div className="container max-w-3xl">
           <div className="rule-label" style={{ color: "var(--copper)" }}>The offer</div>
           <h2 id="hvac-offer-heading" className="serif">{offer.headline}</h2>
@@ -201,12 +201,12 @@ export default function HvacFunnelPage() {
           </p>
           <p className="mt-5" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{offer.offerDescription}</p>
           <p className="mt-6 card" style={{ borderLeft: "3px solid var(--copper)" }}>
-            <span className="eyebrow" style={{ color: "var(--copper)" }}>Investment</span>
+            <span className="eyebrow" style={{ color: "var(--copper)" }}>Pilot price — always visible</span>
             <span className="block mt-2 serif" style={{ fontSize: "var(--step-3)", color: "var(--ink)" }}>{offer.price}</span>
           </p>
           <p className="mt-5" style={{ color: "var(--ink-2)" }}>{offer.offerLine}</p>
           <div className="mt-8 flex flex-wrap gap-3 items-center">
-            {/* Primary CTA routes to the Blueprint application flow. */}
+            {/* Primary CTA routes to the Founding Five scorecard flow. */}
             <Link href={BLUEPRINT_APPLY_HREF} className="btn btn-primary" data-analytics="hvac-funnel-offer-cta">
               {offer.primaryCta} <span aria-hidden>→</span>
             </Link>
@@ -221,7 +221,7 @@ export default function HvacFunnelPage() {
       <section className="section" id="deliverables" style={{ background: "var(--paper-2)" }} aria-labelledby="hvac-deliverables-heading">
         <div className="container">
           <div className="rule-label">Deliverables &amp; value stack</div>
-          <h2 id="hvac-deliverables-heading" className="serif max-w-3xl">What the Blueprint includes.</h2>
+          <h2 id="hvac-deliverables-heading" className="serif max-w-3xl">{deliverables.title}</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {deliverables.items.map((item) => (
               <div key={item.name} className="card">
@@ -255,7 +255,7 @@ export default function HvacFunnelPage() {
               ))}
             </ul>
             <p className="mt-4 serif" style={{ fontSize: "var(--step-2)", color: "var(--ink)" }}>
-              Investment: {offer.price}
+              Pilot price: {offer.price}
             </p>
           </div>
         </div>
@@ -320,8 +320,8 @@ export default function HvacFunnelPage() {
 
       <hr />
 
-      {/* 10) HOW IT WORKS — simple 5-step process */}
-      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="hvac-how-heading">
+      {/* 10) HOW IT WORKS — scorecard-to-ledger path */}
+      <section className="section" style={{ background: "var(--paper-2)" }} id="pilot-path" aria-labelledby="hvac-how-heading">
         <div className="container">
           <div className="rule-label">How it works</div>
           <h2 id="hvac-how-heading" className="serif max-w-3xl">{howItWorks.heading}</h2>
@@ -375,15 +375,15 @@ export default function HvacFunnelPage() {
 
       <hr />
 
-      {/* ESTIMATE RECOVERY POSITIONING — modest lower-page block, NOT a live tool */}
+      {/* ESTIMATE RECOVERY POSITIONING — modest lower-page block, NOT an included workflow */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="hvac-er-heading">
         <div className="container max-w-3xl">
-          <div className="rule-label" style={{ color: "var(--forest)" }}>What implementation may look like after the Blueprint</div>
+          <div className="rule-label" style={{ color: "var(--forest)" }}>What implementation may look like after the pilot</div>
           <h2 id="hvac-er-heading" className="serif">{estimateRecoveryPositioning.heading}</h2>
           <p className="mt-5" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{estimateRecoveryPositioning.prePositioningLine}</p>
           <p className="mt-4" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{estimateRecoveryPositioning.approvedPositioning}</p>
           <p className="mt-5 text-[0.88rem]" style={{ color: "var(--ink-3)" }}>
-            Estimate Recovery is in development. It is not yet shipped and not yet integrated with ServiceTitan, Housecall Pro, Jobber, or other systems. No 'first' or 'only' market claim is made.
+            No 'first' or 'only' market claim is made, and no outcome is promised for any upgrade.
           </p>
         </div>
       </section>
@@ -454,7 +454,7 @@ export default function HvacFunnelPage() {
         <div className="container max-w-3xl">
           <h2 id="hvac-final-heading" className="serif" style={{ color: "var(--paper)" }}>{finalCta.headline}</h2>
           <p className="mt-7">
-            {/* Primary CTA routes to the Blueprint application flow. */}
+            {/* Primary CTA routes to the Founding Five scorecard flow. */}
             <Link href={BLUEPRINT_APPLY_HREF} className="btn btn-primary" data-analytics="hvac-funnel-final-cta">
               {finalCta.primaryCta} <span aria-hidden>→</span>
             </Link>

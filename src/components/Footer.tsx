@@ -50,6 +50,7 @@ export function Footer() {
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/agents">For AI Agents</Link></li>
               <li><Link href="/system-review">System Review</Link></li>
+              <li><Link href="/hvac/founding-five">Founding Five</Link></li>
             </ul>
           </div>
         </div>

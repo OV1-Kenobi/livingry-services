@@ -208,7 +208,7 @@ test("the contents navigation is generated from the sections it links to", () =>
    --------------------------------------------------------------- */
 
 test("the article routes conversion to the existing internal CTAs", () => {
-  assert.ok(page.includes('href="/system-review"'), "links to the System Review");
+  assert.ok(page.includes('href="/hvac/founding-five#scorecard"'), "links to the Revenue Leak Scorecard flow");
   assert.ok(page.includes('href="/assessment"'), "links to the assessment");
   assert.ok(page.includes("EndCta"), "the shared end-of-page CTA closes the article");
   assert.ok(

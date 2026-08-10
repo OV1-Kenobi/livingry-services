@@ -47,37 +47,42 @@ test("proof standard requires a complete chain and never mixes measures", () => 
   assert.match(rc.proofStandard.reportingRule, /never mix them/i);
 });
 
-test("guarantee is the four-week gate with no outcome promises", () => {
-  assert.match(rc.guarantee.heading, /four-week gate/i);
-  assert.match(rc.guarantee.body, /invoiced only if/i);
-  assert.match(rc.guarantee.body, /2x/);
-  assert.match(rc.guarantee.body, /met its operating commitments/i);
-  assert.match(rc.guarantee.body, /owe nothing for those weeks/i);
-  assert.match(rc.guarantee.body, /12-week test run/i);
-  assert.match(rc.guarantee.body, /keep everything we built/i);
-  assert.doesNotMatch(rc.guarantee.body, /\$4,?000/);
-  assert.doesNotMatch(rc.guarantee.body, /guarantee[sd]? revenue/i);
+test("the legacy four-week gate and fee-coverage guarantee are gone", () => {
+  assert.equal("guarantee" in rc, false, "no four-week-gate guarantee section may return");
+  const faqAnswers = rc.allianceFaq.map((f) => f.a).join("\n");
+  assert.doesNotMatch(faqAnswers, /four-week gate/i);
+  assert.doesNotMatch(faqAnswers, /\b2x\b/);
+  assert.doesNotMatch(faqAnswers, /12-week test run/i);
+  assert.doesNotMatch(faqAnswers, /owe nothing for those weeks/i);
 });
 
-test("terms: $799 report public, launch range, weekly gate mechanics", () => {
-  assert.equal(rc.terms.findingFee.amount, "$799");
-  assert.match(rc.terms.findingFee.body, /credited in full/i);
-  assert.equal(rc.terms.launch.range, "$2,500–$4,500");
-  assert.match(rc.terms.weeklyFee.body, /weekly in arrears/i);
-  assert.match(rc.terms.gate.body, /owes? nothing/i);
-  assert.match(rc.terms.exit.body, /12-week/);
+test("terms: pilot price always visible, components, Tier 3 mechanics", () => {
+  assert.equal(rc.terms.assessment.amount, "$199");
+  assert.equal(rc.terms.tenantIntegration.amount, "$497");
+  assert.equal(rc.terms.bundle.amount, "$649");
+  assert.equal(rc.terms.pilot.amount, "$2,500 all-in");
+  assert.match(rc.terms.pilot.body, /not credited and not added/i);
+  assert.match(rc.terms.tier3.body, /delivered unpaid/i);
+  assert.match(rc.terms.tier3.body, /\$10,000/);
   assert.match(rc.terms.vendorCosts, /opened in the partner's name/i);
-  assert.doesNotMatch(blob, /\$1,?000\s*(per|\/|a)?\s*(business\s*)?week/i);
-  assert.doesNotMatch(blob, /\$4,?000/);
+  assert.match(blob, /\$1,000\/week/i);
+  assert.match(blob, /\$4,?000/);
   assert.doesNotMatch(blob, /\$3,?500/);
 });
 
 test("copy carries no prohibited claims or invented proof", () => {
   // FAQ question labels name the concern being rebutted ("Do you guarantee
   // revenue?") — they are not claims. Check claims against copy values only,
-  // excluding question labels.
+  // excluding question labels and negated honest-copy phrases that name the
+  // banned thing while disclaiming it ("Livingry does not guarantee revenue...").
+  const negations = [
+    rc.terms.noOutcomeGuarantees,
+    "No. Livingry does not offer any fee-waiver guarantee.",
+  ];
   const claimStrings = copyStrings.filter((s) => !s.endsWith("?"));
-  const claimBlob = claimStrings.join("\n");
+  const claimBlob = claimStrings
+    .map((s) => negations.reduce((acc, n) => acc.split(n).join(""), s))
+    .join("\n");
   const violations = findProhibitedClaims(claimBlob);
   assert.deepEqual(violations, []);
   assert.doesNotMatch(claimBlob, /proven (results|track record)/i);
@@ -108,8 +113,8 @@ test("founder story is three beats with credential discipline", () => {
 test("alliance FAQ answers the revenue-guarantee question accurately", () => {
   const g = rc.allianceFaq.find((f) => /guarantee revenue/i.test(f.q));
   assert.ok(g);
-  assert.match(g.a, /fee structure, not an outcome/i);
-  assert.doesNotMatch(g.a, /^No\./);
+  assert.match(g.a, /never promise revenue/i);
+  assert.match(g.a, /Recovery Ledger/);
 });
 
 test("event names are unique and follow the hvac funnel namespace", () => {

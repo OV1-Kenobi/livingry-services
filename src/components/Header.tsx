@@ -88,8 +88,8 @@ export function Header() {
         </nav>
         <div className="hidden lg:flex items-center gap-4">
           <Link href="/dashboard" className="nav-link">Client Sign In</Link>
-          <Link href="/system-review" className="btn btn-primary">
-            Find My Biggest Leak
+          <Link href="/hvac/founding-five#scorecard" className="btn btn-primary">
+            Take the Revenue Leak Scorecard
             <span aria-hidden>→</span>
           </Link>
         </div>
@@ -130,8 +130,8 @@ export function Header() {
               </div>
             ))}
             <Link href="/dashboard" className="nav-link block mt-2" onClick={() => setOpen(false)}>Client Sign In</Link>
-            <Link href="/system-review" className="btn btn-primary mt-2 w-fit" onClick={() => setOpen(false)}>
-              Find My Biggest Leak <span aria-hidden>→</span>
+            <Link href="/hvac/founding-five#scorecard" className="btn btn-primary mt-2 w-fit" onClick={() => setOpen(false)}>
+              Take the Revenue Leak Scorecard <span aria-hidden>→</span>
             </Link>
           </div>
         </div>

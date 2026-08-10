@@ -27,7 +27,7 @@ export default function WhatWeBuild() {
         eyebrow="What We Build"
         title="Modern systems for useful work."
         lede="Every Livingry System begins with a real constraint: an unanswered customer, a fragmented handoff, knowledge that cannot be found, a process no one can see, or capacity that is being wasted. We use the smallest combination of people, process, information, automation, and AI that improves it."
-        primaryCta={{ label: "Find My Biggest Leak", href: "/system-review" }}
+        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
         secondaryCta={{ label: "See the Method", href: "/how-it-works" }}
       />
       <hr />

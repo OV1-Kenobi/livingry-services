@@ -66,7 +66,12 @@ const GUARDRAIL_PHRASES = new Set([
   "Wants unsupervised systems making consequential commitments",
 ]);
 const claimStrings = copyStrings.filter((s) => !s.endsWith("?") && !GUARDRAIL_PHRASES.has(s));
-const claimBlob = claimStrings.join("\n");
+// Negated honest-copy phrases (e.g. "Livingry does not guarantee revenue...")
+// name the banned thing while disclaiming it; strip them before positive-claim
+// scanning, mirroring the shared founding-five content test.
+const negatedCopy = [riskReversal.body, ...faq.map((f) => f.a)];
+let claimBlob = claimStrings.join("\n");
+for (const s of negatedCopy) claimBlob = claimBlob.split(s).join("");
 
 // --- Acceptance criteria from the ticket ------------------------------------
 
@@ -104,14 +109,14 @@ test("Michael's founder story appears immediately after the hero", () => {
   assert.doesNotMatch(between, /<h2[^>]*id="(hvac-leaks|hvac-control|hvac-offer|hvac-deliverables)/);
 });
 
-test("the four leaks are the primary mechanism above the offer", () => {
+test("the three foundations plus the first upgrade are the mechanism above the offer", () => {
   assert.equal(fourLeaks.leaks.length, 4);
   const names = fourLeaks.leaks.map((l) => l.name);
   assert.deepEqual(names, [
-    "Missed Call Recovery",
-    "Estimate Follow-Up",
-    "Past-Customer Reactivation",
-    "Referral Automation",
+    "Missed-Call Recovery",
+    "Dropped-Estimate Recovery",
+    "Agentic Search Optimization",
+    "Client Reactivation — the first upgrade",
   ]);
   assert.match(fourLeaks.framing, /one Revenue Continuity System/i);
   assert.match(fourLeaks.categoryLine, /not lead generation/i);
@@ -121,33 +126,33 @@ test("the four leaks are the primary mechanism above the offer", () => {
   );
 });
 
-test("the Blueprint is clearly presented as the $799 paid front-end offer", () => {
-  assert.equal(offer.price, "$799");
-  assert.match(offer.offerName, /HVAC Revenue Continuity Blueprint/);
-  assert.match(offer.offerDescription, /fixed-scope diagnostic/);
+test("the Founding Five pilot is presented at the always-visible $2,500 all-in price", () => {
+  assert.equal(offer.price, "$2,500 all-in");
+  assert.match(offer.offerName, /Founding Five Tier 2 Pilot/);
+  assert.match(offer.offerDescription, /all-in pilot for five HVAC\/R companies/);
   // The page renders price and offer name via the content constants.
-  assert.ok(pageSource.includes("offer.price"), "$799 price is rendered from the content constant");
+  assert.ok(pageSource.includes("offer.price"), "$2,500 price is rendered from the content constant");
   assert.ok(pageSource.includes("offer.offerName"), "offer name is rendered from the content constant");
 });
 
-test("Blueprint deliverables include both new deliverables", () => {
+test("pilot deliverables include both pilot foundations by their operating names", () => {
   const names = deliverables.items.map((i) => i.name);
-  assert.ok(names.includes("Estimate Recovery Opportunity Scan"));
-  assert.ok(names.includes("Agentic Search Visibility & Trust Audit"));
+  assert.ok(names.includes("Dropped-Estimate Recovery"));
+  assert.ok(names.includes("Agentic Search Optimization"));
   assert.equal(
     deliverables.newDeliverables.estimateRecoveryScan.name,
-    "Estimate Recovery Opportunity Scan",
+    "Dropped-Estimate Recovery (pilot foundation)",
   );
   assert.equal(
     deliverables.newDeliverables.agenticSearchAudit.name,
-    "Agentic Search Visibility & Trust Audit",
+    "Agentic Search Optimization (pilot foundation)",
   );
 });
 
-test("Estimate Recovery is framed as an upcoming implementation module, not a shipped tool", () => {
-  assert.match(estimateRecoveryPositioning.heading, /in development/);
-  assert.match(estimateRecoveryPositioning.prePositioningLine, /first implementation module/);
-  assert.match(estimateRecoveryPositioning.approvedPositioning, /is developing/);
+test("Dropped-Estimate Recovery is an included pilot foundation, not a shipped tool", () => {
+  assert.match(estimateRecoveryPositioning.heading, /after the pilot/);
+  assert.match(estimateRecoveryPositioning.prePositioningLine, /first a-la-carte upgrade/);
+  assert.match(estimateRecoveryPositioning.approvedPositioning, /a la carte/);
   // The copy must NOT claim it is already shipped or integrated with named CRMs.
   const erBlob = [
     estimateRecoveryPositioning.prePositioningLine,
@@ -157,18 +162,19 @@ test("Estimate Recovery is framed as an upcoming implementation module, not a sh
   ].join("\n");
   assert.doesNotMatch(erBlob, /already shipped/i);
   assert.doesNotMatch(erBlob, /is integrated with ServiceTitan/i);
-  // The FAQ must say it is not a live software deployment yet.
-  const erFaq = faq.find((f) => /Is the Estimate Recovery tool included right now/i.test(f.q));
+  // The FAQ must say reactivation is a-la-carte, not an included pilot workflow.
+  const erFaq = faq.find((f) => /Is Client Reactivation included/i.test(f.q));
   assert.ok(erFaq);
-  assert.match(erFaq.a, /not as a live software deployment yet/i);
+  assert.match(erFaq.a, /first a-la-carte upgrade/i);
 });
 
-test("the Clarity Promise is used instead of the stronger unapproved guarantee", () => {
-  assert.match(riskReversal.heading, /Blueprint Clarity Promise/);
-  assert.match(riskReversal.body, /current-state map/i);
-  assert.match(riskReversal.body, /90-day roadmap/i);
-  assert.match(riskReversal.body, /fee is refunded/i);
-  assert.match(riskReversal.ruleNote, /not a revenue or opportunity guarantee/i);
+test("no outcome guarantee is claimed; the Recovery Ledger is the only measure", () => {
+  assert.match(riskReversal.heading, /Outcome guarantees\? No/);
+  assert.match(riskReversal.body, /does not guarantee revenue/i);
+  assert.match(riskReversal.body, /Recovery Ledger/);
+  assert.match(riskReversal.body, /\$1,000\/week/);
+  assert.match(riskReversal.body, /\$10,000/);
+  assert.match(riskReversal.ruleNote, /not a promise/);
   // The claim blob excludes guardrail rule lists and the qualification
   // weak-fit disqualifier ("Wants guaranteed revenue without participation"),
   // which names the concern being declined rather than making a claim.
@@ -204,33 +210,40 @@ test("no fabricated proof, false urgency, or unsupported results claims appear",
   assert.doesNotMatch(claimBlob, /countdown timer/i);
   assert.doesNotMatch(claimBlob, /evergreen urgency/i);
   // Founding Five scarcity is application-open, not fake "only X left".
-  assert.match(foundingFive.applicationOpenNote, /Applications are open/i);
-  assert.match(foundingFive.applicationOpenNote, /no countdown timers/i);
+  assert.match(foundingFive.applicationOpenNote, /exactly five HVAC\/R companies/);
+  assert.match(foundingFive.applicationOpenNote, /no countdown timers/);
+  assert.match(foundingFive.applicationOpenNote, /manually maintained/);
   // Proof architecture forbids fabricated testimonials / composite case studies.
   assert.ok(proofArchitecture.notAllowed.includes("Fabricated testimonials"));
   assert.ok(proofArchitecture.notAllowed.includes("Composite case studies presented as real"));
 });
 
-test("all primary CTAs route into the Blueprint application flow", () => {
-  assert.equal(BLUEPRINT_APPLY_HREF, "/hvac/founding-five#request-review");
-  // Every primary CTA on the page points to the Blueprint application href
-  // via the shared BLUEPRINT_APPLY_HREF constant. Count the Link occurrences
-  // referencing it (excluding the import line).
+test("all primary CTAs route into the Founding Five scorecard flow", () => {
+  assert.equal(BLUEPRINT_APPLY_HREF, "/hvac/founding-five#scorecard");
+  // Every primary CTA on the page points to the scorecard flow via the shared
+  // BLUEPRINT_APPLY_HREF constant. Count the Link occurrences referencing it
+  // (excluding the import line).
   const usages = pageSource.split("href={BLUEPRINT_APPLY_HREF}").length - 1;
   assert.ok(usages >= 3, `expected at least 3 primary CTAs, found ${usages}`);
   // The hero primary CTA, the offer primary CTA, and the final CTA all use it.
   assert.ok(
     pageSource.includes("href={BLUEPRINT_APPLY_HREF}"),
-    "primary CTAs use the shared Blueprint application href constant",
+    "primary CTAs use the shared scorecard href constant",
   );
-  // The secondary CTA scrolls to the Blueprint details section (anchor link).
-  assert.ok(pageSource.includes('href="#blueprint-offer"'));
+  // The hero secondary CTA scrolls to the Founding Five path section (anchor link).
+  assert.ok(pageSource.includes('href="#pilot-path"'));
 });
 
-test("how it works is the 5-step process in the exact order", () => {
+test("how it works is the 5-step scorecard-to-ledger path in the exact order", () => {
   assert.equal(howItWorks.steps.length, 5);
   const names = howItWorks.steps.map((s) => s.name);
-  assert.deepEqual(names, ["Apply", "Map", "Diagnose", "Decide", "Implement by evidence"]);
+  assert.deepEqual(names, [
+    "Scorecard",
+    "Human review and fit call",
+    "Assessment + Tenant Integration",
+    "Three-foundation launch",
+    "Ledger and weekly review",
+  ]);
 });
 
 test("qualification covers strong fit and weak fit", () => {
@@ -242,21 +255,20 @@ test("qualification covers strong fit and weak fit", () => {
   assert.match(qualification.weakFit.join(" "), /guaranteed revenue without participation/i);
 });
 
-test("FAQ retains the required questions and adds the Estimate Recovery question", () => {
+test("FAQ retains the required questions and the pilot-specific additions", () => {
   const qs = faq.map((f) => f.q);
   assert.ok(qs.some((q) => /switch CRMs/i.test(q)));
   assert.ok(qs.some((q) => /AI answering service/i.test(q)));
-  assert.ok(qs.some((q) => /diagnostic before implementation/i.test(q)));
-  assert.ok(qs.some((q) => /without hiring Livingry/i.test(q)));
+  assert.ok(qs.some((q) => /all-in price/i.test(q)));
+  assert.ok(qs.some((q) => /Client Reactivation included/i.test(q)));
+  assert.ok(qs.some((q) => /\$10,000 recovery threshold/i.test(q)));
   assert.ok(qs.some((q) => /Livingry is not a fit/i.test(q)));
-  assert.ok(qs.some((q) => /Estimate Recovery tool included right now/i.test(q)));
 });
 
-test("final CTA headline and primary CTA match the ticket", () => {
+test("final CTA headline and primary CTA match the scorecard funnel", () => {
   assert.equal(finalCta.headline, "Find the leak before you buy more traffic.");
-  assert.match(finalCta.primaryCta, /Apply for the HVAC Revenue Continuity Blueprint/);
-  assert.match(finalCta.primaryCta, /\$799/);
-  assert.match(finalCta.microcopy, /Application-based/);
+  assert.match(finalCta.primaryCta, /Take the 15-Minute Revenue Leak Scorecard/);
+  assert.match(finalCta.microcopy, /Scorecard-based/);
   assert.match(finalCta.microcopy, /does not obligate either party/i);
 });
 
@@ -270,20 +282,20 @@ test("founder proof boundary: 30% is Michael's estimate, not audited revenue", (
   assert.match(founderStory.boundaryNote, /unrealized productive capacity/i);
 });
 
-test("agentic-search audit is framed as an included audit, not a rankings promise", () => {
-  assert.match(agenticSearchPositioning.importantRule, /included audit/i);
+test("agentic-search foundation is framed as included, not a rankings promise", () => {
+  assert.match(agenticSearchPositioning.importantRule, /included pilot foundation/i);
   assert.match(agenticSearchPositioning.importantRule, /not a promise of rankings/i);
   assert.match(agenticSearchPositioning.agenticSearchLine, /answer engines/i);
   assert.ok(agenticSearchPositioning.focusAreas.length >= 6);
 });
 
-test("recommended application fields match the ticket", () => {
+test("scorecard application fields match the live intake form", () => {
   const joined = applicationFields.join(" ");
   assert.ok(applicationFields.includes("Company name"));
-  assert.ok(applicationFields.includes("Truck count"));
-  assert.ok(applicationFields.includes("Current CRM / FSM"));
-  assert.match(joined, /Biggest leak/i);
-  assert.match(joined, /Willingness to participate in mapping session/i);
+  assert.ok(applicationFields.includes("Active field vehicles/teams"));
+  assert.ok(applicationFields.includes("Current FSM / CRM"));
+  assert.match(joined, /Top two leaks/i);
+  assert.match(joined, /Record readiness/);
 });
 
 test("structured data is accurate and uses safe schema types", () => {
@@ -291,7 +303,7 @@ test("structured data is accurate and uses safe schema types", () => {
   assert.equal(serviceLd["@type"], "Service");
   assert.equal(serviceLd.areaServed.name, "United States");
   assert.match(serviceLd.audience.audienceType, /HVAC/i);
-  assert.equal(serviceLd.offers.price, "799");
+  assert.equal(serviceLd.offers.price, "2500");
   assert.equal(serviceLd.offers.priceCurrency, "USD");
 
   const faqLd = buildHvacFunnelFaqLd();

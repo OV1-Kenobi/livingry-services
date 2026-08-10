@@ -1,13 +1,29 @@
-// Single source of truth for the Founding Five HVAC pilot page copy, FAQ,
+// Single source of truth for the Founding Five Tier 2 Pilot page copy, FAQ,
 // structured data, and guardrails. Keeping copy here (rather than only inline
 // in the page) lets the visible FAQ, the FAQPage JSON-LD, and the automated
 // prohibited-claims tests all read from the same place.
+//
+// Canonical commercial terms (fixed — see /hvac/founding-five and docs):
+// - Founding Five Tier 2 pilot: $2,500 all-in, ALWAYS visible.
+// - Included: $199 Revenue Continuity Assessment, $497 Livingry Ops Tenant
+//   Integration, $649 bundle / $696 separate value, Missed-Call Recovery,
+//   Dropped-Estimate Recovery, Agentic Search Optimization, plus onboarding,
+//   training, integration, and setup. Tier 1 value is included, never
+//   credited or added.
+// - Cohort: five HVAC/R companies, visibly labeled.
+// - Next 16 clients: higher, scope-based pricing.
+// - Tier 3 (optional): $1,000/week; first four weekly cycles delivered
+//   unpaid; retroactive $4,000 only after a written Recovery Ledger verifies
+//   $10,000 in qualifying documented collected recovery within those cycles.
+// - Client Reactivation: first a-la-carte upgrade, not included.
+// - No outcome guarantees of any kind; third-party costs separate.
 
 import { site } from "@/lib/site";
 import { founder as canonicalFounder, allianceFaq as canonicalFaq } from "@/lib/revenue-continuity/content";
 
 export const HVAC_ROUTE = "/hvac/founding-five";
 export const HVAC_URL = `${site.primaryDomain}${HVAC_ROUTE}`;
+export const HVAC_SCORECARD_ANCHOR = `${HVAC_ROUTE}#scorecard`;
 
 export const FOUNDING_FIVE_CAPACITY = 5;
 
@@ -16,62 +32,65 @@ export const FOUNDING_FIVE_CAPACITY = 5;
 export const sealedSystemPrinciple = "A system that is unsealed cannot be scaled.";
 
 export const seo = {
-  title: "HVAC/R Strategic Alliance — Founding Five | Livingry Services",
+  title: "Founding Five Tier 2 Pilot — $2,500 All-In | Livingry Services",
   description:
-    "Livingry is accepting applications from established U.S. HVAC/R companies for a limited number of Strategic Alliances: a four-part Revenue Continuity System with a shared proof ledger and a conditional fee-waiver guarantee.",
-  ogTitle: "Applications are open for a limited number of HVAC/R Strategic Alliances.",
+    "Livingry's Founding Five Tier 2 Pilot: $2,500 all-in for Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization — including the $199 Revenue Continuity Assessment and $497 Livingry Ops Tenant Integration. Five HVAC/R companies. No outcome guarantees. Human-reviewed before any follow-up.",
+  ogTitle: "Stop buying more leads before you seal the leaks.",
   ogDescription:
-    "One Revenue Continuity System around missed calls, open estimates, past customers, and referrals. Human-controlled AI. Measured against a shared proof ledger.",
+    "The Founding Five Tier 2 Pilot, $2,500 all-in, for five HVAC/R companies: missed calls, dropped estimates, and search readiness, run on a shared proof ledger with human approval where it matters.",
 } as const;
 
 // A direct, server-rendered 40–80 word answer placed near the top of the page
 // for humans and AI systems. (Word count verified in tests.)
 export const directAnswer =
-  "The Founding Five is the entry cohort of Livingry's HVAC/R Strategic Alliance program: a founder-led engagement that installs a four-part Revenue Continuity System — missed-call recovery, estimate continuity, customer reactivation, and referral continuity — around the customers and opportunities an established company has already earned. Every recovered dollar is measured against a shared proof ledger, and Livingry's accrued service fee is waived if the agreed recovery level is not met during the guarantee period.";
+  "The Founding Five is an invite-only HVAC/R pilot cohort of five companies. The Tier 2 pilot is $2,500 all-in: Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, including the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration, and onboarding and setup. Every recovered dollar is measured against a shared proof ledger, and applications are human-reviewed before any follow-up.";
 
 export const hero = {
-  eyebrow: "THE LIVINGRY FOUNDING FIVE",
-  title: "Applications are open for a limited number of HVAC/R Strategic Alliances.",
+  eyebrow: "Founding Five Strategic Alliance — Invite-Only HVAC/R Pilot Cohort",
+  title: "Stop buying more leads before you seal the leaks.",
   intro:
-    "Livingry installs a full Revenue Continuity System around the customers and opportunities your company has already earned.",
+    "Livingry runs the three follow-through foundations that keep the demand you already pay for from leaking: missed calls, dropped estimates, and rivals winning the search answers your customers ask for.",
   premise:
-    "Missed calls. Open estimates. Past customers. Referrals that were never asked for. These are not four separate problems — they are one system leaking at four handoffs.",
+    "Missed calls. Dropped estimates. Customers who ask the wrong answer questions and never reach you. These are not five separate problems — they are one system leaking at three handoffs.",
   belief: sealedSystemPrinciple,
-  body: "We do not sell a loose collection of AI tools. We build the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, the completed job, and the next customer need — and we measure every recovered dollar against a shared proof ledger.",
+  body: "We do not sell a loose collection of AI tools. We install the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, and the search engine — measured against a shared proof ledger, with human approval on every consequential action.",
   proofStrip:
-    "Four connected workflows · Shared proof ledger · Human approval on consequential actions · Conditional fee-waiver guarantee",
-  primaryCta: "Apply for a Founding Five Alliance",
-  secondaryAnchor: "See how an alliance works",
+    "Calls. Estimates. Search readiness. Human-reviewed where judgment matters.",
+  primaryCta: "Take the 15-Minute Revenue Leak Scorecard",
+  secondaryAnchor: "See the Founding Five Path",
   noCalendarNote:
-    "No public calendar. Applications are reviewed first; fit conversations follow for qualified companies.",
+    "No public calendar. Every scorecard is human-reviewed; fit conversations follow only for qualified companies.",
 } as const;
 
 export const problem = {
-  heading: "The problem is rarely “not enough software.”",
+  heading: "The problem is rarely “not enough leads.”",
   intro:
     "Most established HVAC companies already have phones, forms, field-service software, office procedures, and capable people. The leaks appear between them:",
   leaks: [
     "A caller reaches voicemail and receives no accountable next step — the demand dies before a qualified response.",
     "A valid estimate is sent, then worked inconsistently or not at all.",
-    "A past customer who would have rebooked is never appropriately contacted again.",
-    "A satisfied customer is never given a simple, timely opportunity to refer.",
+    "Your customers ask the search engine a question and get a competitor's answer — because nobody operates the answers your business has earned the right to hold.",
+    "A past customer who would have rebooked is never appropriately contacted again — the reactivation gap the pilot addresses first.",
   ],
   pullQuote:
     "If the next action depends on one person remembering, it is not yet a dependable workflow.",
 } as const;
 
 export const offer = {
-  heading: "One Revenue Continuity System. Four connected workflows. Always together.",
+  heading: "One pilot price. The three foundations that seal the leaks. Always together.",
   intro:
-    "Every alliance includes all four continuity workflows. The implementation order may vary based on your baseline, but no partner is sold one workflow as the complete product:",
-  workflows: [
-    "Missed-call recovery — capture, classify, route, time-limit, escalate, and log every eligible inbound opportunity.",
-    "Estimate continuity — identify eligible open estimates and execute the approved follow-up cadence with recorded dispositions.",
-    "Customer reactivation — segment eligible prior customers and run the approved contact sequence, routing replies and bookings.",
-    "Referral continuity — trigger a timely, approved referral invitation after eligible completed jobs, with source attribution.",
+    "Every Founding Five Tier 2 pilot includes all three foundations. Implementation order may vary with your baseline, but no partner is sold one foundation as the complete pilot:",
+  foundations: [
+    "Missed-Call Recovery — capture, classify, route, time-limit, escalate, and log every eligible inbound call.",
+    "Dropped-Estimate Recovery — identify eligible open estimates and execute the approved follow-up cadence with recorded dispositions.",
+    "Agentic Search Optimization — operate the answers, listings, and knowledge signals your market asks search engines for, so the demand you already pay for stops routing to competitors.",
   ],
+  includedPriceNote:
+    "Every pilot also includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), and onboarding, training, integration, and setup — all inside the $2,500 all-in price. Tier 1 value is included, not credited and not added.",
+  reactivationUpgrade:
+    "Client Reactivation is the first a-la-carte upgrade available after these three foundations are live — it is never silently sold as part of the pilot.",
   closer:
-    "Booked-job handoffs and technician knowledge are implemented inside every alliance as operating scope — they are how the four workflows hold up in the field, not separate products.",
+    "Booked-job handoffs and technician knowledge are implemented inside every pilot as operating scope — they are how the three foundations hold up in the field, not separate products.",
 } as const;
 
 // The seven-part diagnostic model. Plain operational names first; the short
@@ -87,7 +106,7 @@ export const leakproofingMap = {
       n: 1,
       name: "Intake capture",
       short: "the intake layer",
-      body: "Every inquiry — call, form, text, or referral — receives an accountable state and a clear next action, so nothing sits unowned.",
+      body: "Every inquiry — call, form, or search — receives an accountable state and a clear next action, so nothing sits unowned.",
     },
     {
       n: 2,
@@ -127,7 +146,7 @@ export const leakproofingMap = {
     },
   ],
   disclaimer:
-    "This is a diagnostic map, not a promise. An alliance does not rebuild all seven layers on day one. It seals the four follow-through workflows that cut across them — and measures the result against the ledger.",
+    "This is a diagnostic map, not a promise. A pilot does not rebuild all seven layers on day one. It seals the three foundations that cut across them — and measures the result against the ledger.",
 } as const;
 
 // Aspirational operating identity. Defined in plain terms on first use, and
@@ -135,15 +154,19 @@ export const leakproofingMap = {
 // verified status, or a mark we claim to own.
 export const identity = {
   heading: "Built for leakproof operators",
-  body: "The owners who get the most from an alliance share one instinct: they refuse to pour more traffic, tools, or automation into a system that already leaks. We call that operating identity a leakproof operator. It is not a membership, a certification, or a badge you earn — just a way of running a business that treats an unsealed workflow as the first thing to fix.",
+  body: "The owners who get the most from a pilot share one instinct: they refuse to pour more traffic, tools, or automation into a system that already leaks. We call that operating identity a leakproof operator. It is not a membership, a certification, or a badge you earn — just a way of running a business that treats an unsealed workflow as the first thing to fix.",
 } as const;
 
 export const process = {
-  heading: "How an alliance begins",
+  heading: "How the Founding Five pilot begins",
   steps: [
     {
-      title: "Apply.",
-      body: "Tell us about your operation and the leak that costs you the most. Poor-fit applications get a fast, honest answer.",
+      title: "Take the scorecard.",
+      body: "Fifteen minutes about your operation and the leaks that cost you the most. Every scorecard is human-reviewed; poor fits get a fast, honest answer.",
+    },
+    {
+      title: "Human review.",
+      body: "Livingry reads every scorecard. No bot triage, no public calendar — fit conversations follow only for qualified companies.",
     },
     {
       title: "Fit conversation.",
@@ -151,19 +174,19 @@ export const process = {
     },
     {
       title: "Baseline and system map.",
-      body: "We sign the alliance and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. The guarantee clock does not start until readiness is signed off.",
+      body: "We sign the pilot and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. No threshold clock runs before readiness is signed off.",
     },
     {
-      title: "Four-workflow launch.",
-      body: "Missed-call capture, estimate follow-up, reactivation, and referral invitations go live — validated on test records before touching production data.",
+      title: "Three-foundation launch.",
+      body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization go live — validated on test records before touching production data. Client Reactivation follows as the first a-la-carte upgrade.",
     },
     {
-      title: "Guarantee period.",
-      body: "All four workflows run. The proof ledger and exception desk are reviewed daily, and your scorecard arrives every Friday.",
+      title: "Recovery review.",
+      body: "The three foundations run. The written Recovery Ledger and exception desk are reviewed daily, and your scorecard arrives every Friday.",
     },
     {
       title: "Reconciliation and continuation.",
-      body: "We reconcile the ledger together. If the agreed recovery level is met, accrued fees are collected and weekly service continues. If not — and you met your commitments — the accrued fees are waived, and we review why before deciding anything.",
+      body: "We reconcile the ledger together. Threshold-based billing applies only to Tier 3: a retroactive bill is issued only after the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery inside the first four weekly cycles. Otherwise, we review what the ledger actually shows before deciding anything.",
     },
   ],
 } as const;
@@ -195,18 +218,18 @@ export const workflow = {
 } as const;
 
 export const deliverables = {
-  heading: "What a founding partner receives",
+  heading: "What a Founding Five partner receives",
   items: [
-    "Baseline extraction and a current-state leak map.",
-    "System-of-record map and field mappings.",
-    "Eligibility rules, approved scripts, and escalation paths.",
-    "All four continuity workflows, configured and tested.",
+    "The $199 Revenue Continuity Assessment — included.",
+    "The $497 Livingry Ops Tenant Integration — included.",
+    "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, configured and tested.",
+    "Onboarding, training, integration, and setup.",
     "Human-control and exception rules.",
     "Shared proof ledger with source-record links.",
     "Weekly executive scorecard, delivered every Friday.",
-    "Weekly 30-minute alliance review with your operating owner.",
-    "Guarantee-period reconciliation ledger.",
+    "Weekly 30-minute pilot review with your operating owner.",
     "Staff orientation and full documentation handoff.",
+    "Client Reactivation available as the first a-la-carte upgrade.",
   ],
 } as const;
 
@@ -226,7 +249,7 @@ export const commitment = {
 export const fit = {
   isHeading: "A strong fit looks like",
   is: [
-    "An established U.S. HVAC/R operation with enough inbound demand, estimates, and customer history to create a real recovery opportunity.",
+    "An established U.S. HVAC/R operation with enough inbound demand, estimates, and search reach to create a real recovery opportunity.",
     "An owner, GM, or operations leader with authority to change workflow.",
     "Read access or exports from the field-service, CRM, phone, and invoicing systems.",
     "One accountable internal operator we can work with each week.",
@@ -261,11 +284,29 @@ export const founder = {
 } as const;
 
 export const pricing = {
-  heading: "Founding Five terms",
-  body: "Every alliance begins with the AI Opportunity Blueprint: a diagnostic and findings call first — you pay the $799 findings report only if you decide the findings are worth having in writing. That fee credits in full toward a workflow launch scoped at $2,500–$4,500 for your company's specific configuration, and ongoing operational fees are billed only after rendered services have produced recovered, attributable revenue covering at least 2x those fees.",
-  // Gated copy — only rendered when SHOW_HVAC_PILOT_PRICE is explicitly enabled.
-  gatedPrice:
-    "Founding Five Alliance: $799 findings report (after the findings call, only if you want it), credited in full toward a $2,500–$4,500 workflow launch within four weeks. Operational fees bill in arrears behind 2x recovered-revenue coverage, and Livingry's accrued service fee is waived for the guarantee period if the agreed recovery threshold is not met and operating commitments were kept.",
+  heading: "Founding Five terms — one price, all-in, always visible",
+  pilotPrice: "$2,500 all-in",
+  body:
+    "The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies, visibly labeled under the Founding Five Cohort Pilot Agreement. It includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), Missed-Call Recovery, Dropped-Estimate Recovery, Agentic Search Optimization, plus onboarding, training, integration, and setup. Tier 1 value is included in the pilot, not credited and not added.",
+  nextSixteen:
+    "After the Founding Five, the next 16 clients are priced higher, by scope. The Founding Five price is cohort-limited by design.",
+  tier3:
+    "Tier 3 is optional at $1,000/week. The first four weekly cycles are delivered unpaid. A retroactive bill — the accrued four weeks plus a $4,000 related fee — is issued only after a written Recovery Ledger verifies $10,000 in qualifying documented collected recovery within those first four weekly cycles.",
+  noGuarantee:
+    "Livingry does not guarantee revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger is the only basis for threshold-based billing.",
+  thirdParty:
+    "Third-party tool, messaging, and telephony costs are opened in your name and paid directly to your company.",
+} as const;
+
+export const humanControl = {
+  heading: "What Livingry does not do",
+  body: "The pilot never removes the human from the loop. A named person on your team approves pricing, discounts, safety guidance, dispatch exceptions, technical advice, and any nonstandard customer commitment. Livingry does not make technical diagnoses, pricing decisions, dispatch commitments, or customer promises without authorized human approval — and it does not perform licensed HVAC services.",
+  items: [
+    "No licensed HVAC work.",
+    "No pricing or discount decisions without your approval.",
+    "No customer commitments outside approved scripts and consent rules.",
+    "No unlimited customization or unsupervised automation.",
+  ],
 } as const;
 
 // Re-export canonical FAQ from revenue-continuity, then add HVAC-specific questions.
@@ -273,10 +314,22 @@ export const pricing = {
 export const faq: { q: string; a: string }[] = [
   ...canonicalFaq.slice(0, 3), // First 3 canonical questions
   {
-    q: "What do we pay to start?",
-    a: "Nothing before the findings call. Every alliance begins with the AI Opportunity Blueprint: we map your workflows and walk you through the findings live. The $799 findings report is your call — pay only if you want it in writing — and it credits in full toward a workflow launch scoped at $2,500–$4,500. Ongoing operational fees bill only after recovered, attributable revenue has covered them 2x over.",
+    q: "What do we pay, and when?",
+    a: "The Founding Five Tier 2 Pilot is $2,500 all-in — the Assessment, the Tenant Integration, the three foundations, and onboarding are all inside that price, never added to it. Direct third-party tool, messaging, and telephony costs are billed separately in your company's name.",
   },
   ...canonicalFaq.slice(3), // Remaining canonical questions
+  {
+    q: "What is the next-16 distinction?",
+    a: "The Founding Five is exactly five HVAC/R companies at the $2,500 all-in pilot price. The next 16 clients are priced higher, by scope, because the pilot price is a founding-cohort price, not a rate card.",
+  },
+  {
+    q: "How is the $10,000 recovery threshold verified?",
+    a: "Only through a written Recovery Ledger: paid eligible invoices with a complete proof chain — original opportunity, eligibility decision, workflow enrollment, logged contacts, customer response, completed job, paid invoice, and reconciliation approval. Booked appointments and dashboard totals do not count.",
+  },
+  {
+    q: "What happens if the threshold is not met?",
+    a: "Nothing is billed retroactively. The written Recovery Ledger is reviewed jointly, and any continuation decision is made from what the ledger actually shows — not from projections or promises.",
+  },
   {
     q: "What happens if an integration is not technically possible?",
     a: "The limitation is documented and the parties decide whether to revise the workflow, use an alternative, or stop before unsupported work proceeds.",
@@ -284,32 +337,23 @@ export const faq: { q: string; a: string }[] = [
 ];
 
 export const finalCta = {
-  heading: "The first five partners shape the operating standard.",
-  body: "The diagnostic and findings call come first. The $799 findings report is the only payment before your workflow launch — and it credits in full when you proceed. Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
-  cta: "Apply for a Founding Five Alliance",
-  note: "Applications are reviewed before a fit conversation is offered.",
+  heading: "Five companies. One all-in price. A measured system.",
+  body: "The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies — the Assessment, the Tenant Integration, and the three foundations, all inside one price. Capacity is deliberately limited because every pilot receives hands-on implementation, monitoring, and weekly reconciliation.",
+  cta: "Take the 15-Minute Revenue Leak Scorecard",
+  note: "Every scorecard is human-reviewed. Fit conversations follow only for qualified companies.",
   signature: "Seal the client container.",
 } as const;
 
 export const successState = {
-  heading: "Your application has been received.",
-  body: "Livingry reviews every application against the alliance fit criteria: authority, data access, volume, capacity, and an accountable internal operator. If the fit looks real, you will receive an invitation to schedule your Strategic Alliance Review — a calendar link arrives with your confirmation email. If it does not, you will get a fast, honest answer rather than a slow maybe.",
+  heading: "Your scorecard has been received.",
+  body: "Livingry reviews every scorecard by hand: market fit, leadership readiness, data access, volume, capacity, and an accountable internal operator. If the fit looks real, you will receive an invitation to a fit conversation by email — there is no public calendar and no bot triage. If it does not, you will get a fast, honest answer rather than a slow maybe.",
 } as const;
 
 export const consent = {
-  text: "I agree that Livingry Services may contact me about this request. Submission does not enroll me in unrelated marketing messages.",
+  text: "I agree that Livingry Services may contact me about this scorecard. Submission does not enroll me in unrelated marketing messages.",
   // Versioned so stored consent evidence stays interpretable if the wording changes.
-  version: "hvac-ff-consent-v1",
+  version: "hvac-ff-consent-v2",
 } as const;
-
-// Price visibility is controlled by configuration and hidden by default.
-// Note: this module also exports a `process` const (the pilot steps), so we
-// read the environment via globalThis to avoid shadowing Node's global.
-export function showPilotPrice(
-  env: Record<string, string | undefined> = globalThis.process.env,
-): boolean {
-  return env.SHOW_HVAC_PILOT_PRICE === "true";
-}
 
 // ---------------------------------------------------------------------------
 // Guardrails: prohibited claims that must never appear in the public funnel.
@@ -340,6 +384,13 @@ export const PROHIBITED_PATTERNS: { label: string; pattern: RegExp }[] = [
   { label: "never terminates", pattern: /never (terminat|stops|ends)/i },
   { label: "perfect/optimal resource", pattern: /(perfect|optimal) resource/i },
   { label: "join the ranks", pattern: /(join|welcome to) the ranks/i },
+  // The superseded commercial model must never return to public copy.
+  { label: "old $799 findings report", pattern: /\$799/ },
+  { label: "old $2,500–$4,500 launch range", pattern: /\$2,?500[–-]\$4,?500/ },
+  { label: "fee-waiver guarantee", pattern: /fee[- ]waiver (guarantee|period)|waiv(es|ed|ing)? (accrued|the|our)? ?service fees?/i },
+  { label: "2x fee coverage", pattern: /\b2x\b/ },
+  { label: "12-week test run", pattern: /12[- ]week (test|trial|guarantee)/i },
+  { label: "4-workflow launch", pattern: /four[- ]workflow|4[- ]workflow launch/i },
 ];
 
 // Copy must not imply current calendar scheduling in this funnel.
@@ -399,7 +450,7 @@ export function buildBreadcrumbLd() {
   const crumbs = [
     { label: "Home", href: "/" },
     { label: "HVAC", href: "/industries/hvac" },
-    { label: "Founding Five Alliance", href: HVAC_ROUTE },
+    { label: "Founding Five Pilot", href: HVAC_ROUTE },
   ];
   return {
     "@context": "https://schema.org",
@@ -417,7 +468,7 @@ export function buildServiceLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "HVAC/R Revenue Continuity System — Strategic Alliance",
+    name: "Founding Five Tier 2 Pilot — HVAC/R Revenue Continuity",
     serviceType: "Revenue continuity system implementation and operation",
     provider: { "@id": `${site.primaryDomain}/#organization` },
     areaServed: { "@type": "Country", name: "United States" },

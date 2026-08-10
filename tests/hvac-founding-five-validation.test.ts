@@ -20,6 +20,15 @@ function validInput(over: Partial<SubmissionInput> = {}): SubmissionInput {
     companyWebsite: "northwind-hvac.com",
     role: "Owner",
     workflowProblem: "After-hours calls go to voicemail and nobody follows up the next morning.",
+    markets: "Austin, TX",
+    teamSize: "3–5 active field vehicles/teams",
+    fsm: "ServiceTitan",
+    primaryLeaks: [
+      "Missed calls or unworked inbound opportunities",
+      "Estimates that are not followed up consistently",
+    ],
+    weeklyVolume: "10–25 per week",
+    readiness: "Records and systems are ready",
     consent: true,
     ...over,
   };
@@ -35,7 +44,6 @@ test("each required field is enforced", () => {
     [{ companyName: "" }, "companyName"],
     [{ workEmail: "not-an-email" }, "workEmail"],
     [{ phone: "123" }, "phone"],
-    [{ companyWebsite: "" }, "companyWebsite"],
     [{ role: "" }, "role"],
     [{ workflowProblem: "too short" }, "workflowProblem"],
     [{ consent: false }, "consent"],
@@ -84,7 +92,7 @@ test("normalizeSubmission keeps only non-sensitive attribution metadata", () => 
     } as Partial<SubmissionInput>),
   );
   assert.equal(sub.metadata.utm_source, "referral");
-  assert.equal(sub.metadata.form_name, "hvac_founding_five_review");
+  assert.equal(sub.metadata.form_name, "hvac_founding_five_scorecard");
   // No PII keys leak into metadata.
   for (const k of Object.keys(sub.metadata)) {
     assert.ok(!/email|phone|full_?name|workflow/i.test(k), `unexpected metadata key ${k}`);

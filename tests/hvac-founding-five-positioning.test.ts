@@ -28,6 +28,7 @@ function collectStrings(v: unknown, out: string[]): void {
 }
 
 const GUARDRAIL_EXPORTS = new Set([
+  "default",
   "PROHIBITED_PATTERNS",
   "CALENDAR_PATTERNS",
   "FABRICATION_PATTERNS",
@@ -51,7 +52,7 @@ const copyBlob = copyStrings.join("\n");
 
 const pageSource = readFileSync(resolve(root, "src/app/hvac/founding-five/page.tsx"), "utf8");
 const adapterSource = readFileSync(resolve(root, "src/lib/hvac-founding-five/adapters.ts"), "utf8");
-const allianceFormSource = readFileSync(resolve(root, "src/app/hvac/founding-five/AllianceApplicationForm.tsx"), "utf8");
+const allianceFormSource = readFileSync(resolve(root, "src/app/hvac/founding-five/RevenueLeakScorecard.tsx"), "utf8");
 const pageSources = [pageSource, allianceFormSource].join("\n");
 
 test("no fabricated names, revenue figures, or case-study details in public copy", () => {
@@ -70,6 +71,10 @@ test("no over-promising prohibited claims after new patterns added", () => {
     "You do not need to commit to an AI transformation.",
     "Do you guarantee revenue?",
     "The company wants guaranteed revenue.",
+    "Is there a fee-waiver guarantee?",
+    "No. Livingry does not offer any fee-waiver guarantee.",
+    "does not guarantee revenue",
+    "do not guarantee revenue",
   ];
   let scan = copyBlob;
   for (const phrase of APPROVED_NEGATIONS) scan = scan.split(phrase).join("");

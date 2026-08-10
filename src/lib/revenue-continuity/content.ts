@@ -1,18 +1,28 @@
 // Single source of truth for the Revenue Continuity System / Strategic
 // Alliance repositioning: program identity, the four continuity workflows,
-// commercial framework (structure public, dollar figures gated), proof
-// standard, fit criteria, and the founder field-story.
+// commercial framework (Founding Five Tier 2 pilot, public and fixed),
+// proof standard, fit criteria, and the founder field-story.
 //
 // Positioning rules enforced here and in tests:
-// - No "guaranteed revenue" or outcome claims — the guarantee is a
-//   conditional fee-waiver only, with no dollar threshold published.
-// - The $799 setup fee is public; the weekly service fee and the proof
-//   threshold are gated to the private proposal.
+// - No "guaranteed revenue" or outcome claims of any kind. There is no
+//   fee-waiver guarantee and no published guarantee period.
+// - Founding Five Tier 2 is $2,500 all-in and visibly labeled. Tier 1 value
+//   (the $199 Revenue Continuity Assessment, $497 Livingry Ops Tenant
+//   Integration, $649 bundle / $696 separate value) is INCLUDED and is never
+//   credited or added to the pilot price.
+// - The next 16 clients after the Founding Five cohort are priced higher,
+//   by scope.
+// - Tier 3 is optional at $1,000/week; the first four weekly cycles are
+//   delivered unpaid, and any $4,000 retroactive bill requires a written
+//   Recovery Ledger verifying $10,000 in qualifying documented collected
+//   recovery within those first four weekly cycles.
+// - Client Reactivation is the first a-la-carte upgrade, not an included
+//   pilot workflow.
 // - The four workflows are ONE system. No partner is sold a single workflow
 //   as the complete product.
 // - Founder credentials are training/work history, never current licensure.
 
-export const ALLIANCE_APPLY_ROUTE = "/hvac/founding-five#request-review";
+export const ALLIANCE_APPLY_ROUTE = "/hvac/founding-five#scorecard";
 
 export const ALLIANCE_EVENTS = {
   applyClick: "hvac_alliance_apply_click",
@@ -24,15 +34,15 @@ export type AllianceEvent = (typeof ALLIANCE_EVENTS)[keyof typeof ALLIANCE_EVENT
 
 export const program = {
   systemName: "Revenue Continuity System",
-  relationshipName: "Strategic Alliance",
+  relationshipName: "Founding Five Tier 2 Pilot",
   cohortName: "Founding Five",
   yearOneCapacity: 21,
   foundingCohortSize: 5,
-  headline: "Applications are open for a limited number of HVAC/R Strategic Alliances.",
+  headline: "Stop buying more leads before you seal the leaks.",
   coreExplanation:
-    "Livingry installs a full Revenue Continuity System around the customers and opportunities your company has already earned: missed calls, open estimates, past customers, and referrals. We do not sell a loose collection of AI tools. We build the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, the completed job, and the next customer need.",
+    "Livingry installs a full Revenue Continuity System around the customers and opportunities your company has already earned: missed calls, dropped estimates, and the customers search engines send your way. We do not sell a loose collection of AI tools. We build the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, the completed job, and the next customer need.",
   capacityNote:
-    "Capacity is deliberately limited because every alliance receives hands-on implementation, monitoring, and weekly reconciliation.",
+    "Capacity is deliberately limited to five Founding Five companies because every pilot receives hands-on implementation, monitoring, and weekly reconciliation.",
 } as const;
 
 // The four connected leaks — one system, not four optional modules.
@@ -85,7 +95,7 @@ export const workflows = {
   // Delivered inside every alliance but not sold as standalone products.
   implementationScope: {
     heading: "Delivered inside every alliance",
-    body: "Booked-job continuity (scope, notes, photos, and approvals carried from office to field) and technician knowledge (approved job history, manuals, and procedures made findable with source visibility) are implemented as part of the system — they are how the four workflows hold up in real operations, not separate products.",
+    body: "Booked-job continuity (scope, notes, photos, and approvals carried from office to field) and technician knowledge (approved job history, manuals, and procedures made findable with source visibility) are implemented as part of the system — they are how those workflows hold up in real operations, not separate products.",
   },
 } as const;
 
@@ -121,42 +131,49 @@ export const proofStandard = {
   reportingRule:
     "We maintain two measures and never mix them: revenue received during the guarantee period, and trailing realized revenue from the same cohort that pays later inside the attribution window. The guarantee is never inflated by pipeline.",
   attributionNote:
-    "Every claim is tagged to one of the four workflows — or marked not attributable. A dashboard total is not proof.",
+    "Every claim is tagged to its continuity workflow — or marked not attributable. A dashboard total is not proof.",
 } as const;
 
-// Commercial framework. Structure is public; the weekly fee and the proof
-// threshold stay gated to the private proposal.
+// Commercial framework. Public and fixed for the Founding Five cohort.
 export const terms = {
   heading: "Terms, in plain language",
-  findingFee: {
-    name: "Findings report",
-    amount: "$799",
-    body: "The only payment before launch. Paid after the findings call, only if the company wants the written report — and credited in full toward the workflow launch if they proceed within four weeks of the findings call.",
+  assessment: {
+    name: "Revenue Continuity Assessment",
+    amount: "$199",
+    body: "The fixed-scope diagnostic: a live walkthrough of how calls, estimates, and search traffic actually move through the business today, with the findings presented live. Included in the $2,500 pilot — never added to it.",
   },
-  launch: {
-    name: "Workflow launch",
-    range: "$2,500–$4,500",
-    body: "Scoped per company from the Blueprint findings — systems, records, and workflows differ, so the launch is priced from the diagnostic rather than a flat rate card.",
+  tenantIntegration: {
+    name: "Livingry Ops Tenant Integration",
+    amount: "$497",
+    body: "Your company's private tenant inside Livingry Ops — the workflows, ledger, exception desk, and integration layer configured around the tools you already run. Included in the pilot.",
   },
-  weeklyFee: {
-    name: "Weekly operational fee",
-    body: "Accrues from launch and bills weekly in arrears — except across the four-week gate, where the accrued weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x them by the end of week four.",
+  bundle: {
+    name: "Assessment + Tenant Integration bundle",
+    amount: "$649",
+    body: "The $199 Assessment and $497 Tenant Integration together normally price at $649 as a bundle, or $696 separately. Both are already included in the $2,500 all-in pilot price.",
   },
-  gate: {
-    name: "The four-week gate",
-    body: "If 2x coverage is not there by the end of week four — or the relationship is not working — the partner stops, owes nothing for those weeks, and keeps everything built.",
+  pilot: {
+    name: "Founding Five Tier 2 Pilot",
+    amount: "$2,500 all-in",
+    body: "The pilot price includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration, three foundations — Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization — plus onboarding, training, integration, and setup. Tier 1 value is included, not credited and not added. The pilot is visibly labeled under the Founding Five Cohort Pilot Agreement.",
   },
-  exit: {
-    name: "The 12-week test run",
-    body: "After the full 12-week run, if the system has not proven worth it to the partner, the parties go their separate ways. The partner keeps the build, the documentation, and the knowledge gained.",
+  nextSixteen: {
+    name: "The next 16 clients",
+    body: "After the five Founding Five companies, the next 16 clients are priced higher, by scope. The Founding Five price is cohort-limited by design.",
   },
+  tier3: {
+    name: "Tier 3 (optional)",
+    body: "At $1,000/week. The first four weekly cycles are delivered unpaid. A retroactive bill — the accrued four weeks plus a $4,000 related fee — is issued only after a written Recovery Ledger verifies $10,000 in qualifying documented collected recovery within those first four weekly cycles. No portion of Tier 3 is collectible before that ledger verification.",
+  },
+  noOutcomeGuarantees:
+    "Livingry does not guarantee revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger is the only basis for threshold-based billing.",
   vendorCosts:
     "Third-party tool, messaging, and telephony costs are opened in the partner's name and paid directly by the partner.",
 } as const;
 
-export const guarantee = {
-  heading: "The four-week gate, in plain terms",
-  body: "The weekly operational fee accrues from launch, but the first four weeks are invoiced only if the shared proof ledger shows recovered, attributable revenue covering at least 2x those fees by the end of week four — and your team has met its operating commitments. If coverage is not there, or the relationship is not working, you stop and owe nothing for those weeks. From week five, billing continues weekly in arrears against the ledger. After the full 12-week test run, if the system has not proven worth it to you, we go our separate ways and you keep everything we built. We do not promise revenue, lead volume, close rates, reviews, or rankings. We promise a measured system and a shared ledger — and we put our fee behind it.",
+export const recoveryThreshold = {
+  heading: "The $10,000 recovery threshold, in plain terms",
+  body: "Tier 3 exists only after the first four weekly cycles are delivered. If, inside those four weekly cycles, the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery, the accrued Tier 3 fees for those cycles (plus a $4,000 related fee) become retroactively billable. If the ledger does not verify $10,000, no retroactive bill is issued. There is no outcome guarantee: the ledger verifies or it does not, and Livingry's fee structure is the only thing Livingry ever puts on the line.",
 } as const;
 
 export const fit = {
@@ -193,19 +210,19 @@ export const allianceProcess = {
     },
     {
       title: "Baseline and system map.",
-      body: "We sign the alliance and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. The guarantee clock does not start until readiness is signed off.",
+      body: "We sign the pilot and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. No billing threshold clock runs before readiness is signed off.",
     },
     {
-      title: "Four-workflow launch.",
-      body: "Missed-call capture, estimate follow-up, reactivation, and referral invitations go live — validated on test records before touching production data.",
+      title: "Three-foundation launch.",
+      body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization go live — validated on test records before touching production data. Client Reactivation follows as the first a-la-carte upgrade.",
     },
     {
-      title: "Guarantee period.",
-      body: "All four workflows run. Proof ledger and exceptions are reviewed daily, and your scorecard arrives every Friday.",
+      title: "Recovery review.",
+      body: "The three foundations run. The written Recovery Ledger and exception desk are reviewed daily, and your scorecard arrives every Friday.",
     },
     {
       title: "Reconciliation and continuation.",
-      body: "We reconcile the ledger together. If the threshold is met, accrued fees are collected and weekly service continues. If not — and you met your commitments — the accrued fees are waived, and we review why before deciding anything.",
+      body: "We reconcile the ledger together. Threshold-based billing applies only to Tier 3: a retroactive bill is issued only after the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery inside the first four weekly cycles. Otherwise, we review what the ledger actually shows before deciding anything.",
     },
   ],
 } as const;
@@ -220,8 +237,8 @@ export const deliverables = {
     "Human-control and exception rules",
     "Shared proof ledger with source-record links",
     "Weekly executive scorecard, delivered every Friday",
-    "Weekly 30-minute alliance review with your operating owner",
-    "Four-week guarantee reconciliation ledger",
+    "Weekly 30-minute pilot review with your operating owner",
+    "Written Recovery Ledger for threshold-based billing",
     "Staff orientation and full documentation handoff",
   ],
 } as const;
@@ -272,17 +289,25 @@ export const allianceFaq: { q: string; a: string }[] = [
     q: "Will Livingry replace our CRM or field-service platform?",
     a: "No. Your company remains the system of record. The system works around the tools you already run, and anything we build is documented and handed to you.",
   },
-  {
+{
     q: "Do you guarantee revenue?",
-    a: "We guarantee the fee structure, not an outcome. If the system does not produce the agreed level of documented, attributable paid revenue during the guarantee period — and your team has met its operating commitments — Livingry waives its accrued service fees for that period. We never promise lead volume, close rates, or revenue totals.",
+    a: "No. We never promise revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger verifies what actually gets collected; it is the only basis for threshold-based billing, and no outcome is ever guaranteed.",
   },
   {
     q: "What do we pay to start?",
-    a: "Founding partners pay a $799 non-refundable setup fee plus the direct cost of the third-party tools configured for their business. Livingry's service fee accrues but is deferred until the proof ledger demonstrates the agreed recovery level.",
+    a: "A Founding Five Tier 2 pilot is $2,500 all-in. That includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, plus onboarding, training, integration, and setup. Tier 1 value is included, not credited and not added. Direct third-party tool, messaging, and telephony costs are billed separately, in your name.",
+  },
+  {
+    q: "Is there a fee-waiver guarantee?",
+    a: "No. Livingry does not offer any fee-waiver guarantee. The only threshold-based billing is Tier 3: if the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery inside the first four weekly cycles, the accrued Tier 3 fees for those cycles (plus a $4,000 related fee) become retroactively billable. Otherwise no retroactive bill is issued.",
+  },
+  {
+    q: "Is Client Reactivation included in the pilot?",
+    a: "No. The pilot's three foundations are Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization. Client Reactivation is the first a-la-carte upgrade available after those foundations are live.",
   },
   {
     q: "Why is capacity limited?",
-    a: "Every alliance receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation. That operating load is real, so Year One is capped and a waitlist forms once active capacity is full.",
+    a: "The Founding Five cohort is exactly five HVAC/R companies, visibly labeled as a Founding Five Cohort Pilot. Every pilot receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation. The next 16 clients after the cohort are priced higher, by scope.",
   },
   {
     q: "What counts as recovered revenue?",
@@ -302,6 +327,6 @@ export const allianceFaq: { q: string; a: string }[] = [
   },
   {
     q: "What happens if the threshold is not met?",
-    a: "If your team met its operating commitments, the accrued Livingry service fees for the guarantee period are waived. We then do a joint root-cause review of the ledger before any continuation decision — an alliance that misses the threshold still has to explain why.",
+    a: "Nothing is billed retroactively. The written Recovery Ledger is reviewed jointly, and any continuation decision is made from what the ledger actually shows — not from projections or promises.",
   },
 ];

@@ -189,31 +189,38 @@ class ResendNotifier implements Notifier {
     return { attempted: true, ok: true, note: "resend-ok" };
   }
 
-  // Applicant acknowledgement — no secrets, submission summary only.
+  // Applicant acknowledgement — no secrets, submission summary only, and no
+  // public calendar: follow-up is human-reviewed before any scheduling offer.
   async sendApplicantAck(sub: NormalizedSubmission): Promise<AdapterOutcome> {
     const text = [
-      "Your request has been received.",
+      "Your Revenue Leak Scorecard has been received.",
       "",
-      "Livingry will review where the workflow you described may be unsealed and whether a private observation is warranted. If there appears to be a relevant, externally observable issue, you will receive a private workflow observation or a request for clarification. Scheduling access follows only after an observation is confirmed as worth discussing.",
+      "Livingry reviews every scorecard by hand — not by bot. If the fit looks real, you will receive an invitation to a fit conversation by email; there is no public calendar and no bot triage. If it does not, you will get a fast, honest answer rather than a slow maybe.",
       "",
       `Company: ${sub.companyName}`,
-      `Workflow you described: ${sub.workflowProblem}`,
+      `Leaks you identified: ${sub.primaryLeaks.join("; ")}`,
+      `Markets: ${sub.markets}`,
       "",
       "Privacy: https://livingry.services/privacy",
       "Contact: ov@livingry.services",
     ].join("\n");
-    return this.send(sub.emailNormalized, "Livingry — request received", text);
+    return this.send(sub.emailNormalized, "Livingry — your scorecard has been received", text);
   }
 
   // Owner alert — contains no secrets.
   async sendOwnerAlert(record: FoundingFiveRequest): Promise<AdapterOutcome> {
     const text = [
-      "New Founding Five request (looks worth reviewing).",
+      "New Founding Five scorecard (looks worth reviewing).",
       "",
       `Company: ${record.companyName}`,
       `Domain: ${record.companyDomain}`,
       `Role: ${record.role}`,
-      `Workflow: ${record.workflowProblem}`,
+      `Markets: ${record.metadata.markets ?? ""}`,
+      `Team size: ${record.metadata.team_size ?? ""}`,
+      `FSM/CRM: ${record.metadata.fsm ?? ""}`,
+      `Primary leaks: ${record.metadata.primary_leaks ?? ""}`,
+      `Weekly volume: ${record.metadata.weekly_volume ?? ""}`,
+      `Readiness: ${record.metadata.readiness ?? ""}`,
       "",
       `State: ${record.state}`,
       `Owner: ${record.ownerId}`,

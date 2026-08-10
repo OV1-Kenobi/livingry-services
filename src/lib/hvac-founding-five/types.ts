@@ -41,15 +41,22 @@ export function isActiveState(state: RequestState): boolean {
   return !TERMINAL_STATES.includes(state);
 }
 
-// The seven visible form fields plus consent.
+// The Revenue Leak Scorecard submission plus consent. All selections are
+// enumerated server-side; free text is limited to name, company, and markets.
 export type SubmissionInput = {
   fullName: string;
   companyName: string;
   workEmail: string;
   phone: string;
-  companyWebsite: string;
+  companyWebsite?: string;
   role: string;
   workflowProblem: string;
+  markets: string;
+  teamSize: string;
+  fsm: string;
+  primaryLeaks: string[];
+  weeklyVolume: string;
+  readiness: string;
   consent: boolean;
   // Hidden metadata (never rendered, never placed in URLs/logs/analytics).
   formName?: string;
@@ -76,6 +83,12 @@ export type NormalizedSubmission = {
   companyDomain: string;
   role: string;
   workflowProblem: string;
+  markets: string;
+  teamSize: string;
+  fsm: string;
+  primaryLeaks: string[];
+  weeklyVolume: string;
+  readiness: string;
   consent: boolean;
   consentTextVersion: string;
   // dedup key = normalized email + normalized company domain

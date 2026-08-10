@@ -1,24 +1,25 @@
-// Single source of truth for the upgraded /industries/hvac conversion funnel.
+// Single source of truth for the /industries/hvac conversion funnel.
 //
-// Implements the Livingry HVAC Funnel Upgrade ticket (Cosmos Deployment
-// Ticket): a Hook -> Story -> Mechanism -> Offer sequence that positions
-// Livingry as a Revenue Continuity System for established HVAC/R companies,
-// with the $799 HVAC Revenue Continuity Blueprint as the primary paid
-// front-end offer.
+// Implements a consolidated founding-funnel sequence: a Hook -> Story ->
+// Mechanism -> Offer sequence that routes every visitor into the Founding
+// Five Tier 2 Pilot funnel — the site's ONE offer — through the Revenue Leak
+// Scorecard at /hvac/founding-five#scorecard.
 //
 // Positioning rules enforced here and in tests/hvac-funnel-content.test.ts:
 // - No fake proof, fake scarcity, unsupported guarantees, or invented results.
-// - Messaging stays aligned to Revenue Continuity, not generic AI consulting.
-// - Human-approval and existing-stack compatibility language is preserved.
-// - Estimate Recovery is framed as an upcoming implementation module in
-//   development, NOT a shipped tool, NOT integrated with named CRMs yet.
-// - The "more than 30%" statement is always Michael's estimate of unrealized
-//   productive capacity from his own contracting experience — never audited
-//   revenue, a client result, or an HVAC benchmark.
-// - The Clarity Promise is the only risk-reversal published now; the stronger
-//   revenue/opportunity guarantee is NOT published.
-// - No unsupported timeline-to-results claims (e.g. "first month", "month three").
-// - All primary CTAs route to the Blueprint application flow.
+// - The Founding Five Tier 2 Pilot is $2,500 all-in and always visible.
+//   Included: $199 Revenue Continuity Assessment, $497 Livingry Ops Tenant
+//   Integration ($649 bundled / $696 separate value), Missed-Call Recovery,
+//   Dropped-Estimate Recovery, Agentic Search Optimization, plus onboarding,
+//   training, integration, and setup. Tier 1 value is included, never
+//   credited or added.
+// - Client Reactivation is the first a-la-carte upgrade, not an included
+//   workflow. The next 16 clients are priced higher by scope.
+// - No outcome guarantees of any kind. The $10,000 threshold / $4,000
+//   retroactive Tier 3 language is used verbatim from the canonical terms.
+// - All primary CTAs route to the Founding Five scorecard flow.
+// - Estimate Recovery follow-up is a live pilot foundation; no shipped-tool
+//   claims beyond that.
 //
 // This module is intentionally self-contained. It does not mutate the shared
 // ai-blueprint, revenue-continuity, or industry-content modules so the
@@ -30,9 +31,9 @@ import { site } from "@/lib/site";
 export const HVAC_FUNNEL_ROUTE = "/industries/hvac";
 export const HVAC_FUNNEL_URL = `${site.primaryDomain}${HVAC_FUNNEL_ROUTE}`;
 
-// The Blueprint application flow. Every primary CTA on this page routes here.
-// (The Founding Five application form lives at this anchor.)
-export const BLUEPRINT_APPLY_HREF = "/hvac/founding-five#request-review";
+// The Founding Five scorecard flow — the ONE sitewide intake. Every primary
+// CTA on this page routes here.
+export const BLUEPRINT_APPLY_HREF = "/hvac/founding-five#scorecard";
 
 export const HVAC_FUNNEL_EVENTS = {
   pageView: "hvac_funnel_page_view",
@@ -45,36 +46,36 @@ export const HVAC_FUNNEL_EVENTS = {
 export type HvacFunnelEvent = (typeof HVAC_FUNNEL_EVENTS)[keyof typeof HVAC_FUNNEL_EVENTS];
 
 export const seo = {
-  title: "HVAC Revenue Continuity — Find the Leak Before You Buy More Traffic | Livingry",
+  title: "HVAC Revenue Continuity — Founding Five Tier 2 Pilot, $2,500 All-In | Livingry",
   description:
-    "Livingry helps established HVAC/R companies find where calls, estimates, past customers, referrals, and trust signals leak away — then maps human-controlled systems around the tools they already use. Start with the $799 HVAC Revenue Continuity Blueprint.",
+    "Livingry helps established HVAC/R companies find where calls, estimates, and search answers leak away — then runs the three foundations that seal them. The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies. Human-reviewed before any follow-up.",
   ogTitle: "You may not need more leads. You may need fewer leaks.",
   ogDescription:
-    "Revenue Continuity Systems for established HVAC/R companies. The HVAC Revenue Continuity Blueprint maps where calls, estimates, past customers, referrals, and trust signals leak — then finds the leak worth repairing first.",
+    "The Founding Five Tier 2 Pilot, $2,500 all-in: Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, with the $199 Assessment and $497 Tenant Integration included. Five HVAC/R companies.",
 } as const;
 
 // A direct, server-rendered answer placed near the top for humans and AI
-// answer engines. Kept honest: no invented results, no shipped-tool claims.
+// answer engines. Kept honest: no invented results, no outcome guarantees.
 export const directAnswer =
-  "Livingry builds Revenue Continuity Systems for established U.S. HVAC/R companies. The first step is the $799 HVAC Revenue Continuity Blueprint: a fixed-scope diagnostic that maps how calls, estimates, past customers, referrals, and trust signals currently move through the business, identifies the highest-priority continuity gap, and lays out the next 90 days of corrective action. Human approval stays in place for consequential actions, and the system works around the CRM, phone, calendar, and dispatch stack the company already runs.";
+  "Livingry builds Revenue Continuity Systems for established U.S. HVAC/R companies. The Founding Five Tier 2 Pilot is $2,500 all-in: Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, including the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration, and onboarding and setup. Human approval stays in place for consequential actions, and the system works around the CRM, phone, calendar, and dispatch stack the company already runs.";
 
 // ---------------------------------------------------------------------------
 // 1) HERO
 // ---------------------------------------------------------------------------
 export const hero = {
-  eyebrow: "Revenue Continuity Systems for established HVAC/R companies",
+  eyebrow: "Founding Five Tier 2 Pilot for established HVAC/R companies",
   // H1 — verbatim from the ticket. Tests assert this exact string.
   headline: "You may not need more leads. You may need fewer leaks.",
   supportingLine: "Most HVAC companies don't have a lead problem. They have a follow-up problem.",
   subheadline:
-    "Livingry helps established HVAC companies find where calls, estimates, past customers, referrals, and trust signals are leaking away—then map human-controlled systems around the tools they already use.",
-  primaryCta: "Find My Largest Revenue Leak",
-  secondaryCta: "See What the Blueprint Includes",
+    "Livingry runs the three foundations that keep the demand you already pay for from leaking — missed calls, dropped estimates, and the search answers your customers get from competitors — at a single all-in pilot price, with human approval on every consequential action.",
+  primaryCta: "Take the 15-Minute Revenue Leak Scorecard",
+  secondaryCta: "See the Founding Five Path",
   trustStrip: [
+    "Founding Five Tier 2 Pilot — $2,500 all-in",
     "Former contractor / HVAC-trained operator",
     "Human approval on consequential actions",
     "Works around your current operating stack",
-    "Founding Five applications only",
   ],
   rules: {
     oneDominantCta: true,
@@ -82,7 +83,6 @@ export const hero = {
     focusOnLeakProblem: true,
   },
 } as const;
-
 
 // ---------------------------------------------------------------------------
 // 2) FOUNDER STORY / EPIPHANY BRIDGE
@@ -93,14 +93,6 @@ export const hero = {
 // productive capacity from his own contracting experience.
 export const founderStory = {
   headline: "I was busy. The opportunities were still escaping.",
-  // Required story points, woven into the body below:
-  // - Michael paid for leads and still lost them while he had tools in his hands.
-  // - He was acting as technician, estimator, dispatcher, customer-service
-  //   department, and follow-up system at the same time.
-  // - The same thing happened after estimates went out: the estimate was sent,
-  //   but nobody owned the next step.
-  // - Reviews, referrals, photos, and reactivation opportunities were also
-  //   lost between jobs.
   body: [
     "I know what it is like to pay for a lead and lose it before you can put the tools down. For years I ran as a solo residential contractor — technician, estimator, dispatcher, customer-service department, and follow-up system, all at the same time, often on the same roof.",
     "The same thing happened after every estimate went out. The estimate was sent. Then nobody owned the next step. The reviews, the referrals, the before-and-after photos, the reactivation of past customers — all of it fell between jobs, because the technical work had an owner and the handoffs did not.",
@@ -111,47 +103,45 @@ export const founderStory = {
   // Boundary note — required wherever the 30% estimate appears.
   boundaryNote:
     "Michael's field stories are founder proof. They are not client case studies, audited revenue claims, or industry benchmarks. The 'more than 30%' figure is Michael's estimate of unrealized productive capacity from his own contracting experience.",
-  // Approved copy-block founder-story line.
   founderLine: "I know what it is like to pay for a lead and lose it before you can put the tools down.",
 } as const;
 
 // ---------------------------------------------------------------------------
-// 3) FOUR-LEAK MECHANISM
+// 3) MECHANISM — the pilot's three foundations + the first upgrade
 // ---------------------------------------------------------------------------
-// These are not four unrelated automations. They are one Revenue Continuity
-// System. The longer eight-module capability list is intentionally NOT
-// foregrounded here — additional capabilities move lower on the page.
+// These are not three unrelated automations. They are one Revenue Continuity
+// System. Client Reactivation is explicitly the first a-la-carte upgrade.
 export const fourLeaks = {
-  headline: "Four handoffs decide whether paid opportunity becomes durable revenue.",
-  framing: "These are not four unrelated automations. They are one Revenue Continuity System.",
+  headline: "Three foundations decide whether paid opportunity becomes durable revenue.",
+  framing: "These are not three unrelated automations. They are one Revenue Continuity System.",
   categoryLine: "This is not lead generation. It is Revenue Continuity.",
   leaks: [
     {
-      name: "Missed Call Recovery",
+      name: "Missed-Call Recovery",
       body: "A call goes unanswered while the team is on a job. The customer is already dialing the next company. A defined recovery path — not a pretend 'we were there' — keeps the opportunity alive.",
     },
     {
-      name: "Estimate Follow-Up",
+      name: "Dropped-Estimate Recovery",
       body: "The estimate was sent. Nobody followed up. A calm, appropriate follow-through sequence turns unclosed estimates into a real decision moment instead of a quiet loss.",
     },
     {
-      name: "Past-Customer Reactivation",
-      body: "Satisfied customers disappear between service cycles. Relevant, opt-in reactivation gives them a reason to return, renew, and act — without spamming your best customers.",
+      name: "Agentic Search Optimization",
+      body: "Your customers ask the search engine a question and get a competitor's answer. The pilot operates the answers, listings, and knowledge signals your business has earned the right to hold — without promising rankings.",
     },
     {
-      name: "Referral Automation",
-      body: "Good outcomes do not become introductions. A timely, approved referral invitation after eligible completed jobs captures the word-of-mouth that already exists.",
+      name: "Client Reactivation — the first upgrade",
+      body: "Satisfied customers disappear between service cycles. Reactivation is NOT included in the pilot; it is the first a-la-carte upgrade available after the three foundations are live.",
     },
   ],
 } as const;
 
 // Additional implementation capabilities — kept LOWER on the page, not
-// foregrounded in the four-leak mechanism (per ticket rule).
+// foregrounded in the mechanism.
 export const additionalCapabilities = {
   heading: "Additional implementation capabilities",
-  subheading: "What we may build after the Blueprint",
+  subheading: "What implementation may include after the pilot",
   intro:
-    "The Blueprint identifies which of these, if any, deserve to come next. They are implementation directions, not a checklist a single engagement completes.",
+    "The pilot identifies which of these, if any, deserve to come next. They are implementation directions, not a checklist a single pilot completes.",
   items: [
     "Speed-to-lead workflows for web, phone, and referral inquiries",
     "Maintenance and membership continuity",
@@ -174,104 +164,90 @@ export const humanControl = {
     "Useful systems help the team receive better information, keep open decisions visible, and preserve human approval.",
     "Livingry works around the existing CRM, phone, calendar, and dispatch stack where practical.",
   ],
-  // Approved copy-block human-control line (full form).
   humanControlLine:
     "The goal is not maximum AI. The goal is a calmer, more controllable operation in which capable people receive better information, open decisions stay visible, and consequential actions retain human approval.",
-  // Required line-equivalent from the ticket.
   rooftopLine:
     "I do not remove the human from the loop. I work to keep the loop from breaking when the human is on a rooftop.",
 } as const;
 
 // ---------------------------------------------------------------------------
-// 5) OFFER SECTION — THE HVAC REVENUE CONTINUITY BLUEPRINT
+// 5) OFFER SECTION — THE FOUNDING FIVE TIER 2 PILOT
 // ---------------------------------------------------------------------------
 export const offer = {
-  headline: "Before we build anything, we find the leak worth repairing first.",
-  offerName: "The HVAC Revenue Continuity Blueprint",
+  headline: "Before you buy more traffic, seal the leaks you already pay for.",
+  offerName: "The Founding Five Tier 2 Pilot",
   offerDescription:
-    "A fixed-scope diagnostic for established HVAC/R companies that maps how calls, estimates, past customers, referrals, and discoverability / trust signals currently move through the business—then identifies the highest-priority continuity gap and the next 90 days of corrective action.",
-  price: "$799",
+    "A $2,500 all-in pilot for five HVAC/R companies: Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization — including the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), and onboarding, training, integration, and setup. Tier 1 value is included, not credited and not added.",
+  price: "$2,500 all-in",
   keyRules: [
-    "The Blueprint is the primary paid front-end offer.",
-    "It is clearly priced at $799.",
+    "The Founding Five Tier 2 Pilot is the primary offer — always visible, never gated.",
+    "It is clearly priced at $2,500 all-in.",
+    "The next 16 clients after the Founding Five are priced higher, by scope.",
     "The language stays operational and concrete.",
   ],
-  // Approved copy-block Blueprint offer line.
   offerLine:
-    "The HVAC Revenue Continuity Blueprint maps how calls, estimates, past customers, referrals, and trust signals currently move through your business, then identifies the leak worth repairing first.",
-  primaryCta: "Apply for the HVAC Revenue Continuity Blueprint — $799",
-  secondaryCta: "See What the Blueprint Includes",
+    "The pilot maps how calls, estimates, and search answers currently move through your business, then runs the three foundations that recover them — measured against a shared proof ledger.",
+  primaryCta: "Take the 15-Minute Revenue Leak Scorecard",
+  secondaryCta: "See the pilot deliverables",
 } as const;
 
 // ---------------------------------------------------------------------------
 // 6) DELIVERABLES / VALUE STACK
 // ---------------------------------------------------------------------------
-// Original Blueprint deliverables PLUS the two additions required by the
-// ticket: Estimate Recovery Opportunity Scan and Agentic Search Visibility
-// & Trust Audit.
 export const deliverables = {
   heading: "Deliverables / Value Stack",
+  title: "What the pilot includes.",
   items: [
-    { name: "Revenue Continuity Mapping Intensive", body: "A structured mapping session of how calls, estimates, past customers, referrals, and trust signals currently move through the business." },
-    { name: "Four-Leak Diagnostic", body: "A ranked view of where the four handoffs — missed calls, estimate follow-up, past-customer reactivation, and referrals — are leaking today." },
-    { name: "Workflow Gap Map", body: "The specific handoffs, tools, and ownership gaps that let earned opportunity escape." },
-    { name: "Opportunity and Impact Model", body: "An honest model of which gaps, if repaired, would recover the most already-earned opportunity — with stated assumptions, not audited revenue." },
-    { name: "90-Day Repair Roadmap", body: "A prioritized sequence of the next 90 days of corrective action: what to address first, what it requires, and what has to be true for each step to work." },
-    { name: "Existing-Stack Fit Review", body: "A review of how the recommended actions fit the CRM, phone, calendar, and dispatch stack the company already runs — working around it where practical." },
-    { name: "Findings and Decision Call", body: "A live walkthrough of the findings so the owner can decide whether the report is worth acting on before anything is built." },
-    { name: "First-Repair Action Brief", body: "A concrete brief for the first repair worth making, scoped so it can be executed with Livingry or with the company's own team." },
-    // --- NEW deliverable (ticket requirement) ---
-    { name: "Estimate Recovery Opportunity Scan", body: "A review of how open estimates are currently handled, where follow-up ownership breaks down, which estimate-aging patterns likely indicate recoverable opportunity, and whether Estimate Recovery should become the first implementation priority. Presented as a strategic diagnostic deliverable only — not a live app deployment." },
-    // --- NEW deliverable (ticket requirement) ---
-    { name: "Agentic Search Visibility & Trust Audit", body: "A review of the company's current website, service pages, trust signals, reviews, FAQs, discovery pages, and other elements that affect how AI-assisted search and answer engines can understand, describe, and recommend the company. Framed as a practical review of discoverability, clarity, and trust presentation — not vague AI jargon, and not a promise of rankings or guaranteed visibility outcomes." },
+    { name: "Revenue Continuity Assessment ($199, included)", body: "A fixed-scope diagnostic and live walkthrough of how calls, estimates, and search answers currently move through the business, presented live with the findings." },
+    { name: "Livingry Ops Tenant Integration ($497, included)", body: "Your company's private tenant inside Livingry Ops — workflows, ledger, exception desk, and integration layer configured around the tools you already run." },
+    { name: "Missed-Call Recovery", body: "Capture, classify, route, time-limit, escalate, and log every eligible inbound call, with human approval on every consequential action." },
+    { name: "Dropped-Estimate Recovery", body: "Identify eligible open estimates and execute the approved follow-up cadence with recorded dispositions — validated on test records before touching production data." },
+    { name: "Agentic Search Optimization", body: "Operate the answers, listings, and knowledge signals your market asks search engines for, so the demand you already pay for stops routing to competitors. An audit of discoverability and trust presentation — not a promise of rankings." },
+    { name: "Shared Proof Ledger", body: "Every recovered dollar measured against a written Recovery Ledger with source-record links, reconciled weekly." },
+    { name: "Onboarding, Training, Integration, and Setup", body: "Staff orientation, human-control and exception rules, and full documentation handoff — inside the $2,500 price, never added to it." },
+    { name: "Weekly Executive Scorecard", body: "Delivered every Friday, with a weekly 30-minute pilot review with your operating owner." },
   ],
-  // New deliverable definitions, surfaced explicitly so tests can assert them.
   newDeliverables: {
     estimateRecoveryScan: {
-      name: "Estimate Recovery Opportunity Scan",
+      name: "Dropped-Estimate Recovery (pilot foundation)",
       definition:
-        "A review of how open estimates are currently handled, where follow-up ownership breaks down, which estimate-aging patterns likely indicate recoverable opportunity, and whether Estimate Recovery should become the first implementation priority.",
-      positioningRule: "Presented as a strategic diagnostic deliverable only, not as a live app deployment.",
+        "A review of how open estimates are currently handled, where follow-up ownership breaks down, and which estimate-aging patterns indicate recoverable opportunity — then the approved follow-up cadence runs on eligible open estimates with recorded dispositions.",
+      positioningRule: "Presented as an operational pilot foundation with human approval and recorded dispositions — not an unsupervised automation.",
     },
     agenticSearchAudit: {
-      name: "Agentic Search Visibility & Trust Audit",
+      name: "Agentic Search Optimization (pilot foundation)",
       definition:
-        "A review of the company's current website, service pages, trust signals, reviews, FAQs, discovery pages, and other website elements that affect how AI-assisted search and answer engines can understand, describe, and recommend the company.",
+        "A review of the company's current website, service pages, trust signals, reviews, FAQs, and discovery pages, then ongoing operation of the answers and knowledge signals that shape how AI-assisted search describes and recommends the company.",
       framingRule:
-        "Framed as a practical review of discoverability, clarity, and trust presentation — not vague AI jargon, and not a promise of rankings or guaranteed visibility outcomes.",
+        "Framed as operating discoverability, clarity, and trust presentation — not a promise of rankings or guaranteed visibility outcomes.",
     },
   },
   valueStackNotes: [
-    "Anchor values may be shown.",
-    "If shown, anchor values are labeled as proposed standalone anchors, not market-verified retail prices.",
-    "The investment reveal remains $799.",
+    "The pilot price is $2,500 all-in and always visible.",
+    "Tier 1 value (Assessment + Tenant Integration) is included, not credited and not added.",
+    "The next 16 clients after the Founding Five are priced higher, by scope.",
   ],
 } as const;
 
 // ---------------------------------------------------------------------------
-// 7) RISK REVERSAL — THE BLUEPRINT CLARITY PROMISE ONLY
+// 7) NO OUTCOME GUARANTEES — the honest risk section
 // ---------------------------------------------------------------------------
-// Publish ONLY the Clarity Promise now. The stronger revenue / opportunity
-// guarantee is NOT published unless separately approved.
 export const riskReversal = {
-  heading: "The Blueprint Clarity Promise",
-  body: "If Livingry cannot deliver a documented current-state map, a ranked opportunity list, stated assumptions, and a practical 90-day roadmap from the information provided, the Blueprint fee is refunded.",
+  heading: "Outcome guarantees? No. A measured system? Yes.",
+  body: "Livingry does not guarantee revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger verifies what actually gets collected, and it is the only basis for threshold-based billing. Tier 3, if added, is $1,000/week: the first four weekly cycles are delivered unpaid, and a retroactive bill of the accrued four weeks plus a $4,000 related fee is issued only after the ledger verifies $10,000 in qualifying documented collected recovery within those cycles.",
   ruleNote:
-    "This is a clarity promise, not a revenue or opportunity guarantee. No stronger guarantee is published unless separately approved.",
+    "No fee-waiver promise exists in this funnel. The Recovery Ledger, not a promise, is what any continuation decision is made from.",
 } as const;
 
 // ---------------------------------------------------------------------------
 // 8) FOUNDING FIVE SCARCITY
 // ---------------------------------------------------------------------------
 // Scarcity must be real and manually maintained. No fake countdown timers,
-// no evergreen urgency resets, no unsupported "only X left" claims. If
-// availability is not actively maintained, use application-open language.
+// no evergreen urgency resets, no unsupported "only X left" claims.
 export const foundingFive = {
-  headline: "Five companies. Founder-led diagnostics. One system improved through real operating conditions.",
-  // Application-open language is the safe default; an availability count is
-  // only rendered if an accurate number is supplied at render time.
+  headline: "Five companies. One all-in price. A measured system.",
   applicationOpenNote:
-    "Applications are open for a limited number of Founding Five engagements. Availability is real and manually maintained — there are no countdown timers and no evergreen urgency resets.",
+    "The Founding Five cohort is exactly five HVAC/R companies at $2,500 all-in. Availability is real and manually maintained — there are no countdown timers and no evergreen urgency resets. After the cohort, the next 16 clients are priced higher, by scope.",
   rules: [
     "Scarcity must be real and manually maintained.",
     "If an availability count is shown, it must be accurate.",
@@ -292,8 +268,8 @@ export const qualification = {
   strongFit: [
     "U.S.-based HVAC/R company",
     "Typically 3–12 trucks",
-    "Existing inbound calls, estimates, customer records, and referral opportunities",
-    "Owner or senior operator willing to participate in the mapping session",
+    "Existing inbound calls, estimates, customer records, and search reach",
+    "Owner or senior operator willing to participate in the scorecard and fit conversation",
     "Enough operating history to examine real handoffs",
     "Desire for a calmer, owner-controlled company",
     "Commitment to human approval on consequential actions",
@@ -308,16 +284,16 @@ export const qualification = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// 10) HOW IT WORKS — simple 5-step process
+// 10) HOW IT WORKS — scorecard-to-ledger path
 // ---------------------------------------------------------------------------
 export const howItWorks = {
-  heading: "How it works",
+  heading: "How the Founding Five pilot works",
   steps: [
-    { name: "Apply", body: "Submit the Blueprint application. Livingry reviews it for fit and replies with an honest answer." },
-    { name: "Map", body: "A structured mapping session documents how calls, estimates, past customers, referrals, and trust signals actually move through the business today." },
-    { name: "Diagnose", body: "The four-leak diagnostic and opportunity model rank where the highest-priority continuity gap sits." },
-    { name: "Decide", body: "A findings and decision call walks the owner through the map, the ranked opportunities, and the 90-day repair roadmap." },
-    { name: "Implement by evidence", body: "The first repair is made first — by Livingry or by the company's own team — and subsequent work follows the roadmap, not a template." },
+    { name: "Scorecard", body: "Fifteen minutes about your operation and the leaks that cost you the most. Every scorecard is reviewed by a person — no bot triage, no public calendar." },
+    { name: "Human review and fit call", body: "A short call confirms authority, data access, volume, capacity, and your internal operator — before any promise is made." },
+    { name: "Assessment + Tenant Integration", body: "The included $199 Revenue Continuity Assessment maps how calls, estimates, and search answers move through the business; the included $497 Tenant Integration configures your private Livingry Ops tenant around the tools you already run." },
+    { name: "Three-foundation launch", body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization go live — validated on test records before touching production data." },
+    { name: "Ledger and weekly review", body: "Every recovered dollar is reconciled against the written Recovery Ledger, with weekly scorecards and a weekly 30-minute review with your operating owner." },
   ],
 } as const;
 
@@ -332,8 +308,8 @@ export const proofArchitecture = {
     "Michael's founder confession / contractor story",
     "Confirmed field and HVAC-adjacent experience, stated conservatively",
     "Personally funded testing of AI tools",
-    "Sample Blueprint pages clearly labeled as sample, fictional, or anonymized",
-    "A demonstration-oriented description of the upcoming Estimate Recovery direction",
+    "Sample pages clearly labeled as sample, fictional, or anonymized",
+    "An operational description of the three included pilot foundations",
     "Ethical boundaries and human-approval language",
   ],
   notAllowed: [
@@ -341,7 +317,7 @@ export const proofArchitecture = {
     "Composite case studies presented as real",
     "Unverified ROI claims",
     "Unsupported timeline claims",
-    "Language implying the upcoming Estimate Recovery tool is already deployed",
+    "Outcome guarantees of any kind",
   ],
 } as const;
 
@@ -355,24 +331,31 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "Is this an AI answering service?",
-    a: "No. The Revenue Continuity System is about follow-through — missed calls, estimates, past customers, and referrals — operated as one system with human approval on consequential actions. AI may classify, summarize, draft, and route inside those workflows; people approve everything that reaches a customer as a commitment.",
+    a: "No. The pilot is about follow-through — missed calls, dropped estimates, and search readiness — operated as one system with human approval on consequential actions. AI may classify, summarize, draft, and route inside those workflows; people approve everything that reaches a customer as a commitment.",
   },
   {
-    q: "Why pay for a diagnostic before implementation?",
-    a: "Because no good general contractor starts swinging hammers without a walkthrough and an estimate. The Blueprint is the walkthrough and the estimate: it maps your workflows, ranks the highest-priority continuity gap, and scopes the next 90 days of corrective action before anything is built.",
+    q: "What is the all-in price?",
+    a: "The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies: the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, plus onboarding, training, integration, and setup. Tier 1 value is included, not credited and not added.",
   },
   {
-    q: "Can we use the plan without hiring Livingry?",
-    a: "Yes. The Blueprint findings report is specific enough to execute with any implementation partner, including your own team. If you do proceed with Livingry within four weeks, the $799 credits in full toward the work.",
+    q: "Is Client Reactivation included?",
+    a: "No. The pilot's three foundations are Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization. Client Reactivation is the first a-la-carte upgrade once those foundations are live.",
+  },
+  {
+    q: "Do you guarantee revenue?",
+    a: "No. Livingry does not guarantee revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger verifies what actually gets collected, and it is the only basis for threshold-based billing.",
+  },
+  {
+    q: "What is the next-16 distinction?",
+    a: "The Founding Five is exactly five HVAC/R companies at the $2,500 all-in pilot price. The next 16 clients are priced higher, by scope.",
+  },
+  {
+    q: "How does the $10,000 recovery threshold work?",
+    a: "It applies only to Tier 3, which is optional at $1,000/week. The first four weekly cycles are delivered unpaid. A retroactive bill of the accrued four weeks plus a $4,000 related fee is issued only after the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery within those cycles.",
   },
   {
     q: "What happens if Livingry is not a fit?",
-    a: "You keep the report and the roadmap. The Blueprint Clarity Promise applies: if Livingry cannot deliver a documented current-state map, ranked opportunity list, stated assumptions, and a practical 90-day roadmap from the information provided, the Blueprint fee is refunded.",
-  },
-  {
-    // NEW FAQ required by the ticket.
-    q: "Is the Estimate Recovery tool included right now?",
-    a: "Not as a live software deployment yet. The Blueprint includes an Estimate Recovery Opportunity Scan so the company can see whether that leak deserves repair first, and Founding Five companies may be considered for early deployment once the implementation module is completed.",
+    a: "You get a fast, honest answer rather than a slow maybe. Every scorecard is reviewed by a person, and no fee of any kind is charged before mutual fit is confirmed in writing.",
   },
 ];
 
@@ -381,44 +364,40 @@ export const faq: { q: string; a: string }[] = [
 // ---------------------------------------------------------------------------
 export const finalCta = {
   headline: "Find the leak before you buy more traffic.",
-  primaryCta: "Apply for the HVAC Revenue Continuity Blueprint — $799",
+  primaryCta: "Take the 15-Minute Revenue Leak Scorecard",
   microcopy:
-    "Application-based. Founding Five capacity is limited. Completing the application does not obligate either party to proceed.",
+    "Scorecard-based, human-reviewed, no public calendar. Founding Five capacity is exactly five companies. Submitting a scorecard does not obligate either party to proceed.",
 } as const;
 
 // ---------------------------------------------------------------------------
-// ESTIMATE RECOVERY POSITIONING (upcoming module, NOT a shipped tool)
+// FOLLOW-UP OPPORTUNITY POSITIONING (after the three foundations)
 // ---------------------------------------------------------------------------
 export const estimateRecoveryPositioning = {
-  heading: "Estimate Recovery: the first module in development",
-  // Approved positioning line.
+  heading: "What implementation may look like after the pilot",
   prePositioningLine:
-    "Estimate Recovery is the first implementation module Livingry is developing beyond the Blueprint. For now, the Blueprint includes an Estimate Recovery Opportunity Scan to determine whether that leak deserves repair first.",
+    "After Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization are live, Client Reactivation is the first a-la-carte upgrade — followed by referral continuity and the longer capability list below.",
   approvedPositioning:
-    "Estimate Recovery is the first implementation module Livingry is developing beyond the Blueprint. It is being positioned as a narrow, HVAC-native, vendor-agnostic recovery layer that drafts contextual follow-up for open estimates, escalates sensitive replies to humans, and is designed to support proof from original opportunity to paid invoice.",
+    "Further upgrades — client reactivation, referral continuity, maintenance-and-membership continuity — are scoped and priced a la carte once the three pilot foundations are live. Nothing beyond the $2,500 all-in pilot price is ever assumed or silently added.",
   importantRestrictions: [
-    "Do not say it is already shipped.",
-    "Do not say it is integrated with ServiceTitan, Housecall Pro, Jobber, or other systems yet.",
-    "Do not describe it as a client-facing deliverable already included beyond the strategic diagnostic review.",
+    "Do not present reactivation or referral continuity as included pilot workflows.",
     "Do not claim 'first' or 'only' in the market.",
+    "Do not promise outcomes for upgrades.",
   ],
-  // Suggested lower-page treatment labels — one modest block is used.
   suggestedTreatments: [
-    "What implementation may look like after the Blueprint",
-    "The first repair we may build",
-    "Estimate Recovery: the first module in development",
+    "What implementation may look like after the pilot",
+    "The first upgrades we may add",
+    "After the three foundations: reactivation first",
   ],
 } as const;
 
 // ---------------------------------------------------------------------------
-// AGENTIC-SEARCH AUDIT POSITIONING
+// AGENTIC-SEARCH POSITIONING — included pilot foundation, not a rankings promise
 // ---------------------------------------------------------------------------
 export const agenticSearchPositioning = {
-  // Approved copy-block agentic-search line.
   agenticSearchLine:
-    "The Blueprint also includes an Agentic Search Visibility & Trust Audit so the owner can see whether the current website is easy for answer engines and trust-sensitive buyers to understand.",
+    "The pilot includes Agentic Search Optimization: operating the answers, listings, and knowledge signals that answer engines (AI-assisted search) use to describe and recommend the company.",
   whatThisMeans:
-    "The Blueprint states that Livingry reviews how the company currently appears to AI-assisted search tools, answer engines, trust-sensitive discovery experiences, and customers evaluating website clarity and credibility.",
+    "Livingry reviews and operates how the company appears to AI-assisted search tools, answer engines, trust-sensitive discovery experiences, and customers evaluating website clarity and credibility.",
   focusAreas: [
     "Service-page clarity",
     "FAQ coverage",
@@ -429,25 +408,27 @@ export const agenticSearchPositioning = {
     "Whether the current site describes the company in a way that answer engines can interpret accurately",
   ],
   importantRule:
-    "Framed as an included audit / assessment deliverable — not a promise of rankings or guaranteed visibility outcomes.",
+    "Framed as an included pilot foundation — not a promise of rankings or guaranteed visibility outcomes.",
 } as const;
 
 // ---------------------------------------------------------------------------
-// Recommended application fields (ticket). These describe the Blueprint
-// application flow the primary CTAs route to. The actual form is the existing
-// Founding Five application at /hvac/founding-five#request-review.
+// Scorecard fields (the ONE sitewide intake).
 // ---------------------------------------------------------------------------
+// These describe the Revenue Leak Scorecard the primary CTAs route to. The
+// actual form lives at /hvac/founding-five#scorecard and posts to the
+// Founding Five pipeline.
 export const applicationFields = [
-  "Company name",
-  "Owner / operator name",
-  "Email",
+  "Full name",
+  "Work email",
   "Mobile phone",
-  "Service area",
-  "Truck count",
-  "Current CRM / FSM",
-  "Biggest leak (missed calls / estimates / past customers / referrals / other)",
-  "Approximate monthly inbound opportunity volume",
-  "Willingness to participate in mapping session",
+  "Company name",
+  "Role",
+  "Primary city, state, and markets served",
+  "Active field vehicles/teams",
+  "Current FSM / CRM",
+  "Top two leaks (missed calls / dropped estimates / search readiness / reactivation / other)",
+  "Weekly calls + estimates volume",
+  "Record readiness",
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -457,8 +438,8 @@ export function buildHvacFunnelServiceLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "HVAC Revenue Continuity Blueprint",
-    serviceType: "Revenue Continuity System diagnostic for established HVAC/R companies",
+    name: "Founding Five Tier 2 Pilot — HVAC Revenue Continuity",
+    serviceType: "Revenue Continuity System pilot for established HVAC/R companies",
     provider: { "@id": `${site.primaryDomain}/#organization` },
     areaServed: { "@type": "Country", name: "United States" },
     audience: {
@@ -469,8 +450,8 @@ export function buildHvacFunnelServiceLd() {
     url: HVAC_FUNNEL_URL,
     offers: {
       "@type": "Offer",
-      name: "HVAC Revenue Continuity Blueprint",
-      price: "799",
+      name: "Founding Five Tier 2 Pilot",
+      price: "2500",
       priceCurrency: "USD",
       description: offer.offerDescription,
     },

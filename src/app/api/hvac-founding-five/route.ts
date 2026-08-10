@@ -75,11 +75,21 @@ export async function POST(req: Request) {
     companyName: String(body.companyName ?? ""),
     workEmail: String(body.workEmail ?? ""),
     phone: String(body.phone ?? ""),
-    companyWebsite: String(body.companyWebsite ?? ""),
+    companyWebsite: str(body.companyWebsite),
     role: String(body.role ?? ""),
-    workflowProblem: String(body.workflowProblem ?? ""),
+    markets: String(body.markets ?? ""),
+    teamSize: String(body.teamSize ?? ""),
+    fsm: String(body.fsm ?? ""),
+    weeklyVolume: String(body.weeklyVolume ?? ""),
+    readiness: String(body.readiness ?? ""),
+    primaryLeaks: Array.isArray(body.primaryLeaks)
+      ? body.primaryLeaks.filter((x): x is string => typeof x === "string").map((x) => x.trim()).filter(Boolean).slice(0, 6)
+      : [],
+    // The research prompt is derived server-side from the enumerated answers,
+    // never trusted from the client.
+    workflowProblem: buildWorkflowProblem(body),
     consent: body.consent === true || body.consent === "on" || body.consent === "true",
-    formName: "hvac_founding_five_review",
+    formName: "hvac_founding_five_scorecard",
     utmSource: str(body.utmSource),
     utmMedium: str(body.utmMedium),
     utmCampaign: str(body.utmCampaign),
@@ -116,4 +126,21 @@ export async function POST(req: Request) {
 
 function str(v: unknown): string | undefined {
   return typeof v === "string" && v.trim() ? v.trim() : undefined;
+}
+
+// Server-side summary of the scorecard for the research prompt. Built only
+// from validated enumerated values; never from client-supplied free text.
+function buildWorkflowProblem(body: Record<string, unknown>): string {
+  const leaks = Array.isArray(body.primaryLeaks)
+    ? body.primaryLeaks.filter((x): x is string => typeof x === "string").slice(0, 6)
+    : [];
+  const parts = [
+    leaks.length ? `Primary leaks: ${leaks.join("; ")}.` : "",
+    body.fsm ? `FSM/CRM: ${String(body.fsm)}.` : "",
+    body.weeklyVolume ? `Weekly volume (calls + estimates): ${String(body.weeklyVolume)}.` : "",
+    body.readiness ? `Record readiness: ${String(body.readiness)}.` : "",
+    body.markets ? `Markets: ${String(body.markets)}.` : "",
+  ];
+  const joined = parts.filter(Boolean).join(" ");
+  return joined || "Scorecard submitted without detailed selections.";
 }

@@ -63,7 +63,7 @@ export default function Operations() {
         eyebrow="Livingry Operations · AI general contracting"
         title="You run the business. We coordinate the AI stack behind it."
         lede="Livingry Operations curates, integrates, and governs specialist AI tools inside the systems you already run — closing the places where leads, estimates, customers, knowledge, and trust leak away, with humans accountable throughout."
-        primaryCta={{ label: "Find the highest-value leak", href: "/system-review" }}
+        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
         secondaryCta={{ label: "See the method", href: "/how-it-works" }}
       />
 

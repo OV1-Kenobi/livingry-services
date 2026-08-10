@@ -32,9 +32,9 @@ export const hero = {
     "Most HVAC companies don't have a lead problem. They have a follow-up problem.",
   lede: "Revenue leaks through four cracks: missed calls nobody returns, estimates that go quiet, past customers who never hear from you again, and referrals nobody asks for. Livingry installs the Revenue Continuity System — four connected workflows, human approval on every consequential action — around the customers you've already earned.",
   trustLine:
-    "Every alliance begins with the AI Opportunity Blueprint: the diagnostic and findings call come first, and the $799 findings report credits in full toward your workflow launch.",
+    "Every alliance begins with the Founding Five scorecard: 15 minutes, five leak sources, and a score that shows where revenue is escaping — then a fixed-price pilot behind a shared proof ledger.",
   primaryCta: "Apply for a Strategic Alliance",
-  secondaryCta: "See the Blueprint",
+  secondaryCta: "See the Founding Five Path",
 } as const;
 
 // The job-lifecycle stages shown in the hero flow map. The point of the visual
@@ -229,10 +229,10 @@ export const ownership = {
 } as const;
 
 export const foundingFive = {
-  heading: "Start with the Blueprint. Build into the alliance.",
-  body: "Every engagement begins with the AI Opportunity Blueprint: a fixed-scope diagnostic and findings call. The $799 findings report is your call — and it credits in full toward a workflow launch scoped for your company. Founding Five alliances carry the four-week gate: weekly fees accrue but invoice only behind 2x recovered-revenue coverage.",
+  heading: "Start with the scorecard. Earn the pilot.",
+  body: "Every engagement begins with the Founding Five scorecard: 15 minutes, five leak sources, and a score that shows where revenue is escaping. Founding Five pilot partners keep the $2,500 all-in pilot price, and Tier 3, if added, is $1,000/week: the first four weekly cycles are delivered unpaid, with retroactive billing only after a written Recovery Ledger verifies $10,000 in qualifying documented collected recovery within those cycles.",
   primaryCta: "Apply for a Strategic Alliance",
-  secondaryCta: "See the AI Opportunity Blueprint",
+  secondaryCta: "See the Founding Five Path",
   qualification:
     "For established U.S. HVAC/R operators with the records, capacity, and an accountable internal operator to run a measured system.",
 } as const;

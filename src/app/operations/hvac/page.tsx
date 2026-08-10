@@ -101,7 +101,7 @@ export default function HvacOperationsPage() {
               <a href="#leak-review" className="btn btn-primary" data-analytics="hvac-ops-hero-primary">
                 {hero.primaryCta} <span aria-hidden>→</span>
               </a>
-              <Link href="/operations/hvac/blueprint" className="btn btn-secondary" data-analytics="hvac-ops-hero-secondary">
+              <Link href="/hvac/founding-five#ff-path" className="btn btn-secondary" data-analytics="hvac-ops-hero-secondary">
                 {hero.secondaryCta}
               </Link>
             </div>
@@ -381,14 +381,14 @@ export default function HvacOperationsPage() {
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link
-                href="/hvac/founding-five#request-review"
+                href="/hvac/founding-five#scorecard"
                 className="btn btn-primary"
                 data-analytics="hvac-ops-intake"
               >
                 {foundingFive.primaryCta} <span aria-hidden>→</span>
               </Link>
               <Link
-                href="/operations/hvac/blueprint"
+                href="/hvac/founding-five#ff-path"
                 className="btn btn-ghost"
                 data-analytics="hvac-ops-fit-call"
               >

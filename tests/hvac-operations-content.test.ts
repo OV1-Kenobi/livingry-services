@@ -35,8 +35,9 @@ test("hero leads with the follow-up problem and four cracks", () => {
   assert.match(content.hero.title, /follow-up problem/i);
   assert.match(content.hero.lede, /four cracks/i);
   assert.match(content.hero.lede, /Revenue Continuity System/i);
-  assert.match(content.hero.trustLine, /AI Opportunity Blueprint/);
-  assert.match(content.hero.trustLine, /credits in full/i);
+  assert.match(content.hero.trustLine, /Founding Five scorecard/);
+  assert.match(content.hero.trustLine, /five leak sources/);
+  assert.match(content.hero.trustLine, /shared proof ledger/);
 });
 
 test("lifecycle flow covers inquiry through customer continuity", () => {
@@ -107,8 +108,21 @@ test("copy makes no unverified outcome claims", () => {
 test("page links the intake anchor and both conversion paths", () => {
   assert.match(pageSource, /href="#leak-review"/);
   assert.match(pageSource, /id="leak-review"/);
-  assert.match(pageSource, /\/hvac\/founding-five#request-review/);
-  assert.match(pageSource, /\/operations\/hvac\/blueprint/);
+  assert.match(pageSource, /\/hvac\/founding-five#scorecard/);
+  assert.match(pageSource, /\/hvac\/founding-five#ff-path/);
+});
+
+test("foundingFive block reflects the rollover to the Founding Five pilot", () => {
+  assert.equal(content.foundingFive.primaryCta, "Apply for a Strategic Alliance");
+  assert.equal(content.foundingFive.secondaryCta, "See the Founding Five Path");
+  assert.match(content.foundingFive.body, /Founding Five scorecard/);
+  assert.match(content.foundingFive.body, /\$2,500 all-in/);
+  assert.match(content.foundingFive.body, /Recovery Ledger/);
+});
+
+test("foundingFive and hero trust lines do not promise outcomes", () => {
+  assert.doesNotMatch(content.foundingFive.body, /guarantee[d]? revenue/i);
+  assert.doesNotMatch(content.hero.trustLine, /guarantee[d]? revenue/i);
 });
 
 test("page exposes analytics hooks without PII", () => {

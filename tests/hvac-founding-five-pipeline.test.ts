@@ -44,6 +44,15 @@ function sub(over: Record<string, string> = {}) {
     companyWebsite: "northwind-hvac.com",
     role: "Owner",
     workflowProblem: "After-hours calls go to voicemail and nobody follows up.",
+    markets: "Austin, TX",
+    teamSize: "3–5 active field vehicles/teams",
+    fsm: "ServiceTitan",
+    primaryLeaks: [
+      "Missed calls or unworked inbound opportunities",
+      "Estimates that are not followed up consistently",
+    ],
+    weeklyVolume: "10–25 per week",
+    readiness: "Records and systems are ready",
     consent: true,
     ...over,
   });

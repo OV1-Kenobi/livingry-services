@@ -278,7 +278,7 @@ export default function ProofPage() {
 
       <EndCta
         title="Map where your business could lose proof."
-        primary={{ label: "Map where your business could lose proof", href: "/system-review" }}
+        primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
       />
     </>
   );

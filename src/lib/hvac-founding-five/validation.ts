@@ -1,7 +1,8 @@
-// Pure, isomorphic validation + normalization for the Founding Five form.
+// Pure, isomorphic validation + normalization for the Founding Five scorecard.
 // Shared by the client form and the server endpoint so the two never drift.
 
 import { consent as consentCopy } from "./content";
+import { scorecardIntro } from "./scorecard";
 import type { NormalizedSubmission, SubmissionInput } from "./types";
 
 export type FieldKey =
@@ -9,9 +10,14 @@ export type FieldKey =
   | "companyName"
   | "workEmail"
   | "phone"
-  | "companyWebsite"
   | "role"
   | "workflowProblem"
+  | "markets"
+  | "teamSize"
+  | "fsm"
+  | "primaryLeaks"
+  | "weeklyVolume"
+  | "readiness"
   | "consent";
 
 export type ValidationResult = {
@@ -67,6 +73,17 @@ export function extractDomain(rawUrlOrEmail: string): string {
   }
 }
 
+// Enumerated options are read from the scorecard model so client and server
+// can never drift from the displayed choices.
+function optionsFor(id: string): readonly string[] | null {
+  for (const section of scorecardIntro.sections) {
+    for (const f of section.fields) {
+      if (f.id === id && f.kind === "select") return f.options;
+    }
+  }
+  return null;
+}
+
 function len(v: unknown): number {
   return String(v ?? "").trim().length;
 }
@@ -86,19 +103,58 @@ export function validateSubmission(input: Partial<SubmissionInput>): ValidationR
   if (!isValidPhone(String(input.phone ?? ""))) {
     errors.phone = "Enter a valid U.S. phone number.";
   }
-  if (!input.companyWebsite || !normalizeUrl(String(input.companyWebsite))) {
-    errors.companyWebsite = "Enter your company website (a domain is fine).";
-  }
   if (len(input.role) < 2 || len(input.role) > 100) {
     errors.role = "Enter your role (2–100 characters).";
   }
+  if (len(input.markets) < 2 || len(input.markets) > 200) {
+    errors.markets = "Tell us the city, state, and markets you serve (2–200 characters).";
+  }
+
+  const optTeamSize = optionsFor("teamSize");
+  if (!optTeamSize || !optTeamSize.includes(String(input.teamSize ?? ""))) {
+    errors.teamSize = "Select your active field vehicles/teams.";
+  }
+  const optFsm = optionsFor("fsm");
+  if (!optFsm || !optFsm.includes(String(input.fsm ?? ""))) {
+    errors.fsm = "Select your field-service or CRM system.";
+  }
+  const optVolume = optionsFor("weeklyVolume");
+  if (!optVolume || !optVolume.includes(String(input.weeklyVolume ?? ""))) {
+    errors.weeklyVolume = "Select your weekly calls + estimates volume.";
+  }
+  const optReadiness = optionsFor("readiness");
+  if (!optReadiness || !optReadiness.includes(String(input.readiness ?? ""))) {
+    errors.readiness = "Select your record readiness.";
+  }
+
+  const leakOptions = (() => {
+    for (const section of scorecardIntro.sections) {
+      for (const f of section.fields) {
+        if (f.id === "primaryLeaks" && f.kind === "rank") return { options: f.options, pick: f.pick };
+      }
+    }
+    return null;
+  })();
+  const leaks = Array.isArray(input.primaryLeaks)
+    ? input.primaryLeaks.slice(0, 6).map((x) => String(x).trim()).filter(Boolean)
+    : [];
+  const uniqueLeaks = [...new Set(leaks)];
+  if (!leakOptions || uniqueLeaks.length < leakOptions.pick) {
+    errors.primaryLeaks = "Pick your top two leaks.";
+  } else if (
+    uniqueLeaks.length !== leaks.length ||
+    uniqueLeaks.some((l) => !(leakOptions.options as readonly string[]).includes(l))
+  ) {
+    errors.primaryLeaks = "Your leak selections contain an invalid option.";
+  }
+
   const problemLen = len(input.workflowProblem);
   if (problemLen < 20 || problemLen > 2000) {
     errors.workflowProblem =
       "Describe the workflow in 20–2,000 characters so we can research it.";
   }
   if (!input.consent) {
-    errors.consent = "Please confirm we may contact you about this request.";
+    errors.consent = "Please confirm we may contact you about this scorecard.";
   }
 
   return { ok: Object.keys(errors).length === 0, errors };
@@ -107,15 +163,15 @@ export function validateSubmission(input: Partial<SubmissionInput>): ValidationR
 // Produce the normalized, server-trusted record. Assumes validation passed.
 export function normalizeSubmission(input: SubmissionInput): NormalizedSubmission {
   const emailNormalized = normalizeEmail(input.workEmail);
-  const companyWebsite = normalizeUrl(input.companyWebsite);
+  const companyWebsite = input.companyWebsite ? normalizeUrl(input.companyWebsite) : "";
   // Prefer the website domain; fall back to the email domain.
   const companyDomain =
-    extractDomain(input.companyWebsite) || extractDomain(input.workEmail);
+    (input.companyWebsite && extractDomain(input.companyWebsite)) || extractDomain(input.workEmail);
 
   // Only non-sensitive attribution metadata is retained here.
   const metadata: Record<string, string> = {};
   const meta: [string, string | undefined][] = [
-    ["form_name", input.formName || "hvac_founding_five_review"],
+    ["form_name", input.formName || "hvac_founding_five_scorecard"],
     ["utm_source", input.utmSource],
     ["utm_medium", input.utmMedium],
     ["utm_campaign", input.utmCampaign],
@@ -125,6 +181,12 @@ export function normalizeSubmission(input: SubmissionInput): NormalizedSubmissio
     ["landing_url", input.landingUrl],
     ["first_touch_at", input.firstTouchAt],
     ["analytics_session_id", input.analyticsSessionId],
+    ["team_size", input.teamSize],
+    ["fsm", input.fsm],
+    ["primary_leaks", Array.isArray(input.primaryLeaks) ? input.primaryLeaks.join("; ") : ""],
+    ["weekly_volume", input.weeklyVolume],
+    ["readiness", input.readiness],
+    ["markets", input.markets],
   ];
   for (const [k, v] of meta) {
     if (v && String(v).trim()) metadata[k] = String(v).trim();
@@ -140,6 +202,12 @@ export function normalizeSubmission(input: SubmissionInput): NormalizedSubmissio
     companyDomain,
     role: input.role.trim(),
     workflowProblem: input.workflowProblem.trim(),
+    markets: input.markets.trim(),
+    teamSize: input.teamSize,
+    fsm: input.fsm,
+    primaryLeaks: Array.isArray(input.primaryLeaks) ? input.primaryLeaks.slice(0, 6) : [],
+    weeklyVolume: input.weeklyVolume,
+    readiness: input.readiness,
     consent: Boolean(input.consent),
     consentTextVersion: input.consentTextVersion || consentCopy.version,
     dedupeKey: `${emailNormalized}::${companyDomain}`,
