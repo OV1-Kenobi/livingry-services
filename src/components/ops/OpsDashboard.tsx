@@ -55,7 +55,7 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
     setTray("category");
   }
 
-  const reviewHref = `/system-review?ops_category=${encodeURIComponent(selectedCategory?.id ?? "")}${scenarioId ? `&ops_scenario=${encodeURIComponent(scenarioId)}` : ""}`;
+  const reviewHref = `/leak-assessment?ops_category=${encodeURIComponent(selectedCategory?.id ?? "")}${scenarioId ? `&ops_scenario=${encodeURIComponent(scenarioId)}` : ""}`;
 
   return (
     <div style={{ background: "var(--paper)" }}>
@@ -210,7 +210,7 @@ export function OpsDashboard({ mode }: { mode: DashboardMode }) {
                     <div className="flex gap-2 flex-wrap">
                       <Link href={reviewHref} className="btn btn-primary" style={tapTarget}>Build This for My Business <span aria-hidden>→</span></Link>
                       <Link href={reviewHref} className="btn btn-secondary" style={tapTarget}>Map My Workflow</Link>
-                      <Link href="/system-review" className="btn btn-ghost" style={tapTarget}>Find My Biggest Leak</Link>
+                      <Link href="/leak-assessment" className="btn btn-ghost" style={tapTarget}>Find My Biggest Leak</Link>
                     </div>
                   </div>
                 </section>

@@ -25,10 +25,14 @@ test("founding-five legacy path redirects to the canonical route, permanently", 
   assert.ok(config.includes("permanent: true"), "the redirect is a permanent (308) redirect");
 });
 
-test("/explore-demo and /dashboard stay quarantined out of the public build", () => {
+test("/explore-demo stays absent; /dashboard is private-surface only (Phase 1b)", () => {
   assert.ok(!has("src/app/explore-demo/page.tsx"), "explore-demo route must not exist");
-  assert.ok(!has("src/app/dashboard/layout.tsx"), "dashboard layout must not exist");
-  assert.ok(!has("src/app/dashboard/page.tsx"), "dashboard page must not exist");
+  // Phase 1b recovery: the authenticated dashboard is RESTORED, but must
+  // stay out of the public build path — noindex at the layout, absent from
+  // sitemap/nav/footer, auth-gated server-side (asserted in ops-labels).
+  assert.ok(has("src/app/dashboard/layout.tsx"), "private dashboard layout exists");
+  const layout = read("src/app/dashboard/layout.tsx");
+  assert.ok(layout.includes("index: false"), "dashboard layout enforces robots noindex");
 });
 
 test("revenue-leak diagram shows the three leak points with no fabricated figures", () => {
