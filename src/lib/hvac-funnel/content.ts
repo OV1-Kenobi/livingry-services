@@ -28,7 +28,7 @@
 
 import { site } from "@/lib/site";
 
-export const HVAC_FUNNEL_ROUTE = "/industries/hvac";
+export const HVAC_FUNNEL_ROUTE = "/hvac/founding-five";
 export const HVAC_FUNNEL_URL = `${site.primaryDomain}${HVAC_FUNNEL_ROUTE}`;
 
 // The Founding Five scorecard flow — the ONE sitewide intake. Every primary
@@ -473,7 +473,6 @@ export function buildHvacFunnelFaqLd() {
 export function buildHvacFunnelBreadcrumbLd() {
   const crumbs = [
     { label: "Home", href: "/" },
-    { label: "Industries", href: "/industries" },
     { label: "HVAC", href: HVAC_FUNNEL_ROUTE },
   ];
   return {

@@ -1,51 +1,42 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { publishedArticles } from "@/lib/insights";
+import { revenueLeaks } from "@/lib/revenue-leaks/content";
 
+// Sitemap per the 2026-08-11 plan: the public surface is the four revenue
+// leaks, the method, evidence, services & pricing, the diagnostics, and the
+// content hub. Practice pages, product pages, the demo, the dashboard path,
+// and the Founding Five funnel are not advertised to crawlers.
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.primaryDomain.replace(/\/$/, "");
   const now = new Date();
   const staticRoutes = [
     "/",
-    "/what-we-build",
-    "/operations",
-    "/operations/hvac",
-    "/operations/hvac/blueprint",
-    "/industries",
+    "/revenue-leaks",
     "/how-it-works",
+    "/evidence",
+    "/services-and-pricing",
     "/assessment",
-    "/why-livingry",
+    "/leak-assessment",
     "/about",
-    "/proof",
     "/insights",
     "/faq",
-    "/agents",
-    "/system-review",
-    "/hvac/founding-five",
-    "/ops",
-    "/explore-demo",
     "/privacy",
     "/terms",
   ];
-  const systemRoutes = site.systemFamilies.map((s) => `/systems/${s.slug}`);
-  const industryRoutes = site.industries.map((i) => `/industries/${i.slug}`);
+  const leakRoutes = revenueLeaks.map((l) => `/revenue-leaks/${l.slug}`);
   const articleRoutes = publishedArticles.map((a) => a.path);
 
-  const all = [...staticRoutes, ...systemRoutes, ...industryRoutes, ...articleRoutes];
+  const all = [...staticRoutes, ...leakRoutes, ...articleRoutes];
 
-  // Conversion routes and practice pages rank high for search/answer engines.
-  // Per umbrella expansion: /operations and /habitats are practice entry points,
-  // /land-review is the Habitats conversion funnel.
-  const conversionRoutes = new Set(["/system-review", "/assessment", "/operations/hvac", "/hvac/founding-five"]);
-  const practicePages = new Set(["/operations", "/habitats"]);
+  const conversionRoutes = new Set(["/assessment", "/leak-assessment"]);
   const priorityFor = (path: string) => {
     if (path === "/") return 1;
-    if (path === "/land-review") return 0.95;
-    if (conversionRoutes.has(path) || practicePages.has(path)) return 0.9;
-    if (path === "/habitats/land-potential-review") return 0.85;
-    if (path.startsWith("/industries/") || path.startsWith("/systems/")) return 0.8;
+    if (conversionRoutes.has(path)) return 0.9;
+    if (path === "/services-and-pricing") return 0.85;
+    if (path.startsWith("/revenue-leaks/")) return 0.8;
     if (path.startsWith("/insights/")) return 0.8;
-    if (path === "/insights" || path === "/faq" || path === "/how-it-works") return 0.7;
+    if (path === "/revenue-leaks" || path === "/how-it-works" || path === "/evidence" || path === "/about") return 0.7;
     return 0.6;
   };
 

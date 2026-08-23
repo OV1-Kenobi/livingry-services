@@ -1,41 +1,66 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import Link from "next/link";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { JsonLd } from "@/components/JsonLd";
 import { ProcessFlowDiagram } from "@/components/diagrams/ProcessFlowDiagram";
+import { canonicalPositioningLine, revenueContinuityDefinition } from "@/lib/revenue-leaks/content";
 
 export const metadata: Metadata = {
-  title: "How It Works — The Livingry Leakproofing Framework",
-  description: "Find the leak. Seal the gap. Keep more of what you already earned. A five-step framework for closing the highest-value gap in your business.",
+  title: "How It Works — Find, Trace, Seal, Verify",
+  description:
+    "Find the handoff most worth examining, trace the opportunity and its information, seal the smallest useful human-controlled layer, and verify under real conditions.",
   alternates: { canonical: "/how-it-works" },
 };
 
 const steps = [
   {
-    n: "01", name: "Find", short: "Identify the leaks",
-    body: "We start by identifying the leads, customers, knowledge, and trust already leaking away — not by picking a tool. The System Review is a structured conversation and observation of your website, response paths, CRM records, customer journey, discovery presence, and internal knowledge.",
-    deliverables: ["Leak inventory across response, recovery, continuity, discovery, knowledge, and workflow", "First estimate of value at risk", "Priority ranking by impact and cost to close"],
+    n: "01",
+    name: "Find",
+    short: "Identify the handoff most worth examining",
+    body:
+      "We start with the operational field, not a tool. The 17-point assessment and a direct look at your response paths name the calls, estimates, past customers, and completed jobs where opportunity is escaping — and which handoff is worth examining first.",
+    deliverables: [
+      "Priority ranking of the four revenue leaks against your operation",
+      "The handoff most worth examining first",
+      "First estimate of what is escaping at that handoff",
+    ],
   },
   {
-    n: "02", name: "Trace", short: "Map where the loss happens",
-    body: "Once the leaks are named, we trace exactly where in the customer journey, workflow, or information path each one occurs. This is where a &lsquo;we need more leads&rsquo; problem often reveals itself as a follow-up problem, a routing problem, or an evidence problem.",
-    deliverables: ["Journey and workflow map annotated with leak points", "Root-cause description per leak", "System family recommendation (Response, Recovery, Continuity, Discovery, Knowledge, Workflow)"],
+    n: "02",
+    name: "Trace",
+    short: "Follow the opportunity and its information",
+    body:
+      "Once the handoff is named, we trace the opportunity and its information from trigger to next action. This is where a 'we need more leads' problem often reveals itself as a follow-up problem, an ownership problem, or a record problem.",
+    deliverables: [
+      "The trigger, the responsible person, and the next action at each step",
+      "Root-cause description of the break",
+      "The evidence we will need to verify a fix has happened",
+    ],
   },
   {
-    n: "03", name: "Seal", short: "Build the smallest useful system",
-    body: "We build the smallest practical improvement that closes the highest-value gap. Depending on the leak, that may be a follow-up sequence, a routing rule, a service page, an AI-assisted intake, a knowledge assistant, or a workflow redesign — with real content, real integrations, and real ownership.",
-    deliverables: ["Working system in your existing tools", "Content, workflow, and approval definitions", "Documented ownership and change process"],
+    n: "03",
+    name: "Seal",
+    short: "Design the smallest useful human-controlled layer",
+    body:
+      "We design the smallest useful layer around the break — capturing the information, organizing the record, preparing the response, and routing the next step. A named person remains responsible for approving consequential action.",
+    deliverables: [
+      "The designed layer and the approval points inside it",
+      "Ownership, exception path, and audit record defined",
+      "Standard service scope matched: Do It Yourself, Done With You, or Done For You",
+    ],
   },
   {
-    n: "04", name: "Verify", short: "Prove it under real conditions",
-    body: "We measure whether the gap is closing under real conditions — response time, conversations recovered, appointments booked, estimates revived, staff time saved, or discovery clarity — using evidence agreed upon before we start.",
-    deliverables: ["Baseline vs. post-implementation metrics", "Qualitative review with the affected team", "Adjustments based on what the evidence actually shows"],
-  },
-  {
-    n: "05", name: "Keep", short: "Leave your team stronger",
-    body: "We leave the business stronger: documented system, client-owned accounts and data, trained team, portable configuration, and no unnecessary dependency on Livingry Services. If it makes sense to continue, we do; if it does not, we do not.",
-    deliverables: ["System documentation and runbook", "Ownership and escalation defined", "Optional monthly implementation retainer for continued improvement"],
+    n: "04",
+    name: "Verify",
+    short: "Review what was captured, prepared, approved, completed, and recorded",
+    body:
+      "We verify under real conditions — what was captured, prepared, approved, completed, and recorded — against evidence agreed on before we started. A control that feels sealed and a control that is sealed are frequently different controls.",
+    deliverables: [
+      "Live owner exit-testing for guided implementations",
+      "Baseline comparison against the agreed evidence",
+      "Adjustments based on what the records actually show",
+    ],
   },
 ];
 
@@ -44,8 +69,8 @@ export default function HowItWorks() {
   const howToLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "The Livingry Leakproofing Framework",
-    description: "A five-step framework for stopping already-earned value from leaking away.",
+    name: "The Find, Trace, Seal, Verify method",
+    description: "Find the handoff most worth examining, trace the opportunity and its information, seal the smallest useful human-controlled layer, and verify what was captured, prepared, approved, completed, and recorded.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -60,13 +85,14 @@ export default function HowItWorks() {
       <Breadcrumbs items={crumbs} />
       <PageHero
         eyebrow="How It Works"
-        title="Find the leak. Seal the gap. Keep more of what you already earned."
-        lede="The Livingry Leakproofing Framework is deliberately simple. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system."
-        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
+        title="Find the break before you pour more in."
+        lede="The method is deliberately simple — Find, Trace, Seal, Verify. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system."
+        primaryCta={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
+        secondaryCta={{ label: "Book My Leak Assessment", href: "/leak-assessment" }}
       />
       <section className="section-tight">
         <div className="container">
-          <div className="rule-label">The five steps at a glance</div>
+          <div className="rule-label">The four steps at a glance</div>
           <ProcessFlowDiagram />
         </div>
       </section>
@@ -80,9 +106,9 @@ export default function HowItWorks() {
                 <p className="mt-3 text-[0.95rem]" style={{ color: "var(--copper-2)" }}>{s.short}</p>
               </div>
               <div className="lg:col-span-8">
-                <p style={{ color: "var(--ink-2)" }} dangerouslySetInnerHTML={{ __html: s.body }} />
+                <p style={{ color: "var(--ink-2)" }}>{s.body}</p>
                 <div className="mt-6">
-                  <div className="eyebrow">Deliverables</div>
+                  <div className="eyebrow">What that produces</div>
                   <ul className="mt-3 grid gap-2">
                     {s.deliverables.map((d, i) => (
                       <li key={i} className="flex gap-3 text-[0.95rem]" style={{ color: "var(--ink)" }}>
@@ -98,22 +124,136 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--paper-2)" }}>
-        <div className="container">
-          <div className="rule-label">Which system family fits your leak</div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {site.systemFamilies.map((s) => (
-              <a key={s.slug} href={`/systems/${s.slug}`} className="card block">
-                <div className="eyebrow">{s.family}</div>
-                <h3 className="serif mt-2" style={{ fontSize: "var(--step-1)" }}>{s.title}</h3>
-                <p className="mt-3 text-[0.92rem]" style={{ color: "var(--ink-2)" }}>{s.leak}</p>
-              </a>
-            ))}
+      {/* REVENUE & DATA CONTINUITY — anchored for the footer Trust column */}
+      <section className="section" style={{ background: "var(--paper-2)" }} id="data-continuity" aria-labelledby="continuity-heading">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="rule-label">Revenue &amp; Data Continuity</div>
+            <h2 id="continuity-heading" className="serif">What stays connected from one handoff to the next.</h2>
+          </div>
+          <div className="lg:col-span-7">
+            <p className="serif" style={{ fontSize: "var(--step-1)", lineHeight: 1.45, color: "var(--ink)" }}>
+              {revenueContinuityDefinition}
+            </p>
+            <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+              The four steps above are how that continuity gets restored — at the one handoff that is
+              worth examining first.
+            </p>
           </div>
         </div>
       </section>
 
-      <EndCta />
+      {/* HUMAN CONTROL */}
+      <section className="section" id="human-approval" aria-labelledby="human-heading">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="rule-label">Human control</div>
+            <h2 id="human-heading" className="serif">Faster, without removing accountability.</h2>
+          </div>
+          <div className="lg:col-span-7">
+            <p style={{ color: "var(--ink-2)" }}>{canonicalPositioningLine}</p>
+            <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+              The operating layer can capture information, organize the record, prepare a response, and
+              route the next step. A named person remains responsible for approving consequential
+              action — and the exception path routes anything urgent, ambiguous, or consequential to a
+              human before it travels.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      {/* WIN/WIN/WIN */}
+      <section className="section" style={{ background: "var(--paper-2)" }} id="winwinwin" aria-labelledby="www-heading">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="rule-label">Win/Win/Win</div>
+            <h2 id="www-heading" className="serif">Livingry Services wins when its clients win because their customers win.</h2>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              If a proposed system does not improve that chain of service, Livingry Services should not
+              recommend building it. This is the only sustainable path for service industries.
+            </p>
+          </div>
+          <div className="lg:col-span-7 grid gap-3">
+            <div className="card">
+              <div className="eyebrow">The customer wins</div>
+              <p className="mt-2 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                Through clearer, more consistent service and fewer dropped handoffs.
+              </p>
+            </div>
+            <div className="card">
+              <div className="eyebrow">The client wins</div>
+              <p className="mt-2 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                By capturing more value from work and demand already created, while retaining judgment
+                and control.
+              </p>
+            </div>
+            <div className="card">
+              <div className="eyebrow">Livingry Services wins</div>
+              <p className="mt-2 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                By being paid for systems and support that improve that service chain.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* THE DIAGNOSTIC PATH */}
+      <section className="section">
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="rule-label">Start here</div>
+            <h2 className="serif">Diagnose before you buy or build.</h2>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              More traffic does not repair a broken handoff. Find what is worth fixing before adding
+              another lead source or disconnected tool.
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="card h-full">
+                <div className="eyebrow">Self-assessment</div>
+                <h3 className="serif mt-2" style={{ fontSize: "var(--step-1)" }}>HVAC Cash Flow Leak Diagnostic</h3>
+                <p className="mt-3 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                  A 17-point self-assessment scoring four handoffs — missed calls, dropped
+                  estimates, past customers, and lost referrals. Directional findings,
+                  nothing stored or sent.
+                </p>
+                <div className="mt-5">
+                  <Link href="/assessment" className="link" style={{ color: "var(--forest)" }}>
+                    Take the diagnostic →
+                  </Link>
+                </div>
+              </div>
+              <div className="card h-full">
+                <div className="eyebrow">With Michael</div>
+                <h3 className="serif mt-2" style={{ fontSize: "var(--step-1)" }}>Leak Assessment</h3>
+                <p className="mt-3 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>
+                  Trace one suspected leak from first trigger to next broken handoff. You leave with the
+                  priority and reasoning whether or not you hire us.
+                </p>
+                <div className="mt-5">
+                  <Link href="/leak-assessment" className="link" style={{ color: "var(--forest)" }}>
+                    See how the Leak Assessment works →
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6">
+              <Link href="/services-and-pricing" className="btn btn-secondary">
+                See Services &amp; Pricing
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <EndCta
+        title="Find the leak before you buy more traffic."
+        primary={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
+        secondary={{ label: "See services and pricing", href: "/services-and-pricing" }}
+      />
     </>
   );
 }

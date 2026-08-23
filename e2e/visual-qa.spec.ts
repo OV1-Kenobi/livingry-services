@@ -14,16 +14,12 @@ const VIEWPORTS = [
 
 const ROUTES = [
   { name: "home", path: "/" },
-  { name: "proof", path: "/proof" },
   { name: "about", path: "/about" },
   { name: "what-we-build", path: "/what-we-build" },
   { name: "how-it-works", path: "/how-it-works" },
   { name: "insights", path: "/insights" },
   { name: "insights-ai-for-hvac", path: "/insights/ai-for-hvac-companies" },
-  { name: "industries-hvac", path: "/industries/hvac" },
   { name: "founding-five", path: "/hvac/founding-five" },
-  { name: "explore-demo", path: "/explore-demo" },
-  { name: "dashboard-unauth", path: "/dashboard" },
 ];
 
 for (const vp of VIEWPORTS) {
@@ -31,11 +27,6 @@ for (const vp of VIEWPORTS) {
     test(`${route.name} @ ${vp.name} renders without horizontal overflow`, async ({ page }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto(route.path, { waitUntil: "networkidle" });
-
-      // The unauthenticated dashboard must resolve past "Checking session…".
-      if (route.name === "dashboard-unauth") {
-        await expect(page.getByText("Checking session…")).toHaveCount(0, { timeout: 15_000 });
-      }
 
       const overflow = await page.evaluate(() => ({
         scrollW: document.documentElement.scrollWidth,

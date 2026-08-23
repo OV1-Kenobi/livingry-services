@@ -43,9 +43,9 @@ export const habitatsTodos: HabitatTodoEntry[] = [
   { path: "/habitats/land-potential-review", section: "process-heading-comment", count: 1 },
   { path: "/habitats/land-potential-review", section: "process-body", count: 1 },
 
-  // /land-review form page (LandReviewForm.tsx) - 2 markers
-  { path: "/land-review", section: "confirmation-heading", count: 1 },
-  { path: "/land-review", section: "confirmation-body", count: 1 },
+  // NOTE: the /land-review form page (2 markers) was removed from the public
+  // build per Decision 5 quarantine (2026-08-23). LandReviewForm.tsx survives on
+  // branch preserve/wp2-2026-08-23 for a future private/authenticated return.
 ];
 
 // Total TODO markers across all Habitat pages

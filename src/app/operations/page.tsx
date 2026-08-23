@@ -267,8 +267,8 @@ export default function Operations() {
             <OrchestrationGraphic />
           </div>
           <div className="mt-8">
-            <Link href="/ops" className="btn btn-primary">
-              Explore the Ops demo dashboard <span aria-hidden>→</span>
+            <Link href="/how-it-works" className="btn btn-primary">
+              See how the Ops layer works <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
@@ -377,7 +377,7 @@ export default function Operations() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/system-review" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
+              <Link href="/leak-assessment" className="btn btn-primary">Find My Biggest Leak <span aria-hidden>→</span></Link>
               <Link href="/assessment" className="btn btn-ghost">Take the Leak Assessment <span aria-hidden>→</span></Link>
             </div>
           </div>

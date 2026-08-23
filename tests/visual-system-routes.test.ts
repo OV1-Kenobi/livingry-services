@@ -3,10 +3,10 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-// Guards for the six-asset visual system, the two repaired routes, and the
-// bounded /dashboard session fix. These are source-level structural checks —
-// they lock the requirements that have no runtime harness (config, static JSX,
-// public assets) so a regression is caught in CI rather than in visual QA.
+// Guards for the six-asset visual system and the demo/dashboard quarantine
+// (founder Decisions 5/26). These are source-level structural checks — they
+// lock requirements that have no runtime harness so a regression is caught in
+// CI rather than in visual QA.
 
 const read = (rel: string) => readFileSync(resolve(process.cwd(), rel), "utf8");
 const has = (rel: string) => existsSync(resolve(process.cwd(), rel));
@@ -25,41 +25,10 @@ test("founding-five legacy path redirects to the canonical route, permanently", 
   assert.ok(config.includes("permanent: true"), "the redirect is a permanent (308) redirect");
 });
 
-test("/explore-demo renders the public Ops dashboard, not a 404", () => {
-  assert.ok(has("src/app/explore-demo/page.tsx"), "explore-demo route exists");
-  const page = read("src/app/explore-demo/page.tsx");
-  assert.ok(page.includes("OpsDashboard"), "explore-demo mounts the OpsDashboard");
-  assert.ok(page.includes('mode="public"'), "explore-demo runs the dashboard in public mode");
-});
-
-test("/dashboard bounds its session check so it never hangs on 'Checking session…'", () => {
-  const layout = read("src/app/dashboard/layout.tsx");
-  assert.ok(layout.includes("AbortController"), "session fetch is abortable");
-  assert.ok(layout.includes("setTimeout"), "a timeout bounds the session check");
-  assert.ok(/SESSION_CHECK_TIMEOUT_MS/.test(layout), "an explicit timeout constant is used");
-  assert.ok(layout.includes(".catch("), "a failed session check falls back rather than hanging");
-});
-
-test("unauthenticated /dashboard shows a public preview with Sign in and Explore demo", () => {
-  const layout = read("src/app/dashboard/layout.tsx");
-  assert.ok(layout.includes("DashboardPublicPreview"), "layout renders the public preview branch");
-
-  const preview = read("src/components/DashboardPublicPreview.tsx");
-  assert.ok(preview.includes("Sign in"), "preview offers a Sign in action");
-  assert.ok(preview.includes('href="/explore-demo"'), "preview links to the interactive demo");
-  assert.ok(preview.includes('mode="public"'), "preview embeds the dashboard in public mode");
-  assert.ok(
-    /no client\s+credentials|no client credentials/i.test(preview.replace(/\s+/g, " ")),
-    "preview states no client credentials/records are shown",
-  );
-});
-
-test("the authenticated dashboard layout carries no demo/preview positioning", () => {
-  // The public-preview copy lives in its own component; the layout file itself
-  // must stay clean so the authenticated workspace never reads as a demo.
-  const layout = read("src/app/dashboard/layout.tsx");
-  assert.ok(!/demo/i.test(layout), "layout file contains no demo wording");
-  assert.ok(!/\bsample\b/i.test(layout), "layout file contains no sample wording");
+test("/explore-demo and /dashboard stay quarantined out of the public build", () => {
+  assert.ok(!has("src/app/explore-demo/page.tsx"), "explore-demo route must not exist");
+  assert.ok(!has("src/app/dashboard/layout.tsx"), "dashboard layout must not exist");
+  assert.ok(!has("src/app/dashboard/page.tsx"), "dashboard page must not exist");
 });
 
 test("revenue-leak diagram shows the three leak points with no fabricated figures", () => {

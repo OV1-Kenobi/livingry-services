@@ -144,7 +144,7 @@ export default function Insights() {
         title="Field guides on AI general contracting."
         lede="Livingry Insights is a working editorial programme, not a blog archive. Field guides on what AI actually does inside an HVAC/R operation — each published only when it can be written from real implementation evidence rather than vendor marketing. The first one is live."
         primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
-        secondaryCta={{ label: "Take the 10-Minute Leak Assessment", href: "/assessment" }}
+        secondaryCta={{ label: "Take the HVAC Cash Flow Leak Diagnostic", href: "/assessment" }}
       />
 
       <section className="section-tight" aria-labelledby="published-heading">
@@ -279,7 +279,7 @@ export default function Insights() {
       <EndCta
         title="Would you rather have the review than the reading?"
         primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
-        secondary={{ label: "Take the 10-Minute Leak Assessment", href: "/assessment" }}
+        secondary={{ label: "Take the HVAC Cash Flow Leak Diagnostic", href: "/assessment" }}
       />
     </>
   );

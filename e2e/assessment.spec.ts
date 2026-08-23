@@ -2,7 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 
 // Browser QA for the public 17-point assessment: a low-score path, a high-score
 // path, a blocked incomplete attempt, reset, and CTA carry-over into the
-// existing /system-review lead path — at desktop and mobile.
+// existing /leak-assessment lead path — at desktop and mobile.
 
 const OUT = "e2e/screenshots";
 const TOTAL = 17;
@@ -137,10 +137,10 @@ for (const vp of VIEWPORTS) {
       await clickCentered(page.getByRole("button", { name: "Show my result" }));
 
       await clickCentered(page.getByRole("link", { name: /Book the 15-minute Leak Triage/ }));
-      await page.waitForURL(/\/system-review/);
+      await page.waitForURL(/\/leak-assessment/);
 
       const url = new URL(page.url());
-      expect(url.pathname).toBe("/system-review");
+      expect(url.pathname).toBe("/leak-assessment");
       expect(url.searchParams.get("src")).toBe("assessment");
       expect(url.searchParams.get("score")).toBe("45");
       expect(url.searchParams.get("band")).toBe("sealed");
@@ -159,7 +159,7 @@ for (const vp of VIEWPORTS) {
 }
 
 test("a tampered triage link is ignored rather than displayed", async ({ page }) => {
-  await page.goto("/system-review?src=assessment&score=51&band=exposed", {
+  await page.goto("/leak-assessment?src=assessment&score=51&band=exposed", {
     waitUntil: "networkidle",
   });
   await expect(page.locator(".asm-carryover")).toHaveCount(0);

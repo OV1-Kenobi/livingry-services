@@ -40,19 +40,19 @@ test("the route is registered in the sitemap", () => {
 });
 
 test("the route is reachable from the public header and footer", () => {
-  assert.match(read("src/components/Header.tsx"), /href: "\/assessment"/);
+  assert.match(read("src/components/Header.tsx"), /href="\/assessment"/);
   assert.match(read("src/components/Footer.tsx"), /href="\/assessment"/);
 });
 
 test("the existing booking funnel cross-links to the assessment without replacing itself", () => {
-  const systemReview = read("src/app/system-review/page.tsx");
-  assert.match(systemReview, /href="\/assessment"/);
+  const leakAssessment = read("src/app/leak-assessment/page.tsx");
+  assert.match(leakAssessment, /href: "\/assessment"/);
   // The calendar remains the primary CTA on that page.
-  assert.match(systemReview, /site\.booking\.url/);
+  assert.match(leakAssessment, /site\.booking\.url/);
 });
 
-test("the assessment sends its CTA to the existing lead path, not an invented booking link", () => {
-  assert.equal(TRIAGE_ROUTE, "/system-review");
+test("the assessment sends its CTA to the Leak Assessment page, not an invented booking link", () => {
+  assert.equal(TRIAGE_ROUTE, "/leak-assessment");
   const external = /https?:\/\/(?!livingry\.services)/g;
   assert.equal(formSource.match(external), null, "assessment form links off-site");
   for (const pattern of [/calendly\.com/i, /cal\.com/i, /calendar\.app\.google/i]) {
@@ -63,7 +63,8 @@ test("the assessment sends its CTA to the existing lead path, not an invented bo
 // --- Metadata ------------------------------------------------------------
 
 test("the page declares the intended title, canonical, and Open Graph data", () => {
-  assert.match(pageSource, /17-Point Operational Leak Assessment \| Livingry Services/);
+  // Official diagnostic name per founder Decision 2 (2026-08-22).
+  assert.match(pageSource, /HVAC Cash Flow Leak Diagnostic \| Livingry Services/);
   assert.match(pageSource, /canonical: "\/assessment"/);
   assert.match(pageSource, /openGraph:/);
   assert.match(pageSource, /twitter:/);
@@ -152,8 +153,11 @@ test("the result explains that the score is directional and needs verification",
   }
 });
 
-test("the CTA states the three triage promises", () => {
-  assert.match(formSource, /15-minute Leak Triage/);
+test("the CTA states the validation promises without timing claims", () => {
+  // Decision 24: no timing claims — the former "15-minute Leak Triage" framing
+  // was removed with it.
+  assert.match(formSource, /Validate This Leak With Michael/);
+  assert.ok(!/15-minute/.test(formSource), "no duration promise may remain in the form");
   assert.match(formSource, /No new software recommendation/i);
   assert.match(formSource, /No ad-spend pitch/i);
   assert.match(formSource, /escaping from the systems you already run/i);

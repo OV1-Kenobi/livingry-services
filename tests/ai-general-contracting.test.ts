@@ -37,20 +37,28 @@ const stripComments = (s: string) => s.replace(/^\s*\/\/.*$/gm, "");
    A. Homepage positioning and conversion
    --------------------------------------------------------------- */
 
-test("hero leads with umbrella positioning (not AI-GC-specific)", () => {
-  // Per umbrella expansion: homepage hero should NOT have "AI general contractor" in H1
+test("hero leads with the Revenue Clarity & Capture positioning", () => {
+  // Per the 2026-08-11 plan: the homepage H1 leads with the leak diagnosis,
+  // never "AI general contractor".
   const h1Match = homepage.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
   assert.ok(h1Match, "homepage has an h1");
   const h1Text = h1Match[1].replace(/<[^>]+>/g, "");
   assert.ok(
     !h1Text.toLowerCase().includes("ai general contractor"),
-    "homepage H1 should not mention AI general contractor (umbrella positioning)",
+    "homepage H1 should not mention AI general contractor",
   );
-  // HVAC-first repositioning: homepage leads with Operations; Habitats routes
-  // stay live but are no longer promoted on the homepage.
+  // The plan's public frame: Revenue Clarity & Capture for HVAC/R operators.
   assert.ok(
-    homepage.includes("Operations") || homepage.includes("operations"),
-    "homepage mentions Operations practice",
+    homepage.includes("Revenue Clarity &amp; Capture") || homepage.includes("Revenue Clarity & Capture"),
+    "homepage leads with the Revenue Clarity & Capture frame",
+  );
+  assert.ok(
+    homepage.includes("HVAC/R"),
+    "homepage names the HVAC/R audience",
+  );
+  assert.ok(
+    homepage.includes("Four observable leaks") && homepage.includes("revenueLeaks.map"),
+    "homepage renders the four leaks from the shared content module",
   );
   assert.ok(
     !homepage.includes("/habitats"),
@@ -58,26 +66,37 @@ test("hero leads with umbrella positioning (not AI-GC-specific)", () => {
   );
 });
 
-test("homepage offers Operations and Founding Five conversion paths", () => {
-  // HVAC-first repositioning: the two-path selector is Operations + the
-  // Founding Five scorecard flow.
+test("homepage offers the diagnostic-first conversion paths", () => {
+  // Per the revenue-clarity plan: diagnose → inspect reasoning → compare
+  // options. No product, demo, or founding-funnel paths on the homepage.
   assert.ok(
-    /href=["']\/operations["']/.test(homepage),
-    "homepage links to Operations practice with exact /operations path",
+    homepage.includes('href="/assessment"'),
+    "homepage links to the diagnostic with the exact /assessment path",
   );
   assert.ok(
-    homepage.includes("/hvac/founding-five#scorecard"),
-    "homepage links to the Revenue Leak Scorecard flow",
+    homepage.includes('href="/services-and-pricing"'),
+    "homepage links to Services & Pricing",
   );
-  // Final CTA offers the alliance funnel and the scorecard path.
+  assert.ok(
+    homepage.includes('href="/revenue-leaks"'),
+    "homepage links to the four revenue leaks",
+  );
   const flat = homepage.replace(/\s+/g, " ");
   assert.ok(
-    /founding-five|scorecard/i.test(flat),
-    "homepage still offers the Founding Five conversion path",
+    /Diagnose My Cash Flow Leaks/.test(flat),
+    "homepage names the Diagnose My Cash Flow Leaks action",
   );
   assert.ok(
-    flat.includes("Seal the client container"),
-    "homepage closes with the signature phrase",
+    !/founding-five|scorecard/i.test(flat),
+    "homepage no longer offers the Founding Five funnel",
+  );
+  assert.ok(
+    !/href="\/operations"/.test(homepage),
+    "homepage no longer links the Operations practice path",
+  );
+  assert.ok(
+    flat.includes("Find the leak before you buy more traffic"),
+    "homepage closes with the plan's final-action line",
   );
 });
 
@@ -286,7 +305,7 @@ test("llms.txt covers summary, all seven families, customers, routes, and canoni
   for (const family of site.systemFamilies) {
     assert.ok(llms.includes(family.title), `llms.txt names ${family.title}`);
   }
-  for (const route of ["/assessment", "/system-review", "/insights", "/faq", "/how-it-works"]) {
+  for (const route of ["/assessment", "/insights", "/faq", "/how-it-works"]) {
     assert.ok(llms.includes(`https://livingry.services${route}`), `llms.txt links ${route}`);
   }
   assert.ok(/do not sell AI software/i.test(llms), "the 'we do not' list is explicit about software");
@@ -346,12 +365,16 @@ test("robots permits ordinary search indexing and the named answer crawlers", ()
   assert.ok(robotsSrc.includes("sitemap.xml"), "robots advertises the sitemap");
 });
 
-test("sitemap exposes the conversion, hub, service, and methodology routes", () => {
-  for (const route of ["/assessment", "/system-review", "/insights", "/faq", "/how-it-works", "/what-we-build"]) {
+test("sitemap exposes the plan's public surface and no hidden funnels", () => {
+  for (const route of ["/assessment", "/leak-assessment", "/services-and-pricing", "/revenue-leaks", "/evidence", "/insights", "/faq", "/how-it-works"]) {
     assert.ok(sitemapSrc.includes(`"${route}"`), `sitemap includes ${route}`);
   }
-  assert.ok(sitemapSrc.includes("site.systemFamilies.map"), "every system family route is generated");
-  assert.ok(sitemapSrc.includes("site.industries.map"), "every industry route is generated");
+  assert.ok(sitemapSrc.includes("revenueLeaks.map"), "leak landing pages are generated from the content module");
+  for (const route of ["/proof", "/why-livingry", "/what-we-build", "/operations", "/explore-demo", "/system-review", "/agents", "/hvac/founding-five"]) {
+    assert.ok(!sitemapSrc.includes(`"${route}"`), `sitemap must not advertise ${route}`);
+  }
+  assert.ok(!sitemapSrc.includes("site.systemFamilies.map"), "system family routes are no longer promoted");
+  assert.ok(!sitemapSrc.includes("site.industries.map"), "industry routes are no longer promoted");
   assert.ok(/conversionRoutes/.test(sitemapSrc), "conversion routes are prioritised deliberately");
 });
 
@@ -386,13 +409,20 @@ test("no OpenAgents affiliation is introduced anywhere in the changed surfaces",
   }
 });
 
-test("no authority band, testimonial, or client logo is fabricated", () => {
+test("no authority band, fabricated testimonial quote, or client logo is invented", () => {
   const surfaces = [homepage, insightsPage, footer];
   for (const source of surfaces) {
     const flat = source.replace(/\s+/g, " ");
     assert.ok(!/as featured in/i.test(flat), "no 'as featured in' band");
     assert.ok(!/trusted by/i.test(flat), "no 'trusted by' logo wall");
-    assert.ok(!/testimonial/i.test(flat), "no testimonials");
+    // The four-leak vocabulary legitimately names "Lost Referrals, Reviews &
+    // Testimonials" (the leak) and "testimonial permission" (the capture step).
+    // Banned instead: any attributed quote or fabricated testimonial claim.
+    assert.ok(
+      !/testimonial(s)?\s+(quote|from|says|claim|proves)/i.test(flat),
+      "no fabricated testimonial attribution",
+    );
+    assert.ok(!/"[^"]{12,}"\s*[—-]\s*(—\s*)?[A-Z][a-z]+\s*(,|\()/.test(flat), "no invented attributed quote");
     assert.ok(!/placeholder-logo|logo-placeholder/i.test(flat), "no placeholder authority logos");
   }
 });

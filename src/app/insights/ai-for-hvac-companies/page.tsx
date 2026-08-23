@@ -377,7 +377,7 @@ export default function AiForHvacCompanies() {
                 Take the Revenue Leak Scorecard <span aria-hidden>→</span>
               </Link>
               <Link href="/assessment" className="btn btn-secondary">
-                Take the 17-Point Leak Assessment
+                Take the HVAC Cash Flow Leak Diagnostic
               </Link>
             </div>
           </div>
@@ -1156,7 +1156,7 @@ export default function AiForHvacCompanies() {
               Take the Revenue Leak Scorecard <span aria-hidden>→</span>
             </Link>
             <Link href="/assessment" className="btn btn-secondary">
-              Complete the 17-Point Operational Leak Assessment
+              Complete the HVAC Cash Flow Leak Diagnostic
             </Link>
           </div>
 
@@ -1173,7 +1173,7 @@ export default function AiForHvacCompanies() {
       <EndCta
         title="Find the leak before you shop for the tool."
         primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
-        secondary={{ label: "Take the 17-Point Leak Assessment", href: "/assessment" }}
+        secondary={{ label: "Take the HVAC Cash Flow Leak Diagnostic", href: "/assessment" }}
       />
     </>
   );

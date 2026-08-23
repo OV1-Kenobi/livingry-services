@@ -310,14 +310,14 @@ test("the triage CTA points at the existing lead-capture route", () => {
   const result = scoreAssessment(answersTotalling(34));
   const href = buildTriageHref(result);
   assert.ok(href.startsWith(`${TRIAGE_ROUTE}?`), `unexpected destination: ${href}`);
-  assert.equal(TRIAGE_ROUTE, "/system-review");
+  assert.equal(TRIAGE_ROUTE, "/leak-assessment");
 });
 
 test("the triage CTA carries score, band, and weakest layer", () => {
   const result = scoreAssessment(withOverrides(3, { 13: 0, 14: 0 }));
   const href = buildTriageHref(result);
   const url = new URL(href, "https://livingry.services");
-  assert.equal(url.pathname, "/system-review");
+  assert.equal(url.pathname, "/leak-assessment");
   assert.equal(url.searchParams.get("src"), "assessment");
   assert.equal(url.searchParams.get("score"), String(result.score));
   assert.equal(url.searchParams.get("band"), result.band!.id);

@@ -1,36 +1,40 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/lib/site";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
 import { IllustrativeImage } from "@/components/IllustrativeImage";
+import { canonicalPositioningLine } from "@/lib/revenue-leaks/content";
 
 export const metadata: Metadata = {
-  title: "Why Livingry",
+  title: "About — Livingry Services",
   description:
-    "Why Livingry Services builds AI-native systems in tools you control, with records you can carry forward — an independent practice grounded in field work and a livingry philosophy.",
+    "Livingry Services helps established HVAC/R companies work the calls, estimates, past customers, and referrals they already paid to create — while keeping people accountable for consequential decisions.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "Why Livingry",
+    title: "About — Livingry Services",
     description:
-      "Technology should leave a business more capable and in control. Why Livingry builds systems clients own — and keeps operating if the relationship ends.",
+      "An independent practice grounded in field work. Human-controlled systems, records clients own, and no client outcomes claimed before they are documented.",
     url: "/about",
     type: "website",
   },
 };
 
-export default function WhyLivingryAbout() {
+export default function AboutPage() {
   const crumbs = [
     { label: "Home", href: "/" },
-    { label: "Why Livingry", href: "/about" },
+    { label: "About", href: "/about" },
   ];
   return (
     <>
       <BreadcrumbLd items={crumbs} />
       <Breadcrumbs items={crumbs} />
       <PageHero
-        eyebrow="Why Livingry"
-        title="We do different things differently."
-        lede="Livingry Services is an independent practice. We build AI-native systems in tools you control, with records you can carry forward — the tooling we wish we had, and have built for ourselves."
+        eyebrow="About"
+        title="An independent practice built on field experience."
+        lede={canonicalPositioningLine}
+        primaryCta={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
+        secondaryCta={{ label: "Book My Leak Assessment", href: site.booking.url }}
       />
 
       <section className="section">
@@ -45,7 +49,7 @@ export default function WhyLivingryAbout() {
               It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses became the design requirements behind Livingry.
             </p>
             <p className="mt-6">
-              <a href="/proof" className="link" style={{ color: "var(--forest)" }}>Read the origin story on Proof &rarr;</a>
+              <a href="/evidence" className="link" style={{ color: "var(--forest)" }}>How this story is labelled as evidence &rarr;</a>
             </p>
             <figure className="diagram mt-8" style={{ maxWidth: "26rem" }}>
               <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--rule)" }}>
@@ -66,13 +70,13 @@ export default function WhyLivingryAbout() {
               Fuller drew a line between <em>weaponry</em> and <em>livingry</em>: technology directed toward human-life advantage rather than conflict, waste, and extraction. Livingry Services applies that principle at the level of a business — using modern tools, including AI, to help useful organizations respond faster, waste less, preserve hard-won knowledge, and keep responsibility in human hands.
             </p>
             <p className="mt-6">
-              <a href="/why-livingry" className="link" style={{ color: "var(--forest)" }}>Read the fuller thinking on the idea &rarr;</a>
+              <a href="/how-it-works#data-continuity" className="link" style={{ color: "var(--forest)" }}>See what Revenue &amp; Data Continuity means &rarr;</a>
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="control-heading">
+      <section className="section" style={{ background: "var(--paper-2)" }} id="ownership-and-handoff" aria-labelledby="control-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="rule-label">Systems you keep</div>
@@ -86,7 +90,7 @@ export default function WhyLivingryAbout() {
               The test is simple: if our relationship ended tomorrow, the workflow would keep running and nothing would switch off. Capability we add should stay with you.
             </p>
             <p className="mt-6">
-              <a href="/proof" className="link" style={{ color: "var(--forest)" }}>See the Client-Control Covenant &rarr;</a>
+              <a href="/how-it-works" className="link" style={{ color: "var(--forest)" }}>See how ownership is designed into the method &rarr;</a>
             </p>
           </div>
         </div>
@@ -136,8 +140,13 @@ export default function WhyLivingryAbout() {
             <div className="rule-label">Contact</div>
             <h2 className="serif">Talk to us.</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-              The fastest path to a real conversation is the Leak Assessment. If you would prefer email, we read everything that comes in.
+              The fastest path to a real conversation is the Leak Assessment — one suspected leak,
+              traced from its first trigger to the next broken handoff. If you would prefer email, we
+              read everything that comes in.
             </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/leak-assessment" className="btn btn-primary">Book My Leak Assessment <span aria-hidden>→</span></Link>
+            </div>
             <div className="mt-6 grid gap-2 text-[0.95rem]" style={{ color: "var(--ink)" }}>
               <div><span className="eyebrow mr-3">Email</span><a className="link" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></div>
               <div><span className="eyebrow mr-3">Based in</span>{site.location.city}, {site.location.region}, {site.location.country}</div>

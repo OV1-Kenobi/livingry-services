@@ -16,10 +16,12 @@ export const site = {
     phone: null as string | null,
   },
   // Primary CTA target — Google Calendar Appointment Schedule.
-  // Every "Find My Biggest Leak" / "Book a Leak Assessment" button ultimately points here.
+  // Every "Diagnose My Cash Flow Leaks" / "Book My Leak Assessment" button
+  // ultimately points here. ("Book My Leak Assessment" is forbidden as a menu
+  // label per founder Decision 10, 2026-08-22.)
   booking: {
     url: "https://calendar.app.google/4UfTY4vavUc7iQBT6",
-    label: "Book a Leak Assessment",
+    label: "Book My Leak Assessment",
     // Short reassurance shown under booking CTAs — deliberately neutral about length,
     // because the length lives on the Google booking page itself.
     reassurance: "Live conversation. No sales pressure. If we are not the right fit, we say so.",
@@ -41,11 +43,10 @@ export const site = {
       "An AI general contractor curates, integrates, and governs the AI tools across a business's operation the way a building general contractor hires and coordinates subcontractors — the owner never has to learn the trade themselves, and one party stays accountable for the result.",
   },
   method: [
-    { n: "01", name: "Find",   blurb: "Identify the leads, customers, knowledge, and trust already leaking away." },
-    { n: "02", name: "Trace",  blurb: "Map exactly where the customer journey, workflow, or information path breaks down." },
-    { n: "03", name: "Seal",   blurb: "Build the smallest useful system to close the highest-value gap." },
-    { n: "04", name: "Verify", blurb: "Test the workflow, content, handoff, or discovery improvement under real conditions." },
-    { n: "05", name: "Keep",   blurb: "Measure what is being retained and leave your team in control of the system." },
+    { n: "01", name: "Find",   blurb: "Identify the handoff most worth examining." },
+    { n: "02", name: "Trace",  blurb: "Follow the opportunity and its information from trigger to next action." },
+    { n: "03", name: "Seal",   blurb: "Design the smallest useful human-controlled layer around the break." },
+    { n: "04", name: "Verify", blurb: "Review what was captured, prepared, approved, completed, and recorded." },
   ],
   systemFamilies: [
     {

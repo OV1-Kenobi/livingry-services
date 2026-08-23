@@ -1,4 +1,4 @@
-// The public 17-Point Operational Leak Assessment.
+// The public HVAC Cash Flow Leak Diagnostic.
 //
 // This is the visitor-facing self-scoring form. It is deliberately a reduced
 // surface of the practitioner document: one plain question and one evidence

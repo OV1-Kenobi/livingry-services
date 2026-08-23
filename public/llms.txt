@@ -75,7 +75,7 @@ Livingry Habitats helps landowners explore what their land could responsibly bec
 - Name origin: Buckminster Fuller's distinction between "weaponry" and "livingry" — technology directed toward human-life advantage rather than extraction.
 - Founder background: hands-on trades and field work (permaculture design, solar, HVAC), then building AI agents, Bitcoin-native payment infrastructure, and legal-tech systems.
 - Flagship offer: a free System Review — a structured first conversation identifying the highest-value leak, the smallest practical fix, and the evidence that would confirm it is closing. The written review is delivered whether or not an engagement follows.
-- Self-scoring tool: a public 17-point Leak Assessment at /assessment. Roughly 10 minutes, no email required.
+- Self-scoring tool: the HVAC Cash Flow Leak Diagnostic (17-point self-assessment) at /assessment. No email required.
 - Human accountability boundary: AI drafts, routes, summarizes, and prepares; humans commit anything a customer, client, or patient will read as a promise.
 - Client control: systems are built in tools the client owns. If the relationship ends, the workflows keep running.
 - Published case studies: none yet. The Founding Five HVAC program is the source of the first verified results, and no client outcomes are claimed until that evidence exists.
@@ -87,10 +87,10 @@ Livingry Habitats helps landowners explore what their land could responsibly bec
 - [Habitats](https://livingry.services/habitats): regenerative development systems for landowners, Central Texas focus.
 - [Land Potential Review](https://livingry.services/habitats/land-potential-review): explore what your land could responsibly become.
 - [Request a Land Review](https://livingry.services/land-review): submit a Land Potential Review request.
-- [How It Works](https://livingry.services/how-it-works): the Livingry Leakproofing Framework — Find, Trace, Seal, Verify, Keep.
-- [What We Build](https://livingry.services/what-we-build): redirects to /operations (the eight system families).
-- [17-Point Leak Assessment](https://livingry.services/assessment): free self-scoring assessment, ~10 minutes, no email required.
-- [System Review](https://livingry.services/system-review): request the free first review.
+- [How It Works](https://livingry.services/how-it-works): the method — Find, Trace, Seal, Verify.
+- [Revenue Leaks](https://livingry.services/revenue-leaks): the four cash-flow leaks and their landing pages.
+- [Services & Pricing](https://livingry.services/services-and-pricing): the three standard choices with published prices.
+- [HVAC Cash Flow Leak Diagnostic](https://livingry.services/assessment): free 17-point self-assessment, no email required.
 - [Industries](https://livingry.services/industries): who we work with today and next.
 - [Insights](https://livingry.services/insights): the published field guides plus the editorial roadmap of the remaining six.
 - [AI for HVAC Companies: A Practical Field Guide](https://livingry.services/insights/ai-for-hvac-companies): published 2026-07-25. Where AI helps an HVAC operation, what is still hype, how to set the autonomy ceiling, the 17 questions to ask any vendor, and a controlled 90-day pilot. Tool-agnostic and cited to primary sources.

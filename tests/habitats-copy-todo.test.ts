@@ -31,11 +31,13 @@ test("no fabricated Habitat prose — all body slots contain TODO(michael)", () 
     `Expected ${expectedLandReviewTodos} TODO(michael) markers in habitats/land-potential-review/page.tsx, found ${landReviewTodoCount}`,
   );
 
-  // Total: 19 (habitats page) + 11 (land-potential-review) + 2 (land-review form) = 32
+  // Total: 19 (habitats page) + 11 (land-potential-review) = 30
+  // (the /land-review form page was removed from the public build per
+  // Decision 5 quarantine, 2026-08-23; its 2 markers left the registry with it)
   assert.equal(
     totalHabitatsTodos,
-    32,
-    "Registry should track 32 total TODO markers across Habitat pages",
+    30,
+    "Registry should track 30 total TODO markers across Habitat pages",
   );
 });
 
@@ -70,7 +72,6 @@ test("Habitats pages contain no AI-fabricated prose about services", () => {
 test("Professional boundary banner is present on all Habitat pages", () => {
   const habitatsPage = readFileSync("src/app/habitats/page.tsx", "utf8");
   const landReviewPage = readFileSync("src/app/habitats/land-potential-review/page.tsx", "utf8");
-  const landReviewFormPage = readFileSync("src/app/land-review/page.tsx", "utf8");
 
   const bannerText = "surveying, environmental work, permitting, and construction";
 
@@ -81,10 +82,6 @@ test("Professional boundary banner is present on all Habitat pages", () => {
   assert.ok(
     landReviewPage.includes(bannerText),
     "Land Potential Review page must include professional boundary banner",
-  );
-  assert.ok(
-    landReviewFormPage.includes(bannerText),
-    "Land Review form page must include professional boundary banner",
   );
 });
 

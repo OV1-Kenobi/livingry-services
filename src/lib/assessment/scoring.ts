@@ -1,4 +1,4 @@
-// Pure scoring for the public 17-Point Operational Leak Assessment.
+// Pure scoring for the public HVAC Cash Flow Leak Diagnostic.
 //
 // No React, no DOM, no I/O — the form renders whatever this returns, and the
 // unit tests exercise it directly.
@@ -167,8 +167,12 @@ export interface TriageContext {
   category: AssessmentCategory | null;
 }
 
-/** The existing qualified-lead path. The assessment does not invent its own. */
-export const TRIAGE_ROUTE = "/system-review";
+/**
+ * The validation path for a completed diagnostic. /system-review was removed
+ * with the dashboard/Ops quarantine (founder Decisions 5 and 28); the Leak
+ * Assessment page now carries the validate-with-Michael conversation.
+ */
+export const TRIAGE_ROUTE = "/leak-assessment";
 const TRIAGE_HASH = "in-advance";
 
 /**

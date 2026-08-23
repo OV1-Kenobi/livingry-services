@@ -5,23 +5,23 @@ import { CHOICES, MAX_SCORE, TOTAL_CONTROLS, BANDS } from "@/lib/assessment/cont
 import { AssessmentForm } from "./AssessmentForm";
 
 const DESCRIPTION =
-  "Score your operation across 17 controls in seven layers, from first inquiry to referral. See where earned work escapes — and the first leak worth sealing.";
+  "Score 17 controls across seven layers — missed calls, estimates, past customers, referrals, reviews, and testimonials. Directional findings, not a forecast.";
 
 export const metadata: Metadata = {
   // Absolute so the root layout's "%s — Livingry Services" template does not
   // append the brand a second time.
-  title: { absolute: "17-Point Operational Leak Assessment | Livingry Services" },
+  title: { absolute: "HVAC Cash Flow Leak Diagnostic | Livingry Services" },
   description: DESCRIPTION,
   alternates: { canonical: "/assessment" },
   openGraph: {
-    title: "17-Point Operational Leak Assessment",
+    title: "HVAC Cash Flow Leak Diagnostic",
     description: DESCRIPTION,
     url: "/assessment",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "17-Point Operational Leak Assessment",
+    title: "HVAC Cash Flow Leak Diagnostic",
     description: DESCRIPTION,
   },
 };
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function AssessmentPage() {
   const crumbs = [
     { label: "Home", href: "/" },
-    { label: "17-Point Leak Assessment", href: "/assessment" },
+    { label: "HVAC Cash Flow Leak Diagnostic", href: "/assessment" },
   ];
 
   return (
@@ -42,9 +42,9 @@ export default function AssessmentPage() {
       <div className="asm-page">
         <div className="asm-noprint">
           <PageHero
-            eyebrow={`Self-assessment · ${TOTAL_CONTROLS} controls · About 10 minutes`}
+            eyebrow={`Self-assessment · ${TOTAL_CONTROLS} controls`}
             title="Your business may not need more leads. It may need fewer leaks."
-            lede="This traces what happens to an opportunity after it reaches you — intake, ownership, handoffs, scheduling, field readiness, estimate follow-up, payment, reviews, and referrals. Score each control honestly and you leave with a directional read on where value is escaping and which leak is worth sealing first."
+            lede="This traces four handoffs — missed calls, dropped estimates, past customers, and lost referrals, reviews, and testimonials. Score each control honestly and you leave with a directional read on where value is escaping and which leak is worth sealing first. Results are directional by design: a range, not a forecast."
           />
         </div>
 
@@ -61,9 +61,16 @@ export default function AssessmentPage() {
                 as the honesty behind it, so do not award a 3 without being able to point at the
                 record, timestamp, report, or live workflow that proves it.
               </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                Ranges are acceptable here. You are scoring your belief about each control, and a
+                control that feels sealed and a control that is sealed are frequently different
+                controls — the point is the direction, and what to check first.
+              </p>
               <p className="mt-4 text-[0.9rem]" style={{ color: "var(--ink-3)" }}>
-                Nothing you enter is stored or transmitted. Your answers stay in this browser tab
-                and disappear when you close it.
+                How your answers are used: they are added up in this browser tab to rank the layers
+                and name the weakest handoff. Nothing you enter is stored or transmitted, and your
+                answers disappear when you close the tab. The result is a directional read — not a
+                revenue forecast or promise.
               </p>
             </div>
             <div className="lg:col-span-7">

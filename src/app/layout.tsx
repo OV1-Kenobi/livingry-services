@@ -43,18 +43,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   authors: [{ name: site.name }],
   keywords: [
-    "AI general contracting",
-    "AI general contractor",
-    "AI implementation",
-    "revenue recovery",
-    "customer continuity",
-    "AI Growth Systems",
-    "HVAC AI",
-    "roofing AI",
-    "agent discovery",
-    "AI SEO",
-    "AI life-support systems",
-    "livingry",
+    "revenue clarity and capture",
+    "revenue leak diagnostic",
+    "HVAC cash flow leaks",
+    "missed calls HVAC",
+    "estimate follow-up",
+    "past customer reactivation",
+    "HVAC referral automation",
+    "HVAC/R operations",
+    "human-controlled AI",
+    "revenue and data continuity",
   ],
 };
 
@@ -86,30 +84,54 @@ export default function RootLayout({
     sameAs: [site.social.github].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Livingry system families",
-      itemListElement: site.systemFamilies.map((s) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: s.title,
-          serviceType: s.family,
-          description: s.improves,
-          url: `${site.primaryDomain}/systems/${s.slug}`,
+      name: "Standard service choices",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          price: "649",
+          priceCurrency: "USD",
+          itemOffered: {
+            "@type": "Service",
+            name: "Do It Yourself (DIY)",
+            description:
+              "Assessment, curation plan, company-branded Livingry Ops web app, agentic-search plan, Lead Readiness and Local Demand Intelligence package, and setup guidance. The client's team implements.",
+            url: `${site.primaryDomain}/services-and-pricing`,
+          },
         },
-      })),
+        {
+          "@type": "Offer",
+          price: "2500",
+          priceCurrency: "USD",
+          itemOffered: {
+            "@type": "Service",
+            name: "Done With You (DWY)",
+            description:
+              "Everything in DIY, two standard leak systems, a trained Company Operating System Agent on the client's own infrastructure, implementation coordination, live owner exit-testing, and post-delivery support.",
+            url: `${site.primaryDomain}/services-and-pricing`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Done For You (DFY)",
+            description:
+              "Active management of approved systems after the Done With You baseline is established, with published reference pricing and performance-triggered billing mechanics.",
+            url: `${site.primaryDomain}/services-and-pricing`,
+          },
+        },
+      ],
     },
     knowsAbout: [
-      "AI general contracting",
-      "AI implementation",
-      "AI Growth Systems",
-      "Revenue recovery",
-      "Customer continuity",
-      "Agent discovery",
-      "AI SEO",
-      "HVAC operations",
-      "Roofing operations",
-      "Professional services intake",
-      "Buckminster Fuller livingry",
+      "Revenue & Data Continuity",
+      "Revenue Clarity & Capture",
+      "Missed calls and slow response",
+      "Estimate follow-up",
+      "Past-customer reactivation",
+      "Referrals, reviews, and testimonials",
+      "Human-controlled AI systems",
+      "HVAC/R operations",
+      "Win/Win/Win service philosophy",
     ],
   };
   const websiteLd = {

@@ -1,56 +1,60 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { site } from "@/lib/site";
+import { canonicalPositioningLine } from "@/lib/revenue-leaks/content";
 
+// Footer per the 2026-08-11 plan §13: Start Here, Explore, Trust, Legal.
+// No client access, app login, public demo, vendor list, or experimental
+// project links. Trust items resolve to the sections that actually explain
+// each concept.
 export function Footer() {
   return (
     <footer style={{ background: "var(--ink)", color: "var(--paper)" }}>
       <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 4.5rem)" }}>
-        <div className="grid gap-10 lg:grid-cols-4">
+        <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2 max-w-md">
             <div style={{ color: "var(--paper)" }}>
               <Logo />
             </div>
-            <p className="serif mt-5" style={{ color: "var(--paper)", fontSize: "1.35rem", lineHeight: 1.3, opacity: 0.92 }}>
-              Systems that stop already-earned value from leaking away.
+            <p className="serif mt-5" style={{ color: "var(--paper)", fontSize: "1.2rem", lineHeight: 1.35, opacity: 0.92 }}>
+              {canonicalPositioningLine}
             </p>
             <p className="mt-4" style={{ color: "var(--paper)", opacity: 0.82, fontSize: "1rem" }}>
-              An independent practice. Human-controlled. Measurable. Built around the people and systems you already have.
+              An independent practice focused on Revenue Clarity &amp; Capture for established HVAC/R
+              companies. Not lead generation, not a customer relationship management system, and not
+              autonomous customer service — people stay accountable for consequential decisions.
             </p>
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: "var(--seal)" }}>Systems</div>
+            <div className="eyebrow" style={{ color: "var(--seal)" }}>Start Here</div>
             <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
-              {site.systemFamilies.map((s) => (
-                <li key={s.slug}>
-                  <Link href={`/systems/${s.slug}`}>{s.title}</Link>
-                </li>
-              ))}
+              <li><Link href="/assessment">Diagnose My Cash Flow Leaks</Link></li>
+              <li><Link href="/how-it-works">How It Works</Link></li>
+              <li><Link href="/services-and-pricing">Services &amp; Pricing</Link></li>
+              <li><Link href={site.booking.url}>Book My Leak Assessment</Link></li>
             </ul>
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: "var(--seal)" }}>Industries</div>
+            <div className="eyebrow" style={{ color: "var(--seal)" }}>Explore</div>
             <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
-              {site.industries.map((i) => (
-                <li key={i.slug}>
-                  <Link href={`/industries/${i.slug}`}>{i.title}</Link>
-                </li>
-              ))}
-            </ul>
-            <div className="eyebrow mt-8" style={{ color: "var(--seal)" }}>Company</div>
-            <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
-              <li><Link href="/how-it-works">How It Works</Link></li>
-              <li><Link href="/assessment">17-Point Leak Assessment</Link></li>
-              <li><Link href="/about">Why Livingry</Link></li>
-              <li><Link href="/proof">Proof</Link></li>
-              <li><Link href="/why-livingry">The Livingry Idea</Link></li>
+              <li><Link href="/revenue-leaks">Revenue Leaks</Link></li>
+              <li><Link href="/evidence">Evidence</Link></li>
+              <li><Link href="/about">About</Link></li>
               <li><Link href="/insights">Insights</Link></li>
-              <li><Link href="/faq">FAQ</Link></li>
-              <li><Link href="/agents">For AI Agents</Link></li>
-              <li><Link href="/system-review">System Review</Link></li>
-              <li><Link href="/hvac/founding-five">Founding Five</Link></li>
+              <li><Link href="/faq">Frequently Asked Questions</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="eyebrow" style={{ color: "var(--seal)" }}>Trust</div>
+            <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
+              <li><Link href="/#human-approval">Human Approval</Link></li>
+              <li><Link href="/#winwinwin">Win/Win/Win</Link></li>
+              <li><Link href="/about#ownership-and-handoff">Ownership and Handoff</Link></li>
+              <li><Link href="/how-it-works#data-continuity">Data Continuity</Link></li>
+              <li><a href={`mailto:${site.contact.email}`}>Contact</a></li>
             </ul>
           </div>
         </div>
@@ -59,7 +63,7 @@ export function Footer() {
         <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[0.9rem]" style={{ color: "var(--paper)", opacity: 0.78 }}>
           <div>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</div>
           <div className="flex gap-5">
-            <Link href="/privacy">Privacy</Link>
+            <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms</Link>
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
           </div>

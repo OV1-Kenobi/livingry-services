@@ -24,9 +24,9 @@ test.describe("homepage — AI general contracting", () => {
     ).toBeVisible();
 
     const hero = page.locator("section").first();
-    await expect(hero.getByRole("link", { name: /System Review/i }).first()).toHaveAttribute(
+    await expect(hero.getByRole("link", { name: /Diagnose My Cash Flow Leaks/i }).first()).toHaveAttribute(
       "href",
-      "/system-review",
+      "/leak-assessment",
     );
     await expect(hero.getByRole("link", { name: /Assessment/i }).first()).toHaveAttribute(
       "href",
@@ -131,7 +131,7 @@ test.describe("insights hub", () => {
   test("carries both conversion CTAs and valid CollectionPage schema", async ({ page }) => {
     await page.goto("/insights", { waitUntil: "networkidle" });
 
-    await expect(page.locator('main a[href="/system-review"]').first()).toBeVisible();
+    await expect(page.locator('main a[href="/leak-assessment"]').first()).toBeVisible();
     await expect(page.locator('main a[href="/assessment"]').first()).toBeVisible();
 
     const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
@@ -173,7 +173,7 @@ test("llms files and robots are served as public plain text", async ({ page }) =
   expect(robots).not.toMatch(/User-Agent: \*\s*\nDisallow: \/\s*$/im);
 
   const sitemap = await (await page.request.get("/sitemap.xml")).text();
-  for (const route of ["/insights", "/assessment", "/system-review"]) {
+  for (const route of ["/insights", "/assessment", "/leak-assessment"]) {
     expect(sitemap, `sitemap lists ${route}`).toContain(`${route}<`);
   }
 });

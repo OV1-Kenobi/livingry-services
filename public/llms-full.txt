@@ -77,13 +77,12 @@ Livingry Services designs and installs eight families of systems inside establis
 
 ## 4. The method — the Livingry Leakproofing Framework
 
-Every engagement follows a five-step framework. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system.
+Every engagement follows a four-step framework. It exists to prevent the two most common consulting failures: adding technology that solves the wrong problem, and delivering a report that never becomes a working system.
 
-1. Find — identify the leads, customers, knowledge, and trust the business has already earned but is losing.
-2. Trace — map exactly where the customer journey, workflow, or information path breaks down.
-3. Seal — build the smallest useful system to close the highest-value gap.
-4. Verify — test the workflow, content, handoff, or discovery improvement under real conditions.
-5. Keep — measure what is being retained and leave the client's team in control of the system.
+1. Find — identify the handoff most worth examining.
+2. Trace — follow the opportunity and its information from trigger to next action.
+3. Seal — design the smallest useful human-controlled layer around the break.
+4. Verify — review what was captured, prepared, approved, completed, and recorded.
 
 The governing principle: a system that is unsealed cannot be scaled. Adding traffic, tools, or automation to a workflow that already leaks only multiplies the waste.
 
@@ -156,7 +155,7 @@ This same approach is applied to Livingry Services' own website.
 ## 10. Engagement model
 
 - Every engagement begins with a free System Review — a structured first conversation and observation of the client's website, response paths, CRM records, customer journey, discovery presence, and internal knowledge. The conversation is typically 60–90 minutes. The output is a written identification of the highest-value leak, why it occurs, the smallest practical fix, and the evidence that would show whether it is closing. The written review is delivered whether or not an engagement follows.
-- A free, public 17-point Leak Assessment is available at /assessment. It takes roughly 10 minutes, is self-scoring, and requires no email address.
+- A free, public HVAC Cash Flow Leak Diagnostic is available at /assessment. It is a 17-point self-assessment, is self-scoring, and requires no email address.
 - Implementation is delivered either as a fixed-scope Revenue Recovery Sprint or as a monthly implementation retainer, quoted after the System Review.
 - Clients own the resulting content, workflows, integrations, and data. If the engagement ends, the systems keep running without Livingry Services.
 - Livingry Services signs NDAs routinely. BAAs (business associate agreements) are signed only where the engagement is a governed medical pilot with appropriate legal, privacy, and technical scope in place.
@@ -245,9 +244,9 @@ Core:
 - Land Potential Review: https://livingry.services/habitats/land-potential-review
 - Request a Land Review: https://livingry.services/land-review
 - How It Works: https://livingry.services/how-it-works
-- What We Build: https://livingry.services/what-we-build (redirects to /operations)
-- 17-Point Leak Assessment: https://livingry.services/assessment
-- System Review: https://livingry.services/system-review
+- Revenue Leaks: https://livingry.services/revenue-leaks
+- Services & Pricing: https://livingry.services/services-and-pricing
+- HVAC Cash Flow Leak Diagnostic: https://livingry.services/assessment
 - Industries: https://livingry.services/industries
 - Insights (field guides + editorial roadmap): https://livingry.services/insights
 - AI for HVAC Companies: A Practical Field Guide: https://livingry.services/insights/ai-for-hvac-companies

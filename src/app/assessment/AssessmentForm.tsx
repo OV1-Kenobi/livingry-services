@@ -95,7 +95,7 @@ export function AssessmentForm() {
 
       <form
         className="asm-form asm-noprint"
-        aria-label="17-point operational leak assessment"
+        aria-label="HVAC cash flow leak diagnostic"
         onSubmit={(e) => {
           e.preventDefault();
           handleReveal();
@@ -360,15 +360,16 @@ export function AssessmentForm() {
               </div>
             </div>
 
-            {/* Result-specific CTA into the existing lead-capture path. */}
+            {/* Result-specific CTAs per plan §9: validate the leak with Michael,
+                or continue due diligence with published pricing. */}
             <div className="asm-cta">
               <div className="eyebrow">Next step</div>
               <h3 className="serif asm-cta-title">
-                Free 15-minute Leak Triage
+                Validate This Leak With Michael
               </h3>
               <p className="asm-cta-lede">
-                Fifteen minutes, five questions, against the layer your own answers scored lowest
-                — {result.lowestCategory?.title.toLowerCase()}. The triage decides one thing:
+                A focused review of the layer your own answers scored lowest —{" "}
+                {result.lowestCategory?.title.toLowerCase()}. It decides one thing:
                 whether earned opportunities are escaping from the systems you already run.
               </p>
               <ul className="asm-cta-points">
@@ -380,10 +381,13 @@ export function AssessmentForm() {
               </ul>
               <div className="asm-cta-actions">
                 <Link href={triageHref} className="btn btn-primary" data-analytics="assessment-triage">
-                  Book the 15-minute Leak Triage
+                  Validate This Leak With Michael
                   <span aria-hidden>→</span>
                 </Link>
-                <button type="button" className="btn btn-secondary" onClick={() => window.print()}>
+                <Link href="/services-and-pricing" className="btn btn-secondary" data-analytics="assessment-pricing">
+                  Compare Services &amp; Pricing
+                </Link>
+                <button type="button" className="btn btn-ghost" onClick={() => window.print()}>
                   Print or save this result
                 </button>
                 <button type="button" className="btn btn-ghost" onClick={handleReset}>
@@ -391,8 +395,8 @@ export function AssessmentForm() {
                 </button>
               </div>
               <p className="asm-cta-note">
-                Your score, band, and weakest layer travel with that link so the call starts from
-                your answers. Nothing has been sent anywhere yet — {site.booking.reassurance}
+                Your score, band, and weakest layer travel with the validation link so the call starts
+                from your answers. Nothing has been sent anywhere yet — {site.booking.reassurance}
               </p>
             </div>
           </div>

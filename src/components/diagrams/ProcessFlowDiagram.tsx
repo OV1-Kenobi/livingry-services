@@ -1,6 +1,6 @@
 import { site } from "@/lib/site";
 
-// Deterministic Find → Trace → Seal → Verify → Keep process flow. One artifact
+// Deterministic Find → Trace → Seal → Verify process flow. One artifact
 // and one decision/result cue per stage. Horizontal on desktop, stacks
 // vertically on mobile. Driven by the canonical site.method so labels never
 // drift from the rest of the site.
@@ -30,13 +30,8 @@ const DETAIL: Record<string, { artifact: React.ReactNode; label: string; cue: st
   },
   "04": {
     artifact: <><path d="M20 7 10 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></>,
-    label: "Live test",
-    cue: "Confirm: is the leak closing?",
-  },
-  "05": {
-    artifact: <><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4Z" strokeLinejoin="round" /></>,
-    label: "Documented handover",
-    cue: "Result: your team stays in control",
+    label: "Verified record",
+    cue: "Confirm: captured, approved, completed, recorded",
   },
 };
 
@@ -69,7 +64,7 @@ export function ProcessFlowDiagram({ className }: { className?: string }) {
         })}
       </div>
       <figcaption>
-        The same five steps run on every engagement. Each stage produces one concrete artifact and
+        The same four steps run on every engagement. Each stage produces one concrete artifact and
         answers one decision before the next begins.
       </figcaption>
     </figure>

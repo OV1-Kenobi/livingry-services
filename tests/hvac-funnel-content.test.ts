@@ -1,8 +1,5 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { dirname, resolve } from "node:path";
 import * as content from "../src/lib/hvac-funnel/content";
 import { findProhibitedClaims } from "../src/lib/hvac-founding-five/content";
 import {
@@ -29,12 +26,11 @@ import {
   buildHvacFunnelBreadcrumbLd,
 } from "../src/lib/hvac-funnel/content";
 
-const here = dirname(fileURLToPath(import.meta.url));
-const root = resolve(here, "..");
-const pageSource = readFileSync(
-  resolve(root, "src/app/industries/hvac/page.tsx"),
-  "utf8",
-);
+// NOTE (2026-08-23): The /industries/hvac funnel page was removed from the
+// public build (Decision 28; Industries hidden). The hvac-funnel CONTENT MODULE
+// is retained as dormant machinery per Decision 4 (scorecard stays in code,
+// hidden). These tests therefore cover the module's copy contracts only — all
+// page-render integration assertions against the deleted page.tsx were removed.
 
 // Recursively collect every string value exported by the content module.
 function collectStrings(v: unknown, out: string[]): void {
@@ -75,38 +71,12 @@ for (const s of negatedCopy) claimBlob = claimBlob.split(s).join("");
 
 // --- Acceptance criteria from the ticket ------------------------------------
 
-test("route is the canonical /industries/hvac", () => {
-  assert.equal(HVAC_FUNNEL_ROUTE, "/industries/hvac");
-});
-
-test("the page uses the Hook -> Story -> Mechanism -> Offer sequence", () => {
-  // The page must render the four sections in order: hero, founder story,
-  // four leaks, then offer. We assert by the heading ids in source order.
-  const heroIdx = pageSource.indexOf('id="hvac-hero-heading"');
-  const founderIdx = pageSource.indexOf('id="hvac-founder-heading"');
-  const leaksIdx = pageSource.indexOf('id="hvac-leaks-heading"');
-  const offerIdx = pageSource.indexOf('id="hvac-offer-heading"');
-  assert.ok(heroIdx > -1 && founderIdx > -1 && leaksIdx > -1 && offerIdx > -1);
-  assert.ok(heroIdx < founderIdx, "hero before founder story");
-  assert.ok(founderIdx < leaksIdx, "founder story before four leaks");
-  assert.ok(leaksIdx < offerIdx, "four leaks before offer");
+test("route points at the hidden Founding Five path", () => {
+  assert.equal(HVAC_FUNNEL_ROUTE, "/hvac/founding-five");
 });
 
 test("the H1 is the exact ticket headline", () => {
   assert.equal(hero.headline, "You may not need more leads. You may need fewer leaks.");
-  // The page renders the headline via the content constant, so the verbatim
-  // string lives in the content module and is referenced by JSX in the page.
-  assert.ok(pageSource.includes("hero.headline"), "H1 headline is rendered from the content constant");
-});
-
-test("Michael's founder story appears immediately after the hero", () => {
-  // After the hero section closes, the next section is the founder story.
-  const heroSectionEnd = pageSource.indexOf('id="hvac-hero-heading"');
-  const founderSectionStart = pageSource.indexOf('id="hvac-founder-heading"');
-  assert.ok(heroSectionEnd > -1 && founderSectionStart > -1);
-  // No other top-level section heading appears between them.
-  const between = pageSource.slice(heroSectionEnd, founderSectionStart);
-  assert.doesNotMatch(between, /<h2[^>]*id="(hvac-leaks|hvac-control|hvac-offer|hvac-deliverables)/);
 });
 
 test("the three foundations plus the first upgrade are the mechanism above the offer", () => {
@@ -120,19 +90,12 @@ test("the three foundations plus the first upgrade are the mechanism above the o
   ]);
   assert.match(fourLeaks.framing, /one Revenue Continuity System/i);
   assert.match(fourLeaks.categoryLine, /not lead generation/i);
-  // The leaks section appears before the offer section.
-  assert.ok(
-    pageSource.indexOf('id="hvac-leaks-heading"') < pageSource.indexOf('id="hvac-offer-heading"'),
-  );
 });
 
 test("the Founding Five pilot is presented at the always-visible $2,500 all-in price", () => {
   assert.equal(offer.price, "$2,500 all-in");
   assert.match(offer.offerName, /Founding Five Tier 2 Pilot/);
   assert.match(offer.offerDescription, /all-in pilot for five HVAC\/R companies/);
-  // The page renders price and offer name via the content constants.
-  assert.ok(pageSource.includes("offer.price"), "$2,500 price is rendered from the content constant");
-  assert.ok(pageSource.includes("offer.offerName"), "offer name is rendered from the content constant");
 });
 
 test("pilot deliverables include both pilot foundations by their operating names", () => {
@@ -186,8 +149,6 @@ test("the page retains human-approval and existing-stack compatibility language"
   assert.match(humanControl.humanControlLine, /human approval/i);
   assert.match(humanControl.rooftopLine, /human from the loop/i);
   assert.match(humanControl.ideas.join(" "), /existing CRM/i);
-  // The page renders the rooftop line via the content constant.
-  assert.ok(pageSource.includes("humanControl.rooftopLine"), "rooftop line is rendered from the content constant");
   // Trust strip preserves human-approval language.
   assert.ok(hero.trustStrip.some((t) => /human approval/i.test(t)));
 });
@@ -220,18 +181,6 @@ test("no fabricated proof, false urgency, or unsupported results claims appear",
 
 test("all primary CTAs route into the Founding Five scorecard flow", () => {
   assert.equal(BLUEPRINT_APPLY_HREF, "/hvac/founding-five#scorecard");
-  // Every primary CTA on the page points to the scorecard flow via the shared
-  // BLUEPRINT_APPLY_HREF constant. Count the Link occurrences referencing it
-  // (excluding the import line).
-  const usages = pageSource.split("href={BLUEPRINT_APPLY_HREF}").length - 1;
-  assert.ok(usages >= 3, `expected at least 3 primary CTAs, found ${usages}`);
-  // The hero primary CTA, the offer primary CTA, and the final CTA all use it.
-  assert.ok(
-    pageSource.includes("href={BLUEPRINT_APPLY_HREF}"),
-    "primary CTAs use the shared scorecard href constant",
-  );
-  // The hero secondary CTA scrolls to the Founding Five path section (anchor link).
-  assert.ok(pageSource.includes('href="#pilot-path"'));
 });
 
 test("how it works is the 5-step scorecard-to-ledger path in the exact order", () => {
@@ -313,12 +262,7 @@ test("structured data is accurate and uses safe schema types", () => {
   const crumbs = buildHvacFunnelBreadcrumbLd();
   assert.equal(crumbs["@type"], "BreadcrumbList");
   const last = crumbs.itemListElement[crumbs.itemListElement.length - 1];
-  assert.match(String(last.item), /\/industries\/hvac$/);
-});
-
-test("the page is a server component (no 'use client')", () => {
-  assert.doesNotMatch(pageSource, /^["']use client["']/m);
-  assert.ok(pageSource.includes('id="hvac-hero-heading"'), "hero heading is rendered");
+  assert.match(String(last.item), /\/hvac\/founding-five$/);
 });
 
 test("no trademark clutter or fabricated case-study names in the funnel copy", () => {

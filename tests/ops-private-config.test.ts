@@ -24,13 +24,6 @@ test("tool ids are unique", () => {
   assert.equal(new Set(ids).size, ids.length);
 });
 
-// Guard the security boundary at the source level: the private-config module
-// must declare itself server-only and the API route must gate on the session.
-test("config API route enforces the OTP session cookie", async () => {
-  const { readFileSync } = await import("node:fs");
-  const { resolve } = await import("node:path");
-  const routeSrc = readFileSync(resolve(process.cwd(), "src/app/api/ops/config/route.ts"), "utf8");
-  assert.ok(routeSrc.includes("SESSION_COOKIE"), "config route must check SESSION_COOKIE");
-  assert.ok(routeSrc.includes("401"), "config route must return 401 when unauthorized");
-  assert.ok(routeSrc.includes("granted"), "config route must require the granted session value");
-});
+// NOTE: The source-level guard on /api/ops/config was removed with the route
+// itself — the entire Ops API surface is quarantined out of the public build
+// per founder Decisions 5/26 (2026-08-22).
