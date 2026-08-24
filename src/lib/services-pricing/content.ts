@@ -89,7 +89,7 @@ export const dfyFoundingFive = {
 export const dfyMechanics = [
   "Collected revenue is tracked weekly against the Done With You baseline.",
   "Supporting indicators explain why revenue moved but do not trigger billing.",
-  "The current trigger is 10 times collected revenue relative to baseline. This is an offer mechanic, not a result promise, benchmark, or guarantee.",
+  "The current trigger is 10 times collected revenue relative to baseline, measured cumulatively since deployment — the total collected revenue across the four leak categories since go-live. This is an offer mechanic, not a result promise, benchmark, or guarantee.",
   "At the week-four assessment: if the threshold is met, the final payment and weekly fees are billed retroactively and the 52-week exclusivity period begins. If the threshold is not met and both parties extend, work continues unbilled under the same terms. If the threshold is not met and there is no extension, the engagement ends at the initial payment with no further obligation.",
 ] as const;
 
