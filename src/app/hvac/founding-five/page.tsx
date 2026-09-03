@@ -133,20 +133,15 @@ export default function FoundingFivePage() {
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="ff-offer-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="rule-label">02 · The pilot</div>
+            <div className="rule-label">02 · The offer</div>
             <h2 id="ff-offer-heading" className="serif">{offer.heading}</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>{offer.intro}</p>
-            <div className="mt-6 card" style={{ background: "var(--paper)", borderLeft: "3px solid var(--forest)" }}>
-              <p style={{ color: "var(--ink)", lineHeight: 1.7 }}>{offer.includedPriceNote}</p>
-            </div>
-            <p className="mt-4" style={{ color: "var(--ink-3)" }}>{offer.reactivationUpgrade}</p>
-            <p className="mt-4" style={{ color: "var(--ink-3)" }}>{offer.closer}</p>
           </div>
           <ol className="lg:col-span-7 grid gap-0">
-            {offer.foundations.map((w, i) => (
-              <li key={i} className="py-4 flex items-baseline gap-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
-                <span className="mono text-[0.72rem]" style={{ color: "var(--forest)", width: "2rem" }}>{String(i + 1).padStart(2, "0")}</span>
-                <span style={{ color: "var(--ink)" }}>{w}</span>
+            {offer.steps.map((s, i) => (
+              <li key={i} className="py-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
+                <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{s.title}</h3>
+                <p className="mt-2" style={{ color: "var(--ink-2)" }}>{s.body}</p>
               </li>
             ))}
             <li style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
@@ -364,11 +359,26 @@ export default function FoundingFivePage() {
           <div className="mt-5 card" style={{ background: "var(--paper)", borderLeft: "3px solid var(--copper)" }}>
             <div className="mono" style={{ color: "var(--copper)", fontSize: "1.4rem" }}>{pricing.pilotPrice}</div>
             <p className="mt-3" style={{ color: "var(--ink-2)", lineHeight: 1.7 }}>{pricing.body}</p>
+            <table className="mt-5" style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.95rem" }}>
+              <thead>
+                <tr>
+                  <th scope="col" style={{ textAlign: "left", padding: "0.5rem 0.75rem 0.5rem 0", color: "var(--ink-3)", fontWeight: 500 }}></th>
+                  <th scope="col" style={{ textAlign: "left", padding: "0.5rem 0.75rem", color: "var(--ink)", fontWeight: 600 }}>Founding Five</th>
+                  <th scope="col" style={{ textAlign: "left", padding: "0.5rem 0", color: "var(--ink-2)", fontWeight: 500 }}>Standard DFY</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricing.pricingTable.map((row) => (
+                  <tr key={row.label} style={{ borderTop: "1px solid var(--rule)" }}>
+                    <td style={{ padding: "0.5rem 0.75rem 0.5rem 0", color: "var(--ink-2)" }}>{row.label}</td>
+                    <td style={{ padding: "0.5rem 0.75rem", color: "var(--ink)" }}>{row.founding}</td>
+                    <td style={{ padding: "0.5rem 0", color: "var(--ink-2)" }}>{row.standard}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <p className="mt-5" style={{ color: "var(--ink-2)" }}>{pricing.nextSixteen}</p>
-          <p className="mt-4" style={{ color: "var(--ink-2)" }}>{pricing.tier3}</p>
-          <p className="mt-4 serif" style={{ color: "var(--ink)" }}>{pricing.noGuarantee}</p>
-          <p className="mt-3" style={{ color: "var(--ink-3)" }}>{pricing.thirdParty}</p>
+          <p className="mt-5 serif" style={{ color: "var(--ink)" }}>{pricing.noGuarantee}</p>
         </div>
       </section>
 
@@ -378,7 +388,7 @@ export default function FoundingFivePage() {
       <section className="section" aria-labelledby="ff-threshold-heading">
         <div className="container grid gap-12 lg:grid-cols-2">
           <div>
-            <div className="rule-label" style={{ color: "var(--forest)" }}>The recovery threshold</div>
+            <div className="rule-label" style={{ color: "var(--forest)" }}>Performance-trigger billing</div>
             <h2 id="ff-threshold-heading" className="serif">{recoveryThreshold.heading}</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>{recoveryThreshold.body}</p>
           </div>
@@ -418,7 +428,7 @@ export default function FoundingFivePage() {
       <section className="section paper-grain" id="scorecard" aria-labelledby="ff-final-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="eyebrow">Founding Five · Revenue Leak Scorecard</div>
+            <div className="eyebrow">Founding Five Scorecard</div>
             <h2 id="ff-final-heading" className="serif mt-4" style={{ fontSize: "var(--step-4)" }}>{finalCta.heading}</h2>
             <p className="mt-4" style={{ color: "var(--ink-2)" }}>{finalCta.body}</p>
             <p className="mt-6" style={{ color: "var(--ink-3)" }}>{finalCta.note}</p>

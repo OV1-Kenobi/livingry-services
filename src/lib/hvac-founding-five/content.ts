@@ -1,22 +1,24 @@
-// Single source of truth for the Founding Five Tier 2 Pilot page copy, FAQ,
-// structured data, and guardrails. Keeping copy here (rather than only inline
-// in the page) lets the visible FAQ, the FAQPage JSON-LD, and the automated
+// Single source of truth for the Founding Five page copy, FAQ, structured
+// data, and guardrails. Keeping copy here (rather than only inline in the
+// page) lets the visible FAQ, the FAQPage JSON-LD, and the automated
 // prohibited-claims tests all read from the same place.
 //
-// Canonical commercial terms (fixed — see /hvac/founding-five and docs):
-// - Founding Five Tier 2 pilot: $2,500 all-in, ALWAYS visible.
-// - Included: $199 Revenue Continuity Assessment, $497 Livingry Ops Tenant
-//   Integration, $649 bundle / $696 separate value, Missed-Call Recovery,
-//   Dropped-Estimate Recovery, Agentic Search Optimization, plus onboarding,
-//   training, integration, and setup. Tier 1 value is included, never
-//   credited or added.
-// - Cohort: five HVAC/R companies, visibly labeled.
-// - Next 16 clients: higher, scope-based pricing.
-// - Tier 3 (optional): $1,000/week; first four weekly cycles delivered
-//   unpaid; retroactive $4,000 only after a written Recovery Ledger verifies
-//   $10,000 in qualifying documented collected recovery within those cycles.
-// - Client Reactivation: first a-la-carte upgrade, not included.
+// Canonical commercial terms (corrected 2026-09-02 per the 2026-08-10
+// consolidated offer decision; see PLAN-2026-09-02-LSRU-01 WP3 and the
+// approved copy in the Company OS planning tree):
+// - Founding Five = the Done For You tier at the founding rate: $1,250 to
+//   start, $1,250 final performance-trigger payment, $500/week after the
+//   threshold. Standard DFY reference: $2,500 / $2,500 / $1,000 per week.
+// - DFY requires DWY completion ($2,500 total: $1,249 at signing + $1,251 at
+//   exit testing; prior DIY $649 credited, leaving $1,851). Standard add-ons:
+//   Missed Calls & Slow Response $500, Lost Referrals & Reviews $500.
+// - Trigger: 10× collected revenue vs the DWY baseline, measured cumulatively
+//   since deployment. Week-four assessment; 52-week exclusivity once met.
 // - No outcome guarantees of any kind; third-party costs separate.
+// - The superseded model (Tier 2/3 labels, $199 assessment, $497 tenant
+//   integration, $649/$696 bundle arithmetic, $10,000 threshold, $4,000 fee,
+//   "Agentic Search Optimization" as a foundation) must never appear in
+//   public copy — asserted in tests.
 
 import { site } from "@/lib/site";
 import { founder as canonicalFounder, allianceFaq as canonicalFaq } from "@/lib/revenue-continuity/content";
@@ -32,31 +34,31 @@ export const FOUNDING_FIVE_CAPACITY = 5;
 export const sealedSystemPrinciple = "A system that is unsealed cannot be scaled.";
 
 export const seo = {
-  title: "Founding Five Tier 2 Pilot — $2,500 All-In | Livingry Services",
+  title: "Founding Five Strategic Alliance — HVAC/R Revenue Continuity | Livingry Services",
   description:
-    "Livingry's Founding Five Tier 2 Pilot: $2,500 all-in for Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization — including the $199 Revenue Continuity Assessment and $497 Livingry Ops Tenant Integration. Five HVAC/R companies. No outcome guarantees. Human-reviewed before any follow-up.",
-  ogTitle: "Stop buying more leads before you seal the leaks.",
+    "Livingry's Founding Five: a capacity-limited founding cohort for established HVAC/R operators moving from diagnosis into active Done For You management at the founding rate. Follows the Done With You implementation, which establishes the operating baseline. No outcome guarantees. Human-reviewed before any follow-up.",
+  ogTitle: "Before you buy more leads, find where the ones you already paid for are leaking out.",
   ogDescription:
-    "The Founding Five Tier 2 Pilot, $2,500 all-in, for five HVAC/R companies: missed calls, dropped estimates, and search readiness, run on a shared proof ledger with human approval where it matters.",
+    "The Founding Five is a capacity-limited founding cohort for established HVAC/R operators — active Done For You management at the founding rate, following the Done With You implementation. Human-reviewed before any follow-up.",
 } as const;
 
 // A direct, server-rendered 40–80 word answer placed near the top of the page
 // for humans and AI systems. (Word count verified in tests.)
 export const directAnswer =
-  "The Founding Five is an invite-only HVAC/R pilot cohort of five companies. The Tier 2 pilot is $2,500 all-in: Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, including the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration, and onboarding and setup. Every recovered dollar is measured against a shared proof ledger, and applications are human-reviewed before any follow-up.";
+  "The Founding Five is a capacity-limited founding cohort for established HVAC/R operators ready to move from diagnosis into active Done For You management. Founding Five pricing is $1,250 to start, $1,250 as the final performance-trigger payment, and $500 per week after the threshold — half the standard rate. It follows the Done With You implementation, which establishes your operating baseline. Applications are human-reviewed before any follow-up.";
 
 export const hero = {
   eyebrow: "Founding Five Strategic Alliance — Invite-Only HVAC/R Pilot Cohort",
-  title: "Stop buying more leads before you seal the leaks.",
+  title: "Before you buy more leads, find where the ones you already paid for are leaking out.",
   intro:
-    "Livingry runs the three follow-through foundations that keep the demand you already pay for from leaking: missed calls, dropped estimates, and rivals winning the search answers your customers ask for.",
+    "The Founding Five is a capacity-limited founding cohort for established HVAC/R operators ready to move from diagnosis into active Done For You management.",
   premise:
-    "Missed calls. Dropped estimates. Customers who ask the wrong answer questions and never reach you. These are not five separate problems — they are one system leaking at three handoffs.",
+    "This is not a mass-market program. It is reserved for right-sized, right-positioned, right-located operators whose leak potential justifies the engagement.",
   belief: sealedSystemPrinciple,
-  body: "We do not sell a loose collection of AI tools. We install the connected follow-through system that keeps value from leaking out between the phone, the office, the estimate, and the search engine — measured against a shared proof ledger, with human approval on every consequential action.",
+  body: "Livingry Services is a small team. The Founding Five gives Michael and the Livingry team time to work closely with a small group of operators — proving the Done For You model under real conditions before opening it to a wider market.",
   proofStrip:
-    "Calls. Estimates. Search readiness. Human-reviewed where judgment matters.",
-  primaryCta: "Take the 15-Minute Revenue Leak Scorecard",
+    "Calls. Estimates. Past customers. Referrals. Human-reviewed where judgment matters.",
+  primaryCta: "Apply for the Founding Five Strategic Alliance",
   secondaryAnchor: "See the Founding Five Path",
   noCalendarNote:
     "No public calendar. Every scorecard is human-reviewed; fit conversations follow only for qualified companies.",
@@ -69,28 +71,27 @@ export const problem = {
   leaks: [
     "A caller reaches voicemail and receives no accountable next step — the demand dies before a qualified response.",
     "A valid estimate is sent, then worked inconsistently or not at all.",
-    "Your customers ask the search engine a question and get a competitor's answer — because nobody operates the answers your business has earned the right to hold.",
-    "A past customer who would have rebooked is never appropriately contacted again — the reactivation gap the pilot addresses first.",
+    "A completed job never becomes a review, testimonial, or referral opportunity.",
+    "A past customer who would have rebooked is never appropriately contacted again — the reactivation gap.",
   ],
   pullQuote:
     "If the next action depends on one person remembering, it is not yet a dependable workflow.",
 } as const;
 
 export const offer = {
-  heading: "One pilot price. The three foundations that seal the leaks. Always together.",
+  heading: "How Done For You works",
   intro:
-    "Every Founding Five Tier 2 pilot includes all three foundations. Implementation order may vary with your baseline, but no partner is sold one foundation as the complete pilot:",
-  foundations: [
-    "Missed-Call Recovery — capture, classify, route, time-limit, escalate, and log every eligible inbound call.",
-    "Dropped-Estimate Recovery — identify eligible open estimates and execute the approved follow-up cadence with recorded dispositions.",
-    "Agentic Search Optimization — operate the answers, listings, and knowledge signals your market asks search engines for, so the demand you already pay for stops routing to competitors.",
+    "Done For You (DFY) is active management after the Done With You (DWY) implementation establishes your operating baseline. You cannot skip directly to Done For You: the Done With You phase establishes the collected-revenue baseline and leak-category tracking required for active management.",
+  steps: [
+    {
+      title: "Step 1 — Done With You (DWY)",
+      body: "Livingry acts as general contractor over implementation. Two standard leak systems (Dropped Estimates, Dead Client Lists) go live. Your Company Operating System Agent is deployed on your own infrastructure. Exit testing confirms everything works. (DWY: $2,500 total — $1,249 at signing + $1,251 at exit testing. Prior DIY $649 credited, leaving $1,851 at exit testing.)",
+    },
+    {
+      title: "Step 2 — Done For You (DFY)",
+      body: "Livingry Services retains ongoing responsibility for operating, maintaining, and repairing the systems built during onboarding.",
+    },
   ],
-  includedPriceNote:
-    "Every pilot also includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), and onboarding, training, integration, and setup — all inside the $2,500 all-in price. Tier 1 value is included, not credited and not added.",
-  reactivationUpgrade:
-    "Client Reactivation is the first a-la-carte upgrade available after these three foundations are live — it is never silently sold as part of the pilot.",
-  closer:
-    "Booked-job handoffs and technician knowledge are implemented inside every pilot as operating scope — they are how the three foundations hold up in the field, not separate products.",
 } as const;
 
 // The seven-part diagnostic model. Plain operational names first; the short
@@ -174,19 +175,19 @@ export const process = {
     },
     {
       title: "Baseline and system map.",
-      body: "We sign the pilot and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. No threshold clock runs before readiness is signed off.",
+      body: "We sign the engagement and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths.",
     },
     {
-      title: "Three-foundation launch.",
-      body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization go live — validated on test records before touching production data. Client Reactivation follows as the first a-la-carte upgrade.",
+      title: "Launch.",
+      body: "The leak systems approved in your implementation go live — validated on test records before touching production data.",
     },
     {
-      title: "Recovery review.",
-      body: "The three foundations run. The written Recovery Ledger and exception desk are reviewed daily, and your scorecard arrives every Friday.",
+      title: "Weekly review.",
+      body: "The approved systems run. Tracking and exceptions are reviewed weekly, and your scorecard arrives every Friday.",
     },
     {
       title: "Reconciliation and continuation.",
-      body: "We reconcile the ledger together. Threshold-based billing applies only to Tier 3: a retroactive bill is issued only after the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery inside the first four weekly cycles. Otherwise, we review what the ledger actually shows before deciding anything.",
+      body: "We reconcile the results together. Collected revenue is tracked weekly against your DWY baseline. At the week-four assessment: if the threshold is met, the final performance-trigger payment and weekly fees are billed retroactively and the 52-week exclusivity period begins; if it is not met and both parties extend, work continues unbilled under the same terms; if it is not met and there is no extension, the engagement ends at the initial payment with no further obligation.",
     },
   ],
 } as const;
@@ -220,16 +221,15 @@ export const workflow = {
 export const deliverables = {
   heading: "What a Founding Five partner receives",
   items: [
-    "The $199 Revenue Continuity Assessment — included.",
-    "The $497 Livingry Ops Tenant Integration — included.",
-    "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, configured and tested.",
-    "Onboarding, training, integration, and setup.",
+    "Management of the approved leak systems after the Done With You baseline is established.",
+    "Weekly tracking of collected revenue against the Done With You baseline.",
+    "Performance-triggered billing with retroactive payment at the week-four assessment.",
+    "52-week exclusivity period once the threshold is met.",
     "Human-control and exception rules.",
-    "Shared proof ledger with source-record links.",
+    "Verified records with source links.",
     "Weekly executive scorecard, delivered every Friday.",
-    "Weekly 30-minute pilot review with your operating owner.",
+    "Weekly 30-minute review with your operating owner.",
     "Staff orientation and full documentation handoff.",
-    "Client Reactivation available as the first a-la-carte upgrade.",
   ],
 } as const;
 
@@ -284,18 +284,17 @@ export const founder = {
 } as const;
 
 export const pricing = {
-  heading: "Founding Five terms — one price, all-in, always visible",
-  pilotPrice: "$2,500 all-in",
+  heading: "Founding Five pricing",
+  pilotPrice: "$1,250 to start",
   body:
-    "The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies, visibly labeled under the Founding Five Cohort Pilot Agreement. It includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), Missed-Call Recovery, Dropped-Estimate Recovery, Agentic Search Optimization, plus onboarding, training, integration, and setup. Tier 1 value is included in the pilot, not credited and not added.",
-  nextSixteen:
-    "After the Founding Five, the next 16 clients are priced higher, by scope. The Founding Five price is cohort-limited by design.",
-  tier3:
-    "Tier 3 is optional at $1,000/week. The first four weekly cycles are delivered unpaid. A retroactive bill — the accrued four weeks plus a $4,000 related fee — is issued only after a written Recovery Ledger verifies $10,000 in qualifying documented collected recovery within those first four weekly cycles.",
+    "Done For You (DFY) is active management after the Done With You (DWY) implementation establishes your operating baseline. You cannot skip directly to Done For You: the Done With You phase establishes the collected-revenue baseline and leak-category tracking required for active management. The Founding Five rate is half the standard reference pricing, shown openly side by side.",
+  pricingTable: [
+    { label: "To start", founding: "$1,250", standard: "$2,500" },
+    { label: "Final performance-trigger payment", founding: "$1,250", standard: "$2,500" },
+    { label: "Per week after the threshold", founding: "$500", standard: "$1,000" },
+  ],
   noGuarantee:
-    "Livingry does not guarantee revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger is the only basis for threshold-based billing.",
-  thirdParty:
-    "Third-party tool, messaging, and telephony costs are opened in your name and paid directly to your company.",
+    "Livingry Services does not guarantee revenue, conversion, booked jobs, reviews, time savings, or growth. The diagnostic provides directional findings. The performance-trigger model ties billing to a measured outcome, but no specific result is promised or implied.",
 } as const;
 
 export const humanControl = {
@@ -315,20 +314,12 @@ export const faq: { q: string; a: string }[] = [
   ...canonicalFaq.slice(0, 3), // First 3 canonical questions
   {
     q: "What do we pay, and when?",
-    a: "The Founding Five Tier 2 Pilot is $2,500 all-in — the Assessment, the Tenant Integration, the three foundations, and onboarding are all inside that price, never added to it. Direct third-party tool, messaging, and telephony costs are billed separately in your company's name.",
+    a: "The Founding Five rate is $1,250 to start, $1,250 as the final performance-trigger payment, and $500 per week after the threshold — half the standard Done For You reference pricing. It follows the Done With You implementation ($2,500 total), which establishes your operating baseline. Direct third-party tool, messaging, and telephony costs are billed separately in your company's name.",
   },
   ...canonicalFaq.slice(3), // Remaining canonical questions
   {
-    q: "What is the next-16 distinction?",
-    a: "The Founding Five is exactly five HVAC/R companies at the $2,500 all-in pilot price. The next 16 clients are priced higher, by scope, because the pilot price is a founding-cohort price, not a rate card.",
-  },
-  {
-    q: "How is the $10,000 recovery threshold verified?",
-    a: "Only through a written Recovery Ledger: paid eligible invoices with a complete proof chain — original opportunity, eligibility decision, workflow enrollment, logged contacts, customer response, completed job, paid invoice, and reconciliation approval. Booked appointments and dashboard totals do not count.",
-  },
-  {
-    q: "What happens if the threshold is not met?",
-    a: "Nothing is billed retroactively. The written Recovery Ledger is reviewed jointly, and any continuation decision is made from what the ledger actually shows — not from projections or promises.",
+    q: "How does the performance trigger work?",
+    a: "Collected revenue is tracked weekly against your Done With You baseline. The trigger is 10× collected revenue relative to baseline, measured cumulatively since deployment. At the week-four assessment: if the threshold is met, the final payment and weekly fees are billed retroactively and the 52-week exclusivity period begins; if it is not met and both parties extend, work continues unbilled under the same terms; if it is not met and there is no extension, the engagement ends at the initial payment with no further obligation.",
   },
   {
     q: "What happens if an integration is not technically possible?",
@@ -337,9 +328,9 @@ export const faq: { q: string; a: string }[] = [
 ];
 
 export const finalCta = {
-  heading: "Five companies. One all-in price. A measured system.",
-  body: "The Founding Five Tier 2 Pilot is $2,500 all-in for five HVAC/R companies — the Assessment, the Tenant Integration, and the three foundations, all inside one price. Capacity is deliberately limited because every pilot receives hands-on implementation, monitoring, and weekly reconciliation.",
-  cta: "Take the 15-Minute Revenue Leak Scorecard",
+  heading: "Five companies. One founding rate. A measured system.",
+  body: "The Founding Five is a capacity-limited founding cohort for established HVAC/R operators moving from diagnosis into active Done For You management — at half the standard rate. Capacity is deliberately limited because every partner receives hands-on implementation, monitoring, and weekly reconciliation.",
+  cta: "Apply for the Founding Five Strategic Alliance",
   note: "Every scorecard is human-reviewed. Fit conversations follow only for qualified companies.",
   signature: "Seal the client container.",
 } as const;
@@ -468,7 +459,7 @@ export function buildServiceLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Founding Five Tier 2 Pilot — HVAC/R Revenue Continuity",
+    name: "Founding Five Strategic Alliance — HVAC/R Revenue Continuity",
     serviceType: "Revenue continuity system implementation and operation",
     provider: { "@id": `${site.primaryDomain}/#organization` },
     areaServed: { "@type": "Country", name: "United States" },

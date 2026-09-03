@@ -93,9 +93,9 @@ test("no calendar references in copy or rendered page source", () => {
   assert.deepEqual(findCalendarReferences(pageSources), []);
 });
 
-test("the all-in pilot price is always visible, never gated", () => {
-  assert.equal(pricing.pilotPrice, "$2,500 all-in");
-  assert.ok(pageSources.includes("pricing.pilotPrice"), "the pilot price is rendered from the content constant");
+test("the founding rate is always visible, never gated", () => {
+  assert.equal(pricing.pilotPrice, "$1,250 to start");
+  assert.ok(pageSources.includes("pricing.pilotPrice"), "the founding rate is rendered from the content constant");
   assert.doesNotMatch(pageSources, /SHOW_HVAC_PILOT_PRICE/);
 });
 
@@ -119,42 +119,63 @@ test("Breadcrumb JSON-LD ends at the founding-five route", () => {
   assert.match(String(last.item), /\/hvac\/founding-five$/);
 });
 
-// --- Founding Five Tier 2 Pilot positioning (2026-08 rollover) ---
+// --- Founding Five Strategic Alliance positioning (2026-09 canonical correction) ---
 
-test("offer sells the three foundations, never a single foundation alone", () => {
-  assert.match(offer.heading, /Always together/i);
-  assert.equal(offer.foundations.length, 3);
-  assert.match(offer.foundations[0], /^Missed-Call Recovery/);
-  assert.match(offer.foundations[1], /^Dropped-Estimate Recovery/);
-  assert.match(offer.foundations[2], /^Agentic Search Optimization/);
-  assert.match(offer.intro, /no partner is sold one foundation as the complete pilot/i);
+test("offer presents the DWY to DFY path, never a standalone pilot", () => {
+  assert.match(offer.heading, /How Done For You works/);
+  assert.equal(offer.steps.length, 2);
+  assert.match(offer.steps[0].title, /Done With You/);
+  assert.match(offer.steps[1].title, /Done For You/);
+  assert.match(offer.intro, /cannot skip directly to Done For You/i);
 });
 
-test("hero leads with the scorecard / pilot posture", () => {
-  assert.match(hero.title, /Stop buying more leads/);
-  assert.match(hero.primaryCta, /Scorecard/);
+test("hero leads with the canonical leak hook", () => {
+  assert.match(hero.title, /Before you buy more leads/);
+  assert.match(hero.primaryCta, /Founding Five/);
   assert.doesNotMatch(hero.proofStrip, /One workflow/);
+  assert.doesNotMatch(hero.proofStrip, /Search readiness/);
 });
 
-test("terms are pilot-first: $2,500 all-in, always visible, Tier 3 threshold", () => {
-  assert.equal(pricing.pilotPrice, "$2,500 all-in");
-  assert.match(pricing.body, /all-in for five HVAC\/R companies/);
-  assert.match(pricing.body, /\$199 Revenue Continuity Assessment/);
-  assert.match(pricing.body, /not credited and not added/);
-  assert.match(pricing.tier3, /\$1,000\/week/);
-  assert.match(pricing.tier3, /first four weekly cycles are delivered unpaid/);
-  assert.match(pricing.tier3, /\$10,000/);
+test("terms are founding-rate-first, always visible, performance-triggered", () => {
+  assert.equal(pricing.pilotPrice, "$1,250 to start");
+  assert.match(pricing.body, /cannot skip directly to Done For You/i);
+  const amounts = pricing.pricingTable.map((r: { founding: string; standard: string }) => `${r.founding} ${r.standard}`).join(" ");
+  assert.match(amounts, /\$1,250 \$2,500/);
+  assert.match(amounts, /\$500 \$1,000/);
   assert.match(pricing.noGuarantee, /does not guarantee revenue/i);
 });
 
-test("faq states the all-in price and answers the guarantee question", () => {
+test("superseded commercial terms never appear in public copy", () => {
+  const forbidden = [
+    /\$199/,
+    /\$497/,
+    /\$10,?000/,
+    /\$4,?000/,
+    /\$2,500 all-in/i,
+    /\bTier 2\b/,
+    /\bTier 3\b/,
+    /Agentic Search Optimization/,
+    /\$649 bundled/i,
+    /\$696 separate/i,
+    /Recovery Ledger/,
+  ];
+  for (const pattern of forbidden) {
+    assert.doesNotMatch(copyBlob, pattern, `forbidden superseded term matched: ${pattern}`);
+  }
+});
+
+test("faq states the founding rate and answers the guarantee question", () => {
   const g = faq.find((f) => /guarantee revenue/i.test(f.q));
   assert.ok(g);
   assert.match(g.a, /(does not guarantee|never promise) revenue/i);
-  assert.match(g.a, /Recovery Ledger/i);
+  assert.match(g.a, /performance-triggered|performance trigger/i);
   const p = faq.find((f) => /What do we pay, and when/i.test(f.q));
   assert.ok(p);
-  assert.match(p.a, /\$2,500 all-in/);
+  assert.match(p.a, /\$1,250 to start/);
+  const t = faq.find((f) => /How does the performance trigger work/i.test(f.q));
+  assert.ok(t);
+  assert.match(t.a, /10× collected revenue/);
+  assert.match(t.a, /week-four assessment/);
 });
 
 test("founder story keeps credential discipline and includes the 2019 book", () => {
@@ -172,8 +193,8 @@ test("founder story keeps credential discipline and includes the 2019 book", () 
   assert.doesNotMatch(scan, /currently certified/i);
 });
 
-test("service schema describes the Founding Five Tier 2 Pilot", () => {
+test("service schema describes the Founding Five Strategic Alliance", () => {
   const ld = buildServiceLd();
-  assert.match(ld.name, /Founding Five Tier 2 Pilot/);
+  assert.match(ld.name, /Founding Five Strategic Alliance/);
   assert.match(ld.name, /HVAC/i);
 });

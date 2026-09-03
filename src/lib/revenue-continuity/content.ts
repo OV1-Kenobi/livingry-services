@@ -1,23 +1,23 @@
 // Single source of truth for the Revenue Continuity System / Strategic
 // Alliance repositioning: program identity, the four continuity workflows,
-// commercial framework (Founding Five Tier 2 pilot, public and fixed),
-// proof standard, fit criteria, and the founder field-story.
+// commercial framework, proof standard, fit criteria, and the founder
+// field-story.
 //
-// Positioning rules enforced here and in tests:
-// - No "guaranteed revenue" or outcome claims of any kind. There is no
-//   fee-waiver guarantee and no published guarantee period.
-// - Founding Five Tier 2 is $2,500 all-in and visibly labeled. Tier 1 value
-//   (the $199 Revenue Continuity Assessment, $497 Livingry Ops Tenant
-//   Integration, $649 bundle / $696 separate value) is INCLUDED and is never
-//   credited or added to the pilot price.
-// - The next 16 clients after the Founding Five cohort are priced higher,
-//   by scope.
-// - Tier 3 is optional at $1,000/week; the first four weekly cycles are
-//   delivered unpaid, and any $4,000 retroactive bill requires a written
-//   Recovery Ledger verifying $10,000 in qualifying documented collected
-//   recovery within those first four weekly cycles.
-// - Client Reactivation is the first a-la-carte upgrade, not an included
-//   pilot workflow.
+// Commercial terms corrected 2026-09-02 per the 2026-08-10 consolidated offer
+// decision (PLAN-2026-09-02-LSRU-01 WP3):
+// - Founding Five = the Done For You tier at the founding rate ($1,250 /
+//   $1,250 / $500 per week), half the standard reference pricing ($2,500 /
+//   $2,500 / $1,000 per week). It follows the Done With You implementation,
+//   which establishes the collected-revenue baseline.
+// - Trigger: 10× collected revenue vs the DWY baseline, measured cumulatively
+//   since deployment. Week-four assessment; 52-week exclusivity once met.
+// - No outcome guarantees of any kind. Third-party costs separate.
+// - The superseded model (Tier 2/3 labels, $199/$497 components, $10,000
+//   threshold, $4,000 fee) must never render on public pages that read from
+//   this module. NOTE: the `terms` export below is legacy (renders on no
+//   public page) and is retained only while its consumers are dispositioned;
+//   the Founding Five page renders canonical terms from
+//   hvac-founding-five/content.ts.
 // - The four workflows are ONE system. No partner is sold a single workflow
 //   as the complete product.
 // - Founder credentials are training/work history, never current licensure.
@@ -172,8 +172,8 @@ export const terms = {
 } as const;
 
 export const recoveryThreshold = {
-  heading: "The $10,000 recovery threshold, in plain terms",
-  body: "Tier 3 exists only after the first four weekly cycles are delivered. If, inside those four weekly cycles, the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery, the accrued Tier 3 fees for those cycles (plus a $4,000 related fee) become retroactively billable. If the ledger does not verify $10,000, no retroactive bill is issued. There is no outcome guarantee: the ledger verifies or it does not, and Livingry's fee structure is the only thing Livingry ever puts on the line.",
+  heading: "Performance-trigger billing — how it works",
+  body: "Collected revenue is tracked weekly against your Done With You baseline. The trigger is 10× collected revenue relative to baseline, measured cumulatively since deployment. Supporting indicators explain why revenue moved but do not trigger billing. At the week-four assessment: if the threshold is met, the final performance-trigger payment and weekly fees are billed retroactively, and the 52-week exclusivity period begins; if it is not met and both parties extend, work continues unbilled under the same terms; if it is not met and there is no extension, the engagement ends at the initial payment with no further obligation.",
 } as const;
 
 export const fit = {
@@ -289,25 +289,25 @@ export const allianceFaq: { q: string; a: string }[] = [
     q: "Will Livingry replace our CRM or field-service platform?",
     a: "No. Your company remains the system of record. The system works around the tools you already run, and anything we build is documented and handed to you.",
   },
-{
+  {
     q: "Do you guarantee revenue?",
-    a: "No. We never promise revenue, lead volume, close rates, reviews, or rankings — for any tier, at any price. The written Recovery Ledger verifies what actually gets collected; it is the only basis for threshold-based billing, and no outcome is ever guaranteed.",
+    a: "No. We never promise revenue, lead volume, close rates, reviews, or rankings — at any price. Billing is performance-triggered: collected revenue is measured weekly against your Done With You baseline, and the week-four assessment decides whether the threshold has been met. No outcome is ever guaranteed.",
   },
   {
     q: "What do we pay to start?",
-    a: "A Founding Five Tier 2 pilot is $2,500 all-in. That includes the $199 Revenue Continuity Assessment, the $497 Livingry Ops Tenant Integration ($649 bundled / $696 separate value), Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization, plus onboarding, training, integration, and setup. Tier 1 value is included, not credited and not added. Direct third-party tool, messaging, and telephony costs are billed separately, in your name.",
+    a: "The Founding Five rate is $1,250 to start, $1,250 as the final performance-trigger payment, and $500 per week after the threshold — half the standard Done For You reference pricing. It follows the Done With You implementation ($2,500 total), which establishes your operating baseline. Direct third-party tool, messaging, and telephony costs are billed separately, in your name.",
   },
   {
     q: "Is there a fee-waiver guarantee?",
-    a: "No. Livingry does not offer any fee-waiver guarantee. The only threshold-based billing is Tier 3: if the written Recovery Ledger verifies $10,000 in qualifying documented collected recovery inside the first four weekly cycles, the accrued Tier 3 fees for those cycles (plus a $4,000 related fee) become retroactively billable. Otherwise no retroactive bill is issued.",
+    a: "No. Livingry does not offer any fee-waiver guarantee. Billing is performance-triggered: at the week-four assessment, if collected revenue meets the 10× threshold relative to your Done With You baseline, the final payment and weekly fees are billed retroactively and the 52-week exclusivity period begins. If it is not met and both parties extend, work continues unbilled under the same terms; if there is no extension, the engagement ends at the initial payment with no further obligation.",
   },
   {
     q: "Is Client Reactivation included in the pilot?",
-    a: "No. The pilot's three foundations are Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization. Client Reactivation is the first a-la-carte upgrade available after those foundations are live.",
+    a: "Past-customer reactivation is one of the four Revenue Continuity workflows and is part of the Done With You implementation (the Dead Client Lists system). Missed Calls & Slow Response and Lost Referrals & Reviews are available as standard add-ons to the Done With You implementation.",
   },
   {
     q: "Why is capacity limited?",
-    a: "The Founding Five cohort is exactly five HVAC/R companies, visibly labeled as a Founding Five Cohort Pilot. Every pilot receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation. The next 16 clients after the cohort are priced higher, by scope.",
+    a: "The Founding Five cohort is exactly five HVAC/R companies. Every partner receives hands-on implementation, monitoring, weekly scorecards, and weekly reconciliation.",
   },
   {
     q: "What counts as recovered revenue?",
@@ -327,6 +327,6 @@ export const allianceFaq: { q: string; a: string }[] = [
   },
   {
     q: "What happens if the threshold is not met?",
-    a: "Nothing is billed retroactively. The written Recovery Ledger is reviewed jointly, and any continuation decision is made from what the ledger actually shows — not from projections or promises.",
+    a: "Nothing is billed retroactively. At the week-four assessment, if the threshold is not met and both parties extend, work continues unbilled under the same terms; if there is no extension, the engagement ends at the initial payment with no further obligation.",
   },
 ];

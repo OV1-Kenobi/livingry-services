@@ -114,7 +114,8 @@ test("alliance FAQ answers the revenue-guarantee question accurately", () => {
   const g = rc.allianceFaq.find((f) => /guarantee revenue/i.test(f.q));
   assert.ok(g);
   assert.match(g.a, /never promise revenue/i);
-  assert.match(g.a, /Recovery Ledger/);
+  assert.match(g.a, /performance-triggered|performance trigger/i);
+  assert.match(g.a, /week-four assessment/);
 });
 
 test("event names are unique and follow the hvac funnel namespace", () => {
