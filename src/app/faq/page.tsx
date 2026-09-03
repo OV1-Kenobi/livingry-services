@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { faqSections } from "@/lib/faq";
 import { PageHero, Breadcrumbs, EndCta } from "@/components/PageHero";
 import { BreadcrumbLd } from "@/components/BreadcrumbLd";
@@ -7,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "FAQ — Livingry Services",
-  description: "Answers about Livingry Services, the Leakproofing Framework, AI implementation, agent discovery, industries, and how engagements work.",
+  description: "Answers about Livingry Services, the four observable leaks, the HVAC Cash Flow Leak Diagnostic, services and pricing, ownership, and AI boundaries.",
   alternates: { canonical: "/faq" },
 };
 
@@ -82,19 +81,6 @@ export default function Faq() {
           </div>
         </section>
       ))}
-
-      <section className="section-tight">
-        <div className="container">
-          <div className="rule-label">Industry-specific FAQ</div>
-          <p className="max-w-2xl" style={{ color: "var(--ink-2)" }}>
-            Each industry page has its own FAQ tailored to that vertical&rsquo;s workflows, tools, and constraints.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/industries/hvac" className="btn btn-secondary">HVAC FAQ</Link>
-            <Link href="/industries/roofing" className="btn btn-secondary">Roofing FAQ</Link>
-          </div>
-        </div>
-      </section>
 
       <EndCta />
     </>
