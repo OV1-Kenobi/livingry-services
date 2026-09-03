@@ -40,7 +40,6 @@ export function Footer() {
             <div className="eyebrow" style={{ color: "var(--seal)" }}>Explore</div>
             <ul className="mt-4 grid gap-2 text-[1rem]" style={{ color: "var(--paper)", opacity: 0.92 }}>
               <li><Link href="/revenue-leaks">Revenue Leaks</Link></li>
-              <li><Link href="/evidence">Evidence</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/insights">Insights</Link></li>
               <li><Link href="/faq">Frequently Asked Questions</Link></li>

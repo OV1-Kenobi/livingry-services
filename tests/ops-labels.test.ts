@@ -17,16 +17,16 @@ const HEADER = read("src/components/Header.tsx");
 const FOOTER = read("src/components/Footer.tsx");
 
 test("header carries exactly the approved desktop nav set", () => {
-  for (const label of ["Revenue Leaks", "How It Works", "Evidence", "Services & Pricing", "About"]) {
+  for (const label of ["Revenue Leaks", "How It Works", "Services & Pricing", "About"]) {
     assert.ok(HEADER.includes(`label: "${label}"`), `desktop nav must include "${label}"`);
   }
   assert.ok(HEADER.includes("Diagnose My Cash Flow Leaks"), "desktop CTA is present");
-  // Mobile adds Insights and FAQ on top of the desktop five.
+  // Mobile adds Insights and FAQ on top of the desktop four.
   assert.ok(HEADER.includes('label: "Insights"'), "mobile menu includes Insights");
   assert.ok(HEADER.includes("Frequently Asked Questions"), "mobile menu includes FAQ");
 });
 
-test("forbidden labels appear in no menu (Decision 10)", () => {
+test("forbidden labels appear in no menu (Decision 10; Evidence archived 2026-09-02)", () => {
   const forbidden = [
     "Industries",
     "Livingry Ops",
@@ -35,6 +35,7 @@ test("forbidden labels appear in no menu (Decision 10)", () => {
     "Proof",
     "Book a Leak Assessment",
     "Founding Five",
+    "Evidence",
   ];
   for (const source of [HEADER, FOOTER]) {
     for (const label of forbidden) {

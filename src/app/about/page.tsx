@@ -60,9 +60,6 @@ export default function AboutPage() {
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
               It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses became the design requirements behind Livingry.
             </p>
-            <p className="mt-6">
-              <a href="/evidence" className="link" style={{ color: "var(--forest)" }}>How this story is labelled as evidence &rarr;</a>
-            </p>
             <figure className="diagram mt-8" style={{ maxWidth: "26rem" }}>
               <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--rule)" }}>
                 <IllustrativeImage

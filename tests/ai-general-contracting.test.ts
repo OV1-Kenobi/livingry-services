@@ -366,9 +366,10 @@ test("robots permits ordinary search indexing and the named answer crawlers", ()
 });
 
 test("sitemap exposes the plan's public surface and no hidden funnels", () => {
-  for (const route of ["/assessment", "/leak-assessment", "/services-and-pricing", "/revenue-leaks", "/evidence", "/insights", "/faq", "/how-it-works"]) {
+  for (const route of ["/assessment", "/leak-assessment", "/services-and-pricing", "/revenue-leaks", "/insights", "/faq", "/how-it-works"]) {
     assert.ok(sitemapSrc.includes(`"${route}"`), `sitemap includes ${route}`);
   }
+  assert.ok(!sitemapSrc.includes('"/evidence"'), "the archived Evidence page is not advertised to crawlers");
   assert.ok(sitemapSrc.includes("revenueLeaks.map"), "leak landing pages are generated from the content module");
   for (const route of ["/proof", "/why-livingry", "/what-we-build", "/operations", "/explore-demo", "/system-review", "/agents", "/hvac/founding-five"]) {
     assert.ok(!sitemapSrc.includes(`"${route}"`), `sitemap must not advertise ${route}`);

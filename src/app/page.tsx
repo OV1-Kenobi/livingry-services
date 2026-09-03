@@ -51,17 +51,6 @@ const diagnosticsReturns = [
   "A directional opportunity indicator only if approved",
 ];
 
-const evidenceLadder = [
-  { n: "1", label: "Founder Experience", detail: "Michael's firsthand history and observation — never presented as client proof or industry benchmark." },
-  { n: "2", label: "Verified Facts", detail: "Directly supported by a saved, accessible source." },
-  { n: "3", label: "Strategic Opinions", detail: "Clearly framed operating judgment, clearly labelled as such." },
-  { n: "4", label: "Method demonstrations", detail: "The Find → Trace → Seal → Verify method, shown under controlled conditions." },
-  { n: "5", label: "Public Demo · Demo Data", detail: "Synthetic demonstrations, always labelled as demo data — never presented as client results." },
-  { n: "6", label: "Product artifacts", detail: "The Livingry Ops operating layer, shown in client-branded form." },
-  { n: "7", label: "Approved pilot observations", detail: "Published only with permission and evidence." },
-  { n: "8", label: "Documented client outcomes", detail: "Published only after measurement is documented — none exist yet." },
-];
-
 export default function Home() {
   const homepageFaqLd = {
     "@context": "https://schema.org",
@@ -248,39 +237,7 @@ export default function Home() {
         </div>
       </section>
 
-      <hr />
-
-      {/* EVIDENCE LADDER — plan §6 */}
-      <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="evidence-heading">
-        <div className="container grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="rule-label">04 · Evidence</div>
-            <h2 id="evidence-heading" className="serif">Eight rungs, and we only claim what we hold.</h2>
-            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-              Every consequential claim on this site carries a label: Founder Experience, Verified Fact,
-              Strategic Opinion, or Requires Verification. No client outcomes are published yet — so the
-              site does not call itself Results.
-            </p>
-            <p className="mt-6">
-              <Link href="/evidence" className="link" style={{ color: "var(--forest)" }}>
-                Read the full evidence ladder →
-              </Link>
-            </p>
-          </div>
-          <div className="lg:col-span-7 grid gap-0">
-            {evidenceLadder.map((rung, i) => (
-              <div key={rung.n} className="grid grid-cols-[auto_1fr] gap-6 py-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
-                <div className="num" style={{ minWidth: "2.5rem" }}>{rung.n}</div>
-                <div>
-                  <h3 className="serif" style={{ fontSize: "var(--step-1)" }}>{rung.label}</h3>
-                  <p className="mt-1 text-[0.95rem]" style={{ color: "var(--ink-2)" }}>{rung.detail}</p>
-                </div>
-              </div>
-            ))}
-            <div style={{ borderTop: "1px solid var(--ink)", height: 0 }} />
-          </div>
-        </div>
-      </section>
+      {/* HUMAN CONTROL — plan §6 */}
 
       <hr />
 
@@ -288,7 +245,7 @@ export default function Home() {
       <section className="section" id="human-approval" aria-labelledby="human-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="rule-label">05 · Human control</div>
+            <div className="rule-label">04 · Human control</div>
             <h2 id="human-heading" className="serif">The work can move faster without removing accountability.</h2>
           </div>
           <div className="lg:col-span-7">
@@ -306,7 +263,7 @@ export default function Home() {
       {/* WHY MICHAEL — lead with lived experience per plan §6 */}
       <section className="section" aria-labelledby="founder-heading">
         <div className="container">
-          <div className="rule-label">06 · Who does the work</div>
+          <div className="rule-label">05 · Who does the work</div>
           <div className="grid gap-10 lg:grid-cols-12 items-start">
             <div className="lg:col-span-7">
               <h2 id="founder-heading" className="serif">Built by someone who has done the work</h2>
@@ -335,7 +292,6 @@ export default function Home() {
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Link href="/about" className="link" style={{ color: "var(--forest)" }}>Read the full story →</Link>
-                <Link href="/evidence" className="link" style={{ color: "var(--forest)" }}>How claims are labelled →</Link>
               </div>
             </div>
             <div className="lg:col-span-5">
@@ -361,7 +317,7 @@ export default function Home() {
       <section className="section" id="winwinwin" aria-labelledby="www-heading">
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="rule-label">07 · Win/Win/Win</div>
+            <div className="rule-label">06 · Win/Win/Win</div>
             <h2 id="www-heading" className="serif">Livingry Services wins when its clients win because their customers win.</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
               This is the only sustainable path for service industries. If a proposed system does not
@@ -398,7 +354,7 @@ export default function Home() {
       {/* SERVICES PREVIEW — all three choices with base prices per plan §6 */}
       <section className="section" style={{ background: "var(--paper-2)" }} aria-labelledby="services-heading">
         <div className="container">
-          <div className="rule-label">08 · Services &amp; Pricing</div>
+          <div className="rule-label">07 · Services &amp; Pricing</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 id="services-heading" className="serif">Choose planning, guided implementation, or active management.</h2>
@@ -435,7 +391,7 @@ export default function Home() {
       {/* FAQ — four questions */}
       <section className="section" aria-labelledby="faq-heading">
         <div className="container">
-          <div className="rule-label">09 · Common questions</div>
+          <div className="rule-label">08 · Common questions</div>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h2 id="faq-heading" className="serif">Questions people actually ask</h2>

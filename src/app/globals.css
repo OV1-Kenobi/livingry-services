@@ -140,6 +140,8 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 0.55rem;
   padding: 0.85rem 1.25rem;
   font-family: var(--font-sans);

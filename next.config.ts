@@ -19,10 +19,21 @@ const nextConfig: NextConfig = {
       },
       // Decision 28 (2026-08-22) leftover-page treatments:
       {
-        // Proof merges into Evidence (Evidence replaces Proof in the nav).
+        // Proof content archived with the Evidence page (founder instruction
+        // 2026-09-02): the Evidence page is unpublished until documented
+        // client evidence exists, so /proof now lands on the homepage.
         source: "/proof",
-        destination: "/evidence",
-        permanent: true,
+        destination: "/",
+        permanent: false,
+      },
+      {
+        // Evidence page ARCHIVED per founder instruction 2026-09-02: removed
+        // from nav/footer/sitemap and unpublished until real client evidence
+        // exists. Temporary redirect so the page can return cleanly later.
+        // Page content preserved in git history (commit 76fd865^ era).
+        source: "/evidence",
+        destination: "/",
+        permanent: false,
       },
       {
         // Why-Livingry folds into About.

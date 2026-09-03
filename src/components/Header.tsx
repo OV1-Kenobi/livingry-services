@@ -4,14 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "./Logo";
 
-// Public navigation per the 2026-08-11 plan §4: five due-diligence items that
-// answer what is leaking, how it works, what the evidence is, what it costs,
-// and who runs it — plus the diagnostic action. Promo, product, and
-// client-access links are not in global navigation.
+// Public navigation per the 2026-08-11 plan §4, amended 2026-09-02 (founder
+// instruction): the claims-ladder page is archived until documented client
+// proof exists, so its nav item is removed — four due-diligence items that
+// answer what is leaking, how it works, what it costs, and who runs it, plus
+// the diagnostic action. Promo, product, and client-access links are not in
+// global navigation.
 const desktopNav = [
   { label: "Revenue Leaks", href: "/revenue-leaks" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Evidence", href: "/evidence" },
   { label: "Services & Pricing", href: "/services-and-pricing" },
   { label: "About", href: "/about" },
 ];
@@ -33,23 +34,24 @@ export function Header() {
         borderBottom: "1px solid var(--rule)",
       }}
     >
-      <div className="container flex items-center justify-between" style={{ paddingBlock: "0.9rem" }}>
+      <div className="container flex items-center justify-between gap-6" style={{ paddingBlock: "0.9rem" }}>
         <Logo />
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-6 min-w-0">
           {desktopNav.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-link">
+            <Link key={item.href} href={item.href} className="nav-link whitespace-nowrap">
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex shrink-0 items-center gap-4">
           {/* Decision 27 override (2026-08-22): Client Sign In is deliberately
               KEPT in the header to support future Habitats-OS sister-site
-              portal wiring, superseding the plan's removal of it. */}
-          <Link href="/dashboard" className="nav-link">
+              portal wiring, superseding the plan's removal of it. Shown from
+              xl up so the nav never overlaps the CTA at lg widths. */}
+          <Link href="/dashboard" className="nav-link whitespace-nowrap hidden xl:inline">
             Client Sign In
           </Link>
-          <Link href="/assessment" className="btn btn-primary">
+          <Link href="/assessment" className="btn btn-primary whitespace-nowrap">
             Diagnose My Cash Flow Leaks
             <span aria-hidden>→</span>
           </Link>

@@ -17,10 +17,10 @@ export function LogoMark({ size = 32, className = "" }: { size?: number; classNa
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link href="/" className="inline-flex items-center gap-2.5 group">
-      <LogoMark size={compact ? 28 : 34} />
+    <Link href="/" className="inline-flex shrink-0 items-center gap-3 group">
+      <LogoMark size={compact ? 56 : 72} />
       {!compact && (
-        <span className="serif text-[1.05rem] leading-none tracking-tight" style={{ color: "var(--ink)" }}>
+        <span className="serif text-[1.35rem] leading-none tracking-tight" style={{ color: "var(--ink)" }}>
           Livingry <span style={{ color: "var(--ink-3)" }}>Services</span>
         </span>
       )}
