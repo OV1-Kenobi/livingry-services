@@ -34,7 +34,7 @@ export default function Faq() {
         eyebrow="Frequently asked questions"
         title="Answers, in one place."
         lede="Everything a prospective client, a partner, or an AI agent researching Livingry Services on someone&rsquo;s behalf should be able to find quickly."
-        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
+        primaryCta={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
         secondaryCta={{ label: "For AI Agents", href: "/agents" }}
       />
 

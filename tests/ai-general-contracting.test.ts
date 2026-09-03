@@ -271,8 +271,8 @@ test("the hub carries no newsletter capture, since no email provider is connecte
 });
 
 test("the hub carries both conversion CTAs and metadata/schema", () => {
-  assert.ok(insightsPage.includes('href: "/hvac/founding-five#scorecard"'), "links to the Revenue Leak Scorecard");
-  assert.ok(insightsPage.includes('href: "/assessment"'), "links to the assessment");
+  assert.ok(insightsPage.includes('href: "/assessment"'), "links to the HVAC Cash Flow Leak Diagnostic (canonical conversion CTA)");
+  assert.ok(!insightsPage.includes('href: "/hvac/founding-five#scorecard"'), "the legacy Revenue Leak Scorecard CTA is retired from the hub");
   assert.ok(insightsPage.includes('canonical: "/insights"'), "sets its own canonical");
   assert.ok(insightsPage.includes('"@type": "CollectionPage"'), "CollectionPage schema");
   assert.ok(insightsPage.includes('"@type": "ItemList"'), "ItemList schema for the roadmap");

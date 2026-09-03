@@ -143,8 +143,7 @@ export default function Insights() {
         eyebrow="Insights"
         title="Field guides on AI general contracting."
         lede="Livingry Insights is a working editorial programme, not a blog archive. Field guides on what AI actually does inside an HVAC/R operation — each published only when it can be written from real implementation evidence rather than vendor marketing. The first one is live."
-        primaryCta={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
-        secondaryCta={{ label: "Take the HVAC Cash Flow Leak Diagnostic", href: "/assessment" }}
+        primaryCta={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
       />
 
       <section className="section-tight" aria-labelledby="published-heading">
@@ -270,7 +269,7 @@ export default function Insights() {
               <li><Link href="/agents" className="link" style={{ color: "var(--forest)" }}>For AI agents — canonical facts about this practice →</Link></li>
             </ul>
             <p className="mt-8 text-[0.95rem]" style={{ color: "var(--ink-3)" }}>
-              There is no mailing list to join — we have not connected an email provider, and we would rather say so than collect addresses we cannot yet use. The System Review form is the way to reach us.
+              There is no mailing list to join — we have not connected an email provider, and we would rather say so than collect addresses we cannot yet use. Booking a Leak Assessment is the way to reach us.
             </p>
           </div>
         </div>
@@ -278,8 +277,7 @@ export default function Insights() {
 
       <EndCta
         title="Would you rather have the review than the reading?"
-        primary={{ label: "Take the Revenue Leak Scorecard", href: "/hvac/founding-five#scorecard" }}
-        secondary={{ label: "Take the HVAC Cash Flow Leak Diagnostic", href: "/assessment" }}
+        primary={{ label: "Diagnose My Cash Flow Leaks", href: "/assessment" }}
       />
     </>
   );
