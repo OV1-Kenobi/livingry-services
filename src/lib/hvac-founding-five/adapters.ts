@@ -193,7 +193,7 @@ class ResendNotifier implements Notifier {
   // public calendar: follow-up is human-reviewed before any scheduling offer.
   async sendApplicantAck(sub: NormalizedSubmission): Promise<AdapterOutcome> {
     const text = [
-      "Your Revenue Leak Scorecard has been received.",
+      "Your Founding Five Scorecard has been received.",
       "",
       "Livingry reviews every scorecard by hand — not by bot. If the fit looks real, you will receive an invitation to a fit conversation by email; there is no public calendar and no bot triage. If it does not, you will get a fast, honest answer rather than a slow maybe.",
       "",

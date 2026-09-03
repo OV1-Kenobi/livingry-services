@@ -41,7 +41,7 @@ export function isActiveState(state: RequestState): boolean {
   return !TERMINAL_STATES.includes(state);
 }
 
-// The Revenue Leak Scorecard submission plus consent. All selections are
+// The Founding Five Scorecard submission plus consent. All selections are
 // enumerated server-side; free text is limited to name, company, and markets.
 export type SubmissionInput = {
   fullName: string;

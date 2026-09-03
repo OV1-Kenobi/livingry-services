@@ -1,4 +1,4 @@
-// Revenue Leak Scorecard form model — the single sitewide intake for the
+// Founding Five Scorecard form model — the single sitewide intake for the
 // Founding Five Tier 2 Pilot. All copy and field structure live here so the
 // client form, server validation, tests, and (later) dashboards read from one
 // source.
@@ -147,7 +147,7 @@ export const scorecardIntro = {
 export type ScorecardField = (typeof scorecardIntro.sections)[number]["fields"][number];
 
 export const scorecardSubmit = {
-  button: "Submit My Revenue Leak Scorecard",
+  button: "Apply for the Founding Five Strategic Alliance",
   microcopy:
     "Submission does not guarantee acceptance. Livingry reviews every scorecard by hand for U.S. market fit, leadership readiness, operational capacity, and record quality.",
   consentText:

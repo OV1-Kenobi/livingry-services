@@ -5,8 +5,8 @@ import { SCORECARD_VERSION, scorecardIntro, scorecardSubmit, scorecardConfirmati
 import { consent as consentCopy } from "@/lib/hvac-founding-five/content";
 import { trackClientEvent, HVAC_EVENTS } from "@/lib/hvac-founding-five/analytics";
 
-// The Revenue Leak Scorecard — the single intake for the Founding Five Tier 2
-// Pilot. Submissions go straight to the Founding Five pipeline
+// The Founding Five Scorecard — the single intake for the Founding Five
+// Strategic Alliance. Submissions go straight to the Founding Five pipeline
 // (/api/hvac-founding-five → 12-state store, owner alert, applicant ack).
 // There is no public calendar: every scorecard is human-reviewed before any
 // fit conversation is offered.
