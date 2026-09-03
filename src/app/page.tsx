@@ -314,7 +314,16 @@ export default function Home() {
                 Michael Ovsen ran work as a solo residential contractor and has hands-on trade
                 experience — HVAC, solar, and permaculture — before years of building AI agents and
                 Bitcoin-native payment infrastructure. He watches a shop through the eyes of the person
-                holding the invoice, not the dashboard. Livingry Services is his estimate that more than
+                holding the invoice, not the dashboard.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                Before I built Livingry, I ran work as a solo residential contractor. I know what it is like to pay for a lead and lose it before I could put the tools down. The phone would buzz in my pocket while I had tools in my hands and a client watching. Some of those paid leads were being sent to local competitors at the same time. The first contractor to respond had the advantage. I was not ignoring the opportunity. I was doing the work the last opportunity had already paid me to do.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                That is one reason Livingry begins with missed-call recovery.
+              </p>
+              <p className="mt-4" style={{ color: "var(--ink-2)" }}>
+                Livingry Services is his estimate that more than
                 30 percent of his own productive capacity went unrealized because the work and its
                 records never connected — a Founder Experience estimate, not audited revenue, a typical
                 result, or a client outcome.

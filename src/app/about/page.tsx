@@ -46,6 +46,18 @@ export default function AboutPage() {
               The founder came up through hands-on trades and field work — a Permaculture Design Certificate with Scott Pittman, organizing the first Permaculture Design Course at the Kerrville Folk Festival ranch, Texas HVAC certification training in 2012, PV solar design-and-install training in 2018, and years as a solo residential contractor — before years of building AI agents and Bitcoin-native payment infrastructure, including a 2019 book on Bitcoin and three months as Operations Lead at an open-source AI lab. That combination is the point: technology only earns its place when it makes real, useful work easier to do and easier to keep.
             </p>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              Before I built Livingry, I ran work as a solo residential contractor. I know what it is like to pay for a lead and lose it before I could put the tools down.
+            </p>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              The phone would buzz in my pocket while I had tools in my hands and a client watching. Some of those paid leads were being sent to local competitors at the same time. The first contractor to respond had the advantage. I was not ignoring the opportunity. I was doing the work the last opportunity had already paid me to do.
+            </p>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              That distinction did not matter to the homeowner waiting for an answer. The lead moved on. The money I spent to create the opportunity was gone.
+            </p>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
+              A missed call is not a phone problem. It is a continuity problem. That moment — tools in hand, lead already lost — is why Livingry begins with missed-call recovery and why the four leaks matter: missed calls, dropped estimates, dead client lists, and lost referrals. Each one is a handoff where the opportunity and the information needed to act on it stop connecting.
+            </p>
+            <p className="mt-5" style={{ color: "var(--ink-2)" }}>
               It also taught a harder lesson. Records of that work were lost — to a fire, to a company that closed, to a rebrand — because each one depended on an institution staying available forever. Those losses became the design requirements behind Livingry.
             </p>
             <p className="mt-6">
