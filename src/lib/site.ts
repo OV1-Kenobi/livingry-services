@@ -15,12 +15,14 @@ export const site = {
     // placeholder — user can add later
     phone: null as string | null,
   },
-  // Primary CTA target — Google Calendar Appointment Schedule.
-  // Every "Diagnose My Cash Flow Leaks" / "Book My Leak Assessment" button
-  // ultimately points here. ("Book My Leak Assessment" is forbidden as a menu
-  // label per founder Decision 10, 2026-08-22.)
+  // Primary booking target — the /leak-assessment page is the single canonical
+  // booking path (PLAN-2026-09-02-LSRU-01 WP3, Change 4): sitewide "Book My
+  // Leak Assessment" CTAs route there for context (expectation strip) before
+  // the calendar. The raw Google Calendar Appointment Schedule URL lives only
+  // on the /leak-assessment page itself. ("Book My Leak Assessment" is
+  // forbidden as a menu label per founder Decision 10, 2026-08-22.)
   booking: {
-    url: "https://calendar.app.google/4UfTY4vavUc7iQBT6",
+    url: "/leak-assessment",
     label: "Book My Leak Assessment",
     // Short reassurance shown under booking CTAs — deliberately neutral about length,
     // because the length lives on the Google booking page itself.
