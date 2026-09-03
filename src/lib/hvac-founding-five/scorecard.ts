@@ -14,7 +14,7 @@ export const SCORECARD_VERSION = "hvac-scorecard-v1";
 
 export const scorecardIntro = {
   leadIn:
-    "Fifteen minutes about the leaks that cost you the most: missed calls, dropped estimates, and the search answers your customers get from competitors.",
+    "Fifteen minutes about the leaks that cost you the most: missed calls, dropped estimates, past customers, and lost referrals.",
   reviewNote:
     "Every scorecard is read by a person. There is no public calendar and no bot triage — fit conversations follow only for qualified companies, after human review.",
   timeNote: "About 5 minutes to complete.",
