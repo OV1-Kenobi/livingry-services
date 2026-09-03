@@ -1,5 +1,5 @@
 // Founding Five Scorecard form model — the single sitewide intake for the
-// Founding Five Tier 2 Pilot. All copy and field structure live here so the
+// Founding Five Strategic Alliance. All copy and field structure live here so the
 // client form, server validation, tests, and (later) dashboards read from one
 // source.
 //
@@ -72,7 +72,7 @@ export const scorecardIntro = {
       n: 3,
       title: "Where the leaks are",
       question: "Which two leaks are costing you the most attention or opportunity today?",
-      helper: "The pilot seals Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization. Client Reactivation is the first a-la-carte upgrade after those foundations are live.",
+      helper: "The Done With You implementation includes the Dropped Estimates and Dead Client Lists leak systems. Missed Calls & Slow Response and Lost Referrals & Reviews are available as standard add-ons.",
       fields: [
         {
           kind: "rank",

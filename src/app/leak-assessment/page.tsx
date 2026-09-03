@@ -35,14 +35,14 @@ export default function LeakAssessmentPage() {
     <>
       <BreadcrumbLd items={crumbs} />
       <Breadcrumbs items={crumbs} />
+      {/* Raw calendar URL is inlined on the primaryCta below on purpose: this
+          page IS the canonical booking path, so sitewide booking CTAs route
+          here (site.booking.url) and only this CTA opens the calendar.
+          PLAN-2026-09-02-LSRU-01 WP3 Change 4 — prevents a self-link loop. */}
       <PageHero
         eyebrow="Leak Assessment"
         title="Trace one suspected cash-flow leak from the first trigger to the next broken handoff."
         lede="We will inspect the assumptions, follow the opportunity and its information, identify who owns the next action, and decide whether the break justifies building anything. You leave with the priority and reasoning whether or not you hire Livingry Services."
-        {/* Raw calendar URL inlined here on purpose: this page IS the canonical
-            booking path, so sitewide booking CTAs route here (site.booking.url)
-            and only this CTA opens the calendar. PLAN-2026-09-02-LSRU-01 WP3
-            Change 4 — prevents a self-link loop. */}
         primaryCta={{ label: "Book My Leak Assessment", href: "https://calendar.app.google/4UfTY4vavUc7iQBT6" }}
         secondaryCta={{ label: "See services and pricing", href: "/services-and-pricing" }}
       />
