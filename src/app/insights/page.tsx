@@ -269,7 +269,7 @@ export default function Insights() {
               <li><Link href="/agents" className="link" style={{ color: "var(--forest)" }}>For AI agents — canonical facts about this practice →</Link></li>
             </ul>
             <p className="mt-8 text-[0.95rem]" style={{ color: "var(--ink-3)" }}>
-              There is no mailing list to join — we have not connected an email provider, and we would rather say so than collect addresses we cannot yet use. Booking a Leak Assessment is the way to reach us.
+              Want a written summary of your diagnostic results? After you complete the HVAC Cash Flow Leak Diagnostic, you can request a Leak Priority Report by email — voluntary, no mailing list, just your results on paper. Booking a Leak Assessment is the way to reach us.
             </p>
           </div>
         </div>

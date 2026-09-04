@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CATEGORIES,
   CHOICES,
@@ -11,6 +11,12 @@ import {
   type ChoiceValue,
 } from "@/lib/assessment/controls";
 import { buildTriageHref, scoreAssessment, type Answers } from "@/lib/assessment/scoring";
+import {
+  clearAssessmentSession,
+  loadAssessmentSession,
+  saveAssessmentSession,
+} from "@/lib/assessment/session";
+import { ReportRequestForm } from "./ReportRequestForm";
 import { site } from "@/lib/site";
 
 function controlDomId(id: number) {
@@ -18,12 +24,23 @@ function controlDomId(id: number) {
 }
 
 export function AssessmentForm() {
-  // Answers live in component state only. Nothing is written to storage or sent
-  // anywhere until the visitor chooses to book a triage, which routes through
-  // the site's existing lead-capture path.
-  const [answers, setAnswers] = useState<Answers>({});
+  // Answers live in component state, mirrored to sessionStorage so navigating
+  // away and back during the SAME browser visit does not lose progress.
+  // sessionStorage is tab-scoped: nothing is transmitted anywhere, closing
+  // the tab still leaves no copy with us, and "Start over" clears it.
+  const [answers, setAnswers] = useState<Answers>(
+    () => loadAssessmentSession()?.answers ?? {},
+  );
   const [showGaps, setShowGaps] = useState(false);
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState<boolean>(
+    () => loadAssessmentSession()?.revealed ?? false,
+  );
+
+  // Persist every change so the visit survives navigation. Best-effort: the
+  // helpers swallow storage failures, and the form works from state alone.
+  useEffect(() => {
+    saveAssessmentSession(answers, revealed);
+  }, [answers, revealed]);
 
   const gapsRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
@@ -52,6 +69,7 @@ export function AssessmentForm() {
     setAnswers({});
     setShowGaps(false);
     setRevealed(false);
+    clearAssessmentSession();
     requestAnimationFrame(() => formTopRef.current?.focus());
   }
 
@@ -399,6 +417,10 @@ export function AssessmentForm() {
                 from your answers. Nothing has been sent anywhere yet — {site.booking.reassurance}
               </p>
             </div>
+
+            {/* Voluntary written-report opt-in. Rendered only after the score
+                is shown — never a gate before the results. */}
+            <ReportRequestForm result={result} />
           </div>
         </section>
       )}

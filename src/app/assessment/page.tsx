@@ -68,9 +68,12 @@ export default function AssessmentPage() {
               </p>
               <p className="mt-4 text-[0.9rem]" style={{ color: "var(--ink-3)" }}>
                 How your answers are used: they are added up in this browser tab to rank the layers
-                and name the weakest handoff. Nothing you enter is stored or transmitted, and your
-                answers disappear when you close the tab. The result is a directional read — not a
-                revenue forecast or promise.
+                and name the weakest handoff. Your answers are kept in this browser tab for the
+                length of your visit, so navigating the site will not lose them. Nothing you enter
+                is stored or transmitted, and your answers disappear when you close the tab. The
+                result is a directional read — not a revenue forecast or promise. If you ask for the
+                written report below your results, only your email address, anything you optionally
+                add, your overall score and band, and your top-leak category are sent — never your answers.
               </p>
             </div>
             <div className="lg:col-span-7">

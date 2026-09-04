@@ -262,12 +262,12 @@ test("the hub links only to articles that exist, and fabricates nothing about th
   );
 });
 
-test("the hub carries no newsletter capture, since no email provider is connected", () => {
+test("the hub carries no newsletter capture — only a pointer to the voluntary report request", () => {
   assert.ok(!/<form/i.test(insightsPage), "no form element");
   assert.ok(!/type="email"/i.test(insightsPage), "no email input");
-  assert.ok(!/subscribe|newsletter/i.test(insightsPage.replace(/no mailing list[\s\S]{0,200}/i, "")),
-    "no newsletter signup offer");
-  assert.ok(/There is no mailing list to join/.test(insightsPage), "explains why there is no signup");
+  assert.ok(!/subscribe|newsletter/i.test(insightsPage), "no newsletter signup offer");
+  assert.ok(/Leak Priority Report/.test(insightsPage), "points to the voluntary post-diagnostic report request");
+  assert.ok(/no mailing list/.test(insightsPage), "still states there is no mailing list");
 });
 
 test("the hub carries both conversion CTAs and metadata/schema", () => {

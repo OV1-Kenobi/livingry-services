@@ -164,7 +164,7 @@ test("the CTA states the validation promises without timing claims", () => {
 });
 
 test("the page tells the visitor their answers are not stored or transmitted", () => {
-  assert.match(pageSource, /Nothing you enter is stored or transmitted/i);
+  assert.match(pageSource, /Nothing you enter\s+is stored or transmitted/i);
 });
 
 // --- Control and band vocabulary ----------------------------------------
@@ -239,8 +239,15 @@ test("reset and print affordances exist", () => {
   assert.match(formSource, /window\.print\(\)/);
 });
 
-test("no browser storage is used, so there is nothing stale to reset", () => {
+test("answers persist only in the tab for the visit — never localStorage, cookies, or transmission", () => {
   for (const source of [formSource, pageSource]) {
-    assert.ok(!/localStorage|sessionStorage|document\.cookie/.test(source));
+    assert.ok(!/localStorage|document\.cookie/.test(source), "no persistent browser storage");
   }
+  // Tab-scoped session persistence lives in the session helper, not the form.
+  const sessionSource = read("src/lib/assessment/session.ts");
+  assert.match(sessionSource, /sessionStorage/, "visit-scoped tab persistence exists");
+  assert.ok(!/localStorage/.test(sessionSource), "never graduates to persistent storage");
+  // The page copy must keep the exact trust sentence and disclose the visit persistence.
+  assert.match(pageSource, /Nothing you enter\s+is stored or transmitted/i);
+  assert.match(pageSource, /kept in this browser tab for the\s+length of your visit/i);
 });

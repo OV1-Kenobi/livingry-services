@@ -70,6 +70,13 @@ export default function Home() {
       <section className="section paper-grain" aria-labelledby="hero-heading">
         <div className="container">
           <div className="max-w-4xl">
+            {/* Client entry — deliberately outside the navigation menu: a quiet
+                pill for returning operators, top-left of the landing page. */}
+            <div className="mb-7">
+              <Link href="/dashboard" className="btn btn-ghost" style={{ fontSize: "0.85rem", padding: "0.5rem 1.1rem" }}>
+                Log in
+              </Link>
+            </div>
             <div className="eyebrow">Revenue Clarity &amp; Capture for established HVAC/R operators</div>
             <h1 id="hero-heading" className="serif mt-6">
               Before you buy more leads, find where the ones you already paid for are leaking out.
