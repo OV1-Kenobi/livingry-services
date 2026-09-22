@@ -15,12 +15,12 @@ import {
 export const metadata: Metadata = {
   title: "Services & Pricing — Do It Yourself, Done With You, Done For You",
   description:
-    "The three standard service choices with published base pricing: Do It Yourself ($649 one time), Done With You ($2,500 total), and Done For You (active management). No hidden standard prices.",
+    "The three standard service choices with published base pricing: Do It Yourself ($649 one time), Done With You ($3,900 total), and Done For You (active management). No hidden standard prices.",
   alternates: { canonical: "/services-and-pricing" },
   openGraph: {
     title: "Services & Pricing — Livingry Services",
     description:
-      "Standard scope and published base pricing for DIY, DWY, and DFY. Custom and à-la-carte items are quoted separately.",
+      "Standard scope and published base pricing for DIY ($649), DWY ($3,900 — 3 leak systems + spine), and DFY. AI Voice Answering — the 4th leak ($500 + vendor pass-through) — is the standard add-on. Custom items are quoted separately.",
     url: "/services-and-pricing",
     type: "website",
   },
@@ -94,8 +94,8 @@ export default function ServicesAndPricingPage() {
             <div className="rule-label">Done With You — payment details</div>
             <h2 id="dwy-heading" className="serif">Payment is split at signing and at exit testing.</h2>
             <p className="mt-5" style={{ color: "var(--ink-2)" }}>
-              $1,249 at signing. $1,251 when the system passes exit testing. If the client previously
-              purchased the $649 Do It Yourself package, that amount is credited and $1,851 remains due
+              $1,949 at signing. $1,951 when the system passes exit testing. If the client previously
+              purchased the $649 Do It Yourself package, that amount is credited and $3,251 remains due
               at exit testing. There is no retry cap on retests.
             </p>
             <p className="mt-4 text-[0.9rem]" style={{ color: "var(--ink-3)" }}>
@@ -105,7 +105,7 @@ export default function ServicesAndPricingPage() {
           </div>
           <div className="lg:col-span-7">
             <div className="rule-label">Standard add-ons</div>
-            <h3 className="serif mt-3" style={{ fontSize: "var(--step-1)" }}>Two additional standard leak systems.</h3>
+            <h3 className="serif mt-3" style={{ fontSize: "var(--step-1)" }}>Standard add-ons (4th leak + referrals).</h3>
             <ul className="mt-4 grid gap-0">
               {dwyAddOns.map((addOn, i) => (
                 <li key={addOn.name} className="flex items-baseline justify-between gap-6 py-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>

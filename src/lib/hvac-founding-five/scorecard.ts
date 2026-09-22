@@ -72,7 +72,7 @@ export const scorecardIntro = {
       n: 3,
       title: "Where the leaks are",
       question: "Which two leaks are costing you the most attention or opportunity today?",
-      helper: "The Done With You implementation includes the Dropped Estimates and Dead Client Lists leak systems. Missed Calls & Slow Response and Lost Referrals & Reviews are available as standard add-ons.",
+      helper: "The Done With You implementation includes Dropped Estimates, Dead Client Lists, and Lost Referrals & Reviews/Testimonials (plus minimal n8n spine). AI Voice Answering — telephony ingress (4th leak, $500 + vendor pass-through) is available as a standard add-on.",
       fields: [
         {
           kind: "rank",

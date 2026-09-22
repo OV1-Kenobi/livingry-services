@@ -213,8 +213,8 @@ export const allianceProcess = {
       body: "We sign the pilot and attribution agreements, map your systems of record, extract baseline data, and define eligibility rules, approved scripts, and escalation paths. No billing threshold clock runs before readiness is signed off.",
     },
     {
-      title: "Three-foundation launch.",
-      body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Agentic Search Optimization go live — validated on test records before touching production data. Client Reactivation follows as the first a-la-carte upgrade.",
+      title: "Three-system launch.",
+      body: "Missed-Call Recovery, Dropped-Estimate Recovery, and Dead Client Lists go live (Agentic Search Optimization is part of DIY) — validated on test records before touching production data. Client Reactivation follows as the first a-la-carte upgrade.",
     },
     {
       title: "Recovery review.",
@@ -303,7 +303,7 @@ export const allianceFaq: { q: string; a: string }[] = [
   },
   {
     q: "Is Client Reactivation included in the pilot?",
-    a: "Past-customer reactivation is one of the four Revenue Continuity workflows and is part of the Done With You implementation (the Dead Client Lists system). Missed Calls & Slow Response and Lost Referrals & Reviews are available as standard add-ons to the Done With You implementation.",
+    a: "Past-customer reactivation is one of the four Revenue Continuity workflows and is part of the Done With You implementation (the Dead Client Lists system, now 1 of 3 included in the $3,900 DWY Basic alongside Dropped Estimates and Lost Referrals & Reviews/Testimonials). AI Voice Answering — telephony ingress (4th leak, $500 + vendor pass-through) is available as a standard add-on.",
   },
   {
     q: "Why is capacity limited?",

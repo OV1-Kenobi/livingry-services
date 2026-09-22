@@ -9,8 +9,8 @@
 // - Founding Five = the Done For You tier at the founding rate: $1,250 to
 //   start, $1,250 final performance-trigger payment, $500/week after the
 //   threshold. Standard DFY reference: $2,500 / $2,500 / $1,000 per week.
-// - DFY requires DWY completion ($2,500 total: $1,249 at signing + $1,251 at
-//   exit testing; prior DIY $649 credited, leaving $1,851). Standard add-ons:
+// - DFY requires DWY completion ($3,900 total: $1,949 at signing + $1,951 at
+//   exit testing; prior DIY $649 credited, leaving $3,251). Standard add-ons:
 //   Missed Calls & Slow Response $500, Lost Referrals & Reviews $500.
 // - Trigger: 10× collected revenue vs the DWY baseline, measured cumulatively
 //   since deployment. Week-four assessment; 52-week exclusivity once met.
@@ -85,7 +85,7 @@ export const offer = {
   steps: [
     {
       title: "Step 1 — Done With You (DWY)",
-      body: "Livingry acts as general contractor over implementation. Two standard leak systems (Dropped Estimates, Dead Client Lists) go live. Your Company Operating System Agent is deployed on your own infrastructure. Exit testing confirms everything works. (DWY: $2,500 total — $1,249 at signing + $1,251 at exit testing. Prior DIY $649 credited, leaving $1,851 at exit testing.)",
+      body: "Livingry acts as general contractor over implementation. Three standard leak systems (Dropped Estimates, Dead Client Lists, and Lost Referrals & Reviews/Testimonials) plus minimal n8n spine go live. Your Company Operating System Agent is deployed on your own infrastructure. Exit testing confirms everything works. (DWY: $3,900 total — $1,949 at signing + $1,951 at exit testing. Prior DIY $649 credited, leaving $3,251 at exit testing.)",
     },
     {
       title: "Step 2 — Done For You (DFY)",
@@ -314,7 +314,7 @@ export const faq: { q: string; a: string }[] = [
   ...canonicalFaq.slice(0, 3), // First 3 canonical questions
   {
     q: "What do we pay, and when?",
-    a: "The Founding Five rate is $1,250 to start, $1,250 as the final performance-trigger payment, and $500 per week after the threshold — half the standard Done For You reference pricing. It follows the Done With You implementation ($2,500 total), which establishes your operating baseline. Direct third-party tool, messaging, and telephony costs are billed separately in your company's name.",
+    a: "The Founding Five rate is $1,250 to start, $1,250 as the final performance-trigger payment, and $500 per week after the threshold — half the standard Done For You reference pricing. It follows the Done With You implementation ($3,900 total), which establishes your operating baseline. Direct third-party tool, messaging, and telephony costs are billed separately in your company's name.",
   },
   ...canonicalFaq.slice(3), // Remaining canonical questions
   {

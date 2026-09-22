@@ -40,12 +40,12 @@ export const serviceLevels: ServiceLevel[] = [
     id: "dwy",
     name: "Done With You (DWY)",
     shortName: "DWY",
-    priceLine: "$2,500 total",
+    priceLine: "$3,900 total",
     bestFor:
       "An operator who wants Livingry Services to act as general contractor over implementation while the owner remains involved in decisions, testing, and approval.",
     includes: [
       "Everything in Do It Yourself",
-      "Two standard leak systems — Dropped Estimates and Dead Client Lists",
+      "Three standard leak systems — Dropped Estimates, Dead Client Lists, and Lost Referrals & Reviews/Testimonials (plus minimal n8n spine that makes them stay sealed)",
       "The client's trained, forked, branded Company Operating System Agent on the client's own infrastructure",
       "Implementation coordination by Livingry Services over curated subcontractors",
       "Live owner exit-testing meeting",
@@ -54,7 +54,7 @@ export const serviceLevels: ServiceLevel[] = [
     ],
     responsibility:
       "The owner remains involved in decisions, testing, and approval; Livingry Services coordinates implementation.",
-    priceDetail: "$1,249 at signing \u00b7 $1,251 when the system passes exit testing",
+    priceDetail: "$1,949 at signing \u00b7 $1,951 when the system passes exit testing",
   },
   {
     id: "dfy",
@@ -77,8 +77,7 @@ export const serviceLevels: ServiceLevel[] = [
 ];
 
 export const dwyAddOns = [
-  { name: "Missed Calls & Slow Response", price: "$500" },
-  { name: "Lost Referrals & Reviews", price: "$500" },
+  { name: "AI Voice Answering — telephony ingress (4th leak, tiered Essentials/Hybrid/Autonomous)", price: "$500 + vendor pass-through" },
 ] as const;
 
 export const dfyFoundingFive = {
