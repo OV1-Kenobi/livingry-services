@@ -105,7 +105,7 @@ export default function ServicesAndPricingPage() {
           </div>
           <div className="lg:col-span-7">
             <div className="rule-label">Standard add-ons</div>
-            <h3 className="serif mt-3" style={{ fontSize: "var(--step-1)" }}>Standard add-ons (4th leak + referrals).</h3>
+            <h3 className="serif mt-3" style={{ fontSize: "var(--step-1)" }}>Standard add-on (4th leak).</h3>
             <ul className="mt-4 grid gap-0">
               {dwyAddOns.map((addOn, i) => (
                 <li key={addOn.name} className="flex items-baseline justify-between gap-6 py-4" style={{ borderTop: i === 0 ? "1px solid var(--ink)" : "1px solid var(--rule)" }}>
